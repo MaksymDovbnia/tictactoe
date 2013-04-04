@@ -1,0 +1,104 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FrameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context=".OnlineGameConnectionActivity" >
+
+    <Button
+        android:id="@+id/button_onlineconnection_opengroup"
+        android:layout_width="244dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="@string/button_onlineconnection_opengroup" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="996dp"
+        android:layout_gravity="center" >
+
+        <FrameLayout
+            android:layout_width="345dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right" >
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="443dp" >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="488dp" >
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="515dp"
+                android:layout_gravity="bottom" >
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="454dp"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textViewFirstPlayer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Activity Group"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_gravity="bottom"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/UpdateListButton"
+                    android:layout_width="241dp"
+                    android:layout_height="wrap_content"
+                    android:text="UpdateList" />
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/listActivityPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="567dp" >
+            </ListView>
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="82dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/connectToServer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Connect" />
+
+        <EditText
+            android:id="@+id/statusConected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10" >
+
+            <requestFocus />
+        </EditText>
+    </LinearLayout>
+
+</FrameLayout>

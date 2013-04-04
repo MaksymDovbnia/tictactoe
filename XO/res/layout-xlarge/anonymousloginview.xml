@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/anonlogin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_line"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/texfield_view_anonnymousconnection_nick"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/blue" />
+
+    <EditText
+        android:id="@+id/editText_loginanon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textCapCharacters"
+        android:maxLength="10"
+        android:shadowColor="@color/red"
+        android:textColor="@color/blue"
+        android:textColorHint="@color/black_overlay"
+        android:textColorLink="@color/red"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/button_anonlogin"
+        android:layout_width="116dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button_yelow"
+        android:text="@string/button_view_anonnymousconnection_login"
+        android:textColor="@color/red" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,152 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/FrameLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
+    tools:context=".TypeOfGame" >
+
+    <ImageView
+        android:id="@+id/ImageView03"
+        android:layout_width="497dp"
+        android:layout_height="813dp"
+        android:layout_gravity="bottom"
+        android:src="@drawable/line_red" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="600dp"
+        android:layout_height="400dp"
+        android:layout_gravity="bottom"
+        android:src="@drawable/line_yellow" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1086dp"
+        android:layout_gravity="center"
+        android:background="@drawable/notebook2" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="286dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textViewFirstPlayer"
+                android:layout_width="466dp"
+                android:layout_height="49dp"
+                android:gravity="center"
+                android:text="@string/name_game"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="50sp" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="277dp"
+                android:src="@drawable/tic_tac_toe" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LL_typeofgamenu"
+            android:layout_width="428dp"
+            android:layout_height="315dp"
+            android:layout_gravity="center"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.26" >
+
+                <ImageView
+                    android:id="@+id/ImageView04"
+                    android:layout_width="114dp"
+                    android:layout_height="81dp"
+                    android:src="@drawable/clip_yellow" />
+
+                <Button
+                    android:id="@+id/button_gametypes_friend"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_white"
+                    android:text="@string/button_gametypes_friend"
+                    android:textColor="@color/blue"
+                    android:textSize="50sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/ImageView05"
+                    android:layout_width="114dp"
+                    android:layout_height="81dp"
+                    android:src="@drawable/clip_yellow" />
+
+                <Button
+                    android:id="@+id/button_gametypes_android"
+                    android:layout_width="128dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.84"
+                    android:background="@drawable/button_white"
+                    android:text="@string/button_gametypes_android"
+                    android:textColor="@color/blue"
+                    android:textSize="50sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageView
+                    android:id="@+id/ImageView01"
+                    android:layout_width="114dp"
+                    android:layout_height="81dp"
+                    android:src="@drawable/clip_yellow" />
+
+                <Button
+                    android:id="@+id/button_gametypes_online"
+                    android:layout_width="match_parent"
+                    android:layout_height="66dp"
+                    android:background="@drawable/button_white"
+                    android:text="@string/button_gametypes_online"
+                    android:textColor="@color/blue"
+                    android:textSize="50sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.20" >
+
+                <ImageView
+                    android:id="@+id/ImageView02"
+                    android:layout_width="114dp"
+                    android:layout_height="81dp"
+                    android:src="@drawable/clip_yellow" />
+
+                <Button
+                    android:id="@+id/button_gametypes_bluetooth"
+                    android:layout_width="128dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.84"
+                    android:background="@drawable/button_white"
+                    android:text="@string/button_gametypes_bluetooth"
+                    android:textColor="@color/blue"
+                    android:textSize="50sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:src="@drawable/pencil" />
+
+</FrameLayout>

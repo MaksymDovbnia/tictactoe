@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">X-O</string>
+    <string name="edit_message">Enter your name</string>
+    <string name="button_send">Send</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_display_message">DisplayMessageActivity</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="title_activity_second">Online Big Tic-Tac-Toe</string>
+    <string name="title_activity_game_field">GameFieldActivity</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="name_game">Tic Tac Toe</string>
+    <string name="title_activity_online_game_connection">OnlineGameConnectionActivity</string>
+    <string name="title_activity_online_players">OnlinePlayersActivity</string>
+    <string name="title_activity_list_test">ListTest</string>
+    <string name="title_activity_type_of_game">TypeOfGameActivity</string>
+    <string name="button_gametypes_android">Android</string>
+    <string name="button_gametypes_online">Online</string>
+    <string name="button_gametypes_friend">2 players</string>
+    <string name="button_gametypes_bluetooth">Bluetooh</string>
+    <string name="texfield_gametypes_selectTypeGame">Select type og game: </string>
+    <string name="button_onlineconnection_opengroup">Open Group</string>
+    <string name="button_activityplayerlist_caclecplayer">Cancle player</string>
+    <string name="button_activityplayerlist_desireplay">Send desire</string>
+    <string name="button_activityplayerlist_updatelsit">Update list</string>
+    <string name="button_activityplayerlist_startgame">Start game</string>
+    <string name="button_startactivitt_startgame">Start game</string>
+    <string name="button_startactivitt_settings">Settings</string>
+    <string name="button_startactivitt_exit">Exit</string>
+    <string name="button_gamefieldactivity_newgame">New Game</string>
+    <string name="button_gamefieldactivity_menu">Menu</string>
+    <string name="texfield_onlineactiv_activityplayers">Online Activity players:</string>
+    <string name="texfield_onlineactiv_wantedbattle">Wanted battle :</string>
+    <string name="texfield_onlineactiv_desire">Desire :</string>
+    <string name="title_activity_activity_type_registraion">ActivityTypeRegistraion</string>
+    <string name="action_settings">Settings</string>
+    <string name="texfield_typeregistration_registrby">Sign in:</string>
+    <string name="texfield_typeregistration_anonymous"> - anonymous</string>
+    <string name="texfield_typeregistration_tictactoe"> - tic-tac-toe account</string>
+    <string name="texfield_view_anonnymousconnection_nick">Your nick: </string>
+    <string name="button_view_anonnymousconnection_login">Login</string>
+    <string name="texfield_windialog_congratulayion">are win by</string>
+    <string name="texfield_windialog_word_move">move</string>
+    <string name="texfield_windialog_question">Do you want continue game?</string>
+    <string name="word_yes">Yes</string>
+    <string name="word_no">No</string>
+    
+    
+    
+    
+   
+    
+        
+   
+    
+    
+    
+    
+
+</resources>
