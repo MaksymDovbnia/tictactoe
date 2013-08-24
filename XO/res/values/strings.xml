@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">X-O</string>
+    <string name="app_name">TicTacToe</string>
     <string name="edit_message">Enter your name</string>
     <string name="button_send">Send</string>
     <string name="menu_settings">Settings</string>
@@ -24,18 +24,18 @@
     <string name="button_gametypes_bluetooth">Bluetooh</string>
     <string name="texfield_gametypes_selectTypeGame">Select type og game: </string>
     <string name="button_onlineconnection_opengroup">Open Group</string>
-    <string name="button_activityplayerlist_caclecplayer">Cancle player</string>
-    <string name="button_activityplayerlist_desireplay">Send desire</string>
-    <string name="button_activityplayerlist_updatelsit">Update list</string>
-    <string name="button_activityplayerlist_startgame">Start game</string>
+    <string name="cancel_player">Cancle player</string>
+    <string name="invite_for_play">Invite to play</string>
+    <string name="update_list">Update list</string>
+    <string name="start_game">Start game</string>
     <string name="button_startactivitt_startgame">Start game</string>
     <string name="button_startactivitt_settings">Settings</string>
     <string name="button_startactivitt_exit">Exit</string>
     <string name="button_gamefieldactivity_newgame">New Game</string>
     <string name="button_gamefieldactivity_menu">Menu</string>
-    <string name="texfield_onlineactiv_activityplayers">Online Activity players:</string>
-    <string name="texfield_onlineactiv_wantedbattle">Wanted battle :</string>
-    <string name="texfield_onlineactiv_desire">Desire :</string>
+    <string name="online_players">Online  players:</string>
+    <string name="wanted_battle">Wanted battle :</string>
+    <string name="invited_players">Invited players :</string>
     <string name="title_activity_activity_type_registraion">ActivityTypeRegistraion</string>
     <string name="action_settings">Settings</string>
     <string name="texfield_typeregistration_registrby">Sign in:</string>
@@ -48,17 +48,56 @@
     <string name="texfield_windialog_question">Do you want continue game?</string>
     <string name="word_yes">Yes</string>
     <string name="word_no">No</string>
-    
-    
-    
-    
-   
-    
-        
-   
-    
-    
-    
-    
+    <string name="title_activity_registration_xoaccount">RegistrationXOAccountActivity</string>
+    <string name="texfield_regxoaccount_nick">Nick: </string>
+    <string name="texfield_regxoaccount_email">Email: </string>
+    <string name="texfield_regxoaccount_password">Password: </string>
+    <string name="texfield_regxoaccount_congirmpassword">Confirm password: </string>
+    <string name="button_regxoaccount_registration">Registration</string>
+    <string name="button_registr">Registr</string>
+    <string name="texfield_gorgotpass_email">Your email: </string>
+    <string name="button_gorgotpass_send">Sent password to email</string>
+    <string name="title_activity_activity_online_group">ActivityOnlineGroup</string>
+    <string name="title_activity_test">Test</string>
+    <string name="title_activity_main_activity2">MainActivity2</string>
+    <string name="title_activity_main_test">MainTest</string>
+    <string name="open_group">Open group</string> 
+    <string name="online_group">Online group:</string>
+    <string name="online_groups">Online groups</string>
+    <string name="all_online_players">All online players:</string>
+    <string name="chat">Chat</string>
+    <string name="opened_group">Opened group</string>
+    <string name="scanning">Scanning</string>
+    <string name="select_device">Select device</string>
+    <string name="none_found">None found</string>
+    <string name="none_paired">None paired</string>
+    <string name="bluetooth_game">Bluetooth game</string>
+    <string name="button_scan">Scan</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="exit">Exit</string>
+    <string name="exit_from_game">Exit from game</string>
+    <string name="exit_from_group">Exit from group</string>
+    <string name="exit_from_group_question">Do you real want to exit from this group?</string>
+    <string name="exit_from_game_question">Do you real want to exit from game?</string>
+    <string name="exit_from_online_game">Exit from online game</string>
+    <string name="exit_from_game_online_question">Do you real want to exit from online game?</string>
+
+
+
+    <string name="title_other_devices">Other devices</string>
+    <string name="title_paired_devices">Paired devices</string>
+    <string name="create_bluetooth_game">Create bluetooth game</string>
+    <string name="connect_to_bluetooth_game">Connect to bluetooth game</string>
+
+
+
+
+
+
+
+
+
+
 
 </resources>

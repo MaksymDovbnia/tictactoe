@@ -34,7 +34,7 @@ public class MainActivity extends Activity {
 	}
 
 	public void loadButton(View view) {
-		Intent intent = new Intent(this, BigTicTacToeOnline.class);
+		Intent intent = new Intent(this, StartActivity.class);
 		startActivity(intent);
 
 	}

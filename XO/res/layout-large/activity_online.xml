@@ -32,7 +32,7 @@
                 android:layout_weight="1" >
 
                 <ListView
-                    android:id="@+id/listViewActivityPlayers"
+                    android:id="@+id/list_activity_players"
                     android:layout_width="match_parent"
                     android:layout_height="356dp"
                     android:layout_gravity="center"
@@ -45,7 +45,7 @@
                     android:layout_width="105dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="@string/texfield_onlineactiv_activityplayers"
+                    android:text="@string/online_players"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:textColor="@color/blue"
                     android:textSize="15sp" />
@@ -56,12 +56,12 @@
                     android:layout_gravity="bottom" >
 
                     <Button
-                        android:id="@+id/button_sentdesire"
+                        android:id="@+id/btn_invite_to_play"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/button_yelow"
-                        android:text="@string/button_activityplayerlist_desireplay" />
+                        android:text="@string/invite_for_play" />
 
                     <Button
                         android:id="@+id/button_update_activitylist"
@@ -69,7 +69,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/button_yelow"
-                        android:text="@string/button_activityplayerlist_updatelsit" />
+                        android:text="@string/update_list" />
 
                 </LinearLayout>
 
@@ -96,13 +96,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
-                            android:text="@string/texfield_onlineactiv_wantedbattle"
+                            android:text="@string/wanted_battle"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@color/blue"
                             android:textSize="15sp" />
 
                         <ListView
-                            android:id="@+id/ListPlayerWicthWantToPpaly"
+                            android:id="@+id/list_player_witch_want_to_play"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -111,12 +111,12 @@
                         </ListView>
 
                         <Button
-                            android:id="@+id/button_startGame"
+                            android:id="@+id/btn_start_game"
                             android:layout_width="97dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:background="@drawable/button_yelow"
-                            android:text="@string/button_activityplayerlist_startgame" />
+                            android:text="@string/start_game" />
 
                     </LinearLayout>
 
@@ -131,13 +131,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="0"
-                            android:text="@string/texfield_onlineactiv_desire"
+                            android:text="@string/invited_players"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@color/blue"
                             android:textSize="15sp" />
 
                         <ListView
-                            android:id="@+id/ListDiserPayer"
+                            android:id="@+id/list_disered_players"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -146,12 +146,12 @@
                         </ListView>
 
                         <Button
-                            android:id="@+id/ButtonCancelPlayer"
+                            android:id="@+id/btn_cancel_player"
                             android:layout_width="92dp"
                             android:layout_height="33dp"
                             android:layout_gravity="center"
                             android:background="@drawable/button_yelow"
-                            android:text="@string/button_activityplayerlist_caclecplayer" />
+                            android:text="@string/cancel_player" />
 
                     </LinearLayout>
 

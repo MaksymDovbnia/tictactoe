@@ -17,28 +17,27 @@
         android:orientation="vertical" >
 
         <LinearLayout
-            android:id="@+id/LinearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView1"
-                android:layout_width="172dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/textView_online_group_item_name"
+                android:layout_width="425dp"
+                android:layout_height="98dp"
                 android:gravity="center"
                 android:text="@string/app_name"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textView_signin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/texfield_typeregistration_registrby"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/black_overlay"
+                android:textColor="@color/red"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -47,31 +46,36 @@
                 android:layout_height="match_parent" >
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
+                    android:id="@+id/LL_notebook_registration"
+                    android:layout_width="367dp"
+                    android:layout_height="145dp"
                     android:layout_gravity="center"
                     android:layout_weight="0.48"
                     android:orientation="vertical" >
 
                     <TextView
                         android:id="@+id/textView_registration_anon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/texfield_typeregistration_anonymous"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/blue" />
+                        android:textColor="@color/blue"
+                        android:textSize="30sp" />
 
                     <TextView
                         android:id="@+id/textView_registration_byTTT"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:layout_weight="1"
+                        android:gravity="center"
                         android:text="@string/texfield_typeregistration_tictactoe"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="@color/blue" />
+                        android:textColor="@color/blue"
+                        android:textSize="30sp" />
 
                 </LinearLayout>
 
@@ -85,15 +89,9 @@
 
             <FrameLayout
                 android:id="@+id/loginFrameLayout"
-                android:layout_width="194dp"
-                android:layout_height="182dp"
+                android:layout_width="195dp"
+                android:layout_height="146dp"
                 android:layout_gravity="center" >
-
-                <DigitalClock
-                    android:id="@+id/digitalClock1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="DigitalClock" />
 
             </FrameLayout>
 

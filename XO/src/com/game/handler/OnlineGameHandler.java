@@ -5,35 +5,32 @@ import java.util.List;
 import net.protocol.Protocol;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.BaseAdapter;
 
 import com.entity.OneMove;
 import com.entity.Player;
 import com.entity.TypeFieldElement;
-import com.game.GameActionHandler;
-import com.game.GameFiledSource;
+import com.game.GameLogicHandler;
 import com.game.GameType;
-import com.game.activity.R;
 import com.game.adapters.GameFieldAdapter;
-import com.net.online.OnlineConectionGameWorker;
+import com.net.online.WorkerOnlineConnection;
 import com.net.online.protobuf.ProtoType;
 import com.utils.Loger;
 
-public class OnlineGameHandler implements GameFiledSource {
+public class OnlineGameHandler implements GameHandler {
 
 	private Handler handler;
-	private GameActionHandler gameActionHandler;
-	private OnlineConectionGameWorker onlineGameWorker;
+	private GameLogicHandler gameActionHandler;
+	private WorkerOnlineConnection onlineGameWorker;
 	private Player player;
 	private Player opponet;
 	private GameFieldAdapter gameFieldAdapter;
 
-	public OnlineGameHandler(OnlineConectionGameWorker onlineGameWorker,
+	public OnlineGameHandler(WorkerOnlineConnection onlineGameWorker,
 			Player player, Player opponent) {
 		this.player = player;
 		this.opponet = opponent;
 		this.onlineGameWorker = onlineGameWorker;
-		gameActionHandler = new GameActionHandler();
+		gameActionHandler = new GameLogicHandler();
 
 		this.handler = new Handler() {
 			@Override
@@ -49,8 +46,8 @@ public class OnlineGameHandler implements GameFiledSource {
 					TypeFieldElement typeFieldElement = (cDidMove.getType()
 							.equals(Protocol.TypeMove.X) ? TypeFieldElement.X
 							: TypeFieldElement.O);
-					OneMove oneMove = new OneMove(cDidMove.getY(),
-							cDidMove.getX(), typeFieldElement);
+					OneMove oneMove = new OneMove(cDidMove.getI(),
+							cDidMove.getJ(), typeFieldElement);
 					gameFieldAdapter.opponentDidOneMove(oneMove);
 					List<OneMove> list = gameActionHandler.oneMove(oneMove);
 					if (list != null)
@@ -64,16 +61,16 @@ public class OnlineGameHandler implements GameFiledSource {
 
 		};
 
-		onlineGameWorker.setHanlerd(handler);
+		onlineGameWorker.registerHandler(handler);
 	}
 
 	public List<OneMove> oneMove(OneMove oneMove) {
 		Protocol.SDidMove sDidMove = Protocol.SDidMove
 				.newBuilder()
 				.setOpponentId(opponet.getId())
-				.setPlayerId(player.getId())
-				.setX(oneMove.j)
-				.setY(oneMove.i)
+				.setPlayerId(player.getId())				
+				.setJ(oneMove.j)
+				.setI(oneMove.i)
 				.setType(
 						(oneMove.type.equals(TypeFieldElement.X)) ? Protocol.TypeMove.X
 								: Protocol.TypeMove.O).build();

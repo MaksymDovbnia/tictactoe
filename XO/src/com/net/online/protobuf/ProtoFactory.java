@@ -48,6 +48,9 @@ public class ProtoFactory {
 			Protocol.CContinueGame continueGame = Protocol.CContinueGame
 					.parseFrom(data);
 			return continueGame;
+		case CGETGROUPLIST:
+			Protocol.CGetGroupList getGroupList = Protocol.CGetGroupList.parseFrom(data);
+			return getGroupList;
 		default:
 			Loger.printLog(" Wrong packet BLIADY");
 			return null;

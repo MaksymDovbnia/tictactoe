@@ -13,18 +13,19 @@ import android.widget.ListView;
 
 import com.entity.Player;
 import com.game.adapters.AdapterActivityList;
-import com.game.adapters.MyOwnAdapter;
+import com.game.adapters.OnlinePlayersAdapter;
 import com.utils.Loger;
 
 public class ListTest extends Activity {
 
 	ListView lvSimple;
-	List<Player> playerList = new ArrayList<Player>();
+    List<Player> playerList = new ArrayList<Player>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_list_test);
+		int a  =1;
+        setContentView(R.layout.activity_list_test);
 		for (int i = 1; i <= 50; i++) {
 			Player player = new Player();
 			player.setName("player " + i);
@@ -33,9 +34,9 @@ public class ListTest extends Activity {
 
 		AdapterActivityList adapterActivityList = new AdapterActivityList(this,
 				playerList);
-		MyOwnAdapter myOwnAdapter = new MyOwnAdapter(this, playerList);
-		// определяем список и присваиваем ему адаптер
-		lvSimple = (ListView) findViewById(R.id.listView1);
+		OnlinePlayersAdapter myOwnAdapter = new OnlinePlayersAdapter(this, playerList);
+		// пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+		lvSimple = (ListView) findViewById(R.id.listOnlineGroup);
 		lvSimple.setAdapter(adapterActivityList);
 		lvSimple.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,

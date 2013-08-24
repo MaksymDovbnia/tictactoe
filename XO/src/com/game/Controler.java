@@ -1,28 +1,40 @@
 package com.game;
 
 import com.entity.Player;
-import com.net.online.OnlineConectionGameWorker;
+import com.game.handler.GameHandler;
+import com.net.bluetooth.BluetoothService;
+import com.net.bluetooth.BluetoothServiceViaProtobuf;
+import com.net.online.WorkerOnlineConnection;
 
 public class Controler {
 
-	private static OnlineConectionGameWorker onl;
+	private static WorkerOnlineConnection onl;
+    private static BluetoothService bluetoothService;
 
 	private static Player player;
-	private static GameFiledSource gameFiledSource;
+	private static GameHandler gameFiledSource;
 
-	public static GameFiledSource getGameFiledSource() {
+	public static GameHandler getGameHandler() {
 		return Controler.gameFiledSource;
 	}
 
-	public static void setGameFiledSource(GameFiledSource gameFiledSource) {
-		Controler.gameFiledSource = gameFiledSource;
+    public static BluetoothService getBluetoothService() {
+        return bluetoothService;
+    }
+
+    public static void setBluetoothService(BluetoothService bluetoothService) {
+        Controler.bluetoothService = bluetoothService;
+    }
+
+    public static void setGameHandler(GameHandler handler) {
+		Controler.gameFiledSource = handler;
 	}
 
-	public static OnlineConectionGameWorker getOnl() {
+	public static WorkerOnlineConnection getOnl() {
 		return Controler.onl;
 	}
 
-	public static void setOnl(OnlineConectionGameWorker onl) {
+	public static void setOnl(WorkerOnlineConnection onl) {
 		Controler.onl = onl;
 	}
 

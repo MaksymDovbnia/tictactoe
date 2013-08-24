@@ -3,5 +3,26 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="online_activity_text_size">15dp</dimen>
+    <dimen name="main_button_text_size">10sp</dimen>
+    <dimen name="top_right_button_width">100dp</dimen>
+    <dimen name="top_left_button_width">120dp</dimen>
+    <dimen name="mergin_top_button_right_from_left">40dp</dimen>
+    <dimen name="padding_left_opened_group">15dp</dimen>
+    <dimen name="text_size_inscription">15sp</dimen>
+    <dimen name="padding_for_small_list">10dp</dimen>
+    <dimen name="padding_for_large_list">30dp</dimen>
+    <dimen name="big_text_size">30sp</dimen>
+    <dimen name="default_text_size">20sp</dimen>
+
+
+
+
+
+
+
+
+
+
 
 </resources>

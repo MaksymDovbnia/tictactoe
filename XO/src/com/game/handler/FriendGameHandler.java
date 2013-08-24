@@ -5,17 +5,16 @@ import java.util.List;
 import android.os.Handler;
 
 import com.entity.OneMove;
-import com.game.GameActionHandler;
-import com.game.GameFiledSource;
+import com.game.GameLogicHandler;
 import com.game.GameType;
 import com.game.adapters.GameFieldAdapter;
 
-public class FriendGameHandler implements GameFiledSource {
+public class FriendGameHandler implements GameHandler {
 	private GameFieldAdapter gameFieldAdapter;
-	private GameActionHandler gameActionHandler;
+	private GameLogicHandler gameActionHandler;
 
 	public FriendGameHandler() {
-		gameActionHandler = new GameActionHandler();
+		gameActionHandler = new GameLogicHandler();
 	}
 
 	@Override

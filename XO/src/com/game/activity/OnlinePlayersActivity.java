@@ -5,7 +5,7 @@ import java.util.List;
 
 import net.protocol.Protocol;
 import android.app.Activity;
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,12 +18,13 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.entity.Player;
 import com.game.Controler;
-import com.game.adapters.MyOwnAdapter;
+import com.game.adapters.OnlinePlayersAdapter;
 import com.game.handler.OnlineGameHandler;
-import com.net.online.OnlineConectionGameWorker;
+import com.net.online.WorkerOnlineConnection;
 import com.net.online.protobuf.ProtoType;
 import com.utils.Loger;
 
@@ -38,34 +39,36 @@ public class OnlinePlayersActivity extends Activity implements OnClickListener,
 	private List<Player> listDesirePlayer = new ArrayList<Player>();
 	private List<Player> listWantToPlayPlayer = new ArrayList<Player>();
 
-	private MyOwnAdapter adapterForActivityList;
-	private MyOwnAdapter adapterForDesireList;
-	private MyOwnAdapter adapterForWantPlayList;
+	private OnlinePlayersAdapter adapterForActivityList;
+	private OnlinePlayersAdapter adapterForDesireList;
+	private OnlinePlayersAdapter adapterForWantPlayList;
 
 	private Handler handler;
-	private OnlineConectionGameWorker onlineGameWorker;
-
+	private WorkerOnlineConnection onlineGameWorker;
+    private Context context;
 	private Button desire;
 	private Button cancelPlayer;
 	private Button startGame;
 	private Button updateList;
 	private Player myPlayer;
+    private int groupId;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_online);
-		Intent intent = getIntent();
-
+		context = getApplicationContext();
+        Intent intent = getIntent();
+        groupId = intent.getIntExtra(OnlineGroupsActivity.NUMBER_OF_GROUP,-10);
 		myPlayer = Controler.getPlayer();
 
-		desire = (Button) findViewById(R.id.button_sentdesire);
+		desire = (Button) findViewById(R.id.btn_invite_to_play);
 		desire.setOnClickListener(this);
 		desire.setOnTouchListener(this);
-		startGame = (Button) findViewById(R.id.button_startGame);
+		startGame = (Button) findViewById(R.id.btn_start_game);
 		startGame.setOnClickListener(this);
 		startGame.setOnTouchListener(this);
-		cancelPlayer = (Button) findViewById(R.id.ButtonCancelPlayer);
+		cancelPlayer = (Button) findViewById(R.id.btn_cancel_player);
 		cancelPlayer.setOnClickListener(this);
 		cancelPlayer.setOnTouchListener(this);
 		updateList = (Button) findViewById(R.id.button_update_activitylist);
@@ -81,16 +84,16 @@ public class OnlinePlayersActivity extends Activity implements OnClickListener,
 		 */
 
 		// create adapter for all list
-		adapterForActivityList = new MyOwnAdapter(this, listActivityPlayer);
-		adapterForDesireList = new MyOwnAdapter(this, listDesirePlayer);
-		adapterForWantPlayList = new MyOwnAdapter(this, listWantToPlayPlayer);
+		adapterForActivityList = new OnlinePlayersAdapter(this, listActivityPlayer);
+		adapterForDesireList = new OnlinePlayersAdapter(this, listDesirePlayer);
+		adapterForWantPlayList = new OnlinePlayersAdapter(this, listWantToPlayPlayer);
 
 		// define lists and add appropriate adapter
-		lvActivityPlayer = (ListView) findViewById(R.id.listViewActivityPlayers);
+		lvActivityPlayer = (ListView) findViewById(R.id.list_activity_players);
 		lvActivityPlayer.setAdapter(adapterForActivityList);
-		lvDesirePlayer = (ListView) findViewById(R.id.ListDiserPayer);
+		lvDesirePlayer = (ListView) findViewById(R.id.list_disered_players);
 		lvDesirePlayer.setAdapter(adapterForDesireList);
-		lvWantPlayPlayer = (ListView) findViewById(R.id.ListPlayerWicthWantToPpaly);
+		lvWantPlayPlayer = (ListView) findViewById(R.id.list_player_witch_want_to_play);
 		lvWantPlayPlayer.setAdapter(adapterForWantPlayList);
 
 		lvActivityPlayer.setOnItemClickListener(new OnItemClickListener() {
@@ -108,6 +111,7 @@ public class OnlinePlayersActivity extends Activity implements OnClickListener,
 				switch (protoType) {
 				case CUPDATEAOBOUTACTIVITYPLAYER:
 					Protocol.CUpdateAboutActivityPlayer cActivityPlayer = (Protocol.CUpdateAboutActivityPlayer) msg.obj;
+				
 					for (Protocol.Player player : cActivityPlayer
 							.getNewPlayerList()) {
 						Loger.printLog("get updt + " + player.getName());
@@ -115,9 +119,9 @@ public class OnlinePlayersActivity extends Activity implements OnClickListener,
 							listActivityPlayer.add(new Player(player.getId(),
 									player.getName()));
 					}
-					for (Protocol.CExitFromGlobalGame exitFromGame : cActivityPlayer
-							.getExitPlayerList()) {
-						int id = exitFromGame.getPlayerId();
+					for (Protocol.CExitFromGroup exitFromGroup : cActivityPlayer
+				.getExitPlayerList()) {
+						int id = exitFromGroup.getPlayerId();
 
 						for (Player player : listActivityPlayer)
 							if (player.getId() == id) {
@@ -142,13 +146,18 @@ public class OnlinePlayersActivity extends Activity implements OnClickListener,
 					adapterForWantPlayList.notifyDataSetChanged();
 					break;
 				case CWANTTOPLAY:
-					Protocol.CWantToPlay wantToPlay = (Protocol.CWantToPlay) msg.obj;
+                    Protocol.CWantToPlay wantToPlay = (Protocol.CWantToPlay) msg.obj;
 					int opponentId = wantToPlay.getOpponentId();
-					for (Player player : listActivityPlayer)
-						if (player.getId() == opponentId)
-							listWantToPlayPlayer.add(player);
+					Player opponent = null;
+                    for (Player player : listActivityPlayer)
+						if (player.getId() == opponentId){
+						    	listWantToPlayPlayer.add(player);
+                                 opponent = player;
+                        }
 					adapterForWantPlayList.notifyDataSetChanged();
-					break;
+                    Toast toast = Toast.makeText(context,"Player " + opponent.getName() + " want to play with you",40);
+                    toast.show();
+                    break;
 				case CSTARTGAME:
 					Protocol.CStartGame startGame = (Protocol.CStartGame) msg.obj;
 					startGame(startGame.getOpponentId());
@@ -159,9 +168,12 @@ public class OnlinePlayersActivity extends Activity implements OnClickListener,
 			}
 		};
 		onlineGameWorker = Controler.getOnl();
-		onlineGameWorker.sendPacket(Protocol.SGetUpdate.newBuilder()
-				.setId(Controler.getPlayer().getId()).build());
-		onlineGameWorker.setHanlerd(handler);
+        onlineGameWorker.setHanlerd(handler);
+        onlineGameWorker.sendPacket(Protocol.SEnterToGroup.newBuilder()
+                .setGroupId(groupId).build());
+
+        onlineGameWorker.sendPacket(Protocol.SGetUpdate.newBuilder()
+				.setId(Controler.getPlayer().getId()).setGroupId(groupId).build());
 
 	}
 
@@ -177,8 +189,8 @@ public class OnlinePlayersActivity extends Activity implements OnClickListener,
 		OnlineGameHandler onlineGameHandler = new OnlineGameHandler(
 				onlineGameWorker, myPlayer, opponent);
 
-		Controler.setGameFiledSource(onlineGameHandler);
-		Intent intent = new Intent(this, ActivityGameField.class);
+		Controler.setGameHandler(onlineGameHandler);
+		Intent intent = new Intent(this, GameFieldActivity.class);
 		startActivity(intent);
 
 	}
@@ -189,10 +201,10 @@ public class OnlinePlayersActivity extends Activity implements OnClickListener,
 
 		case R.id.button_update_activitylist:
 			onlineGameWorker.sendPacket(Protocol.SGetUpdate.newBuilder()
-					.setId(Controler.getPlayer().getId()).build());
+                    .setId(Controler.getPlayer().getId()).setGroupId(groupId).build());
 			break;
 
-		case R.id.button_sentdesire:
+		case R.id.btn_invite_to_play:
 			int opponentId = adapterForActivityList.getIdLast();
 			Loger.printLog("switch " + opponentId);
 			Player player = null;
@@ -212,9 +224,9 @@ public class OnlinePlayersActivity extends Activity implements OnClickListener,
 			}
 
 			break;
-		case R.id.ButtonCancelPlayer:
+		case R.id.btn_cancel_player:
 			break;
-		case R.id.button_startGame:
+		case R.id.btn_start_game:
 			int oppId = adapterForWantPlayList.getIdLast();
 			if (oppId == Integer.MIN_VALUE)
 				return;

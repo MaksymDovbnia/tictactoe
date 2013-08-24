@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.entity.OneMove;
 import com.entity.TypeFieldElement;
-import com.game.GameFiledSource;
+import com.game.handler.GameHandler;
 import com.game.GameType;
 import com.game.TypeLine;
 import com.game.activity.R;
@@ -25,7 +25,7 @@ public class GameFieldAdapter extends BaseAdapter {
 	private Context mContext;
 	private int indicator = 1;
 	private int i = 0;
-	private GameFiledSource gameFiledSource;
+	private GameHandler gameFiledSource;
 	private LayoutInflater layoutInflater;
 	private boolean getOpponentMove = true;
 	private TextView player1;
@@ -47,7 +47,7 @@ public class GameFieldAdapter extends BaseAdapter {
 		this.player2 = player2;
 	}
 
-	public GameFieldAdapter(Context context, GameFiledSource gameFiledSource) {
+	public GameFieldAdapter(Context context, GameHandler gameFiledSource) {
 		layoutInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		this.mContext = context;
