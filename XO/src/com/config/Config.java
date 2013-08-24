@@ -8,4 +8,7 @@ public interface Config {
 			: "192.168.1.102";
 	public static final int PORT = 19999;
 
+
+
+
 }
