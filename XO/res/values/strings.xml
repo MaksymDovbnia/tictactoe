@@ -66,6 +66,7 @@
     <string name="online_groups">Online groups</string>
     <string name="all_online_players">All online players:</string>
     <string name="chat">Chat</string>
+    <string name="game">Game</string>
     <string name="opened_group">Opened group</string>
     <string name="scanning">Scanning</string>
     <string name="select_device">Select device</string>
@@ -89,6 +90,7 @@
     <string name="title_paired_devices">Paired devices</string>
     <string name="create_bluetooth_game">Create bluetooth game</string>
     <string name="connect_to_bluetooth_game">Connect to bluetooth game</string>
+    <string name="name_chealse">FC Chealse</string>
 
 
 

@@ -1,100 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.game.activity"
-    android:versionCode="1"
-    android:versionName="1.0" >
+          package="com.game.activity"
+          android:versionCode="1"
+          android:versionName="1.0">
 
-    <uses-permission android:name="android.permission.INTERNET" >
+    <uses-permission android:name="android.permission.INTERNET">
     </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE">
     </uses-permission>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.BLUETOOTH"/>
 
 
     <uses-sdk
-        android:minSdkVersion="11"
-        android:targetSdkVersion="14" />
+            android:minSdkVersion="11"
+            android:targetSdkVersion="14"/>
 
     <application
-        android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+            android:allowBackup="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:debuggable="true"
+            android:theme="@style/AppTheme">
         <activity
-            android:name="com.game.activity.MainActivity"
-            android:label="@string/app_name" >
+                android:screenOrientation="portrait"
+                android:name="com.game.activity.MainActivity"
+                android:label="@string/app_name">
         </activity>
-        <activity
-            android:name="com.game.activity.MenuAct"
-            android:label="@string/title_activity_menu" >
-        </activity>
-        <activity
-            android:name=".StartActivity"
-            android:label="@string/title_activity_second" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        <activity
+                android:name=".StartActivity"
+                android:label="@string/title_activity_second">
+            android:screenOrientation="portrait"
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
-            android:name=".GameFieldActivity"
-            android:label="@string/title_activity_game_field" >
+                android:screenOrientation="portrait"
+                android:name=".GameFieldActivity"
+                android:label="@string/title_activity_game_field">
         </activity>
         <activity
-            android:name="com.game.activity.OnlinePlayersActivity"
-            android:label="@string/title_activity_online_players" >
+                android:screenOrientation="portrait"
+                android:name="com.game.activity.OnlinePlayersActivity"
+                android:label="@string/title_activity_online_players">
         </activity>
         <activity
-            android:name="com.game.activity.ListTest"
-            android:label="@string/title_activity_list_test" >
+                android:screenOrientation="portrait"
+                android:name="com.game.activity.ListTest"
+                android:label="@string/title_activity_list_test">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.game.activity.SecondActivity" />
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.game.activity.SecondActivity"/>
         </activity>
         <activity
-            android:name=".SelectTypeOfGameActivity"
-            android:label="@string/title_activity_type_of_game" >
+                android:screenOrientation="portrait"
+                android:name=".SelectTypeOfGameActivity"
+                android:label="@string/title_activity_type_of_game">
         </activity>
         <activity
-            android:name=".OnlineTypeRegistrationActivity"
-            android:label="@string/title_activity_activity_type_registraion" >
+                android:screenOrientation="portrait"
+                android:name=".OnlineTypeRegistrationActivity"
+                android:label="@string/title_activity_activity_type_registraion">
             <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.game.activity.ActivityTypeOfGame" />
-        </activity>
-        <activity android:name="com.game.activity.DeviceListActivity"
-                  android:theme="@android:style/Theme.Holo.Dialog"
-                  android:configChanges="orientation|keyboardHidden">
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="com.game.activity.ActivityTypeOfGame"/>
         </activity>
         <activity
-            android:name="com.game.activity.RegistrationXOAccountActivity"
-            android:label="@string/title_activity_registration_xoaccount" >
+                android:name="com.game.activity.DeviceListActivity"
+                android:theme="@android:style/Theme.Holo.Dialog"
+                android:configChanges="orientation|keyboardHidden"
+                android:screenOrientation="portrait"
+                >
         </activity>
         <activity
-            android:name=".OnlineGroupsActivity"
-            android:label="@string/title_activity_activity_online_group" >
+                android:screenOrientation="portrait"
+                android:name="com.game.activity.RegistrationXOAccountActivity"
+                android:label="@string/title_activity_registration_xoaccount">
         </activity>
         <activity
-            android:name="com.game.activity.MainActivity2"
-            android:label="@string/title_activity_main_activity2" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="android.app.ListActivity" />
+                android:name=".OnlineGroupsActivity"
+                android:label="@string/title_activity_activity_online_group">
+        </activity>
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
-            android:name="com.game.activity.MainTest"
-            android:label="@string/title_activity_main_test" >
-        </activity>
-        <activity android:name=".OnlineOpenedGroupActivity"/>
-        <activity android:name=".BluetoothGameActivity"/>
+                android:screenOrientation="portrait"
+                android:name=".OnlineOpenedGroupActivity"/>
+        <activity
+                android:screenOrientation="portrait"
+                android:name=".BluetoothGameActivity"/>
     </application>
 
 </manifest>
