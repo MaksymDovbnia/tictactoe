@@ -63,8 +63,6 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
         gameHandler.setAdapter(gameFieldAdapter);
         gridView.setAdapter(gameFieldAdapter);
 
-
-
         return view;
 
 
