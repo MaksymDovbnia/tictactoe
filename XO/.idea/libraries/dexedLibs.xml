@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="dexedLibs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/com.google.protobuf-2.4.0-ee80097385e1b8ec42def1b57116b01c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/android-support-v4-c6f0eb78517b1327ee609f1fd241ad47.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/annotations-46815fe34be96728c7981138df52f6f6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/com.google.protobuf-2.4.0-9ef41ee9d88d60dc4edead1e49e29937.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/android-support-v4-d550436053d5dc6a80dbaae7c68214c9.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/annotations-07ebad7cbc3fcee3bb91268d68495984.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/annotations-2e2859abdd0c0a7cd33416115a9d3d13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/com.google.protobuf-2.4.0-413fa2d605a06d224f61dba56b4498f0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/bin/dexedLibs/android-support-v4-0333f71307a2458b547aa6ef5c6d1013.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

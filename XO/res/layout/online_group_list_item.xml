@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal"
+              android:gravity="center">
+
+    <TextView
+            android:id="@+id/textView_online_group_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            />
+
+    <TextView
+            android:id="@+id/textViewCountOfOnlinePlayersInGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="30 /250 "
+            android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView android:id="@+id/tw_number_of_bots"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="(0 bots)"
+              android:layout_weight="1"
+    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</LinearLayout>

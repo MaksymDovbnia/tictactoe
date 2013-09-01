@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/background2"
+              android:paddingRight="5dp"
+        >
+
+    <LinearLayout
+
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:paddingLeft="25dp"
+
+            >
+
+        <Button android:id="@+id/btn_opened_online_group"
+                android:layout_width="@dimen/top_left_button_width"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_big"
+                android:text="@string/open_group"
+                />
+
+        <Button
+                android:id="@+id/btn_group_chat"
+                android:layout_width="@dimen/top_right_button_width"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_big"
+                android:layout_marginLeft="@dimen/mergin_top_button_right_from_left"
+                android:text="@string/chat"
+                />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/center_for_fragment"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.7"
+            android:baselineAligned="false"
+            android:background="@drawable/notebook5"
+            android:paddingLeft="@dimen/padding_left_opened_group"
+            >
+
+        Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/button_big"
+                android:layout_gravity="right"
+                />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5">
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

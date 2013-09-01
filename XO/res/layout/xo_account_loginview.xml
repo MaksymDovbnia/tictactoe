@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/anonlogin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_view" >
+
+    <LinearLayout
+        android:layout_width="279dp"
+        android:layout_height="265dp"
+        android:layout_gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView_name_xologin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/texfield_view_anonnymousconnection_nick"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/blue"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editText_name_xoaccount"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:ems="10"
+            android:inputType="text"
+            android:maxLength="10"
+            android:shadowColor="@color/red"
+            android:textColor="@color/blue"
+            android:textColorHint="@color/black_overlay"
+            android:textColorLink="@color/red"
+            android:textSize="20sp" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/textView_password_xologin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/texfield_regxoaccount_password"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/blue"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editText_password_xoaccount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button_login_withxoaccount"
+            android:layout_width="142dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button_yelow"
+            android:text="@string/button_view_anonnymousconnection_login"
+            android:textColor="@color/red" />
+
+        <Button
+            android:id="@+id/button_open_regxoacount_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:layout_gravity="right"
+            android:text="@string/button_registr"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/Button_forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="31dp"
+            android:layout_gravity="right"
+            android:text="Forgot your password?"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

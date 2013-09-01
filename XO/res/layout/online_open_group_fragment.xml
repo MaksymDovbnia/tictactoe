@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+
+        >
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+
+            android:orientation="vertical"
+            >
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/online_players"
+                android:textSize="@dimen/text_size_inscription"
+                />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/padding_for_large_list"
+                android:paddingBottom="@dimen/padding_for_large_list"
+                android:orientation="vertical"
+                android:background="@drawable/list1"
+                android:layout_weight="1"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+
+                >
+
+            <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/list_activity_players"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+            <Button
+                    android:id="@+id/btn_invite_to_play"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    style="@style/default_yelow_button"
+                    android:text="@string/invite_for_play"
+                    />
+            <Button
+                    android:id="@+id/button_update_activitylist"
+                    android:layout_width="70dp"
+                    android:layout_height="30dp"
+                    style="@style/default_yelow_button"
+                    android:text="@string/update_list"
+                    />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/blue"
+            ></LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:orientation="vertical"
+            >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wanted_battle"
+                    android:textSize="@dimen/text_size_inscription"
+                    />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/padding_for_small_list"
+                    android:paddingBottom="@dimen/padding_for_small_list"
+                    android:orientation="vertical"
+                    android:background="@drawable/list1"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_weight="1"
+                    >
+
+                <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/list_player_witch_want_to_play"
+                        />
+            </LinearLayout>
+
+            <Button
+                    android:id="@+id/btn_start_game"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    style="@style/default_yelow_button"
+                    android:text="@string/start_game"
+                    android:layout_gravity="center"
+                    />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:orientation="vertical">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/invited_players"
+                    android:textSize="@dimen/text_size_inscription"
+
+                    />
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="@dimen/padding_for_small_list"
+                    android:paddingBottom="@dimen/padding_for_small_list"
+                    android:orientation="vertical"
+                    android:background="@drawable/list1"
+                    android:layout_weight="1"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    >
+
+                <ListView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/list_disered_players"
+                        />
+            </LinearLayout>
+
+            <Button
+                    android:id="@+id/btn_cancel_player"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    style="@style/default_yelow_button"
+                    android:text="@string/cancel_player"
+                    android:layout_gravity="center"
+                    />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>
