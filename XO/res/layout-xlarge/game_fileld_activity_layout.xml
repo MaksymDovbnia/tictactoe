@@ -14,24 +14,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="5"
-            android:paddingLeft="25dp"
+            android:paddingLeft="50dp"
 
             >
 
         <Button android:id="@+id/btn_opened_online_group"
-                android:layout_width="@dimen/top_left_button_width"
+                android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/button_big"
                 android:text="@string/game"
+                android:textSize="@dimen/xlarge_default_text_size_bottom_button"
                 />
 
         <Button
                 android:id="@+id/btn_group_chat"
-                android:layout_width="@dimen/top_right_button_width"
+                android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/button_big"
-                android:layout_marginLeft="@dimen/mergin_top_button_right_from_left"
+                android:layout_marginLeft="100dp"
                 android:text="@string/chat"
+                android:textSize="@dimen/xlarge_default_text_size_bottom_button"
                 />
 
     </LinearLayout>
@@ -40,11 +42,12 @@
             android:id="@+id/center_for_fragment"
             android:orientation="vertical"
             android:layout_width="match_parent"
+
             android:layout_height="match_parent"
             android:layout_weight="0.7"
             android:baselineAligned="false"
             android:background="@drawable/notebook5"
-            android:paddingLeft="@dimen/padding_left_opened_group"
+            android:paddingLeft="20dp"
             >
 
 
@@ -54,21 +57,22 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="50dp"
             android:layout_weight="5">
 
         <Button android:id="@+id/btn_opened_online_group"
-                android:layout_width="@dimen/top_left_button_width"
+                android:layout_width="300dp"
                 android:layout_marginLeft="20dp"
                 android:layout_height="match_parent"
-                android:textSize="@dimen/default_text_size_bottom_button"
+                android:textSize="@dimen/xlarge_default_text_size_bottom_button"
                 android:background="@drawable/red_leftbutton"
                 android:text="@string/new_game"
                 />
         <Button android:id="@+id/btn_opened_online_group"
-                android:layout_width="@dimen/top_left_button_width"
-                android:layout_marginLeft="50dp"
+                android:layout_width="300dp"
+                android:layout_marginLeft="100dp"
                 android:layout_height="match_parent"
-                android:textSize="@dimen/default_text_size_bottom_button"
+                android:textSize="@dimen/xlarge_default_text_size_bottom_button"
                 android:background="@drawable/red_rightbutton"
                 android:text="@string/back"
                 />

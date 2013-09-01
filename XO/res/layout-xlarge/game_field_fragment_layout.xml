@@ -10,9 +10,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+
             >
 
         <TextView
@@ -22,7 +23,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Player 1"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="40dp"
                 android:textColor="@color/blue" />
 
         <TextView
@@ -33,14 +34,14 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Player 2"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="40dp"
                 android:textColor="@color/blue" />
 
     </LinearLayout>
 
 <LinearLayout
-        android:layout_width="290dp"
-        android:layout_height="290dp"
+        android:layout_width="720dp"
+        android:layout_height="720dp"
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:background="@drawable/frame_for_fame_field"
@@ -63,7 +64,7 @@
 
             <HorizontalScrollView
                     android:id="@+id/horizontalScrollView1"
-                    android:layout_width="284dp"
+                    android:layout_width="720dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:fadingEdge="vertical|horizontal"
@@ -81,13 +82,10 @@
 
                     <GridView
                             android:id="@+id/gridView1"
-                            android:layout_width="380dp"
-                            android:layout_height="380dp"
-                            android:columnWidth="5dp"
-                            android:fadingEdge="vertical"
+                            android:layout_width="720dp"
+                            android:layout_height="720dp"
                             android:numColumns="15"
-                            android:scrollbarAlwaysDrawVerticalTrack="true"
-                            android:scrollbars="vertical" >
+                             >
                     </GridView>
 
                 </FrameLayout>

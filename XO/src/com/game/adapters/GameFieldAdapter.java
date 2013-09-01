@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.entity.OneMove;
 import com.entity.TypeFieldElement;
+import com.game.activity.GameFieldActivityAction;
 import com.game.handler.GameHandler;
 import com.game.GameType;
 import com.game.TypeLine;
@@ -32,6 +33,7 @@ public class GameFieldAdapter extends BaseAdapter {
     private boolean getOpponentMove = true;
     private TextView player1;
     private TextView player2;
+    private GameFieldActivityAction activityAction;
 
     public TextView getPlayer1() {
         return player1;
@@ -52,6 +54,8 @@ public class GameFieldAdapter extends BaseAdapter {
     public GameFieldAdapter(Context context, GameHandler gameFiledSource) {
         layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if (context instanceof GameFieldActivityAction)
+            activityAction = (GameFieldActivityAction) context;
         this.mContext = context;
         this.gameFiledSource = gameFiledSource;
 
@@ -114,11 +118,9 @@ public class GameFieldAdapter extends BaseAdapter {
                 fields[i].setEnabled(false);
             }
 
-			/*
-             * try { TimeUnit.MILLISECONDS.sleep(1000); } catch
-			 * (InterruptedException e) { // TODO Auto-generated catch block
-			 * e.printStackTrace(); }
-			 */
+            showWonPopup();
+
+
         }
 
     }
@@ -142,6 +144,13 @@ public class GameFieldAdapter extends BaseAdapter {
             indicator = 0;
 
         }
+    }
+
+    private void showWonPopup() {
+        if (activityAction == null) return;
+        String name = indicator == 1 ? player1.getText().toString() : player2.getText().toString();
+        activityAction.showWonPopup(name);
+
     }
 
     @Override

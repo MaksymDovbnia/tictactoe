@@ -1,6 +1,7 @@
 package com.game.activity;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,12 +21,20 @@ import com.game.fragments.GameFieldFragment;
 import com.game.fragments.GroupChatFragment;
 import com.game.handler.GameHandler;
 import com.game.adapters.GameFieldAdapter;
+import com.game.popup.XOAlertDialog;
 
-public class GameFieldActivity extends FragmentActivity implements OnClickListener{
+public class GameFieldActivity extends FragmentActivity implements OnClickListener, GameFieldActivityAction{
     public static final String FIRST_PLAYER_NAME = "first_player_name";
     public static final String SECOND_PLAYER_NAME = "second_player_name";
     private FragmentTransaction fragmentTransaction;
     private Fragment gameFieldFragment, chatFragment;
+
+
+
+    @Override
+    public void showWonPopup(String wonPlayerName) {
+
+    }
 
 
     private enum TAB {GAME, CHAT};
@@ -44,8 +53,6 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
         gameFieldFragment = new GameFieldFragment();
         chatFragment = new GroupChatFragment();
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
-
-
         fragmentTransaction.add(R.id.center_for_fragment, chatFragment);
         fragmentTransaction.add(R.id.center_for_fragment, gameFieldFragment);
         fragmentTransaction.hide(chatFragment);
@@ -81,5 +88,21 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        XOAlertDialog xoAlertDialog = new XOAlertDialog();
+        xoAlertDialog.setTile(getResources().getString(R.string.exit_from_this_game));
+        xoAlertDialog.setMainText(getResources().getString(R.string.exit_from_this_game_question));
+        xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.exit_from_this_game));
+        xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                finish();
+            }
+        });
+        xoAlertDialog.show(getSupportFragmentManager(), "");
 
+
+
+    }
 }
