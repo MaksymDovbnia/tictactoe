@@ -10,8 +10,9 @@
             android:layout_height="wrap_content"
            android:layout_marginTop="50dp"
            android:layout_centerHorizontal="true"
-            android:text="The first player name: "
+            android:text="@string/the_first_player_name"
             android:textSize="@dimen/default_text_size"
+            android:textColor="@color/red"
             />
     <EditText
             android:id="@+id/edt_first_player_name"
@@ -29,10 +30,11 @@
             android:id="@+id/tw_input_second_player_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="The second player name: "
+            android:text="@string/the_second_player_name"
             android:layout_below="@+id/edt_first_player_name"
             android:layout_centerHorizontal="true"
-           android:textSize="@dimen/default_text_size"
+            android:textSize="@dimen/default_text_size"
+            android:textColor="@color/red"
             />
 
     <EditText
@@ -47,10 +49,10 @@
             />
     <Button android:id="@+id/btn_start_offline_game"
             android:text="@string/start_game"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/edt_second_player_name"
-            android:background="@drawable/button_yelow"
+            android:background="@drawable/selector_default_yelow_button"
             android:layout_centerHorizontal="true"
 
             />

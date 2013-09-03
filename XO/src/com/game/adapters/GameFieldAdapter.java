@@ -118,10 +118,10 @@ public class GameFieldAdapter extends BaseAdapter {
                 fields[i].setEnabled(false);
             }
 
-            showWonPopup();
 
 
         }
+        showWonPopup();
 
     }
 

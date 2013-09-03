@@ -9,30 +9,31 @@
         >
 
     <LinearLayout
-
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:paddingLeft="25dp"
-
+            android:textSize="@dimen/default_text_size"
             >
 
-        <Button android:id="@+id/btn_opened_online_group"
-                android:layout_width="@dimen/top_left_button_width"
+        <Button android:id="@+id/btn_online_groups"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/button_big"
-                android:text="@string/game"
+                android:text="@string/online_groups"
+                android:textSize="@dimen/default_text_size"
                 />
 
         <Button
-                android:id="@+id/btn_group_chat"
+                android:id="@+id/btn_top_100"
                 android:layout_width="@dimen/top_right_button_width"
                 android:layout_height="match_parent"
                 android:background="@drawable/button_big"
                 android:layout_marginLeft="@dimen/mergin_top_button_right_from_left"
-                android:text="@string/chat"
+                android:text="@string/top_100"
                 />
+
 
     </LinearLayout>
 
@@ -47,31 +48,14 @@
             android:paddingLeft="@dimen/padding_left_opened_group"
             >
 
-
     </LinearLayout>
 
     <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="5">
 
-        <Button android:id="@+id/btn_game_field_new_game"
-                android:layout_width="@dimen/top_left_button_width"
-                android:layout_marginLeft="20dp"
-                android:layout_height="match_parent"
-                android:textSize="@dimen/default_text_size_bottom_button"
-                android:background="@drawable/red_leftbutton"
-                android:text="@string/new_game"
-                />
-        <Button android:id="@+id/btn_game_field_back"
-                android:layout_width="@dimen/top_left_button_width"
-                android:layout_marginLeft="50dp"
-                android:layout_height="match_parent"
-                android:textSize="@dimen/default_text_size_bottom_button"
-                android:background="@drawable/red_rightbutton"
-                android:text="@string/back"
-                />
 
     </LinearLayout>
 

@@ -17,6 +17,7 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.game.Controler;
+import com.game.activity.IGameFieldFragmentAction;
 import com.game.activity.R;
 import com.game.adapters.GameFieldAdapter;
 import com.game.handler.GameHandler;
@@ -24,7 +25,7 @@ import com.game.handler.GameHandler;
 /**
  * Created by Maksym on 9/1/13.
  */
-public class GameFieldFragment extends Fragment implements View.OnClickListener,View.OnTouchListener {
+public class GameFieldFragment extends Fragment implements View.OnClickListener,View.OnTouchListener, IGameFieldFragmentAction {
 
     private GridView gridView;
     private GameHandler gameHandler;
@@ -52,6 +53,8 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
         ((TextView) view.findViewById(R.id.textViewFirstPlayer)).setText(firstPlayerName);
         ((TextView) view.findViewById(R.id.textViewSecondPlayer)).setText(secondPlayerName);
 
+
+
         gameHandler = Controler.getGameHandler();
         handler = gameHandler.getHandler();
         gameFieldAdapter = new GameFieldAdapter(activity, gameHandler);
@@ -62,6 +65,9 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
 
         gameHandler.setAdapter(gameFieldAdapter);
         gridView.setAdapter(gameFieldAdapter);
+       getFragmentManager().openTransaction();
+
+
 
         return view;
 
@@ -70,14 +76,9 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void onClick(View v) {
-        gameFieldAdapter.startNewGame();
-        gameHandler.startNewGame();
 
     }
-    private void crateWinDialog (String name, int numOfMoves) {
 
-
-    }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -95,5 +96,11 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
         }
 
         return true;
+    }
+
+    @Override
+    public void beginNewGame() {
+        gameFieldAdapter.startNewGame();
+        gameHandler.startNewGame();
     }
 }

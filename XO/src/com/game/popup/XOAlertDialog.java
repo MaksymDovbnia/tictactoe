@@ -45,6 +45,13 @@ public class XOAlertDialog extends DialogFragment {
 
     }
 
+    public void dismiss(){
+     dialog.dismiss();
+        dialog.cancel();
+        dialog.hide();
+
+    }
+
     public void setPositiveButtonText(String positiveButtonText) {
         this.positiveButtonText = positiveButtonText;
     }
@@ -80,7 +87,8 @@ public class XOAlertDialog extends DialogFragment {
         builder.setMessage(mainText);
         builder.setPositiveButton(positiveButtonText, positiveListener);
         builder.setNegativeButton(negativeButtonText, negativeListener);
-        return builder.create();
+        dialog = builder.create();
+        return dialog;
     }
 
 

@@ -18,7 +18,7 @@
 
             >
 
-        <Button android:id="@+id/btn_opened_online_group"
+        <Button android:id="@+id/btn_game_field_new_game"
                 android:layout_width="300dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/button_big"
@@ -68,7 +68,7 @@
                 android:background="@drawable/red_leftbutton"
                 android:text="@string/new_game"
                 />
-        <Button android:id="@+id/btn_opened_online_group"
+        <Button android:id="@+id/btn_game_field_back"
                 android:layout_width="300dp"
                 android:layout_marginLeft="100dp"
                 android:layout_height="match_parent"

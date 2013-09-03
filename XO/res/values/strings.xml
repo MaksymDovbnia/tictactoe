@@ -61,11 +61,13 @@
     <string name="title_activity_test">Test</string>
     <string name="title_activity_main_activity2">MainActivity2</string>
     <string name="title_activity_main_test">MainTest</string>
-    <string name="open_group">Open group</string> 
-    <string name="online_group">Online group:</string>
+    <string name="open_group">Open group</string>
     <string name="online_groups">Online groups</string>
+    <string name="online_group">Online group:</string>
+    <string name="group_list">Group list:</string>
     <string name="all_online_players">All online players:</string>
     <string name="chat">Chat</string>
+    <string name="top_100">Top 100</string>
     <string name="game">Game</string>
     <string name="opened_group">Opened group</string>
     <string name="scanning">Scanning</string>
@@ -79,6 +81,16 @@
     <string name="exit">Exit</string>
     <string name="exit_from_game">Exit from game</string>
     <string name="exit_from_this_game">Exit from this game</string>
+    <string name="is_won">is won</string>
+    <string name="are_you_want_continue_game">Are you want to continue game?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="the_first_player_name">The first player name:</string>
+    <string name="the_second_player_name">The second player name:</string>
+
+
+
+
 
     <string name="exit_from_group">Exit from group</string>
     <string name="exit_from_group_question">Do you real want to exit from this group?</string>
@@ -95,6 +107,7 @@
     <string name="connect_to_bluetooth_game">Connect to bluetooth game</string>
     <string name="new_game">New game</string>
     <string name="back">Back</string>
+    <string name="sec">sec</string>
 
 
 
