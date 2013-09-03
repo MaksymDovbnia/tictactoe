@@ -41,7 +41,7 @@
             android:layout_width="116dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:background="@drawable/button_yelow"
+            android:background="@drawable/selector_default_yelow_button"
             android:text="@string/button_view_anonnymousconnection_login"
             android:textColor="@color/red" />
 

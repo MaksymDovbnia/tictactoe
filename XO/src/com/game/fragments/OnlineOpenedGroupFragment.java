@@ -35,7 +35,7 @@ import java.util.List;
 /**
  * Created by Maksym on 6/19/13.
  */
-public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickListener, View.OnTouchListener {
+public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickListener{
     private ListView lvActivityPlayer;
     private ListView lvDesirePlayer;
     private ListView lvWantPlayPlayer;
@@ -72,15 +72,15 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
         View v = inflater.inflate(R.layout.online_open_group_fragment, null);
         invite_to_play = (Button) v.findViewById(R.id.btn_invite_to_play);
         invite_to_play.setOnClickListener(this);
-        invite_to_play.setOnTouchListener(this);
+
         startGame = (Button) v.findViewById(R.id.btn_start_game);
         startGame.setOnClickListener(this);
-        startGame.setOnTouchListener(this);
+
         cancelPlayer = (Button) v.findViewById(R.id.btn_cancel_player);
         cancelPlayer.setOnClickListener(this);
-        cancelPlayer.setOnTouchListener(this);
+
         updateList = (Button) v.findViewById(R.id.button_update_activitylist);
-        updateList.setOnTouchListener(this);
+
         updateList.setOnClickListener(this);
         // updateList.setOnTouchListener(this);
         /*
@@ -268,19 +268,5 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
 
     }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                v.setBackgroundResource(R.drawable.button_crinkle);
-                break;
-            case MotionEvent.ACTION_UP:
-                v.setBackgroundResource(R.drawable.button_yelow);
-                break;
 
-            default:
-                break;
-        }
-        return false;
-    }
 }

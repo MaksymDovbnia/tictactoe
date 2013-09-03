@@ -40,11 +40,6 @@
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name="com.game.activity.ListTest"
-                android:label="@string/title_activity_list_test">
-        </activity>
-        <activity
-                android:screenOrientation="portrait"
                 android:name=".SelectTypeOfGameActivity"
                 android:label="@string/title_activity_type_of_game">
         </activity>
