@@ -71,7 +71,7 @@
                     android:id="@+id/button_gametypes_friend"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/button_white"
+                    android:background="@drawable/selector_for_text_view"
                     android:text="@string/button_gametypes_friend"
                     android:textColor="@color/blue"
                     android:textSize="30sp" />
@@ -93,7 +93,7 @@
                     android:layout_width="128dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.84"
-                    android:background="@drawable/button_white"
+                    android:background="@drawable/selector_for_text_view"
                     android:text="@string/button_gametypes_android"
                     android:textColor="@color/blue"
                     android:textSize="30sp" />
@@ -115,7 +115,7 @@
                     android:id="@+id/button_gametypes_online"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/button_white"
+                    android:background="@drawable/selector_for_text_view"
                     android:text="@string/button_gametypes_online"
                     android:textColor="@color/blue"
                     android:textSize="30sp" />
@@ -137,7 +137,7 @@
                     android:layout_width="128dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.84"
-                    android:background="@drawable/button_white"
+                    android:background="@drawable/selector_for_text_view"
                     android:text="@string/button_gametypes_bluetooth"
                     android:textColor="@color/blue"
                     android:textSize="30sp" />

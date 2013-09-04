@@ -8,7 +8,6 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -40,6 +39,7 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
     private ListView lvDesirePlayer;
     private ListView lvWantPlayPlayer;
 
+
     private List<Player> listActivityPlayer = new ArrayList<Player>();
     private List<Player> listInvitedPlayers = new ArrayList<Player>();
     private List<Player> listWantToPlayPlayer = new ArrayList<Player>();
@@ -66,6 +66,7 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
         context = activity.getApplicationContext();
         this.activity = activity;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

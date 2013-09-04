@@ -60,7 +60,7 @@
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="@string/texfield_typeregistration_anonymous"
+                        android:text="@string/anonymous"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textColor="@color/blue"
                         android:textSize="30sp" />

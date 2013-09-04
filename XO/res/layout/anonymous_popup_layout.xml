@@ -21,7 +21,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editText_loginanon"
+            android:id="@+id/edt_anonymous_player_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -37,7 +37,7 @@
         </EditText>
 
         <Button
-            android:id="@+id/button_anonlogin"
+            android:id="@+id/btn_anonymous_login"
             android:layout_width="116dp"
             android:layout_height="50dp"
             android:layout_gravity="center"

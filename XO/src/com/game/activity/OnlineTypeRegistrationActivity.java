@@ -78,34 +78,17 @@ public class OnlineTypeRegistrationActivity extends Activity implements
                 }
                 Log.d(TAG, "handler received message" + protoType );
                 switch (protoType) {
-                /*
-				 * case CUPDATEAOBOUTACTIVITYPLAYER:
-				 * Protocol.CUpdateAboutActivityPlayer cActivityPlayer =
-				 * (Protocol.CUpdateAboutActivityPlayer) msg.obj; for
-				 * (Protocol.Player player: cActivityPlayer.getPlayerList()){
-				 * players.add(new Player(player.getId(), player.getName())); }
-				 * adapterActivityList.notifyDataSetChanged(); break;
-				 */
-
                     case CLOGINTOGAME:
                         Protocol.CLoginToGame cLoginToGame = (Protocol.CLoginToGame) msg.obj;
                         int id = cLoginToGame.getId();
-                        // status.setText(status.getText()+ " conected with id " +
-                        // id);
-                        // connect.setEnabled(false);
-                        // status.setEnabled(false);
                         player.setId(id);
                         Controler.setPlayer(player);
                         Loger.printLog("Conected to server with id " + id);
-                        // openGroupButton.setEnabled(true);
                         pd.cancel();
                         anonLogin.cancel();
                         loginToGame();
-
                         break;
-
                 }
-
             }
         };
 
@@ -130,18 +113,18 @@ public class OnlineTypeRegistrationActivity extends Activity implements
             case ANNONDIALOG:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 LayoutInflater inflater = getLayoutInflater();
-                View view = inflater.inflate(R.layout.anonymousloginview, null);
+                View view = inflater.inflate(R.layout.anonymous_popup_layout, null);
                 window.getDecorView().getWindowVisibleDisplayFrame(displayRectangle);
                 view.setMinimumWidth((int) (displayRectangle.width() * 0.5f));
                 view.setMinimumHeight((int) (displayRectangle.height() * 0.5f));
                 builder.setView(view);
-                Button login = (Button) view.findViewById(R.id.button_anonlogin);
+                Button login = (Button) view.findViewById(R.id.btn_anonymous_login);
                 login.setOnClickListener(this);
 
                 TextView tw = (TextView) view.findViewById(R.id.textView_anondailog);
                 tw.setTypeface(font);
                 login.setTypeface(font);
-                loginAnon = (EditText) view.findViewById(R.id.editText_loginanon);
+                loginAnon = (EditText) view.findViewById(R.id.edt_anonymous_player_name);
                 loginAnon.setTypeface(font);
                 builder.setOnCancelListener(new OnCancelListener() {
                     @Override
@@ -237,7 +220,7 @@ public class OnlineTypeRegistrationActivity extends Activity implements
                 anonLogin.cancel();
                 showDialog(FORGOTPASSWORDDIALOG);
                 break;
-            case R.id.button_anonlogin:
+            case R.id.btn_anonymous_login:
 
                 pd = new ProgressDialog(this);
                 ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

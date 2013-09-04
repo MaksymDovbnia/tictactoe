@@ -1,13 +1,12 @@
 package com.game.popup;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.support.v4.app.DialogFragment;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
+import android.view.LayoutInflater;
 import android.view.View;
 
 import com.game.activity.R;
@@ -21,7 +20,8 @@ public class XOAlertDialog extends DialogFragment {
     private String mainText;
     private String positiveButtonText;
     private String negativeButtonText;
-
+    private IContentInitialization contentInitialization;
+    private int contentId = 0;
     private DialogInterface.OnClickListener positiveListener;
     private DialogInterface.OnClickListener negativeListener;
 
@@ -45,8 +45,17 @@ public class XOAlertDialog extends DialogFragment {
 
     }
 
-    public void dismiss(){
-     dialog.dismiss();
+    public void setContentInitialization(IContentInitialization contentInitialization) {
+        this.contentInitialization = contentInitialization;
+    }
+
+    public interface IContentInitialization {
+        public void onContentItialization(View view);
+    }
+
+
+    public void dismiss() {
+        dialog.dismiss();
         dialog.cancel();
         dialog.hide();
 
@@ -76,17 +85,30 @@ public class XOAlertDialog extends DialogFragment {
         this.mainText = mainText;
     }
 
+    public void setContent(int layoutId) {
+        contentId = layoutId;
+    }
+
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        if (positiveButtonText == null) positiveButtonText = getResources().getString(R.string.ok);
-        if (negativeButtonText == null) negativeButtonText = getResources().getString(R.string.cancel);
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(tile);
-        builder.setMessage(mainText);
-        builder.setPositiveButton(positiveButtonText, positiveListener);
-        builder.setNegativeButton(negativeButtonText, negativeListener);
+        if (contentId == 0) {
+            if (positiveButtonText == null)
+                positiveButtonText = getResources().getString(R.string.ok);
+            if (negativeButtonText == null)
+                negativeButtonText = getResources().getString(R.string.cancel);
+
+            builder.setTitle(tile);
+            builder.setMessage(mainText);
+            builder.setPositiveButton(positiveButtonText, positiveListener);
+            builder.setNegativeButton(negativeButtonText, negativeListener);
+        } else {
+            LayoutInflater inflater = getActivity().getLayoutInflater();
+            View view = inflater.inflate(contentId, null);
+            if (contentInitialization != null) contentInitialization.onContentItialization(view);
+            builder.setView(view);
+        }
         dialog = builder.create();
         return dialog;
     }

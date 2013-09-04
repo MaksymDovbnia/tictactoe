@@ -82,12 +82,12 @@ public class OnlineGroupsFragment extends Fragment implements View.OnClickListen
                             numberOfAllPlayers += group.getNumOnlinePlayers();
                             groups.add(new Group(group.getGroupId(), group.getNumOnlinePlayers(), 100));
                         }
-                        for (int i = 0; i < 30; i++) {
-                            Group group = new Group(i, i * 2, i * 20);
-                            groups.add(group);
-                            adapter.notifyDataSetChanged();
-
-                        }
+//                        for (int i = 0; i < 30; i++) {
+//                            Group group = new Group(i, i * 2, i * 20);
+//                            groups.add(group);
+//                            adapter.notifyDataSetChanged();
+//
+//                        }
                         Log.d(TAG, "get  " + groups.size() + "  groups");
                         numberOfAllPlayers += 1;
                         allPlayers.setText(getResources().getString(R.string.all_online_players) + " " + numberOfAllPlayers);

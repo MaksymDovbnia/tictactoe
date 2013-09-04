@@ -39,7 +39,10 @@
     <string name="title_activity_activity_type_registraion">ActivityTypeRegistraion</string>
     <string name="action_settings">Settings</string>
     <string name="texfield_typeregistration_registrby">Sign in:</string>
-    <string name="texfield_typeregistration_anonymous"> - anonymous</string>
+    <string name="anonymous">anonymous</string>
+    <string name="anonym_player">Anonym player</string>
+    <string name="please_enter_your_nick_name">Please enter your nick name</string>
+    <string name="vk">vkontakte</string>
     <string name="texfield_typeregistration_tictactoe"> - tic-tac-toe account</string>
     <string name="texfield_view_anonnymousconnection_nick">Your nick: </string>
     <string name="button_view_anonnymousconnection_login">Login</string>
@@ -87,6 +90,9 @@
     <string name="no">No</string>
     <string name="the_first_player_name">The first player name:</string>
     <string name="the_second_player_name">The second player name:</string>
+    <string name="login_by">Login by:</string>
+    <string name="connection">Connection</string>
+    <string name="connecting">Connecting...</string>
 
 
 
