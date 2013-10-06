@@ -1,4 +1,4 @@
-package com.game.handler;
+package com.game.gamefield.handler;
 
 import android.os.Handler;
 
@@ -6,9 +6,8 @@ import com.entity.OneMove;
 import com.entity.TypeFieldElement;
 import com.game.GameLogicHandler;
 import com.game.GameType;
-import com.game.adapters.GameFieldAdapter;
+import com.game.gamefield.GameFieldAdapter;
 import com.net.bluetooth.BluetoothServiceViaProtobuf;
-import com.net.bluetooth.protobuf.BluetoothProtoType;
 import com.net.bluetooth.protocol.BluetoothProtocol;
 
 import java.util.List;

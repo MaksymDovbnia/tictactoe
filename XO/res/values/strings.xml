@@ -22,7 +22,7 @@
     <string name="button_gametypes_online">Online</string>
     <string name="button_gametypes_friend">2 players</string>
     <string name="button_gametypes_bluetooth">Bluetooh</string>
-    <string name="texfield_gametypes_selectTypeGame">Select type og game: </string>
+    <string name="texfield_gametypes_selectTypeGame">Select fieldType og game: </string>
     <string name="button_onlineconnection_opengroup">Open Group</string>
     <string name="cancel_player">Cancle player</string>
     <string name="invite_for_play">Invite to play</string>

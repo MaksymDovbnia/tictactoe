@@ -1685,7 +1685,7 @@ public final class BluetoothProtocol {
           internal_static_net_bluetooth_protocol_DidMove_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_bluetooth_protocol_DidMove_descriptor,
-              new java.lang.String[] { "I", "J", "Type", },
+              new java.lang.String[] { "I", "J", "FieldType", },
               com.net.bluetooth.protocol.BluetoothProtocol.DidMove.class,
               com.net.bluetooth.protocol.BluetoothProtocol.DidMove.Builder.class);
           internal_static_net_bluetooth_protocol_ContinueGame_descriptor =

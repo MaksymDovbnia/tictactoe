@@ -253,7 +253,7 @@
 </perspectives>
 <workingSets/>
 <navigationHistory/>
-<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" fieldType="8"/>
 </page>
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>

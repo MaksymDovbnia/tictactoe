@@ -1,9 +1,8 @@
 package com.game;
 
 import com.entity.Player;
-import com.game.handler.GameHandler;
+import com.game.gamefield.handler.GameHandler;
 import com.net.bluetooth.BluetoothService;
-import com.net.bluetooth.BluetoothServiceViaProtobuf;
 import com.net.online.WorkerOnlineConnection;
 
 public class Controler {

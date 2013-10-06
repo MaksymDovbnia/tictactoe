@@ -16,7 +16,7 @@
             >
 
         <TextView
-                android:id="@+id/tv_first_player_name"
+                android:id="@+id/tv_field_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -46,7 +46,7 @@
             >
 
         <TextView
-                android:id="@+id/tw_score_player_1"
+                android:id="@+id/tv_score_player_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -56,7 +56,7 @@
                 android:textColor="@color/red" />
 
         <TextView
-                android:id="@+id/tw_score_player_2"
+                android:id="@+id/tv_score_player_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
@@ -73,11 +73,10 @@
         android:layout_width="@dimen/game_field_fragment_game_field_layout_size"
         android:layout_height="@dimen/game_field_fragment_game_field_layout_size"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/game_field_fragment_game_field_layout_margin_top"
         android:background="@drawable/frame_for_fame_field"
         >
     <ScrollView
-            android:id="@+id/scrollView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="2dp"
@@ -86,37 +85,27 @@
             android:paddingBottom="2dp"
             >
         <FrameLayout
-                android:id="@+id/FrameLayout2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
 
             <HorizontalScrollView
-                    android:id="@+id/horizontalScrollView1"
-                    android:layout_width="284dp"
+                    android:layout_width="@dimen/game_field_fragment_game_field_horizontal_scroll_size"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:fadingEdge="vertical|horizontal"
-                    android:fillViewport="true"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:scrollbarAlwaysDrawVerticalTrack="false"
-                    android:scrollbarStyle="outsideOverlay"
-                    android:scrollbars="horizontal|vertical" >
 
+                   >
                 <FrameLayout
-                        android:id="@+id/FrameLayout2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" >
 
                     <GridView
-                            android:id="@+id/gridView1"
-                            android:layout_width="380dp"
-                            android:layout_height="380dp"
-                            android:columnWidth="5dp"
-                            android:fadingEdge="vertical"
+                            android:id="@+id/grid_view_game_field"
+                            android:layout_width="@dimen/game_field_fragment_game_field_grid_view_size"
+                            android:layout_height="@dimen/game_field_fragment_game_field_grid_view_size"
                             android:numColumns="15"
-                            android:scrollbarAlwaysDrawVerticalTrack="true"
-                            android:scrollbars="vertical" >
+
+
+                             >
                     </GridView>
 
                 </FrameLayout>

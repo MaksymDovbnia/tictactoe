@@ -1,4 +1,4 @@
-package com.game.activity;
+package com.game.gamefield;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,9 +14,9 @@ import com.config.BundleKeys;
 import com.entity.Player;
 import com.game.Controler;
 import com.game.GameType;
-import com.game.fragments.GameFieldFragment;
+import com.game.activity.R;
 import com.game.fragments.GroupChatFragment;
-import com.game.handler.OnlineGameHandler;
+import com.game.gamefield.handler.OnlineGameHandler;
 import com.game.popup.XOAlertDialog;
 
 public class GameFieldActivity extends FragmentActivity implements OnClickListener, GameFieldActivityAction {
@@ -69,7 +69,7 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
         xoAlertDialog.setMainText(getResources().getString(R.string.are_you_want_continue_game));
         xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.yes));
         xoAlertDialog.setNegativeButtonText(getResources().getString(R.string.no));
-
+        xoAlertDialog.setSleepTimeBeforeShowPopup(500);
         xoAlertDialog.setNegativeListener(new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

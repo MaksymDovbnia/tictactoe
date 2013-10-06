@@ -1,4 +1,4 @@
-package com.game.handler;
+package com.game.gamefield.handler;
 
 import java.util.List;
 
@@ -11,9 +11,8 @@ import com.entity.Player;
 import com.entity.TypeFieldElement;
 import com.game.GameLogicHandler;
 import com.game.GameType;
-import com.game.activity.GameFieldActivityAction;
-import com.game.activity.IGameFiledActions;
-import com.game.adapters.GameFieldAdapter;
+import com.game.gamefield.GameFieldActivityAction;
+import com.game.gamefield.GameFieldAdapter;
 import com.net.online.WorkerOnlineConnection;
 import com.net.online.protobuf.ProtoType;
 import com.utils.Loger;

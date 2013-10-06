@@ -65,7 +65,7 @@ public class StartActivity extends FragmentActivity implements OnClickListener,
 		break;
 
             case R.id.button_startactivity_settings:
-                Intent intent2 = new Intent(this, OnlineOpenedGroupActivity.class);
+                Intent intent2 = new Intent(this, Test.class);
                 startActivity(intent2);
                 break;
 		default:

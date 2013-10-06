@@ -31,7 +31,7 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/tv_first_player_name"
+                android:id="@+id/tv_field_item"
                 android:layout_width="335dp"
                 android:layout_height="47dp"
                 android:gravity="center"

@@ -1,4 +1,4 @@
-package com.game.activity;
+package com.game.gamefield;
 
 /**
  * Created by Maksym on 9/1/13.

@@ -21,7 +21,11 @@
 
     <!--Game field fragment-->
     <dimen name="game_field_fragment_game_field_layout_size">290dp</dimen>
-
+    <dimen name="game_field_fragment_game_field_horizontal_scroll_size">285dp</dimen>
+    <dimen name="game_field_fragment_game_field_layout_margin_top">40dp</dimen>
+    <dimen name="game_field_fragment_game_field_grid_view_size">380dp</dimen>
+    <!--Game field item-->
+    <dimen name="game_field_item_size">25dp</dimen>
 
 
 

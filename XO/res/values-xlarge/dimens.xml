@@ -12,12 +12,24 @@
     <dimen name="text_size_inscription">15sp</dimen>
     <dimen name="padding_for_small_list">10dp</dimen>
     <dimen name="padding_for_large_list">30dp</dimen>
-    <dimen name="big_text_size">70sp</dimen>
-    <dimen name="default_text_size">20dp</dimen>
-    <dimen name="small_text_size">15dp</dimen>
+    <dimen name="big_text_size">50sp</dimen>
+    <dimen name="default_text_size">30dp</dimen>
+    <dimen name="small_text_size">20dp</dimen>
     <dimen name="default_text_size_bottom_button">15dp</dimen>
     <dimen name="game_field_size">100dp</dimen>
     <dimen name="xlarge_default_text_size_bottom_button">30dp</dimen>
+
+    <!--Game field fragment-->
+    <dimen name="game_field_fragment_game_field_layout_size">720dp</dimen>
+    <dimen name="game_field_fragment_game_field_horizontal_scroll_size">720dp</dimen>
+    <dimen name="game_field_fragment_game_field_layout_margin_top">40dp</dimen>
+    <dimen name="game_field_fragment_game_field_grid_view_size">720dp</dimen>
+    <!--Game field item-->
+    <dimen name="game_field_item_size">48dp</dimen>
+
+
+
+
 
 
 

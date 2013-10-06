@@ -199,7 +199,7 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
      */
     public synchronized void connected(BluetoothSocket socket, BluetoothDevice
             device, final String socketType) {
-        if (D) Log.d(TAG, "connected, Socket Type:" + socketType);
+        if (D) Log.d(TAG, "connected, Socket FieldType:" + socketType);
 
         // Cancel the thread that completed the connection
         if (mConnectThread != null) {
@@ -288,13 +288,13 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
                             NAME_INSECURE, MY_UUID_INSECURE);
 
             } catch (IOException e) {
-                Log.e(TAG, "Socket Type: " + mSocketType + "listen() failed", e);
+                Log.e(TAG, "Socket FieldType: " + mSocketType + "listen() failed", e);
             }
             mmServerSocket = tmp;
         }
 
         public void run() {
-            if (D) Log.d(TAG, "Socket Type: " + mSocketType +
+            if (D) Log.d(TAG, "Socket FieldType: " + mSocketType +
                     "BEGIN mAcceptThread" + this);
             setName("AcceptThread" + mSocketType);
 
@@ -310,7 +310,7 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
                    Log.d(TAG, "new accepted Socket with " + socket.getRemoteDevice().getName());
 
                 } catch (IOException e) {
-                    Log.e(TAG, "Socket Type: " + mSocketType + "accept() failed", e);
+                    Log.e(TAG, "Socket FieldType: " + mSocketType + "accept() failed", e);
                 //    BluetoothServiceViaProtobuf.this.start();
                     break;
                 }
@@ -338,16 +338,16 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
                     }
                 }
             }
-            if (D) Log.i(TAG, "END mAcceptThread, socket Type: " + mSocketType + "  "+ BluetoothServiceViaProtobuf.this.getState());
+            if (D) Log.i(TAG, "END mAcceptThread, socket FieldType: " + mSocketType + "  "+ BluetoothServiceViaProtobuf.this.getState());
 
         }
 
         public void cancel() {
-            if (D) Log.d(TAG, "Socket Type" + mSocketType + "stop " + this );
+            if (D) Log.d(TAG, "Socket FieldType" + mSocketType + "stop " + this );
             try {
                mmServerSocket.close();
             } catch (IOException e) {
-                Log.e(TAG, "Socket Type" + mSocketType + "close() of server failed", e);
+                Log.e(TAG, "Socket FieldType" + mSocketType + "close() of server failed", e);
             }
         }
     }
@@ -379,7 +379,7 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
                             MY_UUID_INSECURE);
                 }
             } catch (IOException e) {
-                Log.e(TAG, "Socket Type: " + mSocketType + "create() failed", e);
+                Log.e(TAG, "Socket FieldType: " + mSocketType + "create() failed", e);
             }
             mmSocket = tmp;
         }

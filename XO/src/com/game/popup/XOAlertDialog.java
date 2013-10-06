@@ -24,8 +24,12 @@ public class XOAlertDialog extends DialogFragment {
     private int contentId = 0;
     private DialogInterface.OnClickListener positiveListener;
     private DialogInterface.OnClickListener negativeListener;
-    public enum ALERT_TYPE{ONE_BUTTON, TWO_BUTTON}
+
+    public enum ALERT_TYPE {ONE_BUTTON, TWO_BUTTON}
+
     private ALERT_TYPE alert_type;
+
+    private int sleepTimeBeforeShowPopup = 0;
 
 
     public XOAlertDialog() {
@@ -36,6 +40,7 @@ public class XOAlertDialog extends DialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
+
             }
         };
         negativeListener = new DialogInterface.OnClickListener() {
@@ -45,6 +50,15 @@ public class XOAlertDialog extends DialogFragment {
             }
         };
 
+    }
+
+    public int getSleepTimeBeforeShowPopup() {
+        return sleepTimeBeforeShowPopup;
+    }
+
+    public void setSleepTimeBeforeShowPopup(int sleepTimeBeforeShowPopup) {
+        if (sleepTimeBeforeShowPopup < 0 ) throw  new IllegalStateException("time can't be above 0");
+        this.sleepTimeBeforeShowPopup = sleepTimeBeforeShowPopup;
     }
 
     public void setAlert_type(ALERT_TYPE alert_type) {
@@ -108,11 +122,10 @@ public class XOAlertDialog extends DialogFragment {
 
             builder.setTitle(tile);
             builder.setMessage(mainText);
-            if (alert_type == null || alert_type == ALERT_TYPE.TWO_BUTTON){
-            builder.setPositiveButton(positiveButtonText, positiveListener);
-            builder.setNegativeButton(negativeButtonText, negativeListener);
-            }
-            else if ( alert_type == ALERT_TYPE.ONE_BUTTON) {
+            if (alert_type == null || alert_type == ALERT_TYPE.TWO_BUTTON) {
+                builder.setPositiveButton(positiveButtonText, positiveListener);
+                builder.setNegativeButton(negativeButtonText, negativeListener);
+            } else if (alert_type == ALERT_TYPE.ONE_BUTTON) {
                 builder.setPositiveButton(positiveButtonText, positiveListener);
             }
 
@@ -124,6 +137,14 @@ public class XOAlertDialog extends DialogFragment {
             builder.setView(view);
         }
         dialog = builder.create();
+        if (sleepTimeBeforeShowPopup != 0) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         return dialog;
     }
 

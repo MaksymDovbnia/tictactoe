@@ -1,4 +1,4 @@
-package com.game.fragments;
+package com.game.gamefield;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,15 +14,13 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.game.Controler;
-import com.game.activity.IGameFieldFragmentAction;
 import com.game.activity.R;
-import com.game.adapters.GameFieldAdapter;
-import com.game.handler.GameHandler;
+import com.game.gamefield.handler.GameHandler;
 
 /**
  * Created by Maksym on 9/1/13.
  */
-public class GameFieldFragment extends Fragment implements View.OnClickListener,View.OnTouchListener, IGameFieldFragmentAction {
+public class GameFieldFragment extends Fragment implements View.OnClickListener, View.OnTouchListener, IGameFieldFragmentAction {
 
     private GridView gridView;
     private GameHandler gameHandler;
@@ -34,21 +32,23 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
     private Activity activity;
 
 
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-            this.activity=  activity;
+        this.activity = activity;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.game_field_fragment_layout, null);
-        gridView = (GridView) view.findViewById(R.id.gridView1);
+        gridView = (GridView) view.findViewById(R.id.grid_view_game_field);
         Intent intent = activity.getIntent();
         String firstPlayerName = intent.getStringExtra(FIRST_PLAYER_NAME);
         String secondPlayerName = intent.getStringExtra(SECOND_PLAYER_NAME);
-        ((TextView) view.findViewById(R.id.tv_first_player_name)).setText(firstPlayerName);
+        ((TextView) view.findViewById(R.id.tv_field_item)).setText(firstPlayerName);
         ((TextView) view.findViewById(R.id.tv_second_player_name)).setText(secondPlayerName);
+
 
 
 
@@ -56,15 +56,15 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
         handler = gameHandler.getHandler();
         gameFieldAdapter = new GameFieldAdapter(activity, gameHandler);
         gameFieldAdapter
-                .setPlayer1((TextView) view.findViewById(R.id.tv_first_player_name));
+                .setPlayer1((TextView) view.findViewById(R.id.tv_field_item));
         gameFieldAdapter
                 .setPlayer2((TextView) view.findViewById(R.id.tv_second_player_name));
+        gameFieldAdapter.setPlayer1Score((TextView) view.findViewById(R.id.tv_score_player_1));
+        gameFieldAdapter.setPlayer2Score((TextView) view.findViewById(R.id.tv_score_player_2));
 
         gameHandler.setAdapter(gameFieldAdapter);
         gridView.setAdapter(gameFieldAdapter);
-       getFragmentManager().openTransaction();
-
-
+        getFragmentManager().openTransaction();
 
         return view;
 

@@ -16922,7 +16922,7 @@ public final class Protocol {
           internal_static_net_protocol_SDidMove_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_protocol_SDidMove_descriptor,
-              new java.lang.String[] { "PlayerId", "OpponentId", "I", "J", "Type", },
+              new java.lang.String[] { "PlayerId", "OpponentId", "I", "J", "FieldType", },
               net.protocol.Protocol.SDidMove.class,
               net.protocol.Protocol.SDidMove.Builder.class);
           internal_static_net_protocol_CDidMove_descriptor =
@@ -16930,7 +16930,7 @@ public final class Protocol {
           internal_static_net_protocol_CDidMove_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_protocol_CDidMove_descriptor,
-              new java.lang.String[] { "I", "J", "Type", },
+              new java.lang.String[] { "I", "J", "FieldType", },
               net.protocol.Protocol.CDidMove.class,
               net.protocol.Protocol.CDidMove.Builder.class);
           internal_static_net_protocol_SWonGame_descriptor =
