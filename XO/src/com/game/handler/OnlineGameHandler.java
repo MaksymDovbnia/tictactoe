@@ -11,6 +11,8 @@ import com.entity.Player;
 import com.entity.TypeFieldElement;
 import com.game.GameLogicHandler;
 import com.game.GameType;
+import com.game.activity.GameFieldActivityAction;
+import com.game.activity.IGameFiledActions;
 import com.game.adapters.GameFieldAdapter;
 import com.net.online.WorkerOnlineConnection;
 import com.net.online.protobuf.ProtoType;
@@ -24,13 +26,15 @@ public class OnlineGameHandler implements GameHandler {
 	private Player player;
 	private Player opponet;
 	private GameFieldAdapter gameFieldAdapter;
+    private  GameFieldActivityAction gameFiledActions;
 
 	public OnlineGameHandler(WorkerOnlineConnection onlineGameWorker,
-			Player player, Player opponent) {
+			Player player, Player opponent, GameFieldActivityAction fieldActivityAction) {
 		this.player = player;
 		this.opponet = opponent;
 		this.onlineGameWorker = onlineGameWorker;
 		gameActionHandler = new GameLogicHandler();
+        this.gameFiledActions  = fieldActivityAction;
 
 		this.handler = new Handler() {
 			@Override
@@ -53,6 +57,9 @@ public class OnlineGameHandler implements GameHandler {
 					if (list != null)
 						gameFieldAdapter.drawWinLine(list);
 					break;
+                case CEXITFROMGAME:
+                    OnlineGameHandler.this.gameFiledActions.opponentExitFromGame();
+                    break;
 
 				}
 
@@ -112,5 +119,16 @@ public class OnlineGameHandler implements GameHandler {
 		gameActionHandler.newGame();
 
 	}
+
+    @Override
+    public void exitFromGame() {
+       onlineGameWorker.sendPacket(Protocol.SExitFromGame.newBuilder().setPlayerId(player.getId()).setOpponentId(1).build());
+       onlineGameWorker.unRegisterHandler(handler);
+    }
+
+    @Override
+    public void unregisterHandler() {
+
+    }
 
 }

@@ -41,7 +41,7 @@ import com.utils.Loger;
 public class OnlineTypeRegistrationActivity extends Activity implements
         OnClickListener {
 
-    private  static  final String TAG = OnlineTypeRegistrationActivity.class.getCanonicalName();
+    private  static  final String TAG = "";
     private TextView textVievAnonymous, textVievTTT;
     private final int ANNONDIALOG = 1;
     private final int XOACCOUNTDIALOG = 2;
@@ -263,7 +263,7 @@ public class OnlineTypeRegistrationActivity extends Activity implements
     @Override
     protected void onDestroy() {
         if (onlineGameWorker != null)
-            onlineGameWorker.disconect();
+            onlineGameWorker.disconnect();
 
         super.onDestroy();
     }

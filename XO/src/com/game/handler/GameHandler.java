@@ -22,5 +22,8 @@ public interface GameHandler {
 	public void setAdapter(GameFieldAdapter adapter);
 
 	public void startNewGame();
+    public void exitFromGame();
+    public void unregisterHandler();
+
 
 }

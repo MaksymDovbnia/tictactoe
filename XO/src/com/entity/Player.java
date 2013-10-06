@@ -1,11 +1,12 @@
 package com.entity;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 import net.protocol.Protocol;
 
-public class Player {
+public class Player implements Serializable{
 
 	private int id = 0;
 	private String name;

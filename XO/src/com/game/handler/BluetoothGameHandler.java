@@ -61,4 +61,14 @@ public class BluetoothGameHandler implements GameHandler {
     public void startNewGame() {
         gameActionHandler.newGame();
     }
+
+    @Override
+    public void exitFromGame() {
+
+    }
+
+    @Override
+    public void unregisterHandler() {
+
+    }
 }

@@ -24,6 +24,8 @@ public class XOAlertDialog extends DialogFragment {
     private int contentId = 0;
     private DialogInterface.OnClickListener positiveListener;
     private DialogInterface.OnClickListener negativeListener;
+    public enum ALERT_TYPE{ONE_BUTTON, TWO_BUTTON}
+    private ALERT_TYPE alert_type;
 
 
     public XOAlertDialog() {
@@ -43,6 +45,10 @@ public class XOAlertDialog extends DialogFragment {
             }
         };
 
+    }
+
+    public void setAlert_type(ALERT_TYPE alert_type) {
+        this.alert_type = alert_type;
     }
 
     public void setContentInitialization(IContentInitialization contentInitialization) {
@@ -99,10 +105,18 @@ public class XOAlertDialog extends DialogFragment {
             if (negativeButtonText == null)
                 negativeButtonText = getResources().getString(R.string.cancel);
 
+
             builder.setTitle(tile);
             builder.setMessage(mainText);
+            if (alert_type == null || alert_type == ALERT_TYPE.TWO_BUTTON){
             builder.setPositiveButton(positiveButtonText, positiveListener);
             builder.setNegativeButton(negativeButtonText, negativeListener);
+            }
+            else if ( alert_type == ALERT_TYPE.ONE_BUTTON) {
+                builder.setPositiveButton(positiveButtonText, positiveListener);
+            }
+
+
         } else {
             LayoutInflater inflater = getActivity().getLayoutInflater();
             View view = inflater.inflate(contentId, null);

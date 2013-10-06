@@ -15,8 +15,10 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.config.BundleKeys;
 import com.entity.Player;
 import com.game.Controler;
+import com.game.GameType;
 import com.game.activity.GameFieldActivity;
 import com.game.activity.OnlineGroupsActivity;
 import com.game.activity.R;
@@ -34,7 +36,7 @@ import java.util.List;
 /**
  * Created by Maksym on 6/19/13.
  */
-public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickListener{
+public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickListener {
     private ListView lvActivityPlayer;
     private ListView lvDesirePlayer;
     private ListView lvWantPlayPlayer;
@@ -119,8 +121,10 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
         });
 
         handler = new Handler() {
+
             @Override
             public void handleMessage(Message msg) {
+
                 ProtoType protoType = ProtoType.fromInt(msg.what);
                 switch (protoType) {
                     case CUPDATEAOBOUTACTIVITYPLAYER:
@@ -175,7 +179,6 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
                     case CSTARTGAME:
                         Protocol.CStartGame startGame = (Protocol.CStartGame) msg.obj;
                         startGame(startGame.getOpponentId());
-
                         break;
                 }
 
@@ -204,13 +207,38 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
             }
 
         }
-        OnlineGameHandler onlineGameHandler = new OnlineGameHandler(
-                workerOnlineConnection, myPlayer, opponent);
 
-        Controler.setGameHandler(onlineGameHandler);
         Intent intent = new Intent(context, GameFieldActivity.class);
+        intent.putExtra(BundleKeys.TYPE_OF_GAME, GameType.ONLINE);
+        intent.putExtra(BundleKeys.OPPONENT,opponent);
         startActivity(intent);
+        activity.finish();
 
+    }
+
+    public void clearAllListView() {
+        listActivityPlayer.clear();
+        listWantToPlayPlayer.clear();
+        listInvitedPlayers.clear();
+        adapterForActivityList.notifyDataSetChanged();
+        adapterForInvitedList.notifyDataSetChanged();
+        adapterForWantPlayList.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onResume() {
+        if (workerOnlineConnection != null)
+            workerOnlineConnection.sendPacket(Protocol.SGetUpdate.newBuilder()
+                    .setId(Controler.getPlayer().getId()).setGroupId(groupId).build());
+        super.onResume();
+    }
+
+
+    @Override
+    public void onDestroy() {
+        clearAllListView();
+        if (workerOnlineConnection != null) workerOnlineConnection.unRegisterHandler(handler);
+        super.onDestroy();
     }
 
     @Override
@@ -226,13 +254,7 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
                 int opponentId = adapterForActivityList.getIdLast();
                 Loger.printLog("switch " + opponentId);
                 Player player = null;
-            /*
-			 * for (Player pl : listActivityPlayer) { if (pl.getId() ==
-			 * opponentId) player = pl;
-			 *
-			 * }
-			 */
-                player = listActivityPlayer.get(opponentId);
+                if (opponentId > 0) player = listActivityPlayer.get(opponentId);
                 if (player != null && !listInvitedPlayers.contains(player)) {
                     workerOnlineConnection.sendPacket(Protocol.SWantToPlay.newBuilder()
                             .setOpponentId(player.getId())
@@ -244,7 +266,8 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
                 break;
             case R.id.btn_cancel_player:
                 int cancelId = adapterForInvitedList.getIdLast();
-                Player player1 = listInvitedPlayers.get(cancelId);
+                Player player1 = null;
+                if (cancelId  >= 0) player1 = listInvitedPlayers.get(cancelId);
 
                 if (player1 != null) {
                     listInvitedPlayers.remove(player1);

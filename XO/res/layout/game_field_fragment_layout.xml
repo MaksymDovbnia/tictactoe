@@ -16,24 +16,24 @@
             >
 
         <TextView
-                android:id="@+id/textViewFirstPlayer"
+                android:id="@+id/tv_first_player_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Player 1"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                 android:textSize="@dimen/default_text_size"
                 android:textColor="@color/blue" />
 
         <TextView
-                android:id="@+id/textViewSecondPlayer"
+                android:id="@+id/tv_second_player_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Player 2"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="@dimen/default_text_size"
                 android:textColor="@color/blue" />
 
     </LinearLayout>
@@ -52,7 +52,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="0"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="@dimen/big_text_size"
                 android:textColor="@color/red" />
 
         <TextView
@@ -63,15 +63,15 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="0"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="@dimen/big_text_size"
                 android:textColor="@color/red" />
 
     </LinearLayout>
 
   <!-- Game field block  -->
 <LinearLayout
-        android:layout_width="290dp"
-        android:layout_height="290dp"
+        android:layout_width="@dimen/game_field_fragment_game_field_layout_size"
+        android:layout_height="@dimen/game_field_fragment_game_field_layout_size"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:background="@drawable/frame_for_fame_field"
@@ -84,9 +84,7 @@
             android:paddingRight="2dp"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
-
             >
-
         <FrameLayout
                 android:id="@+id/FrameLayout2"
                 android:layout_width="wrap_content"

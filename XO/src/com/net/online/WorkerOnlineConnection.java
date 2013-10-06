@@ -7,23 +7,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.io.Serializable;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 import net.protocol.Protocol;
-import net.protocol.Protocol.RegistrationType;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Log;
 
 import com.config.Config;
 import com.entity.Player;
@@ -44,8 +39,10 @@ public class WorkerOnlineConnection extends Thread {
     private BufferedInputStream in;
     private DataInputStream dataInputStream;
     private Player player;
-    private boolean conecting = true;
+    private boolean isConnecting = true;
     private ProgressDialog pd;
+    public static final int AMOUNT_OF_ATTEMTP_TO_CREATE_SOCKET = 2;
+    public boolean isSendPacketAboutFailConnection = true;
 
     public WorkerOnlineConnection(Handler handler, Player player,
                                   ProgressDialog pd) {
@@ -53,12 +50,8 @@ public class WorkerOnlineConnection extends Thread {
         this.player = player;
         this.pd = pd;
         handlers = new ArrayList<Handler>();
-        if (handler != null ) handlers.add(handler);
+        if (handler != null) handlers.add(handler);
         // this.startActivity = activity;
-    }
-
-    public void setHanlerd(Handler handler) {
-        this.handler = handler;
     }
 
     public void registerHandler(Handler handler) {
@@ -69,9 +62,9 @@ public class WorkerOnlineConnection extends Thread {
         return handlers.remove(handler);
     }
 
-    public void disconect() {
+    public void disconnect() {
         try {
-            conecting = false;
+            isConnecting = false;
             if (dataInputStream != null && socket != null
                     && socket.isConnected()) {
                 dataOutputStream.close();
@@ -86,12 +79,16 @@ public class WorkerOnlineConnection extends Thread {
 
     }
 
-    private void connectToServer() {
+    private void createSocket() {
         try {
             Loger.printLog("start connecion");
 
-            socket = new Socket(Config.HOST, Config.PORT);
-
+            InetAddress inetAddress = InetAddress.getByName(Config.HOST);
+            SocketAddress socketAddress = new InetSocketAddress(inetAddress, Config.PORT);
+            //   socket = new Socket(Config.HOST, Config.PORT);
+            socket = new Socket();
+            socket.connect(socketAddress, 15000);
+            isSendPacketAboutFailConnection = false;
             Loger.printLog("(socket.isClosed() " + socket.isClosed());
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
             in = new BufferedInputStream(socket.getInputStream());
@@ -99,9 +96,8 @@ public class WorkerOnlineConnection extends Thread {
             Protocol.SLoginToGame sLoginToGame = Protocol.SLoginToGame
                     .newBuilder().setName(player.getName()).setRegistarionType(player.getRegistrationType()).build();
             sendPacket(sLoginToGame);
-            while (conecting) {
+            while (isConnecting) {
                 byte b = dataInputStream.readByte();
-
                 int length = dataInputStream.readInt();
                 byte[] data = new byte[length];
                 dataInputStream.read(data);
@@ -129,33 +125,22 @@ public class WorkerOnlineConnection extends Thread {
 
     public void run() {
         int n = 0;
-        connectToServer();
-        Loger.printLog("sc " + (socket == null));
-        // Continue 5 times connection to server in 1000 ms
-        while (socket == null && ++n <= 5) {
+        createSocket();
+        Loger.printLog("socket == null " + (socket == null));
+        while (socket.isClosed() && ++n <= AMOUNT_OF_ATTEMTP_TO_CREATE_SOCKET) {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                Loger.printLog(e + "");
             }
-            Loger.printLog("new con " + n);
-            connectToServer();
+            Loger.printLog("connection fail = " + n);
+            createSocket();
         }
-        Loger.printLog("------");
-        // pd.setMessage("Sorry, server not avaible, plese try later");
-        // pd.setTitle("111");
-        // pd.cancel();
-        Message message = handler.obtainMessage(100);
-        handler.sendMessage(message);
-        // pd.dismiss();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        if (isSendPacketAboutFailConnection) {
+            Message message = handler.obtainMessage(100);
+            handler.sendMessage(message);
+            pd.cancel();
         }
-        pd.cancel();
 
     }
 

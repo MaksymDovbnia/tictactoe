@@ -1,13 +1,10 @@
 package com.game.fragments;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -50,8 +47,8 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
         Intent intent = activity.getIntent();
         String firstPlayerName = intent.getStringExtra(FIRST_PLAYER_NAME);
         String secondPlayerName = intent.getStringExtra(SECOND_PLAYER_NAME);
-        ((TextView) view.findViewById(R.id.textViewFirstPlayer)).setText(firstPlayerName);
-        ((TextView) view.findViewById(R.id.textViewSecondPlayer)).setText(secondPlayerName);
+        ((TextView) view.findViewById(R.id.tv_first_player_name)).setText(firstPlayerName);
+        ((TextView) view.findViewById(R.id.tv_second_player_name)).setText(secondPlayerName);
 
 
 
@@ -59,9 +56,9 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
         handler = gameHandler.getHandler();
         gameFieldAdapter = new GameFieldAdapter(activity, gameHandler);
         gameFieldAdapter
-                .setPlayer1((TextView) view.findViewById(R.id.textViewFirstPlayer));
+                .setPlayer1((TextView) view.findViewById(R.id.tv_first_player_name));
         gameFieldAdapter
-                .setPlayer2((TextView) view.findViewById(R.id.textViewSecondPlayer));
+                .setPlayer2((TextView) view.findViewById(R.id.tv_second_player_name));
 
         gameHandler.setAdapter(gameFieldAdapter);
         gridView.setAdapter(gameFieldAdapter);

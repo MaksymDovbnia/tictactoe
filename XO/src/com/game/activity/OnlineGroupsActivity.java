@@ -80,4 +80,6 @@ public class OnlineGroupsActivity extends FragmentActivity implements View.OnCli
     public void onClick(View view) {
 
     }
+
+
     }

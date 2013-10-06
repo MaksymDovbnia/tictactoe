@@ -81,7 +81,6 @@ public class SelectTypeOfGameActivity extends FragmentActivity implements OnClic
         bluetooth = (Button) findViewById(R.id.button_gametypes_bluetooth);
         bluetooth.setOnClickListener(this);
 
-
         createHandler();
 
     }
@@ -93,7 +92,7 @@ public class SelectTypeOfGameActivity extends FragmentActivity implements OnClic
                 ProtoType protoType = ProtoType.fromInt(msg.what);
                 if (msg.what == 100) {
                     pd.cancel();
-                    showToastWithText("Sorry, server not avaible, plase try later");
+                    showToastWithText(getString(R.string.server_not_available));
                     return;
                 }
                 Log.d(TAG, "handler received message" + protoType);

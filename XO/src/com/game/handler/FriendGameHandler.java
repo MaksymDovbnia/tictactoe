@@ -53,4 +53,14 @@ public class FriendGameHandler implements GameHandler {
 
 	}
 
+    @Override
+    public void exitFromGame() {
+
+    }
+
+    @Override
+    public void unregisterHandler() {
+
+    }
+
 }

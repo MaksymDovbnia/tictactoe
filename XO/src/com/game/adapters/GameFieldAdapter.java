@@ -161,14 +161,14 @@ public class GameFieldAdapter extends BaseAdapter {
                     false);
 
             TextView field = (TextView) view
-                    .findViewById(R.id.textViewFirstPlayer);
+                    .findViewById(R.id.tv_first_player_name);
             if (fields[position] == null)
                 fields[position] = field;
             field.setTag(position);
             // Loger.printLog("new view " + position);
         }
 
-        TextView field = (TextView) view.findViewById(R.id.textViewFirstPlayer);
+        TextView field = (TextView) view.findViewById(R.id.tv_first_player_name);
         field.setBackgroundResource(R.drawable.field);
         field.setOnClickListener(new OnClickListener() {
             @Override

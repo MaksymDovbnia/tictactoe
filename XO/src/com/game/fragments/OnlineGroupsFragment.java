@@ -28,7 +28,10 @@ import com.net.online.protobuf.ProtoType;
 import net.protocol.Protocol;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * Created by Maksym on 9/3/13.
@@ -42,6 +45,7 @@ public class OnlineGroupsFragment extends Fragment implements View.OnClickListen
     private OnlineGroupAdapter adapter;
     private final Player player = Controler.getPlayer();
     private Button openGroup;
+    private Button updateGroupList;
     public static final String NUMBER_OF_GROUP = "NUMBER_OF_GROUP";
     private TextView allPlayers;
     private int numberOfAllPlayers = 0;
@@ -61,11 +65,14 @@ public class OnlineGroupsFragment extends Fragment implements View.OnClickListen
         listViewOnlineGroup = (ListView) view.findViewById(R.id.listOnlineGroup);
         openGroup = (Button) view.findViewById(R.id.b_open_group);
         openGroup.setOnClickListener(this);
+        openGroup.setEnabled(false);
+        updateGroupList = (Button) view.findViewById(R.id.btn_update_group_list);
+        updateGroupList.setOnClickListener(this);
         groups = new ArrayList<Group>();
         allPlayers = (TextView) view.findViewById(R.id.tv_all_online_players);
 
-
         adapter = new OnlineGroupAdapter(activity, groups);
+        adapter.setOpenedGroupButton(openGroup);
 
         listViewOnlineGroup.setAdapter(adapter);
 
@@ -96,18 +103,17 @@ public class OnlineGroupsFragment extends Fragment implements View.OnClickListen
                     default:
                         break;
                 }
-                // TODO Auto-generated method stub
                 super.handleMessage(msg);
             }
         };
         conectionGameWorker = Controler.getOnl();
+        conectionGameWorker.registerHandler(handler);
 
         return view;
     }
 
     @Override
     public void onClick(View view) {
-
         int id = view.getId();
         switch (id) {
             case R.id.b_open_group:
@@ -115,40 +121,34 @@ public class OnlineGroupsFragment extends Fragment implements View.OnClickListen
                 intent.putExtra(NUMBER_OF_GROUP, adapter.getIdLast());
                 startActivity(intent);
                 break;
+            case R.id.btn_update_group_list:
+                getListOfGroup();
+                break;
         }
-
-
     }
-
 
     @Override
     public void onResume() {
         if (conectionGameWorker != null) {
-            conectionGameWorker.registerHandler(handler);
             getListOfGroup();
         }
         super.onResume();
     }
 
     private void getListOfGroup() {
-
         Protocol.SGetGroupList sGetGroupList = Protocol.SGetGroupList.newBuilder().setId(player.getId()).build();
         conectionGameWorker.sendPacket(sGetGroupList);
         Log.d(TAG, "sent packet " + sGetGroupList);
     }
 
-
-    @Override
-    public void onPause() {
-        if (conectionGameWorker != null) conectionGameWorker.unRegisterHandler(handler);
-        super.onPause();
-    }
-
     @Override
     public void onDestroy() {
-        if (conectionGameWorker == null) return;;
-            conectionGameWorker.sendPacket(Protocol.SExitFromGlobalGame.newBuilder().setPlayerId(player.getId()).build());
-       conectionGameWorker.unRegisterHandler(handler);
+        if (conectionGameWorker == null) return;
+        conectionGameWorker.sendPacket(Protocol.SExitFromGlobalGame.newBuilder().setPlayerId(player.getId()).build());
+        conectionGameWorker.unRegisterHandler(handler);
         super.onDestroy();
     }
+
+
+
 }

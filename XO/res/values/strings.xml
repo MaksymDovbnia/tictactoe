@@ -65,6 +65,7 @@
     <string name="title_activity_main_activity2">MainActivity2</string>
     <string name="title_activity_main_test">MainTest</string>
     <string name="open_group">Open group</string>
+    <string name="update_group_list">Update group list</string>
     <string name="online_groups">Online groups</string>
     <string name="online_group">Online group:</string>
     <string name="group_list">Group list:</string>
@@ -84,6 +85,7 @@
     <string name="exit">Exit</string>
     <string name="exit_from_game">Exit from game</string>
     <string name="exit_from_this_game">Exit from this game</string>
+
     <string name="is_won">is won</string>
     <string name="are_you_want_continue_game">Are you want to continue game?</string>
     <string name="yes">Yes</string>
@@ -93,12 +95,15 @@
     <string name="login_by">Login by:</string>
     <string name="connection">Connection</string>
     <string name="connecting">Connecting...</string>
+    <string name="server_not_available">Sorry, now server isn\'t available, please try later</string>
+
 
 
 
 
 
     <string name="exit_from_group">Exit from group</string>
+    <string name="left_the_game">left the game</string>
     <string name="exit_from_group_question">Do you real want to exit from this group?</string>
     <string name="exit_from_game_question">Do you real want to exit from game?</string>
     <string name="exit_from_this_game_question">Do you real want to exit from  this game?</string>

@@ -1,6 +1,8 @@
 package com.game.adapters;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import com.entity.Group;
@@ -14,16 +16,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ListView;
+import android.widget.Button;
 import android.widget.TextView;
-
-import com.game.activity.R;
 
 public class OnlineGroupAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater layoutInflater;
     private List<Group> groups;
     private int idLast;
+    private Button openedGroup;
     List<View> views = new ArrayList<View>();
 
     public OnlineGroupAdapter(Context context, List<Group> groups) {
@@ -32,6 +33,9 @@ public class OnlineGroupAdapter extends BaseAdapter {
         layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+    }
+    public void setOpenedGroupButton(Button openedGroup){
+        this.openedGroup = openedGroup;
     }
 
     @Override
@@ -65,12 +69,12 @@ public class OnlineGroupAdapter extends BaseAdapter {
         TextView name = (TextView) view.findViewById(R.id.textView_online_group_item_name);
         TextView count = (TextView) view.findViewById(R.id.textViewCountOfOnlinePlayersInGroup);
 
-        Group group = null;
-        for (Group group1 : groups) {
-            if (group1.getId() == position) {
-                group = group1;
-            }
-        }
+        Group group = groups.get(position);
+//        for (Group group1 : groups) {
+//            if (group1.getId() == position) {
+//                group = group1;
+//            }
+//        }
         if (group != null) {
             name.setText(group.getId() + "");
             count.setText(group.getCountOfOnlinePlayer() + "/" + group.getCountOfMaxPlayer());
@@ -79,6 +83,7 @@ public class OnlineGroupAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (openedGroup != null) openedGroup.setEnabled(true);
                 idLast = ((Integer) v.getTag());
                 for (View view : views) {
                     view.setBackgroundColor(color.primary_text_light);
@@ -90,9 +95,26 @@ public class OnlineGroupAdapter extends BaseAdapter {
         });
 
         view.setBackgroundColor(color.primary_text_light);
-        view.setTag(position);
+        view.setTag(group.getId());
 
         return view;
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        Collections.sort(groups,new GroupComparator());
+        super.notifyDataSetChanged();
+    }
+
+    public class GroupComparator implements Comparator<Group> {
+        @Override
+        public int compare(Group group, Group group2) {
+            int idGroup1 = group.getId();
+            int idGroup2 = group2.getId();
+            if (idGroup1 < idGroup2) return  -1;
+            else if(idGroup1 == idGroup2){ return 0;}
+            return 1;
+        }
     }
 
 }

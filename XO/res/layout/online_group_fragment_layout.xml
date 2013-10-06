@@ -44,15 +44,34 @@
             >
     </ListView>
 
-    <Button
-            android:layout_marginTop="10dp"
-            android:id="@+id/b_open_group"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/selector_default_yelow_button"
-            android:text="@string/open_group"
-            />
+   <LinearLayout android:layout_height="wrap_content"
+                 android:layout_width="match_parent"
+                 android:layout_marginTop="10dp"
+                 android:layout_marginBottom="10dp"
+                 android:paddingLeft="5dp"
+                 android:paddingRight="5dp"
+           >
+       <Button
+               android:id="@+id/b_open_group"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="40dp"
+               android:background="@drawable/selector_default_yelow_button"
+               android:text="@string/open_group"
+               android:textSize="@dimen/small_text_size"
+               />
+       <Button
+               android:id="@+id/btn_update_group_list"
+               android:layout_width="match_parent"
+               android:layout_weight="1"
+               android:layout_height="40dp"
+               android:textSize="@dimen/small_text_size"
+               android:background="@drawable/selector_default_yelow_button"
+               android:text="@string/update_group_list"
+               />
+
+   </LinearLayout>
+
 
 
 </LinearLayout>

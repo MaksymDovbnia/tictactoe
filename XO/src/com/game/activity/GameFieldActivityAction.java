@@ -6,6 +6,7 @@ package com.game.activity;
 public interface GameFieldActivityAction {
 
     public void showWonPopup(String wonPlayerName);
+    public void opponentExitFromGame();
 
 
 }
