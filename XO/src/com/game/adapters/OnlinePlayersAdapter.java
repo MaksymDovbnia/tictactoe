@@ -77,7 +77,7 @@ public class OnlinePlayersAdapter extends BaseAdapter {
 
 		}
 		Loger.printLog("getWiev " + position);
-		TextView text = ((TextView) view.findViewById(R.id.playerName));
+		TextView text = ((TextView) view.findViewById(R.id.tv_player_name));
 		text.setText(players.get(position).getName());
 		view.setBackgroundColor(color.primary_text_light);
 		view.setTag(position);

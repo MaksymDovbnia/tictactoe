@@ -92,10 +92,11 @@ public class GameFieldAdapter extends BaseAdapter {
     public void opponentDidOneMove(OneMove oneMove) {
         int id = (15 * oneMove.i) + oneMove.j;
         Loger.printLog("ID ELEMENT  " + id);
-        GameFieldItem textView = fields[id];
-        textView.setFieldType((oneMove.type.equals(TypeFieldElement.X)) ? GameFieldItem.FieldType.X : GameFieldItem.FieldType.O);
-        textView.setMarkAboutLastMove(true);
-        //  textView.setEnabled(false);
+        GameFieldItem fieldItem = fields[id];
+        fieldItem.setFieldType((oneMove.type.equals(TypeFieldElement.X)) ? GameFieldItem.FieldType.X : GameFieldItem.FieldType.O);
+        fieldItem.setMarkAboutLastMove(true);
+        if (lastGameFieldItem != null) lastGameFieldItem.setMarkAboutLastMove(false);
+        lastGameFieldItem = fieldItem;
         getOpponentMove = true;
         changeIndicator();
 
@@ -124,7 +125,22 @@ public class GameFieldAdapter extends BaseAdapter {
 
     }
 
+    public void startNewGame(boolean isFirstPlayerMoveByX) {
+        if (isFirstPlayerMoveByX) {
+            player1.setBackgroundResource(R.drawable.ovalbound_red);
+            player2.setBackgroundResource(R.drawable.button_white);
+            indicator = 1;
+        } else {
+            player2.setBackgroundResource(R.drawable.ovalbound_red);
+            player1.setBackgroundResource(R.drawable.button_white);
+            indicator = 0;
+
+        }
+            startNewGame();
+        }
+
     public void startNewGame() {
+
         for (int i = 0; i < fields.length; i++) {
             fields[i].setEnabled(true);
             fields[i].clear();

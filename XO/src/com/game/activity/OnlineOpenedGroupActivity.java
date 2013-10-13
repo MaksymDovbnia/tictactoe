@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.game.Controler;
+import com.game.Controller;
 import com.game.fragments.GroupChatFragment;
 import com.game.fragments.OnlineOpenedGroupFragment;
 import com.game.popup.XOAlertDialog;
@@ -30,15 +30,16 @@ public class OnlineOpenedGroupActivity extends FragmentActivity implements View.
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.opened_activity_layout);
-        openGroup = (Button) findViewById(R.id.btn_group_chat);
-        openChat = (Button) findViewById(R.id.btn_opened_online_group);
+        openChat  = (Button) findViewById(R.id.btn_group_chat);
+        openGroup = (Button) findViewById(R.id.btn_opened_online_group);
         openChat.setOnClickListener(this);
         openGroup.setOnClickListener(this);
-
-
         openedGroupFragment = new OnlineOpenedGroupFragment();
         chatFragment = new GroupChatFragment();
+        int groupId =Controller.getInstance().getPlayer().getGroupId();
+        openGroup.setText(getString(R.string.opened_group) + " " + groupId);
         setGroupFragment();
+
 
     }
 
@@ -84,7 +85,8 @@ public class OnlineOpenedGroupActivity extends FragmentActivity implements View.
         xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Controler.getOnl().sendPacket(Protocol.SExitFromGroup.newBuilder().setPlayerId(Controler.getPlayer().getId()).setGroupId(Controler.getPlayer().getGroupId()).build());
+                Controller.getInstance().getOnlineWorker().
+                        sendPacket(Protocol.SExitFromGroup.newBuilder().setPlayerId(Controller.getInstance().getPlayer().getId()).setGroupId(Controller.getInstance().getPlayer().getGroupId()).build());
                 finish();
 
             }

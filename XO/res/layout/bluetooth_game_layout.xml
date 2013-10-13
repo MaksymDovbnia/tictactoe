@@ -20,7 +20,7 @@
 
         <Button
                 android:id="@+id/btn_opened_online_group"
-                android:layout_width="@dimen/top_left_button_width"
+                android:layout_width="@dimen/general_top_button_left_width"
                 android:layout_height="match_parent"
                 android:background="@drawable/button_big"
                 android:text="@string/bluetooth_game"

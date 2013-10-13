@@ -1,35 +1,16 @@
 package com.game.activity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.protocol.Protocol;
-import net.protocol.Protocol.CGetGroupList;
-
-import com.entity.Group;
-import com.entity.Player;
-import com.game.Controler;
-import com.game.adapters.OnlineGroupAdapter;
 import com.game.fragments.OnlineGroupsFragment;
 import com.game.popup.XOAlertDialog;
-import com.net.online.WorkerOnlineConnection;
-import com.net.online.protobuf.ProtoType;
 
 import android.content.DialogInterface;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
 
 public class OnlineGroupsActivity extends FragmentActivity implements View.OnClickListener {
    private static final String TAG = OnlineGroupsActivity.class.getCanonicalName();

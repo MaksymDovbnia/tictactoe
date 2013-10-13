@@ -4,16 +4,16 @@
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-
         >
+
+
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-
+            android:paddingLeft="@dimen/online_open_group_fragment_general_padding_size"
+            android:paddingRight="@dimen/online_open_group_fragment_general_padding_size"
             android:orientation="vertical"
             >
 
@@ -21,19 +21,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/online_players"
-                android:textSize="@dimen/text_size_inscription"
+                android:textSize="@dimen/online_open_group_fragment_text_size_inscription"
                 />
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingTop="@dimen/padding_for_large_list"
-                android:paddingBottom="@dimen/padding_for_large_list"
+                android:paddingTop="@dimen/online_open_group_fragment_padding_for_large_list"
+                android:paddingBottom="@dimen/online_open_group_fragment_padding_for_large_list"
                 android:orientation="vertical"
                 android:background="@drawable/list1"
                 android:layout_weight="1"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
+                android:paddingLeft="@dimen/online_open_group_fragment_general_padding_size"
+                android:paddingRight="@dimen/online_open_group_fragment_general_padding_size"
 
                 >
 
@@ -53,14 +53,14 @@
             <Button
                     android:id="@+id/btn_invite_to_play"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="@dimen/online_open_group_fragment_invite_update_button_height"
                     style="@style/default_yelow_button"
                     android:text="@string/invite_for_play"
                     />
             <Button
                     android:id="@+id/button_update_activitylist"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="@dimen/online_open_group_fragment_invite_update_button_height"
 
                     style="@style/default_yelow_button"
                     android:text="@string/update_list"
@@ -72,7 +72,7 @@
     </LinearLayout>
 
     <LinearLayout
-            android:layout_width="15dp"
+            android:layout_width="@dimen/online_open_group_fragment_divider_line_width"
             android:layout_height="match_parent"
             android:background="@drawable/undirect_line"
             ></LinearLayout>
@@ -81,8 +81,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
+            android:paddingLeft="@dimen/online_open_group_fragment_general_padding_size"
+            android:paddingRight="@dimen/online_open_group_fragment_general_padding_size"
             android:orientation="vertical"
             >
 
@@ -97,18 +97,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/wanted_battle"
-                    android:textSize="@dimen/text_size_inscription"
+                    android:textSize="@dimen/online_open_group_fragment_text_size_inscription"
                     />
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="@dimen/padding_for_small_list"
-                    android:paddingBottom="@dimen/padding_for_small_list"
+                    android:paddingTop="@dimen/online_open_group_fragment_padding_for_small_list"
+                    android:paddingBottom="@dimen/online_open_group_fragment_padding_for_small_list"
                     android:orientation="vertical"
 
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
+                    android:paddingLeft="@dimen/online_open_group_fragment_general_padding_size"
+                    android:paddingRight="@dimen/online_open_group_fragment_general_padding_size"
                     android:layout_weight="1"
                     >
 
@@ -121,8 +121,8 @@
 
             <Button
                     android:id="@+id/btn_start_game"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/online_open_group_fragment_start__cancel_game_button_width"
+                    android:layout_height="@dimen/online_open_group_fragment_start_cancel_game_button_height"
                     style="@style/default_yelow_button"
                     android:text="@string/start_game"
                     android:layout_gravity="center"
@@ -143,20 +143,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/invited_players"
-                    android:textSize="@dimen/text_size_inscription"
+                    android:textSize="@dimen/online_open_group_fragment_text_size_inscription"
 
                     />
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="@dimen/padding_for_small_list"
-                    android:paddingBottom="@dimen/padding_for_small_list"
+                    android:paddingTop="@dimen/online_open_group_fragment_padding_for_small_list"
+                    android:paddingBottom="@dimen/online_open_group_fragment_padding_for_small_list"
                     android:orientation="vertical"
 
                     android:layout_weight="1"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
+                    android:paddingLeft="@dimen/online_open_group_fragment_general_padding_size"
+                    android:paddingRight="@dimen/online_open_group_fragment_general_padding_size"
                     >
 
                 <ListView
@@ -168,8 +168,8 @@
 
             <Button
                     android:id="@+id/btn_cancel_player"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/online_open_group_fragment_start__cancel_game_button_width"
+                    android:layout_height="@dimen/online_open_group_fragment_start_cancel_game_button_height"
                     style="@style/default_yelow_button"
                     android:text="@string/cancel_player"
                     android:layout_gravity="center"

@@ -6,28 +6,21 @@
               android:gravity="center">
 
     <TextView
-            android:id="@+id/textView_online_group_item_name"
+            android:id="@+id/tv_online_group_item_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:text="name"
-            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/general_list_item_text_size"
             />
 
     <TextView
-            android:id="@+id/textViewCountOfOnlinePlayersInGroup"
+            android:id="@+id/tv_count_of_online_players_in_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="30 /250 "
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
-
-    <!--<TextView android:id="@+id/tw_number_of_bots"-->
-              <!--android:layout_width="match_parent"-->
-              <!--android:layout_height="wrap_content"-->
-              <!--android:text="(0 bots)"-->
-              <!--android:layout_weight="1"-->
-    <!--android:textAppearance="?android:attr/textAppearanceLarge" />-->
+            android:textSize="@dimen/general_list_item_text_size"/>
 
 </LinearLayout>

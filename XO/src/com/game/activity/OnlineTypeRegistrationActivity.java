@@ -33,7 +33,7 @@ import android.widget.Toast;
 
 import com.entity.Font;
 import com.entity.Player;
-import com.game.Controler;
+import com.game.Controller;
 import com.net.online.WorkerOnlineConnection;
 import com.net.online.protobuf.ProtoType;
 import com.utils.Loger;
@@ -82,7 +82,7 @@ public class OnlineTypeRegistrationActivity extends Activity implements
                         Protocol.CLoginToGame cLoginToGame = (Protocol.CLoginToGame) msg.obj;
                         int id = cLoginToGame.getId();
                         player.setId(id);
-                        Controler.setPlayer(player);
+                        Controller.getInstance().setPlayer(player);
                         Loger.printLog("Conected to server with id " + id);
                         pd.cancel();
                         anonLogin.cancel();
@@ -232,7 +232,7 @@ public class OnlineTypeRegistrationActivity extends Activity implements
                     player.setRegistrationType(Protocol.RegistrationType.annonymous);
                     onlineGameWorker = new WorkerOnlineConnection(handler,
                             player, pd);
-                    Controler.setOnl(onlineGameWorker);
+                    Controller.getInstance().setOnlineWorker(onlineGameWorker);
                     onlineGameWorker.start();
 
                     pd.setTitle("Conection");

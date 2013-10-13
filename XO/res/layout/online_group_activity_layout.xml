@@ -13,31 +13,34 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="5"
-            android:paddingLeft="25dp"
-            android:textSize="@dimen/default_text_size"
+            android:paddingLeft="@dimen/general_top_buttons_layout_margin_left"
             >
 
-        <Button android:id="@+id/btn_online_groups"
-                android:layout_width="150dp"
+        <Button
+                android:id="@+id/btn_online_groups"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:background="@drawable/button_big"
                 android:text="@string/online_groups"
-                android:textSize="@dimen/default_text_size"
+                android:textSize="@dimen/general_top_buttons_text_size"
                 />
 
         <Button
                 android:id="@+id/btn_top_100"
-                android:layout_width="@dimen/top_right_button_width"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
                 android:background="@drawable/button_big"
-                android:layout_marginLeft="@dimen/mergin_top_button_right_from_left"
+                android:layout_marginLeft="@dimen/general_buttons_separate_width"
                 android:text="@string/top_100"
+                android:textSize="@dimen/general_top_buttons_text_size"
                 />
 
 
     </LinearLayout>
 
-    <LinearLayout
+    <FrameLayout
             android:id="@+id/center_for_fragment"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -45,10 +48,10 @@
             android:layout_weight="0.7"
             android:baselineAligned="false"
             android:background="@drawable/notebook5"
-            android:paddingLeft="@dimen/padding_left_opened_group"
+            android:paddingLeft="@dimen/opened_activity_layout_fragment_container_padding_left"
             >
 
-    </LinearLayout>
+    </FrameLayout>
 
     <LinearLayout
             android:orientation="vertical"

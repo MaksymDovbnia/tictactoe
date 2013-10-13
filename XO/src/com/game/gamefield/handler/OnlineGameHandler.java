@@ -59,6 +59,9 @@ public class OnlineGameHandler implements GameHandler {
                 case CEXITFROMGAME:
                     OnlineGameHandler.this.gameFiledActions.opponentExitFromGame();
                     break;
+                case CCONTINUEGAME:
+                     gameFieldAdapter.startNewGame();
+                    break;
 
 				}
 

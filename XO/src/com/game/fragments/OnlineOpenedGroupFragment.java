@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.config.BundleKeys;
 import com.entity.Player;
-import com.game.Controler;
+import com.game.Controller;
 import com.game.GameType;
 import com.game.gamefield.GameFieldActivity;
 import com.game.activity.OnlineGroupsActivity;
@@ -108,7 +108,7 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
 
         Intent intent = activity.getIntent();
         groupId = intent.getIntExtra(OnlineGroupsActivity.NUMBER_OF_GROUP, -10);
-        myPlayer = Controler.getPlayer();
+        myPlayer = Controller.getInstance().getPlayer();
 
 
         lvActivityPlayer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -183,14 +183,14 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
 
             }
         };
-        workerOnlineConnection = Controler.getOnl();
+        workerOnlineConnection = Controller.getInstance().getOnlineWorker();
         if (workerOnlineConnection != null) {
             workerOnlineConnection.registerHandler(handler);
             workerOnlineConnection.sendPacket(Protocol.SEnterToGroup.newBuilder()
                     .setGroupId(groupId).build());
 
             workerOnlineConnection.sendPacket(Protocol.SGetUpdate.newBuilder()
-                    .setId(Controler.getPlayer().getId()).setGroupId(groupId).build());
+                    .setId(Controller.getInstance().getPlayer().getId()).setGroupId(groupId).build());
         }
 
         return v;
@@ -228,7 +228,7 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
     public void onResume() {
         if (workerOnlineConnection != null)
             workerOnlineConnection.sendPacket(Protocol.SGetUpdate.newBuilder()
-                    .setId(Controler.getPlayer().getId()).setGroupId(groupId).build());
+                    .setId(Controller.getInstance().getPlayer().getId()).setGroupId(groupId).build());
         super.onResume();
     }
 
@@ -246,14 +246,14 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
 
             case R.id.button_update_activitylist:
                 workerOnlineConnection.sendPacket(Protocol.SGetUpdate.newBuilder()
-                        .setId(Controler.getPlayer().getId()).setGroupId(groupId).build());
+                        .setId(Controller.getInstance().getPlayer().getId()).setGroupId(groupId).build());
                 break;
 
             case R.id.btn_invite_to_play:
                 int opponentId = adapterForActivityList.getIdLast();
                 Loger.printLog("switch " + opponentId);
                 Player player = null;
-                if (opponentId > 0) player = listActivityPlayer.get(opponentId);
+                if (opponentId >= 0) player = listActivityPlayer.get(opponentId);
                 if (player != null && !listInvitedPlayers.contains(player)) {
                     workerOnlineConnection.sendPacket(Protocol.SWantToPlay.newBuilder()
                             .setOpponentId(player.getId())

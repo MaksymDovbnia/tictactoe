@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/playerName"
+        android:id="@+id/tv_player_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -13,6 +13,6 @@
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/blue"
-        android:textSize="15sp" />
+        android:textSize="@dimen/general_list_item_text_size" />
 
 </LinearLayout>

@@ -27,7 +27,7 @@
                 />
 
         <TextView
-                android:id="@+id/textView_online_group_item_name"
+                android:id="@+id/tv_online_group_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/group_list"
@@ -55,7 +55,7 @@
                android:id="@+id/b_open_group"
                android:layout_width="match_parent"
                android:layout_weight="1"
-               android:layout_height="40dp"
+               android:layout_height="@dimen/online_group_fragment_layout_button_height"
                android:background="@drawable/selector_default_yelow_button"
                android:text="@string/open_group"
                android:textSize="@dimen/small_text_size"
@@ -64,7 +64,7 @@
                android:id="@+id/btn_update_group_list"
                android:layout_width="match_parent"
                android:layout_weight="1"
-               android:layout_height="40dp"
+               android:layout_height="@dimen/online_group_fragment_layout_button_height"
                android:textSize="@dimen/small_text_size"
                android:background="@drawable/selector_default_yelow_button"
                android:text="@string/update_group_list"

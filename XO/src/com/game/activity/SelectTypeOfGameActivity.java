@@ -22,7 +22,7 @@ import android.widget.Toast;
 
 import com.entity.Font;
 import com.entity.Player;
-import com.game.Controler;
+import com.game.Controller;
 import com.game.gamefield.GameFieldActivity;
 import com.game.gamefield.handler.FriendGameHandler;
 import com.game.popup.XOAlertDialog;
@@ -63,9 +63,6 @@ public class SelectTypeOfGameActivity extends FragmentActivity implements OnClic
         setContentView(R.layout.activity_type_of_game);
         sharedPreferences = getSharedPreferences(KEY, MODE_PRIVATE);
 
-        player1NameFromSharedPrefences = sharedPreferences.getString(FIRST_PLAYER_NAME, null);
-        player2NameFromSharedPrefences = sharedPreferences.getString(SECOND_PLAYER_NAME, null);
-        playerNameFromSharedPrefencesForLoginToGame = sharedPreferences.getString(PLAYER_NAME_FOR_LOGIN_TO_ONLINE_GAME, null);
 
         Typeface mFont = Typeface.createFromAsset(getAssets(), "fonts/acquestscript.ttf");
         LinearLayout l = (LinearLayout) findViewById(R.id.LL_typeofgamenu);
@@ -102,7 +99,7 @@ public class SelectTypeOfGameActivity extends FragmentActivity implements OnClic
                         Protocol.CLoginToGame cLoginToGame = (Protocol.CLoginToGame) msg.obj;
                         int id = cLoginToGame.getId();
                         player.setId(id);
-                        Controler.setPlayer(player);
+                        Controller.getInstance().setPlayer(player);
                         Loger.printLog("Conected to server with id " + id);
                         pd.cancel();
                         if (anonymousLoginPopup != null) anonymousLoginPopup.dismiss();
@@ -112,6 +109,15 @@ public class SelectTypeOfGameActivity extends FragmentActivity implements OnClic
             }
         };
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        player1NameFromSharedPrefences = sharedPreferences.getString(FIRST_PLAYER_NAME, null);
+        player2NameFromSharedPrefences = sharedPreferences.getString(SECOND_PLAYER_NAME, null);
+        playerNameFromSharedPrefencesForLoginToGame = sharedPreferences.getString(PLAYER_NAME_FOR_LOGIN_TO_ONLINE_GAME, null);
 
     }
 
@@ -161,11 +167,12 @@ public class SelectTypeOfGameActivity extends FragmentActivity implements OnClic
                 if (player1NameFromSharedPrefences != null) {
                     playerName1.setText(player1NameFromSharedPrefences);
                     playerName2.setText(player2NameFromSharedPrefences);
+                }
                     view.findViewById(R.id.btn_start_offline_game).setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             FriendGameHandler f = new FriendGameHandler();
-                            Controler.setGameHandler(f);
+                            Controller.getInstance().setGameHandler(f);
                             Intent intent = new Intent(SelectTypeOfGameActivity.this, GameFieldActivity.class);
                             String name1 = ((EditText) view.findViewById(R.id.edt_first_player_name)).getText().toString();
                             String name2 = ((EditText) view.findViewById(R.id.edt_second_player_name)).getText().toString();
@@ -178,7 +185,7 @@ public class SelectTypeOfGameActivity extends FragmentActivity implements OnClic
                             xoAlertDialog.dismiss();
                         }
                     });
-                }
+
 
             }
         });
@@ -215,7 +222,7 @@ public class SelectTypeOfGameActivity extends FragmentActivity implements OnClic
                             player.setRegistrationType(Protocol.RegistrationType.annonymous);
                             onlineGameWorker = new WorkerOnlineConnection(handler,
                                     player, pd);
-                            Controler.setOnl(onlineGameWorker);
+                            Controller.getInstance().setOnlineWorker(onlineGameWorker);
                             onlineGameWorker.start();
                             pd.setTitle(getString(R.string.connection));
                             pd.setMessage(getString(R.string.connecting));

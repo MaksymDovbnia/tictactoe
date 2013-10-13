@@ -12,7 +12,7 @@ import android.widget.Button;
 
 import com.config.BundleKeys;
 import com.entity.Player;
-import com.game.Controler;
+import com.game.Controller;
 import com.game.GameType;
 import com.game.activity.R;
 import com.game.fragments.GroupChatFragment;
@@ -42,8 +42,8 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
             Player opponent = (Player) intent.getSerializableExtra(BundleKeys.OPPONENT);
             this.opponent = opponent;
             OnlineGameHandler onlineGameHandler = new OnlineGameHandler(
-                    Controler.getOnl(), Controler.getPlayer(), opponent, this);
-            Controler.setGameHandler(onlineGameHandler);
+                    Controller.getInstance().getOnlineWorker(), Controller.getInstance().getPlayer(), opponent, this);
+            Controller.getInstance().setGameHandler(onlineGameHandler);
         }
 
         setContentView(R.layout.game_fileld_activity_layout);
@@ -161,7 +161,7 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
         xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Controler.getGameHandler().exitFromGame();
+                Controller.getInstance().getGameHandler().exitFromGame();
                 finish();
             }
         });

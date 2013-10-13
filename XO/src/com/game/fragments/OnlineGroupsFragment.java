@@ -1,7 +1,6 @@
 package com.game.fragments;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,21 +16,17 @@ import android.widget.TextView;
 
 import com.entity.Group;
 import com.entity.Player;
-import com.game.Controler;
+import com.game.Controller;
 import com.game.activity.OnlineOpenedGroupActivity;
 import com.game.activity.R;
 import com.game.adapters.OnlineGroupAdapter;
-import com.game.popup.XOAlertDialog;
 import com.net.online.WorkerOnlineConnection;
 import com.net.online.protobuf.ProtoType;
 
 import net.protocol.Protocol;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.TreeSet;
 
 /**
  * Created by Maksym on 9/3/13.
@@ -43,7 +38,7 @@ public class OnlineGroupsFragment extends Fragment implements View.OnClickListen
     private ListView listViewOnlineGroup;
     private List<Group> groups;
     private OnlineGroupAdapter adapter;
-    private final Player player = Controler.getPlayer();
+    private final Player player = Controller.getInstance().getPlayer();
     private Button openGroup;
     private Button updateGroupList;
     public static final String NUMBER_OF_GROUP = "NUMBER_OF_GROUP";
@@ -106,7 +101,7 @@ public class OnlineGroupsFragment extends Fragment implements View.OnClickListen
                 super.handleMessage(msg);
             }
         };
-        conectionGameWorker = Controler.getOnl();
+        conectionGameWorker = Controller.getInstance().getOnlineWorker();
         conectionGameWorker.registerHandler(handler);
 
         return view;

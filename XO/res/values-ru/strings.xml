@@ -1,27 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">X-O</string>
-    <string name="edit_message">Enter your name</string>
-    <string name="button_send">Send</string>
-    <string name="menu_settings">Settings</string>
+    <string name="app_name">TicTacToe</string>
+    <string name="edit_message">Зайти до гри</string>
+    <string name="button_send">Послати</string>
+    <string name="menu_settings">Настройки</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_display_message">DisplayMessageActivity</string>
     <string name="title_activity_menu">Menu</string>
-    <string name="title_activity_second">SecondActivity</string>
+    <string name="title_activity_second">Online Big Tic-Tac-Toe</string>
     <string name="title_activity_game_field">GameFieldActivity</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="dummy_button">Dummy Button</string>
+    <string name="name_game">Tic Tac Toe</string>
     <string name="title_activity_online_game_connection">OnlineGameConnectionActivity</string>
     <string name="title_activity_online_players">OnlinePlayersActivity</string>
     <string name="title_activity_list_test">ListTest</string>
     <string name="title_activity_type_of_game">TypeOfGameActivity</string>
-    <string name="first_player_name">First player name</string>
-    <string name="second_player_name">Second player name</string>
-    <string name="start_game">Start game</string>
+    <string name="button_gametypes_android">Android</string>
+    <string name="button_gametypes_online">Онлайн</string>
+    <string name="button_gametypes_friend">2 гравця</string>
+    <string name="button_gametypes_bluetooth">Bluetooh</string>
+    <string name="texfield_gametypes_selectTypeGame">Select fieldType og game: </string>
+    <string name="button_onlineconnection_opengroup">Зайти до групи</string>
+    <string name="cancel_player">Відмінити гравця</string>
+    <string name="invite_for_play">Запросити до гри</string>
+    <string name="update_list">Обновити список</string>
+    <string name="start_game">Розпочати гру</string>
+    <string name="button_startactivitt_startgame">Розпочати гру</string>
+    <string name="button_startactivitt_settings">Найстройки</string>
+    <string name="button_startactivitt_exit">Вийти</string>
+    <string name="button_gamefieldactivity_newgame">Нова гра</string>
+    <string name="button_gamefieldactivity_menu">Menu</string>
+    <string name="online_players">Гравців онлайн:</string>
+    <string name="wanted_battle">Wanted battle :</string>
+    <string name="invited_players">Invited players :</string>
+    <string name="title_activity_activity_type_registraion">ActivityTypeRegistraion</string>
+    <string name="action_settings">Settings</string>
+    <string name="texfield_typeregistration_registrby">Sign in:</string>
+    <string name="anonymous">анонімний</string>
+    <string name="anonym_player">Aнонімний гравець</string>
+    <string name="please_enter_your_nick_name">Будь ласка, введіть ваший нік</string>
+    <string name="vk">Вконтакті</string>
+    <string name="texfield_typeregistration_tictactoe"> - tic-tac-toe account</string>
+    <string name="texfield_view_anonnymousconnection_nick">Ваш нік: </string>
+    <string name="button_view_anonnymousconnection_login">Логін</string>
+    <string name="texfield_windialog_congratulayion">are win by</string>
+    <string name="texfield_windialog_word_move">move</string>
+    <string name="texfield_windialog_question">Ви хочите продовжити гру?</string>
+    <string name="word_yes">Так</string>
+    <string name="word_no">Ні</string>
+    <string name="title_activity_registration_xoaccount">RegistrationXOAccountActivity</string>
+    <string name="texfield_regxoaccount_nick">Nick: </string>
+    <string name="texfield_regxoaccount_email">Email: </string>
+    <string name="texfield_regxoaccount_password">Password: </string>
+    <string name="texfield_regxoaccount_congirmpassword">Confirm password: </string>
+    <string name="button_regxoaccount_registration">Registration</string>
+    <string name="button_registr">Registr</string>
+    <string name="texfield_gorgotpass_email">Your email: </string>
+    <string name="button_gorgotpass_send">Sent password to email</string>
+    <string name="title_activity_activity_online_group">ActivityOnlineGroup</string>
+    <string name="title_activity_test">Test</string>
+    <string name="title_activity_main_activity2">MainActivity2</string>
+    <string name="title_activity_main_test">MainTest</string>
+    <string name="open_group">Open group</string>
+    <string name="update_group_list">Update group list</string>
+    <string name="online_groups">Online groups</string>
+    <string name="online_group">Online group:</string>
+    <string name="group_list">Group list:</string>
+    <string name="all_online_players">All online players:</string>
+    <string name="chat">Чат</string>
+    <string name="top_100">Топ 100</string>
+    <string name="game">Гра</string>
+    <string name="opened_group">Відкрита група</string>
+    <string name="scanning">Сканування</string>
+    <string name="select_device">Select device</string>
+    <string name="none_found">None found</string>
+    <string name="none_paired">None paired</string>
+    <string name="bluetooth_game">Bluetooth game</string>
+    <string name="button_scan">Scan</string>
+    <string name="ok">Так</string>
+    <string name="cancel">Ні</string>
+    <string name="exit">Вихід</string>
+    <string name="exit_from_game">Вихід з гри</string>
+    <string name="exit_from_this_game">Вихід з цеї гри</string>
 
-    <string name="name_chealse">ФК Челси</string>
+    <string name="is_won">is won</string>
+    <string name="are_you_want_continue_game">Ви хочите продовжити гру?</string>
+    <string name="yes">так</string>
+    <string name="no">Ні</string>
+    <string name="the_first_player_name">Імя першого гравця:</string>
+    <string name="the_second_player_name">Імя другого гравця:</string>
+    <string name="login_by">Login by:</string>
+    <string name="connection">Connection</string>
+    <string name="connecting">Connecting...</string>
+    <string name="server_not_available">Sorry, now server isn\'t available, please try later</string>
+
+
+
+
+
+
+    <string name="exit_from_group">Exit from group</string>
+    <string name="left_the_game">left the game</string>
+    <string name="exit_from_group_question">Do you real want to exit from this group?</string>
+    <string name="exit_from_game_question">Do you real want to exit from game?</string>
+    <string name="exit_from_this_game_question">Do you real want to exit from  this game?</string>
+    <string name="exit_from_online_game">Exit from online game</string>
+    <string name="exit_from_game_online_question">Do you real want to exit from online game?</string>
+
+
+
+    <string name="title_other_devices">Other devices</string>
+    <string name="title_paired_devices">Paired devices</string>
+    <string name="create_bluetooth_game">Create bluetooth game</string>
+    <string name="connect_to_bluetooth_game">Connect to bluetooth game</string>
+    <string name="new_game">Нова гра</string>
+    <string name="back">назад</string>
+    <string name="sec">сек</string>
+
+
+
+
+
+
+
+
+
 
 
 

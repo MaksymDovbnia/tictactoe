@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import com.game.Controler;
+import com.game.Controller;
 import com.game.activity.R;
 import com.game.gamefield.handler.GameHandler;
 
@@ -52,7 +52,7 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
 
 
 
-        gameHandler = Controler.getGameHandler();
+        gameHandler = Controller.getInstance().getGameHandler();
         handler = gameHandler.getHandler();
         gameFieldAdapter = new GameFieldAdapter(activity, gameHandler);
         gameFieldAdapter

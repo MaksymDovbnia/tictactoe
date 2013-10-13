@@ -66,8 +66,8 @@ public class OnlineGroupAdapter extends BaseAdapter {
         if (view == null)
             view = layoutInflater.inflate(R.layout.online_group_list_item, parent, false);
 
-        TextView name = (TextView) view.findViewById(R.id.textView_online_group_item_name);
-        TextView count = (TextView) view.findViewById(R.id.textViewCountOfOnlinePlayersInGroup);
+        TextView name = (TextView) view.findViewById(R.id.tv_online_group_item_name);
+        TextView count = (TextView) view.findViewById(R.id.tv_count_of_online_players_in_group);
 
         Group group = groups.get(position);
 //        for (Group group1 : groups) {
