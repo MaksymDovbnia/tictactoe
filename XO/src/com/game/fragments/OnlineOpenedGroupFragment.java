@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.config.BundleKeys;
 import com.entity.Player;
+import com.entity.TypeOfMove;
 import com.game.Controller;
 import com.game.GameType;
 import com.game.gamefield.GameFieldActivity;
@@ -100,6 +101,8 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
 
         // define lists and add appropriate adapter
         lvActivityPlayer = (ListView) v.findViewById(R.id.list_activity_players);
+        ViewGroup header = (ViewGroup)inflater.inflate(R.layout.online_list_view_header_layout, lvActivityPlayer, false);
+        lvActivityPlayer.addHeaderView(header);
         lvActivityPlayer.setAdapter(adapterForActivityList);
         lvDesirePlayer = (ListView) v.findViewById(R.id.list_disered_players);
         lvDesirePlayer.setAdapter(adapterForInvitedList);
@@ -134,7 +137,7 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
                             Loger.printLog("get updt + " + player.getName());
                             if (player.getId() != -1)
                                 listActivityPlayer.add(new Player(player.getId(),
-                                        player.getName()));
+                                        player.getName(), player.getRating()));
                         }
                         for (Protocol.CExitFromGroup exitFromGroup : cActivityPlayer
                                 .getExitPlayerList()) {
@@ -176,8 +179,8 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
                         toast.show();
                         break;
                     case CSTARTGAME:
-                        Protocol.CStartGame startGame = (Protocol.CStartGame) msg.obj;
-                        startGame(startGame.getOpponentId());
+                        Protocol.CStartGame startGamePacket = (Protocol.CStartGame) msg.obj;
+                        startOnlineGame(startGamePacket);
                         break;
                 }
 
@@ -197,10 +200,10 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
     }
 
 
-    private void startGame(int opponentId) {
+    private void startOnlineGame(Protocol.CStartGame cStartGame) {
         Player opponent = null;
         for (Player player : listWantToPlayPlayer) {
-            if (player.getId() == opponentId) {
+            if (player.getId() == cStartGame.getOpponentId()) {
                 opponent = player;
                 break;
             }
@@ -209,8 +212,9 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
 
         Intent intent = new Intent(context, GameFieldActivity.class);
         intent.putExtra(BundleKeys.TYPE_OF_GAME, GameType.ONLINE);
-        intent.putExtra(BundleKeys.OPPONENT,opponent);
-        startActivity(intent);
+        intent.putExtra(BundleKeys.OPPONENT, opponent);
+        intent.putExtra(BundleKeys.TYPE_OF_MOVE, (cStartGame.getTypeMove() == Protocol.TypeMove.X) ? TypeOfMove.X : TypeOfMove.O);
+                startActivity(intent);
         activity.finish();
 
     }

@@ -442,9 +442,9 @@ public final class Protocol {
     boolean hasRegistarionType();
     net.protocol.Protocol.RegistrationType getRegistarionType();
     
-    // optional string password = 3;
-    boolean hasPassword();
-    String getPassword();
+    // optional string uuid = 3;
+    boolean hasUuid();
+    String getUuid();
   }
   public static final class SLoginToGame extends
       com.google.protobuf.GeneratedMessage
@@ -517,14 +517,14 @@ public final class Protocol {
       return registarionType_;
     }
     
-    // optional string password = 3;
-    public static final int PASSWORD_FIELD_NUMBER = 3;
-    private java.lang.Object password_;
-    public boolean hasPassword() {
+    // optional string uuid = 3;
+    public static final int UUID_FIELD_NUMBER = 3;
+    private java.lang.Object uuid_;
+    public boolean hasUuid() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    public String getPassword() {
-      java.lang.Object ref = password_;
+    public String getUuid() {
+      java.lang.Object ref = uuid_;
       if (ref instanceof String) {
         return (String) ref;
       } else {
@@ -532,17 +532,17 @@ public final class Protocol {
             (com.google.protobuf.ByteString) ref;
         String s = bs.toStringUtf8();
         if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          password_ = s;
+          uuid_ = s;
         }
         return s;
       }
     }
-    private com.google.protobuf.ByteString getPasswordBytes() {
-      java.lang.Object ref = password_;
+    private com.google.protobuf.ByteString getUuidBytes() {
+      java.lang.Object ref = uuid_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        password_ = b;
+        uuid_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -552,7 +552,7 @@ public final class Protocol {
     private void initFields() {
       name_ = "";
       registarionType_ = net.protocol.Protocol.RegistrationType.annonymous;
-      password_ = "";
+      uuid_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -581,7 +581,7 @@ public final class Protocol {
         output.writeEnum(2, registarionType_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getPasswordBytes());
+        output.writeBytes(3, getUuidBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -602,7 +602,7 @@ public final class Protocol {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getPasswordBytes());
+          .computeBytesSize(3, getUuidBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -732,7 +732,7 @@ public final class Protocol {
         bitField0_ = (bitField0_ & ~0x00000001);
         registarionType_ = net.protocol.Protocol.RegistrationType.annonymous;
         bitField0_ = (bitField0_ & ~0x00000002);
-        password_ = "";
+        uuid_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
@@ -783,7 +783,7 @@ public final class Protocol {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.password_ = password_;
+        result.uuid_ = uuid_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -806,8 +806,8 @@ public final class Protocol {
         if (other.hasRegistarionType()) {
           setRegistarionType(other.getRegistarionType());
         }
-        if (other.hasPassword()) {
-          setPassword(other.getPassword());
+        if (other.hasUuid()) {
+          setUuid(other.getUuid());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -866,7 +866,7 @@ public final class Protocol {
             }
             case 26: {
               bitField0_ |= 0x00000004;
-              password_ = input.readBytes();
+              uuid_ = input.readBytes();
               break;
             }
           }
@@ -935,39 +935,39 @@ public final class Protocol {
         return this;
       }
       
-      // optional string password = 3;
-      private java.lang.Object password_ = "";
-      public boolean hasPassword() {
+      // optional string uuid = 3;
+      private java.lang.Object uuid_ = "";
+      public boolean hasUuid() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      public String getPassword() {
-        java.lang.Object ref = password_;
+      public String getUuid() {
+        java.lang.Object ref = uuid_;
         if (!(ref instanceof String)) {
           String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          password_ = s;
+          uuid_ = s;
           return s;
         } else {
           return (String) ref;
         }
       }
-      public Builder setPassword(String value) {
+      public Builder setUuid(String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000004;
-        password_ = value;
+        uuid_ = value;
         onChanged();
         return this;
       }
-      public Builder clearPassword() {
+      public Builder clearUuid() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        password_ = getDefaultInstance().getPassword();
+        uuid_ = getDefaultInstance().getUuid();
         onChanged();
         return this;
       }
-      void setPassword(com.google.protobuf.ByteString value) {
+      void setUuid(com.google.protobuf.ByteString value) {
         bitField0_ |= 0x00000004;
-        password_ = value;
+        uuid_ = value;
         onChanged();
       }
       
@@ -5546,6 +5546,10 @@ public final class Protocol {
         getGroupOrBuilderList();
     net.protocol.Protocol.GroupOrBuilder getGroupOrBuilder(
         int index);
+    
+    // optional int32 numAllOnlinePlayers = 2;
+    boolean hasNumAllOnlinePlayers();
+    int getNumAllOnlinePlayers();
   }
   public static final class CGetGroupList extends
       com.google.protobuf.GeneratedMessage
@@ -5575,6 +5579,7 @@ public final class Protocol {
       return net.protocol.Protocol.internal_static_net_protocol_CGetGroupList_fieldAccessorTable;
     }
     
+    private int bitField0_;
     // repeated .net.protocol.Group group = 1;
     public static final int GROUP_FIELD_NUMBER = 1;
     private java.util.List<net.protocol.Protocol.Group> group_;
@@ -5596,8 +5601,19 @@ public final class Protocol {
       return group_.get(index);
     }
     
+    // optional int32 numAllOnlinePlayers = 2;
+    public static final int NUMALLONLINEPLAYERS_FIELD_NUMBER = 2;
+    private int numAllOnlinePlayers_;
+    public boolean hasNumAllOnlinePlayers() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getNumAllOnlinePlayers() {
+      return numAllOnlinePlayers_;
+    }
+    
     private void initFields() {
       group_ = java.util.Collections.emptyList();
+      numAllOnlinePlayers_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5620,6 +5636,9 @@ public final class Protocol {
       for (int i = 0; i < group_.size(); i++) {
         output.writeMessage(1, group_.get(i));
       }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(2, numAllOnlinePlayers_);
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -5632,6 +5651,10 @@ public final class Protocol {
       for (int i = 0; i < group_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, group_.get(i));
+      }
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, numAllOnlinePlayers_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5764,6 +5787,8 @@ public final class Protocol {
         } else {
           groupBuilder_.clear();
         }
+        numAllOnlinePlayers_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       
@@ -5801,6 +5826,7 @@ public final class Protocol {
       public net.protocol.Protocol.CGetGroupList buildPartial() {
         net.protocol.Protocol.CGetGroupList result = new net.protocol.Protocol.CGetGroupList(this);
         int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         if (groupBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
             group_ = java.util.Collections.unmodifiableList(group_);
@@ -5810,6 +5836,11 @@ public final class Protocol {
         } else {
           result.group_ = groupBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.numAllOnlinePlayers_ = numAllOnlinePlayers_;
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -5850,6 +5881,9 @@ public final class Protocol {
               groupBuilder_.addAllMessages(other.group_);
             }
           }
+        }
+        if (other.hasNumAllOnlinePlayers()) {
+          setNumAllOnlinePlayers(other.getNumAllOnlinePlayers());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -5892,6 +5926,11 @@ public final class Protocol {
               net.protocol.Protocol.Group.Builder subBuilder = net.protocol.Protocol.Group.newBuilder();
               input.readMessage(subBuilder, extensionRegistry);
               addGroup(subBuilder.buildPartial());
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              numAllOnlinePlayers_ = input.readInt32();
               break;
             }
           }
@@ -6084,6 +6123,27 @@ public final class Protocol {
           group_ = null;
         }
         return groupBuilder_;
+      }
+      
+      // optional int32 numAllOnlinePlayers = 2;
+      private int numAllOnlinePlayers_ ;
+      public boolean hasNumAllOnlinePlayers() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public int getNumAllOnlinePlayers() {
+        return numAllOnlinePlayers_;
+      }
+      public Builder setNumAllOnlinePlayers(int value) {
+        bitField0_ |= 0x00000002;
+        numAllOnlinePlayers_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearNumAllOnlinePlayers() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        numAllOnlinePlayers_ = 0;
+        onChanged();
+        return this;
       }
       
       // @@protoc_insertion_point(builder_scope:net.protocol.CGetGroupList)
@@ -9192,6 +9252,14 @@ public final class Protocol {
     // required .net.protocol.TypeMove typeMove = 2;
     boolean hasTypeMove();
     net.protocol.Protocol.TypeMove getTypeMove();
+    
+    // optional int32 numberOfWonGame = 3;
+    boolean hasNumberOfWonGame();
+    int getNumberOfWonGame();
+    
+    // optional int32 numberOfLostGame = 4;
+    boolean hasNumberOfLostGame();
+    int getNumberOfLostGame();
   }
   public static final class CStartGame extends
       com.google.protobuf.GeneratedMessage
@@ -9242,9 +9310,31 @@ public final class Protocol {
       return typeMove_;
     }
     
+    // optional int32 numberOfWonGame = 3;
+    public static final int NUMBEROFWONGAME_FIELD_NUMBER = 3;
+    private int numberOfWonGame_;
+    public boolean hasNumberOfWonGame() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public int getNumberOfWonGame() {
+      return numberOfWonGame_;
+    }
+    
+    // optional int32 numberOfLostGame = 4;
+    public static final int NUMBEROFLOSTGAME_FIELD_NUMBER = 4;
+    private int numberOfLostGame_;
+    public boolean hasNumberOfLostGame() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public int getNumberOfLostGame() {
+      return numberOfLostGame_;
+    }
+    
     private void initFields() {
       opponentId_ = 0;
       typeMove_ = net.protocol.Protocol.TypeMove.X;
+      numberOfWonGame_ = 0;
+      numberOfLostGame_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -9272,6 +9362,12 @@ public final class Protocol {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeEnum(2, typeMove_.getNumber());
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, numberOfWonGame_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, numberOfLostGame_);
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -9288,6 +9384,14 @@ public final class Protocol {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(2, typeMove_.getNumber());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, numberOfWonGame_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, numberOfLostGame_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9417,6 +9521,10 @@ public final class Protocol {
         bitField0_ = (bitField0_ & ~0x00000001);
         typeMove_ = net.protocol.Protocol.TypeMove.X;
         bitField0_ = (bitField0_ & ~0x00000002);
+        numberOfWonGame_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        numberOfLostGame_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       
@@ -9463,6 +9571,14 @@ public final class Protocol {
           to_bitField0_ |= 0x00000002;
         }
         result.typeMove_ = typeMove_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.numberOfWonGame_ = numberOfWonGame_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.numberOfLostGame_ = numberOfLostGame_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -9484,6 +9600,12 @@ public final class Protocol {
         }
         if (other.hasTypeMove()) {
           setTypeMove(other.getTypeMove());
+        }
+        if (other.hasNumberOfWonGame()) {
+          setNumberOfWonGame(other.getNumberOfWonGame());
+        }
+        if (other.hasNumberOfLostGame()) {
+          setNumberOfLostGame(other.getNumberOfLostGame());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -9540,6 +9662,16 @@ public final class Protocol {
               }
               break;
             }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              numberOfWonGame_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              numberOfLostGame_ = input.readInt32();
+              break;
+            }
           }
         }
       }
@@ -9587,6 +9719,48 @@ public final class Protocol {
       public Builder clearTypeMove() {
         bitField0_ = (bitField0_ & ~0x00000002);
         typeMove_ = net.protocol.Protocol.TypeMove.X;
+        onChanged();
+        return this;
+      }
+      
+      // optional int32 numberOfWonGame = 3;
+      private int numberOfWonGame_ ;
+      public boolean hasNumberOfWonGame() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public int getNumberOfWonGame() {
+        return numberOfWonGame_;
+      }
+      public Builder setNumberOfWonGame(int value) {
+        bitField0_ |= 0x00000004;
+        numberOfWonGame_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearNumberOfWonGame() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        numberOfWonGame_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // optional int32 numberOfLostGame = 4;
+      private int numberOfLostGame_ ;
+      public boolean hasNumberOfLostGame() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      public int getNumberOfLostGame() {
+        return numberOfLostGame_;
+      }
+      public Builder setNumberOfLostGame(int value) {
+        bitField0_ |= 0x00000008;
+        numberOfLostGame_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearNumberOfLostGame() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        numberOfLostGame_ = 0;
         onChanged();
         return this;
       }
@@ -11530,6 +11704,10 @@ public final class Protocol {
     // required bool continueGame = 1;
     boolean hasContinueGame();
     boolean getContinueGame();
+    
+    // required .net.protocol.TypeMove type = 3;
+    boolean hasType();
+    net.protocol.Protocol.TypeMove getType();
   }
   public static final class CContinueGame extends
       com.google.protobuf.GeneratedMessage
@@ -11570,8 +11748,19 @@ public final class Protocol {
       return continueGame_;
     }
     
+    // required .net.protocol.TypeMove type = 3;
+    public static final int TYPE_FIELD_NUMBER = 3;
+    private net.protocol.Protocol.TypeMove type_;
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public net.protocol.Protocol.TypeMove getType() {
+      return type_;
+    }
+    
     private void initFields() {
       continueGame_ = false;
+      type_ = net.protocol.Protocol.TypeMove.X;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -11579,6 +11768,10 @@ public final class Protocol {
       if (isInitialized != -1) return isInitialized == 1;
       
       if (!hasContinueGame()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasType()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -11592,6 +11785,9 @@ public final class Protocol {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeBool(1, continueGame_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeEnum(3, type_.getNumber());
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -11604,6 +11800,10 @@ public final class Protocol {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(1, continueGame_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(3, type_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -11731,6 +11931,8 @@ public final class Protocol {
         super.clear();
         continueGame_ = false;
         bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = net.protocol.Protocol.TypeMove.X;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       
@@ -11773,6 +11975,10 @@ public final class Protocol {
           to_bitField0_ |= 0x00000001;
         }
         result.continueGame_ = continueGame_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.type_ = type_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -11792,12 +11998,19 @@ public final class Protocol {
         if (other.hasContinueGame()) {
           setContinueGame(other.getContinueGame());
         }
+        if (other.hasType()) {
+          setType(other.getType());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
       
       public final boolean isInitialized() {
         if (!hasContinueGame()) {
+          
+          return false;
+        }
+        if (!hasType()) {
           
           return false;
         }
@@ -11832,6 +12045,17 @@ public final class Protocol {
               continueGame_ = input.readBool();
               break;
             }
+            case 24: {
+              int rawValue = input.readEnum();
+              net.protocol.Protocol.TypeMove value = net.protocol.Protocol.TypeMove.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(3, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                type_ = value;
+              }
+              break;
+            }
           }
         }
       }
@@ -11855,6 +12079,30 @@ public final class Protocol {
       public Builder clearContinueGame() {
         bitField0_ = (bitField0_ & ~0x00000001);
         continueGame_ = false;
+        onChanged();
+        return this;
+      }
+      
+      // required .net.protocol.TypeMove type = 3;
+      private net.protocol.Protocol.TypeMove type_ = net.protocol.Protocol.TypeMove.X;
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public net.protocol.Protocol.TypeMove getType() {
+        return type_;
+      }
+      public Builder setType(net.protocol.Protocol.TypeMove value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000002;
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        type_ = net.protocol.Protocol.TypeMove.X;
         onChanged();
         return this;
       }
@@ -16685,72 +16933,74 @@ public final class Protocol {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016Protocol.proto\022\014net.protocol\"g\n\014SLogin" +
+      "\n\016Protocol.proto\022\014net.protocol\"c\n\014SLogin" +
       "ToGame\022\014\n\004name\030\001 \002(\t\0227\n\017registarionType\030" +
-      "\002 \002(\0162\036.net.protocol.RegistrationType\022\020\n" +
-      "\010password\030\003 \001(\t\"]\n\014CLoginToGame\022\017\n\007isLog" +
-      "in\030\002 \002(\010\022\n\n\002id\030\001 \001(\005\0220\n\014loginProblem\030\003 \001" +
-      "(\0162\032.net.protocol.LoginProblem\"{\n\031SRegis" +
-      "trationNewXOAccount\022\014\n\004name\030\001 \002(\t\022\020\n\010pas" +
-      "sword\030\002 \002(\t\022\r\n\005email\030\003 \002(\t\022\036\n\003sex\030\004 \002(\0162" +
-      "\021.net.protocol.Sex\022\017\n\007country\030\005 \001(\t\"d\n\031C" +
-      "RegistrationNewXOAccount\022\023\n\013isRegistred\030",
-      "\001 \002(\010\0222\n\007problem\030\002 \001(\0162!.net.protocol.Re" +
-      "gistrationProblem\")\n\030SForgotXOAccountPas" +
-      "sword\022\r\n\005email\030\001 \002(\t\"V\n\030CForgotXOAccount" +
-      "Password\022:\n\010pesponse\030\001 \002(\0162(.net.protoco" +
-      "l.ResponseForRestorePassword\"\210\001\n\032CUpdate" +
-      "AboutActivityPlayer\022\'\n\tnewPlayer\030\001 \003(\0132\024" +
-      ".net.protocol.Player\0220\n\nexitPlayer\030\002 \003(\013" +
-      "2\034.net.protocol.CExitFromGroup\022\017\n\007groupI" +
-      "d\030\003 \002(\005\")\n\nSGetUpdate\022\n\n\002id\030\001 \002(\005\022\017\n\007gro" +
-      "upId\030\002 \002(\005\"2\n\006Player\022\014\n\004name\030\001 \002(\t\022\n\n\002id",
-      "\030\002 \002(\005\022\016\n\006rating\030\003 \001(\005\"\033\n\rSGetGroupList\022" +
-      "\n\n\002id\030\001 \002(\005\"3\n\rCGetGroupList\022\"\n\005group\030\001 " +
-      "\003(\0132\023.net.protocol.Group\"I\n\005Group\022\017\n\007gro" +
-      "upId\030\003 \002(\005\022\030\n\020numOnlinePlayers\030\001 \002(\005\022\025\n\r" +
-      "numOnlineBots\030\002 \001(\005\" \n\rSEnterToGroup\022\017\n\007" +
-      "groupId\030\001 \002(\005\"\'\n\rCEnterToGroup\022\026\n\016isEnte" +
-      "redGroup\030\001 \002(\010\"3\n\013SWantToPlay\022\020\n\010playerI" +
-      "d\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"!\n\013CWantToPl" +
-      "ay\022\022\n\nopponentId\030\001 \002(\005\"9\n\021SCancelDesireP" +
-      "lay\022\020\n\010playerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(",
-      "\005\"\'\n\021CCancelDesirePlay\022\022\n\nopponentId\030\001 \002" +
-      "(\005\"2\n\nSStartGame\022\020\n\010playerId\030\001 \002(\005\022\022\n\nop" +
-      "ponentId\030\002 \002(\005\"J\n\nCStartGame\022\022\n\nopponent" +
-      "Id\030\001 \002(\005\022(\n\010typeMove\030\002 \002(\0162\026.net.protoco" +
-      "l.TypeMove\"l\n\010SDidMove\022\020\n\010playerId\030\001 \002(\005" +
-      "\022\022\n\nopponentId\030\002 \002(\005\022\t\n\001i\030\003 \002(\005\022\t\n\001j\030\004 \002" +
-      "(\005\022$\n\004type\030\005 \002(\0162\026.net.protocol.TypeMove" +
-      "\"F\n\010CDidMove\022\t\n\001i\030\001 \002(\005\022\t\n\001j\030\002 \002(\005\022$\n\004ty" +
-      "pe\030\003 \002(\0162\026.net.protocol.TypeMove\"5\n\010SWon" +
-      "Game\022\023\n\013idWonPlayer\030\001 \002(\005\022\024\n\014idLostPlaye",
-      "r\030\002 \002(\005\"5\n\rSContinueGame\022\020\n\010playerId\030\001 \002" +
-      "(\005\022\022\n\nopponentId\030\002 \002(\005\"%\n\rCContinueGame\022" +
-      "\024\n\014continueGame\030\001 \002(\010\"E\n\014SChatMessage\022\020\n" +
-      "\010playerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\022\017\n\007m" +
-      "essage\030\003 \002(\t\"\037\n\014CChatMessage\022\017\n\007message\030" +
-      "\001 \002(\t\"G\n\021SGroupChatMessage\022\020\n\010playerId\030\001" +
-      " \002(\005\022\017\n\007message\030\002 \002(\t\022\017\n\007groupId\030\003 \002(\005\"6" +
-      "\n\021CGroupChatMessage\022\020\n\010playerId\030\001 \002(\005\022\017\n" +
-      "\007message\030\002 \002(\t\"5\n\rSExitFromGame\022\020\n\010playe" +
-      "rId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"#\n\rCExitFr",
-      "omGame\022\022\n\nopponentId\030\001 \002(\005\"3\n\016SExitFromG" +
-      "roup\022\020\n\010playerId\030\001 \002(\005\022\017\n\007groupId\030\002 \002(\005\"" +
-      "\"\n\016CExitFromGroup\022\020\n\010playerId\030\001 \002(\005\"\'\n\023S" +
-      "ExitFromGlobalGame\022\020\n\010playerId\030\001 \002(\005\"!\n\r" +
-      "STop100Player\022\020\n\010playerId\030\001 \002(\005\"5\n\rCTop1" +
-      "00Player\022$\n\006player\030\001 \003(\0132\024.net.protocol." +
-      "Player*L\n\020RegistrationType\022\016\n\nannonymous" +
-      "\020\001\022\006\n\002xo\020\002\022\n\n\006google\020\003\022\014\n\010facebook\020\004\022\006\n\002" +
-      "vk\020\005*@\n\014LoginProblem\022\033\n\027nickOrPasswordUn" +
-      "Correct\020\001\022\023\n\017accountUnlocked\020\002*<\n\023Regist",
-      "rationProblem\022\022\n\016emailUnCorrect\020\001\022\021\n\rnic" +
-      "kUnCorrect\020\002*\033\n\003Sex\022\010\n\004male\020\001\022\n\n\006female\020" +
-      "\002*C\n\032ResponseForRestorePassword\022\017\n\013sendT" +
-      "oEmail\020\001\022\024\n\020emailUnCorrected\020\002*\030\n\010TypeMo" +
-      "ve\022\005\n\001X\020\001\022\005\n\001O\020\002B\030\n\014net.protocolB\010Protoc" +
-      "ol"
+      "\002 \002(\0162\036.net.protocol.RegistrationType\022\014\n" +
+      "\004uuid\030\003 \001(\t\"]\n\014CLoginToGame\022\017\n\007isLogin\030\002" +
+      " \002(\010\022\n\n\002id\030\001 \001(\005\0220\n\014loginProblem\030\003 \001(\0162\032" +
+      ".net.protocol.LoginProblem\"{\n\031SRegistrat" +
+      "ionNewXOAccount\022\014\n\004name\030\001 \002(\t\022\020\n\010passwor" +
+      "d\030\002 \002(\t\022\r\n\005email\030\003 \002(\t\022\036\n\003sex\030\004 \002(\0162\021.ne" +
+      "t.protocol.Sex\022\017\n\007country\030\005 \001(\t\"d\n\031CRegi" +
+      "strationNewXOAccount\022\023\n\013isRegistred\030\001 \002(",
+      "\010\0222\n\007problem\030\002 \001(\0162!.net.protocol.Regist" +
+      "rationProblem\")\n\030SForgotXOAccountPasswor" +
+      "d\022\r\n\005email\030\001 \002(\t\"V\n\030CForgotXOAccountPass" +
+      "word\022:\n\010pesponse\030\001 \002(\0162(.net.protocol.Re" +
+      "sponseForRestorePassword\"\210\001\n\032CUpdateAbou" +
+      "tActivityPlayer\022\'\n\tnewPlayer\030\001 \003(\0132\024.net" +
+      ".protocol.Player\0220\n\nexitPlayer\030\002 \003(\0132\034.n" +
+      "et.protocol.CExitFromGroup\022\017\n\007groupId\030\003 " +
+      "\002(\005\")\n\nSGetUpdate\022\n\n\002id\030\001 \002(\005\022\017\n\007groupId" +
+      "\030\002 \002(\005\"2\n\006Player\022\014\n\004name\030\001 \002(\t\022\n\n\002id\030\002 \002",
+      "(\005\022\016\n\006rating\030\003 \001(\005\"\033\n\rSGetGroupList\022\n\n\002i" +
+      "d\030\001 \002(\005\"P\n\rCGetGroupList\022\"\n\005group\030\001 \003(\0132" +
+      "\023.net.protocol.Group\022\033\n\023numAllOnlinePlay" +
+      "ers\030\002 \001(\005\"I\n\005Group\022\017\n\007groupId\030\003 \002(\005\022\030\n\020n" +
+      "umOnlinePlayers\030\001 \002(\005\022\025\n\rnumOnlineBots\030\002" +
+      " \001(\005\" \n\rSEnterToGroup\022\017\n\007groupId\030\001 \002(\005\"\'" +
+      "\n\rCEnterToGroup\022\026\n\016isEnteredGroup\030\001 \002(\010\"" +
+      "3\n\013SWantToPlay\022\020\n\010playerId\030\001 \002(\005\022\022\n\noppo" +
+      "nentId\030\002 \002(\005\"!\n\013CWantToPlay\022\022\n\nopponentI" +
+      "d\030\001 \002(\005\"9\n\021SCancelDesirePlay\022\020\n\010playerId",
+      "\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"\'\n\021CCancelDes" +
+      "irePlay\022\022\n\nopponentId\030\001 \002(\005\"2\n\nSStartGam" +
+      "e\022\020\n\010playerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"" +
+      "}\n\nCStartGame\022\022\n\nopponentId\030\001 \002(\005\022(\n\010typ" +
+      "eMove\030\002 \002(\0162\026.net.protocol.TypeMove\022\027\n\017n" +
+      "umberOfWonGame\030\003 \001(\005\022\030\n\020numberOfLostGame" +
+      "\030\004 \001(\005\"l\n\010SDidMove\022\020\n\010playerId\030\001 \002(\005\022\022\n\n" +
+      "opponentId\030\002 \002(\005\022\t\n\001i\030\003 \002(\005\022\t\n\001j\030\004 \002(\005\022$" +
+      "\n\004type\030\005 \002(\0162\026.net.protocol.TypeMove\"F\n\010" +
+      "CDidMove\022\t\n\001i\030\001 \002(\005\022\t\n\001j\030\002 \002(\005\022$\n\004type\030\003",
+      " \002(\0162\026.net.protocol.TypeMove\"5\n\010SWonGame" +
+      "\022\023\n\013idWonPlayer\030\001 \002(\005\022\024\n\014idLostPlayer\030\002 " +
+      "\002(\005\"5\n\rSContinueGame\022\020\n\010playerId\030\001 \002(\005\022\022" +
+      "\n\nopponentId\030\002 \002(\005\"K\n\rCContinueGame\022\024\n\014c" +
+      "ontinueGame\030\001 \002(\010\022$\n\004type\030\003 \002(\0162\026.net.pr" +
+      "otocol.TypeMove\"E\n\014SChatMessage\022\020\n\010playe" +
+      "rId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\022\017\n\007message" +
+      "\030\003 \002(\t\"\037\n\014CChatMessage\022\017\n\007message\030\001 \002(\t\"" +
+      "G\n\021SGroupChatMessage\022\020\n\010playerId\030\001 \002(\005\022\017" +
+      "\n\007message\030\002 \002(\t\022\017\n\007groupId\030\003 \002(\005\"6\n\021CGro",
+      "upChatMessage\022\020\n\010playerId\030\001 \002(\005\022\017\n\007messa" +
+      "ge\030\002 \002(\t\"5\n\rSExitFromGame\022\020\n\010playerId\030\001 " +
+      "\002(\005\022\022\n\nopponentId\030\002 \002(\005\"#\n\rCExitFromGame" +
+      "\022\022\n\nopponentId\030\001 \002(\005\"3\n\016SExitFromGroup\022\020" +
+      "\n\010playerId\030\001 \002(\005\022\017\n\007groupId\030\002 \002(\005\"\"\n\016CEx" +
+      "itFromGroup\022\020\n\010playerId\030\001 \002(\005\"\'\n\023SExitFr" +
+      "omGlobalGame\022\020\n\010playerId\030\001 \002(\005\"!\n\rSTop10" +
+      "0Player\022\020\n\010playerId\030\001 \002(\005\"5\n\rCTop100Play" +
+      "er\022$\n\006player\030\001 \003(\0132\024.net.protocol.Player" +
+      "*L\n\020RegistrationType\022\016\n\nannonymous\020\001\022\006\n\002",
+      "xo\020\002\022\n\n\006google\020\003\022\014\n\010facebook\020\004\022\006\n\002vk\020\005*@" +
+      "\n\014LoginProblem\022\033\n\027nickOrPasswordUnCorrec" +
+      "t\020\001\022\023\n\017accountUnlocked\020\002*<\n\023Registration" +
+      "Problem\022\022\n\016emailUnCorrect\020\001\022\021\n\rnickUnCor" +
+      "rect\020\002*\033\n\003Sex\022\010\n\004male\020\001\022\n\n\006female\020\002*C\n\032R" +
+      "esponseForRestorePassword\022\017\n\013sendToEmail" +
+      "\020\001\022\024\n\020emailUnCorrected\020\002*\030\n\010TypeMove\022\005\n\001" +
+      "X\020\001\022\005\n\001O\020\002B\030\n\014net.protocolB\010Protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -16762,7 +17012,7 @@ public final class Protocol {
           internal_static_net_protocol_SLoginToGame_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_protocol_SLoginToGame_descriptor,
-              new java.lang.String[] { "Name", "RegistarionType", "Password", },
+              new java.lang.String[] { "Name", "RegistarionType", "Uuid", },
               net.protocol.Protocol.SLoginToGame.class,
               net.protocol.Protocol.SLoginToGame.Builder.class);
           internal_static_net_protocol_CLoginToGame_descriptor =
@@ -16842,7 +17092,7 @@ public final class Protocol {
           internal_static_net_protocol_CGetGroupList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_protocol_CGetGroupList_descriptor,
-              new java.lang.String[] { "Group", },
+              new java.lang.String[] { "Group", "NumAllOnlinePlayers", },
               net.protocol.Protocol.CGetGroupList.class,
               net.protocol.Protocol.CGetGroupList.Builder.class);
           internal_static_net_protocol_Group_descriptor =
@@ -16914,7 +17164,7 @@ public final class Protocol {
           internal_static_net_protocol_CStartGame_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_protocol_CStartGame_descriptor,
-              new java.lang.String[] { "OpponentId", "TypeMove", },
+              new java.lang.String[] { "OpponentId", "TypeMove", "NumberOfWonGame", "NumberOfLostGame", },
               net.protocol.Protocol.CStartGame.class,
               net.protocol.Protocol.CStartGame.Builder.class);
           internal_static_net_protocol_SDidMove_descriptor =
@@ -16954,7 +17204,7 @@ public final class Protocol {
           internal_static_net_protocol_CContinueGame_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_protocol_CContinueGame_descriptor,
-              new java.lang.String[] { "ContinueGame", },
+              new java.lang.String[] { "ContinueGame", "Type", },
               net.protocol.Protocol.CContinueGame.class,
               net.protocol.Protocol.CContinueGame.Builder.class);
           internal_static_net_protocol_SChatMessage_descriptor =

@@ -53,23 +53,32 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
 
 
         gameHandler = Controller.getInstance().getGameHandler();
-        handler = gameHandler.getHandler();
+
         gameFieldAdapter = new GameFieldAdapter(activity, gameHandler);
-        gameFieldAdapter
-                .setPlayer1((TextView) view.findViewById(R.id.tv_field_item));
-        gameFieldAdapter
-                .setPlayer2((TextView) view.findViewById(R.id.tv_second_player_name));
-        gameFieldAdapter.setPlayer1Score((TextView) view.findViewById(R.id.tv_score_player_1));
-        gameFieldAdapter.setPlayer2Score((TextView) view.findViewById(R.id.tv_score_player_2));
+        gameHandler
+                .setPlayer1TexView((TextView) view.findViewById(R.id.tv_field_item));
+        gameHandler
+                .setPlayer2TexView((TextView) view.findViewById(R.id.tv_second_player_name));
+        gameHandler
+                .setPlayer1ScoreTextView((TextView) view.findViewById(R.id.tv_score_player_1));
+        gameHandler
+                .setPlayer2ScoreTextView((TextView) view.findViewById(R.id.tv_score_player_2));
+        gameHandler.setTimerTextView((TextView) view.findViewById(R.id.tv_timer));
 
         gameHandler.setAdapter(gameFieldAdapter);
         gridView.setAdapter(gameFieldAdapter);
-        getFragmentManager().openTransaction();
 
+        gridView.post(new Runnable() {
+            @Override
+            public void run() {
+                gameHandler.initIndicator();
+            }
+        });
         return view;
 
-
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -97,7 +106,19 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
 
     @Override
     public void beginNewGame() {
-        gameFieldAdapter.startNewGame();
         gameHandler.startNewGame();
+    }
+
+
+    @Override
+    public void onResume() {
+
+        super.onResume();
+    }
+
+    @Override
+    public void onDestroy() {
+        gameHandler.unregisterHandler();
+        super.onDestroy();
     }
 }

@@ -10,8 +10,11 @@
 
 
 
+
     <dimen name="big_text_size">30sp</dimen>
     <dimen name="default_text_size">20dp</dimen>
+    <dimen name="main_activity_item_default_text_size">25dp</dimen>
+
     <dimen name="small_text_size">15dp</dimen>
     <dimen name="default_text_size_bottom_button">15dp</dimen>
     <dimen name="game_field_size">100dp</dimen>
@@ -49,21 +52,27 @@
 
     <!--Online group list item-->
     <dimen name="general_list_item_text_size">20dp</dimen>
-
+    <dimen name="rating_list_item_text_size">15dp</dimen>
+    <dimen name="header_list_item_text_size">15dp</dimen>
     <!--Online group fragment layout-->
     <dimen name="online_group_fragment_layout_button_height">40dp</dimen>
 
+    <!--Start activity layout-->
+    <dimen name="start_activity_layout_center_container_padding_left">60dp</dimen>
+    <dimen name="start_activity_layout_center_container_padding_top">10dp</dimen>
+
+    <dimen name="start_activity_layout_center_container_xo_image_height">140dp</dimen>
+    <dimen name="start_activity_layout_center_container_xo_image_width">200dp</dimen>
+    <dimen name="start_activity_layout_center_container_pencil_image_height">400dp</dimen>
+    <dimen name="start_activity_layout_center_container_pencil_image_width">70dp</dimen>
+
+    <dimen name="start_activity_layout_coffee_image_width">129dp</dimen>
+    <dimen name="start_activity_layout_coffee_image_height">132dp</dimen>
+    <dimen name="start_activity_layout_coffee_image_margin_top">-100dp</dimen>
 
 
-
-
-
-
-
-
-
-
-
-
+    <dimen name="main_activity_layout_center_container_clip_width">60dp</dimen>
+    <dimen name="main_activity_layout_center_container_one_item__margin_top">1dp</dimen>
+    <dimen name="main_activity_layout_center_container__one_item_button_margin_left">5dp</dimen>
 
 </resources>

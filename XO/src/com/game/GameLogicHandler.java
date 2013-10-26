@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.entity.OneMove;
-import com.entity.TypeFieldElement;
+import com.entity.TypeOfMove;
 import com.utils.Loger;
 
 public class GameLogicHandler {
@@ -17,7 +17,7 @@ public class GameLogicHandler {
     }
 
     private void setValue(OneMove oneMove) {
-        array[oneMove.i][oneMove.j] = (oneMove.type.equals(TypeFieldElement.X)) ? 1
+        array[oneMove.i][oneMove.j] = (oneMove.type.equals(TypeOfMove.X)) ? 1
                 : 0;
     }
 
@@ -47,7 +47,7 @@ public class GameLogicHandler {
     private List<OneMove> searchWinLine(OneMove oneMove) {
         List<OneMove> outList = new ArrayList<OneMove>();
 
-        int value = (oneMove.type.equals(TypeFieldElement.X)) ? 1 : 0;
+        int value = (oneMove.type.equals(TypeOfMove.X)) ? 1 : 0;
 
         // calculate line - "\"
         if (getValue(oneMove.i + 1, oneMove.j + 1) == value

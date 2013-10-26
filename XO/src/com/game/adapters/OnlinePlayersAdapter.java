@@ -81,6 +81,8 @@ public class OnlinePlayersAdapter extends BaseAdapter {
 		text.setText(players.get(position).getName());
 		view.setBackgroundColor(color.primary_text_light);
 		view.setTag(position);
+        TextView rating = ((TextView) view.findViewById(R.id.tv_player_rating));
+        rating.setText(""+players.get(position).getRating());
 		return view;
 	}
 

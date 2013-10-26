@@ -94,7 +94,7 @@ public class WorkerOnlineConnection extends Thread {
             in = new BufferedInputStream(socket.getInputStream());
             dataInputStream = new DataInputStream(in);
             Protocol.SLoginToGame sLoginToGame = Protocol.SLoginToGame
-                    .newBuilder().setName(player.getName()).setRegistarionType(player.getRegistrationType()).build();
+                    .newBuilder().setName(player.getName()).setRegistarionType(player.getRegistrationType()).setUuid(player.getUuid()).build();
             sendPacket(sLoginToGame);
             while (isConnecting) {
                 byte b = dataInputStream.readByte();

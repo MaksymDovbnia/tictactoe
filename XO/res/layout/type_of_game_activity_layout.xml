@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/background2"
+        >
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            />
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:paddingLeft="@dimen/start_activity_layout_center_container_padding_left"
+            android:paddingTop="@dimen/start_activity_layout_center_container_padding_top"
+            android:background="@drawable/notebook3"
+
+            >
+
+        <ImageView
+                android:id="@+id/imv_start_activity_xo_image"
+                android:layout_width="@dimen/start_activity_layout_center_container_xo_image_width"
+                android:layout_height="@dimen/start_activity_layout_center_container_xo_image_height"
+                android:src="@drawable/tic_tac_toe"
+                android:layout_centerHorizontal="true"
+                />
+
+        <ImageView
+                android:id="@+id/imv_start_activity_pencil"
+                android:layout_width="@dimen/start_activity_layout_center_container_pencil_image_width"
+                android:layout_height="@dimen/start_activity_layout_center_container_pencil_image_height"
+                android:src="@drawable/pencil"
+                android:layout_toRightOf="@+id/imv_start_activity_xo_image"
+
+
+                />
+
+        <LinearLayout
+                android:id="@+id/ll_start_game_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imv_start_activity_xo_image"
+                android:layout_marginTop="@dimen/main_activity_layout_center_container_one_item__margin_top"
+                >
+
+            <ImageView
+                    android:layout_width="@dimen/main_activity_layout_center_container_clip_width"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:src="@drawable/clip_yellow"/>
+
+            <Button
+                    android:id="@+id/btn_two_players"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/main_activity_layout_center_container__one_item_button_margin_left"
+                    android:text="@string/two_players"
+                    style="@style/default_white_button"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/ll_settings_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_start_game_layout"
+                android:layout_marginTop="@dimen/main_activity_layout_center_container_one_item__margin_top"
+                >
+
+            <ImageView
+                    android:layout_width="@dimen/main_activity_layout_center_container_clip_width"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:src="@drawable/clip_yellow"/>
+
+            <Button
+                    android:id="@+id/btn_android"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/main_activity_layout_center_container__one_item_button_margin_left"
+                    android:text="@string/button_gametypes_android"
+                    style="@style/default_white_button"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/ll_online_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_settings_layout"
+                android:layout_marginTop="@dimen/main_activity_layout_center_container_one_item__margin_top"
+                >
+
+            <ImageView
+                    android:layout_width="@dimen/main_activity_layout_center_container_clip_width"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:src="@drawable/clip_yellow"/>
+
+            <Button
+                    android:id="@+id/btn_online"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/main_activity_layout_center_container__one_item_button_margin_left"
+                    android:text="@string/button_gametypes_online"
+                    style="@style/default_white_button"
+                    />
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/ll_bluetooth_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_online_layout"
+                android:layout_marginTop="@dimen/main_activity_layout_center_container_one_item__margin_top"
+                >
+
+            <ImageView
+                    android:layout_width="@dimen/main_activity_layout_center_container_clip_width"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:src="@drawable/clip_yellow"/>
+
+            <Button
+                    android:id="@+id/btn_bluetooth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/main_activity_layout_center_container__one_item_button_margin_left"
+                    android:text="@string/button_gametypes_bluetooth"
+                    style="@style/default_white_button"
+                    />
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <ImageView
+            android:layout_marginTop="@dimen/start_activity_layout_coffee_image_margin_top"
+            android:layout_width="@dimen/start_activity_layout_coffee_image_width"
+            android:layout_height="@dimen/start_activity_layout_coffee_image_height"
+            android:layout_gravity="bottom"
+            android:src="@drawable/coffee"/>
+
+
+</LinearLayout>

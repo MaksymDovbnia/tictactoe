@@ -5,6 +5,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="online_activity_text_size">15dp</dimen>
     <dimen name="main_button_text_size">25dp</dimen>
+    <dimen name="main_activity_item_default_text_size">50dp</dimen>
 
 
 
@@ -48,6 +49,24 @@
 
     <!--Online group fragment layout-->
     <dimen name="online_group_fragment_layout_button_height">60dp</dimen>
+
+    <!--Start activity layout-->
+    <dimen name="start_activity_layout_center_container_padding_left">160dp</dimen>
+    <dimen name="start_activity_layout_center_container_padding_top">30dp</dimen>
+
+    <dimen name="start_activity_layout_center_container_xo_image_height">280dp</dimen>
+    <dimen name="start_activity_layout_center_container_xo_image_width">400dp</dimen>
+    <dimen name="start_activity_layout_center_container_pencil_image_height">700dp</dimen>
+    <dimen name="start_activity_layout_center_container_pencil_image_width">200dp</dimen>
+
+    <dimen name="start_activity_layout_coffee_image_width">349dp</dimen>
+    <dimen name="start_activity_layout_coffee_image_height">362dp</dimen>
+    <dimen name="start_activity_layout_coffee_image_margin_top">-250dp</dimen>
+
+
+    <dimen name="main_activity_layout_center_container_clip_width">120dp</dimen>
+    <dimen name="main_activity_layout_center_container_one_item__margin_top">20dp</dimen>
+    <dimen name="main_activity_layout_center_container__one_item_button_margin_left">10dp</dimen>
 
 
 

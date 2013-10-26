@@ -12,6 +12,12 @@
         <item name="android:textSize">@dimen/main_button_text_size</item>
     </style>
 
+    <style name="default_white_button">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:background">@drawable/selector_for_text_view</item>
+        <item name="android:textSize">@dimen/main_activity_item_default_text_size</item>
+    </style>
+
     <style name="xo_popup">
     <item name="android:background">@drawable/dialog_view</item>
     </style>
@@ -23,6 +29,9 @@
         <item name="android:paddingBottom">10dp</item>
 
     </style>
+
+
+
 
     
 </resources>

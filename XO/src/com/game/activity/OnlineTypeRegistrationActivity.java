@@ -229,7 +229,7 @@ public class OnlineTypeRegistrationActivity extends Activity implements
                     Loger.printLog("click" + v.getId());
                     player = new Player();
                     player.setName(loginAnon.getText().toString());
-                    player.setRegistrationType(Protocol.RegistrationType.annonymous);
+                    player.setRegistrationType(Protocol.RegistrationType.xo);
                     onlineGameWorker = new WorkerOnlineConnection(handler,
                             player, pd);
                     Controller.getInstance().setOnlineWorker(onlineGameWorker);

@@ -6,28 +6,28 @@
               android:orientation="horizontal">
 
     <TextView
-            android:id="@+id/tv_player_name"
+
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:text="Non name"
+            android:text="@string/nick"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/general_list_item_text_size"/>
+            android:textColor="@color/red"
+            android:textSize="@dimen/header_list_item_text_size"/>
 
     <TextView
-            android:id="@+id/tv_player_rating"
+
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:text="100"
+            android:text="@string/rating"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="@color/blue"
-            android:textSize="@dimen/general_list_item_text_size"/>
+            android:textColor="@color/red"
+            android:textSize="@dimen/header_list_item_text_size"/>
 
 
 </LinearLayout>

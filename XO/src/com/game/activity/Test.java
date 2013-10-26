@@ -18,7 +18,7 @@ public class Test extends Activity {
         gameFieldItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gameFieldItem.setFieldType(GameFieldItem.FieldType.X);
+                gameFieldItem.setFieldTypeAndDraw(GameFieldItem.FieldType.X);
           gameFieldItem.setMarkAboutLastMove(true);
             }
         });

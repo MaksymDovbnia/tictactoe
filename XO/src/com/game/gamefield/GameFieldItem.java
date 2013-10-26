@@ -51,9 +51,13 @@ public class GameFieldItem extends ImageView {
 
     }
 
-    public void setFieldType(FieldType fieldType) {
+    public void setFieldTypeAndDraw(FieldType fieldType) {
         this.fieldType = fieldType;
         invalidate();
+    }
+
+    public FieldType getFieldType() {
+        return fieldType;
     }
 
     public WinLineType getWinLineType() {

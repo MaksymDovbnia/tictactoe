@@ -3,134 +3,232 @@ package com.game.gamefield.handler;
 import java.util.List;
 
 import net.protocol.Protocol;
+
 import android.os.Handler;
 import android.os.Message;
+import android.widget.TextView;
 
 import com.entity.OneMove;
 import com.entity.Player;
-import com.entity.TypeFieldElement;
-import com.game.GameLogicHandler;
+import com.entity.TypeOfMove;
 import com.game.GameType;
+import com.game.activity.R;
 import com.game.gamefield.GameFieldActivityAction;
 import com.game.gamefield.GameFieldAdapter;
+import com.game.gamefield.GameFieldItem;
 import com.net.online.WorkerOnlineConnection;
 import com.net.online.protobuf.ProtoType;
 import com.utils.Loger;
 
-public class OnlineGameHandler implements GameHandler {
+public class OnlineGameHandler extends  GlobalHandler implements GameHandler {
 
-	private Handler handler;
-	private GameLogicHandler gameActionHandler;
-	private WorkerOnlineConnection onlineGameWorker;
-	private Player player;
-	private Player opponet;
-	private GameFieldAdapter gameFieldAdapter;
-    private  GameFieldActivityAction gameFiledActions;
+    private Handler handler;
+    private WorkerOnlineConnection onlineGameWorker;
+    private boolean isPlayerMoveFirst;
 
-	public OnlineGameHandler(WorkerOnlineConnection onlineGameWorker,
-			Player player, Player opponent, GameFieldActivityAction fieldActivityAction) {
-		this.player = player;
-		this.opponet = opponent;
-		this.onlineGameWorker = onlineGameWorker;
-		gameActionHandler = new GameLogicHandler();
-        this.gameFiledActions  = fieldActivityAction;
+    public OnlineGameHandler(final WorkerOnlineConnection onlineGameWorker,
+                              Player player, Player opponent, GameFieldActivityAction fieldActivityAction, final boolean isPlayerMoveFirst) {
+        super(player, opponent, fieldActivityAction);
+        this.onlineGameWorker = onlineGameWorker;
+        this.activityAction = fieldActivityAction;
+        this.isPlayerMoveFirst = isPlayerMoveFirst;
 
-		this.handler = new Handler() {
-			@Override
-			public void handleMessage(Message msg) {
-				ProtoType protoType = ProtoType.fromInt(msg.what);
-				switch (protoType) {
-				case CCHATMESSAGE:
-					break;
+        this.handler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                ProtoType protoType = ProtoType.fromInt(msg.what);
+                switch (protoType) {
+                    case CCHATMESSAGE:
+                        break;
 
-				case CDIDMOVE:
-					Protocol.CDidMove cDidMove = (Protocol.CDidMove) msg.obj;
-					Loger.printLog(cDidMove.toString());
-					TypeFieldElement typeFieldElement = (cDidMove.getType()
-							.equals(Protocol.TypeMove.X) ? TypeFieldElement.X
-							: TypeFieldElement.O);
-					OneMove oneMove = new OneMove(cDidMove.getI(),
-							cDidMove.getJ(), typeFieldElement);
-					gameFieldAdapter.opponentDidOneMove(oneMove);
-					List<OneMove> list = gameActionHandler.oneMove(oneMove);
-					if (list != null)
-						gameFieldAdapter.drawWinLine(list);
-					break;
-                case CEXITFROMGAME:
-                    OnlineGameHandler.this.gameFiledActions.opponentExitFromGame();
-                    break;
-                case CCONTINUEGAME:
-                     gameFieldAdapter.startNewGame();
-                    break;
+                    case CDIDMOVE:
+                        Protocol.CDidMove cDidMove = (Protocol.CDidMove) msg.obj;
+                        Loger.printLog(cDidMove.toString());
+                        TypeOfMove typeFieldElement = (cDidMove.getType()
+                                .equals(Protocol.TypeMove.X) ? TypeOfMove.X
+                                : TypeOfMove.O);
+                        OneMove oneMove = new OneMove(cDidMove.getI(),
+                                cDidMove.getJ(), typeFieldElement);
 
-				}
 
-				super.handleMessage(msg);
-			}
+                        gameFieldAdapter.setEnableAllUnusedGameField(true);
+                        gameFieldAdapter.showOneMove(oneMove);
+                        List<OneMove> list = gameActionHandler.oneMove(oneMove);
+                        if (list != null){
+                            wonGame(list);
+                        }
+                        changeIndicator();
+                        break;
+                    case CEXITFROMGAME:
+                        OnlineGameHandler.this.activityAction.opponentExitFromGame();
+                        break;
+                    case CCONTINUEGAME:
+                        Protocol.CContinueGame cContinueGame = (Protocol.CContinueGame) msg.obj;
+                        Protocol.TypeMove typeOfMove = cContinueGame.getType();
+                        if (typeOfMove == Protocol.TypeMove.X) {
+                            indicator = FIRST_PLAYER;
+                            OnlineGameHandler.super.player.setMoveType(TypeOfMove.X);
+                            OnlineGameHandler.super.opponent.setMoveType(TypeOfMove.O);
+                            tvPlayer1Name.setBackgroundResource(R.drawable.ovalbound_red);
+                            tvPlayer2Name.setBackgroundResource(R.drawable.button_white);
+                            gameFieldAdapter.setEnableAllUnusedGameField(true);
+                        }
+                        else {
+                            indicator = SECOND_PLAYER;
+                            OnlineGameHandler.super.player.setMoveType(TypeOfMove.O);
+                            OnlineGameHandler.super.opponent.setMoveType(TypeOfMove.X);
+                            tvPlayer2Name.setBackgroundResource(R.drawable.ovalbound_red);
+                            tvPlayer1Name.setBackgroundResource(R.drawable.button_white);
+                        }
 
-		};
+                        break;
 
-		onlineGameWorker.registerHandler(handler);
-	}
+                }
 
-	public List<OneMove> oneMove(OneMove oneMove) {
-		Protocol.SDidMove sDidMove = Protocol.SDidMove
-				.newBuilder()
-				.setOpponentId(opponet.getId())
-				.setPlayerId(player.getId())				
-				.setJ(oneMove.j)
-				.setI(oneMove.i)
-				.setType(
-						(oneMove.type.equals(TypeFieldElement.X)) ? Protocol.TypeMove.X
-								: Protocol.TypeMove.O).build();
+                super.handleMessage(msg);
+            }
 
-		onlineGameWorker.sendPacket(sDidMove);
+        };
 
-		List<OneMove> list = gameActionHandler.oneMove(oneMove);
-		if (list != null)
-			gameActionHandler.newGame();
-		return list;
-	}
+        onlineGameWorker.registerHandler(handler);
+    }
 
-	public void sendMessage(String message) {
-		Protocol.SChatMessage chatMessage = Protocol.SChatMessage.newBuilder()
-				.setMessage(message).setPlayerId(player.getId())
-				.setOpponentId(opponet.getId()).build();
-		onlineGameWorker.sendPacket(chatMessage);
-	}
+    public List<OneMove> performedOneMove(OneMove oneMove) {
+        Protocol.SDidMove sDidMove = Protocol.SDidMove
+                .newBuilder()
+                .setOpponentId(opponent.getId())
+                .setPlayerId(player.getId())
+                .setJ(oneMove.j)
+                .setI(oneMove.i)
+                .setType(
+                        (oneMove.type.equals(TypeOfMove.X)) ? Protocol.TypeMove.X
+                                : Protocol.TypeMove.O).build();
 
-	public GameType getGameType() {
+        onlineGameWorker.sendPacket(sDidMove);
+        List<OneMove> list = gameActionHandler.oneMove(oneMove);
+        if (list != null){
+           wonGame(list);
+           onlineGameWorker.sendPacket(Protocol.SWonGame.newBuilder().setIdWonPlayer(player.getId()).setIdLostPlayer(opponent.getId()).build());
+        }
 
-		return GameType.ONLINE;
-	}
+        return list;
+    }
 
-	public Handler getHandler() {
-		return handler;
-	}
 
-	@Override
-	public void setAdapter(GameFieldAdapter adapter) {
-		this.gameFieldAdapter = adapter;
-		adapter.getPlayer1().setText(player.getName());
-		adapter.getPlayer2().setText(opponet.getName());
 
-	}
 
-	@Override
-	public void startNewGame() {
-		gameActionHandler.newGame();
+    @Override
+    public GameFieldItem.FieldType occurredMove(int i, int j) {
+        GameFieldItem.FieldType type = null;
+        OneMove oneMove = null;
+        if (indicator == FIRST_PLAYER) {
+            type = (player.getMoveType() == TypeOfMove.X) ? GameFieldItem.FieldType.X : GameFieldItem.FieldType.O;
+            oneMove = new OneMove(i,j,player.getMoveType());
+        } else if (indicator == SECOND_PLAYER) {
+            type = (opponent.getMoveType() == TypeOfMove.X) ? GameFieldItem.FieldType.X : GameFieldItem.FieldType.O;
+            oneMove = new OneMove(i,j, opponent.getMoveType());
+        }
+        performedOneMove(oneMove);
+        changeIndicator();
+        gameFieldAdapter.setEnableAllUnusedGameField(false);
+        return type;
+    }
 
-	}
+
+    public void sendMessage(String message) {
+        Protocol.SChatMessage chatMessage = Protocol.SChatMessage.newBuilder()
+                .setMessage(message).setPlayerId(player.getId())
+                .setOpponentId(opponent.getId()).build();
+        onlineGameWorker.sendPacket(chatMessage);
+    }
+
+    public GameType getGameType() {
+
+        return GameType.ONLINE;
+    }
+
+    public Handler getHandler() {
+        return handler;
+    }
+
+    @Override
+    public void setAdapter(GameFieldAdapter adapter) {
+        this.gameFieldAdapter = adapter;
+    }
+
+    @Override
+    public void setPlayer1TexView(TextView player1TexView) {
+        this.tvPlayer1Name = player1TexView;
+        this.tvPlayer1Name.setText(player.getName());
+
+    }
+
+    @Override
+    public void setPlayer2TexView(TextView player2TexView) {
+        this.tvPlayer2Name = player2TexView;
+        this.tvPlayer2Name.setText(opponent.getName());
+    }
+
+    @Override
+    public void setPlayer1ScoreTextView(TextView score1TexView) {
+        tvPlayer1Score = score1TexView;
+    }
+
+    @Override
+    public void setPlayer2ScoreTextView(TextView score2TexView) {
+        tvPlayer2Score = score2TexView;
+    }
+
+    @Override
+    public void setTimerTextView(TextView timerTexView) {
+        tvTimeInsicator = timerTexView;
+    }
+
+    @Override
+    public void initIndicator() {
+        if (!isPlayerMoveFirst) {
+            gameFieldAdapter.setEnableAllUnusedGameField(isPlayerMoveFirst);
+            player.setMoveType(TypeOfMove.O);
+            opponent.setMoveType(TypeOfMove.X);
+            indicator = SECOND_PLAYER;
+            tvPlayer2Name.setBackgroundResource(R.drawable.ovalbound_red);
+            tvPlayer1Name.setBackgroundResource(R.drawable.button_white);
+
+        } else {
+            indicator = FIRST_PLAYER;
+            tvPlayer1Name.setBackgroundResource(R.drawable.ovalbound_red);
+            tvPlayer2Name.setBackgroundResource(R.drawable.button_white);
+            player.setMoveType(TypeOfMove.X);
+            opponent.setMoveType(TypeOfMove.O);
+        }
+    }
+
+    @Override
+    public void startNewGame() {
+        gameActionHandler.newGame();
+        gameFieldAdapter.startNewGame();
+        gameFieldAdapter.setEnableAllUnusedGameField(false);
+        onlineGameWorker.sendPacket(Protocol.SContinueGame.newBuilder().setPlayerId(player.getId()).setOpponentId(opponent.getId()).build());
+        showWaitingPopup();
+    }
+    public void showWaitingPopup(){
+
+    }
 
     @Override
     public void exitFromGame() {
-       onlineGameWorker.sendPacket(Protocol.SExitFromGame.newBuilder().setPlayerId(player.getId()).setOpponentId(1).build());
-       onlineGameWorker.unRegisterHandler(handler);
+        onlineGameWorker.sendPacket(Protocol.SExitFromGame.newBuilder().setPlayerId(player.getId()).setOpponentId(1).build());
+        onlineGameWorker.unRegisterHandler(handler);
+    }
+
+    @Override
+    public void setActivityAction(GameFieldActivityAction activityAction) {
+        this.activityAction  = activityAction;
     }
 
     @Override
     public void unregisterHandler() {
-
+        if (handler != null) onlineGameWorker.unRegisterHandler(handler);
     }
 
 }

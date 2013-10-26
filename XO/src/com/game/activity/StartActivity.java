@@ -9,16 +9,13 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-public class StartActivity extends FragmentActivity implements OnClickListener,
-		OnTouchListener {
+public class StartActivity extends FragmentActivity implements OnClickListener {
 	Button start;
 	Button exit;
     Button settings;
@@ -28,19 +25,18 @@ public class StartActivity extends FragmentActivity implements OnClickListener,
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_second);
+		setContentView(R.layout.start_activity_layout);
 		
 		Typeface mFont = Typeface.createFromAsset(getAssets(), "fonts/acquestscript.ttf");
-		start = (Button) findViewById(R.id.Button_startactivity_start);
+		start = (Button) findViewById(R.id.btn_start_activity_start_game);
 		start.setOnClickListener(this);
-		start.setOnTouchListener(this);
-		exit = (Button) findViewById(R.id.Button_startactivity_exit);
+
+		exit = (Button) findViewById(R.id.btn_start_activity_exit);
 		exit.setOnClickListener(this);
-		exit.setOnTouchListener(this);
-		settings = (Button) findViewById(R.id.button_startactivity_settings);
+
+		settings = (Button) findViewById(R.id.btn_start_activity_settings);
         settings.setOnClickListener(this);
-		LinearLayout l = (LinearLayout) findViewById(R.id.LL_startmenu);
-		Font.setAppFont((ViewGroup)l, mFont);
+
 		
 		
 	}
@@ -55,16 +51,16 @@ public class StartActivity extends FragmentActivity implements OnClickListener,
 	public void onClick(View view) {
 
 		switch (view.getId()) {
-		case R.id.Button_startactivity_start:
+		case R.id.btn_start_activity_start_game:
 			// view.setBackgroundResource(R.drawable.button_white_withblueline);
 			Intent intent = new Intent(this, SelectTypeOfGameActivity.class);
 			startActivity(intent);
 			break;
 
-		case R.id.Button_startactivity_exit: finish();
+		case R.id.btn_start_activity_exit: finish();
 		break;
 
-            case R.id.button_startactivity_settings:
+            case R.id.btn_start_activity_settings:
                 Intent intent2 = new Intent(this, Test.class);
                 startActivity(intent2);
                 break;
@@ -75,22 +71,7 @@ public class StartActivity extends FragmentActivity implements OnClickListener,
 
 	}
 
-	@Override
-	public boolean onTouch(View v, MotionEvent event) {
-		switch (event.getAction()) {
-		case MotionEvent.ACTION_DOWN:
-			v.setBackgroundResource(R.drawable.button_white_withblueline);
-			break;
-		case MotionEvent.ACTION_UP:
-			v.setBackgroundResource(R.drawable.button_white);
-			break;
 
-		default:
-			break;
-		}
-
-		return false;
-	}
     @Override
     public void onBackPressed() {
         XOAlertDialog xoAlertDialog = new XOAlertDialog();

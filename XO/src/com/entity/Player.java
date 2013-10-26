@@ -14,7 +14,9 @@ public class Player implements Serializable{
 	private Map<Integer, Player> mapActivityPlayer;
 	private Protocol.RegistrationType registrationType;
     private int groupId;
-
+    private String uuid;
+    private TypeOfMove moveType;
+    private int rating;
 	public Player() {
 		playerMapWichWantedPlay = new HashMap<Integer, Player>();
 	}
@@ -25,6 +27,13 @@ public class Player implements Serializable{
 		playerMapWichWantedPlay = new HashMap<Integer, Player>();
 		mapActivityPlayer = new HashMap<Integer, Player>();
 	}
+    public Player(int id, String name, int rating) {
+        this.id = id;
+        this.name = name;
+        this.rating = rating;
+        playerMapWichWantedPlay = new HashMap<Integer, Player>();
+        mapActivityPlayer = new HashMap<Integer, Player>();
+    }
 	public Player(int id, String name, Protocol.RegistrationType registrationType) {
 		this.registrationType = registrationType;
 		this.id = id;
@@ -33,7 +42,32 @@ public class Player implements Serializable{
 		mapActivityPlayer = new HashMap<Integer, Player>();
 	}
 
-	public int getId() {
+
+    public TypeOfMove getMoveType() {
+        return moveType;
+    }
+
+    public void setMoveType(TypeOfMove moveType) {
+        this.moveType = moveType;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public int getId() {
 		return id;
 	}
 

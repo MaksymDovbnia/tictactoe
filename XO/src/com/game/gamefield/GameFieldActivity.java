@@ -12,10 +12,12 @@ import android.widget.Button;
 
 import com.config.BundleKeys;
 import com.entity.Player;
+import com.entity.TypeOfMove;
 import com.game.Controller;
 import com.game.GameType;
 import com.game.activity.R;
 import com.game.fragments.GroupChatFragment;
+import com.game.gamefield.handler.FriendGameHandler;
 import com.game.gamefield.handler.OnlineGameHandler;
 import com.game.popup.XOAlertDialog;
 
@@ -31,6 +33,8 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
     ;
     private Button openGroup;
     private Button openChat;
+    private Button newGame;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,21 +42,55 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
 
         Intent intent = getIntent();
         GameType gameType = (GameType) intent.getSerializableExtra(BundleKeys.TYPE_OF_GAME);
-        if (gameType != null && gameType == GameType.ONLINE) {
-            Player opponent = (Player) intent.getSerializableExtra(BundleKeys.OPPONENT);
-            this.opponent = opponent;
-            OnlineGameHandler onlineGameHandler = new OnlineGameHandler(
-                    Controller.getInstance().getOnlineWorker(), Controller.getInstance().getPlayer(), opponent, this);
-            Controller.getInstance().setGameHandler(onlineGameHandler);
-        }
-
         setContentView(R.layout.game_fileld_activity_layout);
-        findViewById(R.id.btn_game_field_new_game).setOnClickListener(this);
+        newGame = (Button)    findViewById(R.id.btn_game_field_new_game);
+        newGame.setOnClickListener(this);
         findViewById(R.id.btn_game_field_back).setOnClickListener(this);
         openGroup = (Button) findViewById(R.id.btn_group_chat);
         openChat = (Button) findViewById(R.id.btn_opened_online_group);
         openChat.setOnClickListener(this);
         openGroup.setOnClickListener(this);
+
+        if (gameType != null && gameType == GameType.ONLINE) {
+            Player opponent = (Player) intent.getSerializableExtra(BundleKeys.OPPONENT);
+            this.opponent = opponent;
+            TypeOfMove typeOfMove =    (TypeOfMove) intent.getSerializableExtra(BundleKeys.TYPE_OF_MOVE);
+            OnlineGameHandler onlineGameHandler = new OnlineGameHandler(
+                    Controller.getInstance().getOnlineWorker(), Controller.getInstance().getPlayer(), opponent, this, (typeOfMove == TypeOfMove.X));
+            Controller.getInstance().setGameHandler(onlineGameHandler);
+            onlineGameHandler.setActivityAction(this);
+            newGame.setEnabled(false);
+            newGame.setText("");
+        }
+        else if (gameType != null && gameType == GameType.FRIEND){
+            String playerName = "";
+            String opponentName = "";
+            if(intent.getStringExtra(FIRST_PLAYER_NAME) != null){
+              playerName =  intent.getStringExtra(FIRST_PLAYER_NAME);
+            }
+
+            if(intent.getStringExtra(SECOND_PLAYER_NAME) != null){
+               opponentName =  intent.getStringExtra(SECOND_PLAYER_NAME);
+            }
+
+
+            Player player = new Player();
+            player.setName(playerName);
+            Player opponent = new Player();
+            opponent.setName(opponentName);
+
+            FriendGameHandler friendGameHandler = new FriendGameHandler(player, opponent, this);
+            Controller.getInstance().setGameHandler(friendGameHandler);
+
+
+
+
+
+        }
+
+
+
+
         gameFieldFragment = new GameFieldFragment();
         chatFragment = new GroupChatFragment();
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -174,4 +212,6 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
     public void onBackPressed() {
         showExitFromThisGamePopup();
     }
+
+
 }
