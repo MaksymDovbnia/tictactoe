@@ -2,6 +2,7 @@ package com.game.gamefield;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -34,7 +35,7 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
     private Button openGroup;
     private Button openChat;
     private Button newGame;
-
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
             this.opponent = opponent;
             TypeOfMove typeOfMove =    (TypeOfMove) intent.getSerializableExtra(BundleKeys.TYPE_OF_MOVE);
             OnlineGameHandler onlineGameHandler = new OnlineGameHandler(
-                    Controller.getInstance().getOnlineWorker(), Controller.getInstance().getPlayer(), opponent, this, (typeOfMove == TypeOfMove.X));
+                    Controller.getInstance().getOnlineWorker(), Controller.getInstance().getPlayer(), opponent, this, (typeOfMove == TypeOfMove.X), null);
             Controller.getInstance().setGameHandler(onlineGameHandler);
             onlineGameHandler.setActivityAction(this);
             newGame.setEnabled(false);
@@ -78,14 +79,9 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
             player.setName(playerName);
             Player opponent = new Player();
             opponent.setName(opponentName);
-
-            FriendGameHandler friendGameHandler = new FriendGameHandler(player, opponent, this);
+         mediaPlayer = MediaPlayer.create(this, R.raw.draw_sound);;
+            FriendGameHandler friendGameHandler = new FriendGameHandler(player, opponent, this, mediaPlayer);
             Controller.getInstance().setGameHandler(friendGameHandler);
-
-
-
-
-
         }
 
 
@@ -153,6 +149,24 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
 
     }
 
+    @Override
+    public void connectionToServerLost() {
+        XOAlertDialog xoAlertDialog = new XOAlertDialog();
+        xoAlertDialog.setAlert_type(XOAlertDialog.ALERT_TYPE.ONE_BUTTON);
+        xoAlertDialog.setTile(getResources().getString(R.string.connection_to_server_lost));
+        String mainText = getString(R.string.please_try_to_connect_once_more);
+        xoAlertDialog.setMainText(mainText);
+        xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.ok));
+        xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                finish();
+            }
+        });
+        xoAlertDialog.show(getSupportFragmentManager(), "");
+    }
+
 
     private void switchToTab(TAB tab) {
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -213,5 +227,9 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
         showExitFromThisGamePopup();
     }
 
-
+    @Override
+    protected void onDestroy() {
+        if (mediaPlayer != null) mediaPlayer.release();
+        super.onDestroy();
+    }
 }

@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-     android:clickable="true"
-        >
-    <com.game.gamefield.GameFieldItem
+<com.game.gamefield.GameFieldItem xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/tv_field_item"
         android:layout_width="@dimen/game_field_item_size"
-        android:layout_height="@dimen/game_field_item_size"
-            />
+        android:layout_height="@dimen/game_field_item_size">
 
-</LinearLayout>
+</com.game.gamefield.GameFieldItem>

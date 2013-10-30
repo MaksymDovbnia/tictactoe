@@ -1,6 +1,7 @@
 package com.game.fragments;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,6 +21,7 @@ import com.game.Controller;
 import com.game.activity.OnlineOpenedGroupActivity;
 import com.game.activity.R;
 import com.game.adapters.OnlineGroupAdapter;
+import com.game.popup.XOAlertDialog;
 import com.net.online.WorkerOnlineConnection;
 import com.net.online.protobuf.ProtoType;
 
@@ -51,6 +53,23 @@ public class OnlineGroupsFragment extends Fragment implements View.OnClickListen
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = activity;
+    }
+
+    public void connectionToServerLost() {
+        XOAlertDialog xoAlertDialog = new XOAlertDialog();
+        xoAlertDialog.setAlert_type(XOAlertDialog.ALERT_TYPE.ONE_BUTTON);
+        xoAlertDialog.setTile(getResources().getString(R.string.connection_to_server_lost));
+        String mainText = getString(R.string.please_try_to_connect_once_more);
+        xoAlertDialog.setMainText(mainText);
+        xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.ok));
+        xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                getActivity().finish();
+            }
+        });
+        xoAlertDialog.show(getActivity().getSupportFragmentManager(), "");
     }
 
     @Override
@@ -95,6 +114,9 @@ public class OnlineGroupsFragment extends Fragment implements View.OnClickListen
                         allPlayers.setText(getResources().getString(R.string.all_online_players) + " " + numberOfAllPlayers);
                         adapter.notifyDataSetChanged();
                         break;
+                    case CONNECTION_TO_SERVER_LOST:
+                        connectionToServerLost();
+                        break;
                     default:
                         break;
                 }
@@ -102,7 +124,6 @@ public class OnlineGroupsFragment extends Fragment implements View.OnClickListen
             }
         };
         conectionGameWorker = Controller.getInstance().getOnlineWorker();
-        conectionGameWorker.registerHandler(handler);
 
         return view;
     }
@@ -124,10 +145,20 @@ public class OnlineGroupsFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onResume() {
+        super.onResume();
+        if (!conectionGameWorker.isSockedInLive()) getActivity().finish();
+
+        conectionGameWorker.registerHandler(handler);
         if (conectionGameWorker != null) {
             getListOfGroup();
         }
-        super.onResume();
+
+    }
+
+    @Override
+    public void onPause() {
+        conectionGameWorker.unRegisterHandler(handler);
+        super.onPause();
     }
 
     private void getListOfGroup() {
@@ -143,7 +174,6 @@ public class OnlineGroupsFragment extends Fragment implements View.OnClickListen
         conectionGameWorker.unRegisterHandler(handler);
         super.onDestroy();
     }
-
 
 
 }

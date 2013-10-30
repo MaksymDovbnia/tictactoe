@@ -31,9 +31,7 @@ public class WorkerOnlineConnection extends Thread {
     private Handler handler;
     private ArrayList<Handler> handlers;
     private static final String TAG = WorkerOnlineConnection.class.getCanonicalName();
-    private OutputStream outputStream;
-    private InputStream inputStream;
-    private PrintWriter mOut;
+
     private Socket socket;
     private DataOutputStream dataOutputStream;
     private BufferedInputStream in;
@@ -41,8 +39,10 @@ public class WorkerOnlineConnection extends Thread {
     private Player player;
     private boolean isConnecting = true;
     private ProgressDialog pd;
-    public static final int AMOUNT_OF_ATTEMTP_TO_CREATE_SOCKET = 2;
+    public static final int AMOUNT_OF_ATTEMTP_TO_CREATE_SOCKET = 3;
     public boolean isSendPacketAboutFailConnection = true;
+    public boolean isNeedConnectOneMore = true;
+
 
     public WorkerOnlineConnection(Handler handler, Player player,
                                   ProgressDialog pd) {
@@ -79,6 +79,11 @@ public class WorkerOnlineConnection extends Thread {
 
     }
 
+    public boolean isSockedInLive() {
+        if (socket == null) return false;
+        return !socket.isClosed();
+    }
+
     private void createSocket() {
         try {
             Loger.printLog("start connecion");
@@ -87,8 +92,9 @@ public class WorkerOnlineConnection extends Thread {
             SocketAddress socketAddress = new InetSocketAddress(inetAddress, Config.PORT);
             //   socket = new Socket(Config.HOST, Config.PORT);
             socket = new Socket();
-            socket.connect(socketAddress, 15000);
+            socket.connect(socketAddress, 5000);
             isSendPacketAboutFailConnection = false;
+            isNeedConnectOneMore = false;
             Loger.printLog("(socket.isClosed() " + socket.isClosed());
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
             in = new BufferedInputStream(socket.getInputStream());
@@ -117,7 +123,22 @@ public class WorkerOnlineConnection extends Thread {
             Loger.printLog(e.toString());
 
         } catch (IOException e) {
-            Loger.printLog(e.toString());
+            if (socket != null) try {
+                socket.close();
+            } catch (IOException e1) {
+                Loger.printEror(e.getMessage());
+            }
+            Loger.printEror("(socket.isClosed() " + socket.isClosed());
+            Loger.printEror("(socket.isBound() " + socket.isBound());
+            Loger.printEror("(socket.isConnected() " + socket.isConnected());
+
+            for (Handler handler : handlers) {
+                if (handler != null) {
+                    Message message = handler.obtainMessage(ProtoType.CONNECTION_TO_SERVER_LOST.index,
+                            null);
+                    handler.sendMessage(message);
+                }
+            }
 
         }
 
@@ -127,7 +148,7 @@ public class WorkerOnlineConnection extends Thread {
         int n = 0;
         createSocket();
         Loger.printLog("socket == null " + (socket == null));
-        while (socket.isClosed() && ++n <= AMOUNT_OF_ATTEMTP_TO_CREATE_SOCKET) {
+        while (socket.isClosed() && ++n <= AMOUNT_OF_ATTEMTP_TO_CREATE_SOCKET && isNeedConnectOneMore) {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {

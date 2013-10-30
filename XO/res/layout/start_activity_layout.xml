@@ -32,15 +32,7 @@
                 android:layout_centerHorizontal="true"
                 />
 
-        <ImageView
-                android:id="@+id/imv_start_activity_pencil"
-                android:layout_width="@dimen/start_activity_layout_center_container_pencil_image_width"
-                android:layout_height="@dimen/start_activity_layout_center_container_pencil_image_height"
-                android:src="@drawable/pencil"
-                android:layout_toRightOf="@+id/imv_start_activity_xo_image"
 
-
-                />
 
         <LinearLayout
                 android:id="@+id/ll_start_game_layout"
@@ -114,6 +106,15 @@
                     style="@style/default_white_button"
                     />
         </LinearLayout>
+        <ImageView
+                android:id="@+id/imv_start_activity_pencil"
+                android:layout_width="@dimen/start_activity_layout_center_container_pencil_image_width"
+                android:layout_height="@dimen/start_activity_layout_center_container_pencil_image_height"
+                android:src="@drawable/pencil"
+                android:layout_toRightOf="@+id/imv_start_activity_xo_image"
+
+
+                />
 
 
     </RelativeLayout>

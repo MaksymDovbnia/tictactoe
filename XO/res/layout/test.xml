@@ -5,12 +5,16 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <com.game.gamefield.GameFieldItem
-            android:id="@+id/test"
+
+
+    <GridView
+            android:id="@+id/grid_view_game_field"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:numColumns="15"
 
-            />
+            >
+    </GridView>
 
 
 

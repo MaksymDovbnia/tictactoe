@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.protocol.Protocol;
 
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
@@ -27,8 +28,8 @@ public class OnlineGameHandler extends  GlobalHandler implements GameHandler {
     private boolean isPlayerMoveFirst;
 
     public OnlineGameHandler(final WorkerOnlineConnection onlineGameWorker,
-                              Player player, Player opponent, GameFieldActivityAction fieldActivityAction, final boolean isPlayerMoveFirst) {
-        super(player, opponent, fieldActivityAction);
+                              Player player, Player opponent, GameFieldActivityAction fieldActivityAction, final boolean isPlayerMoveFirst, MediaPlayer mediaPlayer) {
+        super(player, opponent, fieldActivityAction, mediaPlayer);
         this.onlineGameWorker = onlineGameWorker;
         this.activityAction = fieldActivityAction;
         this.isPlayerMoveFirst = isPlayerMoveFirst;
@@ -83,6 +84,9 @@ public class OnlineGameHandler extends  GlobalHandler implements GameHandler {
 
                         break;
 
+                    case CONNECTION_TO_SERVER_LOST:
+                        activityAction.connectionToServerLost();
+                        break;
                 }
 
                 super.handleMessage(msg);

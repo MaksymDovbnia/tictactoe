@@ -7,6 +7,8 @@ public interface GameFieldActivityAction {
 
     public void showWonPopup(String wonPlayerName);
     public void opponentExitFromGame();
+    public void connectionToServerLost();
+
 
 
 }

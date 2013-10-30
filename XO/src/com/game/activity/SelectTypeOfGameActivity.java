@@ -72,8 +72,6 @@ public class SelectTypeOfGameActivity extends FragmentActivity implements OnClic
 
 
         Typeface mFont = Typeface.createFromAsset(getAssets(), "fonts/acquestscript.ttf");
-        LinearLayout l = (LinearLayout) findViewById(R.id.LL_typeofgamenu);
-        Font.setAppFont(l, mFont);
 
         friend = (Button) findViewById(R.id.btn_two_players);
         friend.setOnClickListener(this);

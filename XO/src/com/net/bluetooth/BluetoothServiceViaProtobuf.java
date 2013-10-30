@@ -283,13 +283,13 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
         public AcceptThread(boolean secure) {            BluetoothServerSocket tmp = null;
             mSocketType = secure ? "Secure" : "Insecure";
 
-            try {
-                    tmp = mAdapter.listenUsingInsecureRfcommWithServiceRecord(
-                            NAME_INSECURE, MY_UUID_INSECURE);
-
-            } catch (IOException e) {
-                Log.e(TAG, "Socket FieldType: " + mSocketType + "listen() failed", e);
-            }
+//            try {
+//                    tmp = mAdapter.listenUsingInsecureRfcommWithServiceRecord(
+//                            NAME_INSECURE, MY_UUID_INSECURE);
+//
+//            } catch (IOException e) {
+//                Log.e(TAG, "Socket FieldType: " + mSocketType + "listen() failed", e);
+//            }
             mmServerSocket = tmp;
         }
 
@@ -370,17 +370,17 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
 
             // Get a BluetoothSocket for a connection with the
             // given BluetoothDevice
-            try {
-                if (secure) {
-                    tmp = device.createRfcommSocketToServiceRecord(
-                            MY_UUID_SECURE);
-                } else {
-                    tmp = device.createInsecureRfcommSocketToServiceRecord(
-                            MY_UUID_INSECURE);
-                }
-            } catch (IOException e) {
-                Log.e(TAG, "Socket FieldType: " + mSocketType + "create() failed", e);
-            }
+//            try {
+//                if (secure) {
+//                    tmp = device.createRfcommSocketToServiceRecord(
+//                            MY_UUID_SECURE);
+//                } else {
+//                    tmp = device.createInsecureRfcommSocketToServiceRecord(
+//                            MY_UUID_INSECURE);
+//                }
+//            } catch (IOException e) {
+//                Log.e(TAG, "Socket FieldType: " + mSocketType + "create() failed", e);
+//            }
             mmSocket = tmp;
         }
 

@@ -54,18 +54,16 @@ public class GameFieldAdapter extends BaseAdapter {
         // TODO Auto-generated method stub
         return position;
     }
-
+    boolean isTouchPresent = false;
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-        if (view == null) {
-            view = layoutInflater.inflate(R.layout.game_field_item, parent,
-                    false);
+        GameFieldItem  gameFieldItem = (GameFieldItem)convertView;
+        if (gameFieldItem == null) {
+            gameFieldItem = (GameFieldItem)layoutInflater.inflate(R.layout.game_field_item, parent,
+                   false);
 
-
-            GameFieldItem field = (GameFieldItem) view.findViewById(R.id.tv_field_item);
             if (fields[position] == null){
-                fields[position] = field;
+                fields[position] = gameFieldItem;
                 int x = 0, y = 0;
                 double d = position / 15.0;
                 int i = position / 15;
@@ -77,22 +75,24 @@ public class GameFieldAdapter extends BaseAdapter {
                     y = i;
                     x = position - (15 * i);
                 }
-                field.setI(y);
-                field.setJ(x);
-                fieldsGrid[y][x] = field;
+                gameFieldItem.setI(y);
+                gameFieldItem.setJ(x);
+                fieldsGrid[y][x] = gameFieldItem;
 
             }
-            field.setTag(position);
+            gameFieldItem.setTag(position);
         }
 
-        GameFieldItem field = (GameFieldItem) view.findViewById(R.id.tv_field_item);
-        field.setBackgroundResource(R.drawable.field);
+        GameFieldItem field = (GameFieldItem) gameFieldItem.findViewById(R.id.tv_field_item);
         field.setOnClickListener(new GameFieldClickListener());
+
 
         field.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
+
+
                 GameFieldItem field = (GameFieldItem) view;
                 List<GameFieldItem> itemList = new ArrayList<GameFieldItem>();
                 int i = field.getI();
@@ -108,8 +108,9 @@ public class GameFieldAdapter extends BaseAdapter {
                     for (GameFieldItem item : itemList) {
                         item.setMarkAboutInSight(true);
                     }
+                }
 
-                } else if (motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {
+                else if (motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {
                     for (GameFieldItem item : itemList) {
                         item.setMarkAboutInSight(false);
                     }
@@ -120,11 +121,12 @@ public class GameFieldAdapter extends BaseAdapter {
                     }
                 }
 
+
                 return false;
             }
         });
 
-        return view;
+        return field;
     }
 
     public void showOneMove(OneMove oneMove) {

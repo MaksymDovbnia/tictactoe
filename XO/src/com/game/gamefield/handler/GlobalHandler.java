@@ -1,5 +1,6 @@
 package com.game.gamefield.handler;
 
+import android.media.MediaPlayer;
 import android.widget.TextView;
 
 import com.entity.OneMove;
@@ -31,12 +32,14 @@ public class GlobalHandler {
     protected Player player;
     protected Player opponent;
     protected GameLogicHandler gameActionHandler;
+    protected MediaPlayer mediaPlayer;
 
-    public GlobalHandler(Player player, Player opponent, GameFieldActivityAction activityAction) {
+    public GlobalHandler(Player player, Player opponent, GameFieldActivityAction activityAction, MediaPlayer mediaPlayer) {
         gameActionHandler = new GameLogicHandler();
         this.player = player;
         this.opponent = opponent;
         this.activityAction = activityAction;
+        this.mediaPlayer = mediaPlayer;
     }
 
 

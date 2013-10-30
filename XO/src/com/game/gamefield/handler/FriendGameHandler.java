@@ -2,6 +2,7 @@ package com.game.gamefield.handler;
 
 import java.util.List;
 
+import android.media.MediaPlayer;
 import android.os.Handler;
 import android.widget.TextView;
 
@@ -17,8 +18,9 @@ import com.game.gamefield.GameFieldItem;
 
 public class FriendGameHandler extends GlobalHandler implements GameHandler {
 
-    public FriendGameHandler(Player player, Player opponent, GameFieldActivityAction activityAction) {
-        super(player, opponent, activityAction);
+
+    public FriendGameHandler(Player player, Player opponent, GameFieldActivityAction activityAction, MediaPlayer mediaPlayer) {
+        super(player, opponent, activityAction, mediaPlayer);
     }
 
     @Override
@@ -57,6 +59,7 @@ public class FriendGameHandler extends GlobalHandler implements GameHandler {
             type = (opponent.getMoveType() == TypeOfMove.X) ? GameFieldItem.FieldType.X : GameFieldItem.FieldType.O;
             oneMove = new OneMove(i, j, opponent.getMoveType());
         }
+       // mediaPlayer.start();
         performedOneMove(oneMove);
         changeIndicator();
         return type;
@@ -137,5 +140,7 @@ public class FriendGameHandler extends GlobalHandler implements GameHandler {
     public void unregisterHandler() {
 
     }
+
+
 
 }

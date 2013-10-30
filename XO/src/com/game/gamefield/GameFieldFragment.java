@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.game.Controller;
@@ -38,7 +40,8 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
         super.onAttach(activity);
         this.activity = activity;
     }
-
+    int width;
+    int height;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.game_field_fragment_layout, null);
@@ -48,6 +51,22 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
         String secondPlayerName = intent.getStringExtra(SECOND_PLAYER_NAME);
         ((TextView) view.findViewById(R.id.tv_field_item)).setText(firstPlayerName);
         ((TextView) view.findViewById(R.id.tv_second_player_name)).setText(secondPlayerName);
+        final LinearLayout containerGameFiled = (LinearLayout) view.findViewById(R.id.game_field_container);
+        ViewTreeObserver vto = containerGameFiled.getViewTreeObserver();
+
+        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                containerGameFiled.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                width  = containerGameFiled.getMeasuredWidth();
+                height  = containerGameFiled.getMeasuredHeight();
+
+
+            }
+        });
+
+
+
 
 
 

@@ -3,7 +3,9 @@ package com.game.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.GridView;
 
+import com.game.gamefield.GameFieldAdapter;
 import com.game.gamefield.GameFieldItem;
 
 /**
@@ -13,15 +15,11 @@ public class Test extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test);
-        final GameFieldItem gameFieldItem  = (GameFieldItem) findViewById(R.id.test);
 
-        gameFieldItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                gameFieldItem.setFieldTypeAndDraw(GameFieldItem.FieldType.X);
-          gameFieldItem.setMarkAboutLastMove(true);
-            }
-        });
+        GridView gridView = (GridView) findViewById(R.id.grid_view_game_field);
+        gridView.setAdapter(new GameFieldAdapter(this, null));
+
+
 
     }
 }

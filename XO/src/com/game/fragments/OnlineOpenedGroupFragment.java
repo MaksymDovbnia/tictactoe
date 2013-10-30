@@ -2,6 +2,7 @@ package com.game.fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
@@ -24,6 +25,7 @@ import com.game.gamefield.GameFieldActivity;
 import com.game.activity.OnlineGroupsActivity;
 import com.game.activity.R;
 import com.game.adapters.OnlinePlayersAdapter;
+import com.game.popup.XOAlertDialog;
 import com.net.online.WorkerOnlineConnection;
 import com.net.online.protobuf.ProtoType;
 import com.utils.Loger;
@@ -182,6 +184,9 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
                         Protocol.CStartGame startGamePacket = (Protocol.CStartGame) msg.obj;
                         startOnlineGame(startGamePacket);
                         break;
+                    case CONNECTION_TO_SERVER_LOST:
+                        connectionToServerLost();
+                        break;
                 }
 
             }
@@ -199,6 +204,22 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
         return v;
     }
 
+    public void connectionToServerLost() {
+        XOAlertDialog xoAlertDialog = new XOAlertDialog();
+        xoAlertDialog.setAlert_type(XOAlertDialog.ALERT_TYPE.ONE_BUTTON);
+        xoAlertDialog.setTile(getResources().getString(R.string.connection_to_server_lost));
+        String mainText = getString(R.string.please_try_to_connect_once_more);
+        xoAlertDialog.setMainText(mainText);
+        xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.ok));
+        xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                getActivity().finish();
+            }
+        });
+        xoAlertDialog.show(getActivity().getSupportFragmentManager(), "");
+    }
 
     private void startOnlineGame(Protocol.CStartGame cStartGame) {
         Player opponent = null;

@@ -12,6 +12,10 @@ public enum ProtoType {
             5), CCHATMESSAGE((byte) 0x08, 8), CEXITFROMGAME((byte) 0x0D, 13), CCONTINUEGAME(
             (byte) 0x07, 7),
     CGETGROUPLIST((byte) 0x09, 9),
+
+    //OTHER
+    CONNECTION_TO_SERVER_LOST ((byte)0x40, 400),
+
     // TO SERVER
     SGETUPDATE((byte) 0x02, Protocol.SGetUpdate.class), SLOGINTOGAME(
             (byte) 0x01, Protocol.SLoginToGame.class), SWANTTOPlAY((byte) 0x03,
@@ -27,7 +31,10 @@ public enum ProtoType {
     SEXITFROMGLOBALGAME((byte) 0x2D,
             Protocol.SExitFromGlobalGame.class),
 
+
     UNKNOWN((byte) 0x00, 0);
+
+
 
     private final byte b;
     private Class protoClass;
