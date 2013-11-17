@@ -17,17 +17,24 @@ import com.entity.TypeOfMove;
 import com.game.Controller;
 import com.game.GameType;
 import com.game.activity.R;
-import com.game.fragments.GroupChatFragment;
+import com.game.chat.ChatAction;
+import com.game.chat.ChatActionNotification;
+import com.game.chat.ChatFragment;
+import com.game.chat.ChatMessage;
 import com.game.gamefield.handler.FriendGameHandler;
 import com.game.gamefield.handler.OnlineGameHandler;
 import com.game.popup.XOAlertDialog;
 
-public class GameFieldActivity extends FragmentActivity implements OnClickListener, GameFieldActivityAction {
+import net.protocol.Protocol;
+
+public class GameFieldActivity extends FragmentActivity implements OnClickListener, GameFieldActivityAction, ChatActionNotification {
     public static final String FIRST_PLAYER_NAME = "first_player_name";
     public static final String SECOND_PLAYER_NAME = "second_player_name";
     private FragmentTransaction fragmentTransaction;
     private Fragment gameFieldFragment, chatFragment;
+    private ChatAction chatAction;
     private Player opponent;
+
 
     private enum TAB {GAME, CHAT}
 
@@ -36,6 +43,7 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
     private Button openChat;
     private Button newGame;
     MediaPlayer mediaPlayer;
+    private TAB cureentTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,34 +52,33 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
         Intent intent = getIntent();
         GameType gameType = (GameType) intent.getSerializableExtra(BundleKeys.TYPE_OF_GAME);
         setContentView(R.layout.game_fileld_activity_layout);
-        newGame = (Button)    findViewById(R.id.btn_game_field_new_game);
+        newGame = (Button) findViewById(R.id.btn_game_field_new_game);
         newGame.setOnClickListener(this);
         findViewById(R.id.btn_game_field_back).setOnClickListener(this);
-        openGroup = (Button) findViewById(R.id.btn_group_chat);
-        openChat = (Button) findViewById(R.id.btn_opened_online_group);
+        openGroup = (Button) findViewById(R.id.btn_opened_online_group);
+        openChat = (Button) findViewById(R.id.btn_group_chat);
         openChat.setOnClickListener(this);
         openGroup.setOnClickListener(this);
 
         if (gameType != null && gameType == GameType.ONLINE) {
             Player opponent = (Player) intent.getSerializableExtra(BundleKeys.OPPONENT);
             this.opponent = opponent;
-            TypeOfMove typeOfMove =    (TypeOfMove) intent.getSerializableExtra(BundleKeys.TYPE_OF_MOVE);
+            TypeOfMove typeOfMove = (TypeOfMove) intent.getSerializableExtra(BundleKeys.TYPE_OF_MOVE);
             OnlineGameHandler onlineGameHandler = new OnlineGameHandler(
                     Controller.getInstance().getOnlineWorker(), Controller.getInstance().getPlayer(), opponent, this, (typeOfMove == TypeOfMove.X), null);
             Controller.getInstance().setGameHandler(onlineGameHandler);
             onlineGameHandler.setActivityAction(this);
             newGame.setEnabled(false);
             newGame.setText("");
-        }
-        else if (gameType != null && gameType == GameType.FRIEND){
+        } else if (gameType != null && gameType == GameType.FRIEND) {
             String playerName = "";
             String opponentName = "";
-            if(intent.getStringExtra(FIRST_PLAYER_NAME) != null){
-              playerName =  intent.getStringExtra(FIRST_PLAYER_NAME);
+            if (intent.getStringExtra(FIRST_PLAYER_NAME) != null) {
+                playerName = intent.getStringExtra(FIRST_PLAYER_NAME);
             }
 
-            if(intent.getStringExtra(SECOND_PLAYER_NAME) != null){
-               opponentName =  intent.getStringExtra(SECOND_PLAYER_NAME);
+            if (intent.getStringExtra(SECOND_PLAYER_NAME) != null) {
+                opponentName = intent.getStringExtra(SECOND_PLAYER_NAME);
             }
 
 
@@ -79,16 +86,17 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
             player.setName(playerName);
             Player opponent = new Player();
             opponent.setName(opponentName);
-         mediaPlayer = MediaPlayer.create(this, R.raw.draw_sound);;
+            mediaPlayer = MediaPlayer.create(this, R.raw.draw_sound);
+
             FriendGameHandler friendGameHandler = new FriendGameHandler(player, opponent, this, mediaPlayer);
             Controller.getInstance().setGameHandler(friendGameHandler);
+            Controller.getInstance().setPlayer(player);
         }
 
-
-
-
+        cureentTab = TAB.GAME;
         gameFieldFragment = new GameFieldFragment();
-        chatFragment = new GroupChatFragment();
+        chatFragment = new ChatFragment();
+        chatAction = (ChatAction) chatFragment;
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.center_for_fragment, chatFragment);
         fragmentTransaction.add(R.id.center_for_fragment, gameFieldFragment);
@@ -167,9 +175,23 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
         xoAlertDialog.show(getSupportFragmentManager(), "");
     }
 
+    @Override
+    public void receivedChatMessage(ChatMessage chatMessage) {
+        if (cureentTab == TAB.GAME) {
+            openChat.setText(R.string.new_message);
+            openChat.setTextColor(getResources().getColor(R.color.blue));
+        }
+
+
+        if (chatAction != null) {
+            chatAction.receivedMessage(chatMessage);
+        }
+    }
+
 
     private void switchToTab(TAB tab) {
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        cureentTab = tab;
         switch (tab) {
             case GAME:
                 fragmentTransaction.show(gameFieldFragment);
@@ -191,6 +213,8 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
                 switchToTab(TAB.GAME);
                 break;
             case R.id.btn_group_chat:
+                openChat.setText(R.string.chat);
+                openChat.setTextColor(getResources().getColor(R.color.black));
                 switchToTab(TAB.CHAT);
                 break;
 
@@ -200,8 +224,6 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
             case R.id.btn_game_field_new_game:
                 newGame();
                 break;
-
-
         }
     }
 
@@ -220,6 +242,22 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
         xoAlertDialog.show(getSupportFragmentManager(), "");
 
 
+    }
+
+
+    @Override
+    public void actionSendMessage(ChatMessage chatMessage) {
+
+        Controller.getInstance().getOnlineWorker().sendPacket(Protocol.SChatMessage
+                .newBuilder().setMessage(chatMessage.getMessage())
+                .setOpponentId(opponent.getId())
+                .setPlayerId(Controller.getInstance().getPlayer().getId())
+                .build());
+    }
+
+    @Override
+    public String getPlayerName() {
+        return Controller.getInstance().getPlayer().getName();
     }
 
     @Override

@@ -29,7 +29,7 @@
             android:maxLength="10"
             android:shadowColor="@color/red"
             android:textColor="@color/blue"
-            android:textColorHint="@color/black_overlay"
+            android:textColorHint="@color/black"
             android:textColorLink="@color/red"
             android:textSize="20sp" >
 

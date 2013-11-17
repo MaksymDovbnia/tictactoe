@@ -7,10 +7,6 @@
     <dimen name="main_button_text_size">15dp</dimen>
 
 
-
-
-
-
     <dimen name="big_text_size">30sp</dimen>
     <dimen name="default_text_size">20dp</dimen>
     <dimen name="main_activity_item_default_text_size">25dp</dimen>
@@ -74,5 +70,24 @@
     <dimen name="main_activity_layout_center_container_clip_width">60dp</dimen>
     <dimen name="main_activity_layout_center_container_one_item__margin_top">1dp</dimen>
     <dimen name="main_activity_layout_center_container__one_item_button_margin_left">5dp</dimen>
+    <!--Chat fragment-->
+    <dimen name="chat_fragment_layout_padding_left">5dp</dimen>
+    <dimen name="chat_fragment_layout_padding_right">5dp</dimen>
+    <dimen name="chat_fragment_layout_padding_top">10dp</dimen>
+    <dimen name="chat_fragment_layout_padding_bottom">10dp</dimen>
+    <dimen name="chat_fragment_layout_chat_container_padding_left">40dp</dimen>
+    <dimen name="chat_fragment_layout_chat_container_padding_right">20dp</dimen>
+    <dimen name="chat_fragment_layout_chat_container_padding_top">20dp</dimen>
+    <dimen name="chat_fragment_layout_chat_container_padding_bottom">20dp</dimen>
+
+    <dimen name="chat_fragment_layout_text_view_padding_top">0dp</dimen>
+    <dimen name="chat_fragment_layout_edit_text_height">50dp</dimen>
+    <dimen name="chat_fragment_layout_sent_button_height">40dp</dimen>
+    <dimen name="chat_fragment_layout_sent_button_width">130dp</dimen>
+    <dimen name="chat_list_item_message_text_view_margin_left">10dp</dimen>
+    <dimen name="chat_list_item_message_text_size">13dp</dimen>
+    <dimen name="chat_list_item_sender_text_size">12dp</dimen>
+
+
 
 </resources>

@@ -17,7 +17,8 @@ public class Player implements Serializable{
     private String uuid;
     private TypeOfMove moveType;
     private int rating;
-	public Player() {
+    private int numOfAllWonGame;
+    public Player() {
 		playerMapWichWantedPlay = new HashMap<Integer, Player>();
 	}
 
@@ -53,6 +54,14 @@ public class Player implements Serializable{
 
     public String getUuid() {
         return uuid;
+    }
+
+    public int getNumOfAllWonGame() {
+        return numOfAllWonGame;
+    }
+
+    public void setNumOfAllWonGame(int numOfAllWonGame) {
+        this.numOfAllWonGame = numOfAllWonGame;
     }
 
     public void setUuid(String uuid) {

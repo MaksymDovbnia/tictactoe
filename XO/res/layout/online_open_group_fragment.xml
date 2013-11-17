@@ -21,6 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/online_players"
+                android:textColor="@color/black"
                 android:textSize="@dimen/online_open_group_fragment_text_size_inscription"
                 />
 
@@ -97,6 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/wanted_battle"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/online_open_group_fragment_text_size_inscription"
                     />
 
@@ -143,6 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/invited_players"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/online_open_group_fragment_text_size_inscription"
 
                     />

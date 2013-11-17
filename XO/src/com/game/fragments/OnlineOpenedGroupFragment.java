@@ -38,7 +38,7 @@ import java.util.List;
 /**
  * Created by Maksym on 6/19/13.
  */
-public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickListener {
+public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickListener, IOnlineOpenedGroupAction {
     private ListView lvActivityPlayer;
     private ListView lvDesirePlayer;
     private ListView lvWantPlayPlayer;
@@ -103,7 +103,7 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
 
         // define lists and add appropriate adapter
         lvActivityPlayer = (ListView) v.findViewById(R.id.list_activity_players);
-        ViewGroup header = (ViewGroup)inflater.inflate(R.layout.online_list_view_header_layout, lvActivityPlayer, false);
+        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.online_list_view_header_layout, lvActivityPlayer, false);
         lvActivityPlayer.addHeaderView(header);
         lvActivityPlayer.setAdapter(adapterForActivityList);
         lvDesirePlayer = (ListView) v.findViewById(R.id.list_disered_players);
@@ -124,73 +124,7 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
             }
         });
 
-        handler = new Handler() {
 
-            @Override
-            public void handleMessage(Message msg) {
-
-                ProtoType protoType = ProtoType.fromInt(msg.what);
-                switch (protoType) {
-                    case CUPDATEAOBOUTACTIVITYPLAYER:
-                        Protocol.CUpdateAboutActivityPlayer cActivityPlayer = (Protocol.CUpdateAboutActivityPlayer) msg.obj;
-
-                        for (Protocol.Player player : cActivityPlayer
-                                .getNewPlayerList()) {
-                            Loger.printLog("get updt + " + player.getName());
-                            if (player.getId() != -1)
-                                listActivityPlayer.add(new Player(player.getId(),
-                                        player.getName(), player.getRating()));
-                        }
-                        for (Protocol.CExitFromGroup exitFromGroup : cActivityPlayer
-                                .getExitPlayerList()) {
-                            int id = exitFromGroup.getPlayerId();
-
-                            for (Player player : listActivityPlayer)
-                                if (player.getId() == id) {
-                                    listActivityPlayer.remove(player);
-                                    break;
-                                }
-
-                            for (Player player : listInvitedPlayers)
-                                if (player.getId() == id) {
-                                    listInvitedPlayers.remove(player);
-                                    break;
-                                }
-
-                            for (Player player : listWantToPlayPlayer)
-                                if (player.getId() == id) {
-                                    listWantToPlayPlayer.remove(player);
-                                    break;
-                                }
-                        }
-                        adapterForActivityList.notifyDataSetChanged();
-                        adapterForInvitedList.notifyDataSetChanged();
-                        adapterForWantPlayList.notifyDataSetChanged();
-                        break;
-                    case CWANTTOPLAY:
-                        Protocol.CWantToPlay wantToPlay = (Protocol.CWantToPlay) msg.obj;
-                        int opponentId = wantToPlay.getOpponentId();
-                        Player opponent = null;
-                        for (Player player : listActivityPlayer)
-                            if (player.getId() == opponentId) {
-                                listWantToPlayPlayer.add(player);
-                                opponent = player;
-                            }
-                        adapterForWantPlayList.notifyDataSetChanged();
-                        Toast toast = Toast.makeText(context, "Player " + opponent.getName() + " want to play with you", 40);
-                        toast.show();
-                        break;
-                    case CSTARTGAME:
-                        Protocol.CStartGame startGamePacket = (Protocol.CStartGame) msg.obj;
-                        startOnlineGame(startGamePacket);
-                        break;
-                    case CONNECTION_TO_SERVER_LOST:
-                        connectionToServerLost();
-                        break;
-                }
-
-            }
-        };
         workerOnlineConnection = Controller.getInstance().getOnlineWorker();
         if (workerOnlineConnection != null) {
             workerOnlineConnection.registerHandler(handler);
@@ -204,28 +138,13 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
         return v;
     }
 
-    public void connectionToServerLost() {
-        XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        xoAlertDialog.setAlert_type(XOAlertDialog.ALERT_TYPE.ONE_BUTTON);
-        xoAlertDialog.setTile(getResources().getString(R.string.connection_to_server_lost));
-        String mainText = getString(R.string.please_try_to_connect_once_more);
-        xoAlertDialog.setMainText(mainText);
-        xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.ok));
-        xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                getActivity().finish();
-            }
-        });
-        xoAlertDialog.show(getActivity().getSupportFragmentManager(), "");
-    }
 
     private void startOnlineGame(Protocol.CStartGame cStartGame) {
         Player opponent = null;
         for (Player player : listWantToPlayPlayer) {
             if (player.getId() == cStartGame.getOpponentId()) {
                 opponent = player;
+                opponent.setNumOfAllWonGame(cStartGame.getNumberOfLostGame());
                 break;
             }
 
@@ -235,7 +154,7 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
         intent.putExtra(BundleKeys.TYPE_OF_GAME, GameType.ONLINE);
         intent.putExtra(BundleKeys.OPPONENT, opponent);
         intent.putExtra(BundleKeys.TYPE_OF_MOVE, (cStartGame.getTypeMove() == Protocol.TypeMove.X) ? TypeOfMove.X : TypeOfMove.O);
-                startActivity(intent);
+        startActivity(intent);
         activity.finish();
 
     }
@@ -278,7 +197,9 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
                 int opponentId = adapterForActivityList.getIdLast();
                 Loger.printLog("switch " + opponentId);
                 Player player = null;
-                if (opponentId >= 0) player = listActivityPlayer.get(opponentId);
+                if (listActivityPlayer.size() > 0 && opponentId >= 0) {
+                    player = listActivityPlayer.get(opponentId);
+                }
                 if (player != null && !listInvitedPlayers.contains(player)) {
                     workerOnlineConnection.sendPacket(Protocol.SWantToPlay.newBuilder()
                             .setOpponentId(player.getId())
@@ -291,19 +212,22 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
             case R.id.btn_cancel_player:
                 int cancelId = adapterForInvitedList.getIdLast();
                 Player player1 = null;
-                if (cancelId  >= 0) player1 = listInvitedPlayers.get(cancelId);
+                if (listInvitedPlayers.size() > 0 && cancelId >= 0) {
+                    player1 = listInvitedPlayers.get(cancelId);
+                }
 
                 if (player1 != null) {
                     listInvitedPlayers.remove(player1);
                     adapterForInvitedList.notifyDataSetChanged();
-                    workerOnlineConnection.sendPacket(Protocol.SCancelDesirePlay.newBuilder().setPlayerId(myPlayer.getId()).setOpponentId(cancelId).build());
+                    workerOnlineConnection.sendPacket(Protocol.SCancelDesirePlay.newBuilder().setPlayerId(myPlayer.getId()).setOpponentId(player1.getId()).build());
                 }
                 break;
             case R.id.btn_start_game:
                 int oppId = adapterForWantPlayList.getIdLast();
                 if (oppId == Integer.MIN_VALUE)
                     return;
-                Player p = listActivityPlayer.get(oppId);
+                Player p = null;
+                if (listActivityPlayer.size() > 0) p = listActivityPlayer.get(oppId);
                 if (p != null)
                     workerOnlineConnection.sendPacket(Protocol.SWantToPlay.newBuilder()
                             .setOpponentId(p.getId()).setPlayerId(myPlayer.getId())
@@ -317,4 +241,90 @@ public class OnlineOpenedGroupFragment extends Fragment implements View.OnClickL
     }
 
 
+    @Override
+    public void updateAboutActivityPlayerp(Message msg) {
+        Protocol.CUpdateAboutActivityPlayer cActivityPlayer =
+                (Protocol.CUpdateAboutActivityPlayer) msg.obj;
+
+        for (Protocol.Player player : cActivityPlayer
+                .getNewPlayerList()) {
+            Loger.printLog("get updt + " + player.getName());
+            if (player.getId() != -1)
+                listActivityPlayer.add(new Player(player.getId(),
+                        player.getName(), player.getRating()));
+        }
+        for (Protocol.CExitFromGroup exitFromGroup : cActivityPlayer
+                .getExitPlayerList()) {
+            int id = exitFromGroup.getPlayerId();
+
+            for (Player player : listActivityPlayer)
+                if (player.getId() == id) {
+                    listActivityPlayer.remove(player);
+                    break;
+                }
+
+            for (Player player : listInvitedPlayers)
+                if (player.getId() == id) {
+                    listInvitedPlayers.remove(player);
+                    break;
+                }
+
+            for (Player player : listWantToPlayPlayer)
+                if (player.getId() == id) {
+                    listWantToPlayPlayer.remove(player);
+                    break;
+                }
+        }
+        adapterForActivityList.notifyDataSetChanged();
+        adapterForInvitedList.notifyDataSetChanged();
+        adapterForWantPlayList.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void wantToPlay(Message msg) {
+        Protocol.CWantToPlay wantToPlay = (Protocol.CWantToPlay) msg.obj;
+        int opponentId = wantToPlay.getOpponentId();
+        Player opponent = null;
+        for (Player player : listActivityPlayer)
+            if (player.getId() == opponentId) {
+                listWantToPlayPlayer.add(player);
+                opponent = player;
+            }
+        adapterForWantPlayList.notifyDataSetChanged();
+        Toast toast = Toast.makeText(context, "Player " + opponent.getName() + " want to play with you", 40);
+        toast.show();
+
+    }
+
+    @Override
+    public void startGame(Message msg) {
+        Protocol.CStartGame startGamePacket = (Protocol.CStartGame) msg.obj;
+        myPlayer.setNumOfAllWonGame(startGamePacket.getNumberOfWonGame());
+        startOnlineGame(startGamePacket);
+
+    }
+
+    @Override
+    public void cancelPlayDesire(Message msg) {
+        Protocol.CCancelDesirePlay cCancelDesirePlay = (Protocol.CCancelDesirePlay) msg.obj;
+        int id = cCancelDesirePlay.getOpponentId();
+        Player canceledPlayer = null;
+        for (Player player : listWantToPlayPlayer) {
+            if (player.getId() == id) {
+                canceledPlayer = player;
+                listWantToPlayPlayer.remove(player);
+                adapterForWantPlayList.notifyDataSetChanged();
+            }
+
+        }
+        Toast toastAboutCancel = Toast.makeText(context, "Player " + canceledPlayer.getName() + " canceled invite", 40);
+        toastAboutCancel.show();
+
+    }
+
+    @Override
+    public List<Player> getListActivePlayer() {
+        return listActivityPlayer;
+    }
 }

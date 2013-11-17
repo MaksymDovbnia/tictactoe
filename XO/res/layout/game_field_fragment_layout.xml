@@ -82,6 +82,7 @@
         android:background="@drawable/frame_for_fame_field"
         >
     <ScrollView
+
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:paddingLeft="2dp"
@@ -90,18 +91,21 @@
             android:paddingBottom="2dp"
             >
         <FrameLayout
+                android:id="@+id/frame"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 >
 
             <HorizontalScrollView
+
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
 
                    >
                 <FrameLayout
+                        android:id="@+id/frame2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" >
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -34,41 +35,60 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
     private Activity activity;
 
 
-
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         this.activity = activity;
     }
+
     int width;
     int height;
+    double K = 1.5;
+    View view;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.game_field_fragment_layout, null);
+        view = inflater.inflate(R.layout.game_field_fragment_layout, null);
         gridView = (GridView) view.findViewById(R.id.grid_view_game_field);
         Intent intent = activity.getIntent();
         String firstPlayerName = intent.getStringExtra(FIRST_PLAYER_NAME);
         String secondPlayerName = intent.getStringExtra(SECOND_PLAYER_NAME);
         ((TextView) view.findViewById(R.id.tv_field_item)).setText(firstPlayerName);
-        ((TextView) view.findViewById(R.id.tv_second_player_name)).setText(secondPlayerName);
+        TextView textView = ((TextView) view.findViewById(R.id.tv_second_player_name));
+        textView.setText(secondPlayerName);
         final LinearLayout containerGameFiled = (LinearLayout) view.findViewById(R.id.game_field_container);
+        final FrameLayout frame  = (FrameLayout) view.findViewById(R.id.frame);
+        final FrameLayout frame2  = (FrameLayout) view.findViewById(R.id.frame2);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+
+                gridView.setScaleX(2);
+                gridView.setScaleY(2);
+                frame.getLayoutParams().width = frame.getLayoutParams().width+1000;
+                frame2.getLayoutParams().height = frame.getLayoutParams().height+1000;
+                frame.invalidate();
+                frame2.invalidate();
+
+            }
+        });
+
         ViewTreeObserver vto = containerGameFiled.getViewTreeObserver();
+
+
 
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 containerGameFiled.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                width  = containerGameFiled.getMeasuredWidth();
-                height  = containerGameFiled.getMeasuredHeight();
+                width = containerGameFiled.getMeasuredWidth();
+                height = containerGameFiled.getMeasuredHeight();
 
 
             }
         });
-
-
-
-
-
 
 
         gameHandler = Controller.getInstance().getGameHandler();
@@ -96,7 +116,6 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
         return view;
 
     }
-
 
 
     @Override

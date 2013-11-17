@@ -2,61 +2,69 @@ package com.net.online.protobuf;
 
 import net.protocol.Protocol;
 
-import android.R.raw;
-
 import com.google.protobuf.AbstractMessageLite;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.utils.Loger;
 
 public class ProtoFactory {
 
-	public static AbstractMessageLite createProtoObject(byte data[],
-			ProtoType type) throws InvalidProtocolBufferException {
-		// System.out.println("createHandler for " + type);
+    public static AbstractMessageLite createProtoObject(byte data[],
+                                                        ProtoType type) throws InvalidProtocolBufferException {
+        // System.out.println("createHandler for " + type);
 
-		switch (type) {
-		case CUPDATEAOBOUTACTIVITYPLAYER:
-			Protocol.CUpdateAboutActivityPlayer cAboutActivityPlayer = Protocol.CUpdateAboutActivityPlayer
-					.parseFrom(data);
-			return cAboutActivityPlayer;
+        switch (type) {
+            case CUPDATEAOBOUTACTIVITYPLAYER:
+                Protocol.CUpdateAboutActivityPlayer cAboutActivityPlayer = Protocol.CUpdateAboutActivityPlayer
+                        .parseFrom(data);
+                return cAboutActivityPlayer;
 
-		case CSTARTGAME:
+            case CSTARTGAME:
 
-			Protocol.CStartGame cStartGame = Protocol.CStartGame
-					.parseFrom(data);
-			return cStartGame;
+                Protocol.CStartGame cStartGame = Protocol.CStartGame
+                        .parseFrom(data);
+                return cStartGame;
 
-		case CWANTTOPLAY:
+            case CWANTTOPLAY:
 
-			Protocol.CWantToPlay CWantToPlay = Protocol.CWantToPlay
-					.parseFrom(data);
-			return CWantToPlay;
+                Protocol.CWantToPlay CWantToPlay = Protocol.CWantToPlay
+                        .parseFrom(data);
+                return CWantToPlay;
 
-		case CLOGINTOGAME:
+            case CLOGINTOGAME:
 
-			Protocol.CLoginToGame CLoginToGame = Protocol.CLoginToGame
-					.parseFrom(data);
-			return CLoginToGame;
-		case CDIDMOVE:
-			Protocol.CDidMove didMove = Protocol.CDidMove.parseFrom(data);
-			return didMove;
-		case CEXITFROMGAME:
-			Protocol.CExitFromGame exitFromGame = Protocol.CExitFromGame
-					.parseFrom(data);
-			return exitFromGame;
-		case CCONTINUEGAME:
-			Protocol.CContinueGame continueGame = Protocol.CContinueGame
-					.parseFrom(data);
-			return continueGame;
-		case CGETGROUPLIST:
-			Protocol.CGetGroupList getGroupList = Protocol.CGetGroupList.parseFrom(data);
-			return getGroupList;
-		default:
-			Loger.printLog(" Wrong packet BLIADY");
-			return null;
+                Protocol.CLoginToGame CLoginToGame = Protocol.CLoginToGame
+                        .parseFrom(data);
+                return CLoginToGame;
+            case CDIDMOVE:
+                Protocol.CDidMove didMove = Protocol.CDidMove.parseFrom(data);
+                return didMove;
+            case CEXITFROMGAME:
+                Protocol.CExitFromGame exitFromGame = Protocol.CExitFromGame
+                        .parseFrom(data);
+                return exitFromGame;
+            case CCONTINUEGAME:
+                Protocol.CContinueGame continueGame = Protocol.CContinueGame
+                        .parseFrom(data);
+                return continueGame;
+            case CGETGROUPLIST:
+                Protocol.CGetGroupList getGroupList = Protocol.CGetGroupList.parseFrom(data);
+                return getGroupList;
+            case CCANCELDESIREPLAY:
+                Protocol.CCancelDesirePlay cCancelDesirePlay = Protocol.CCancelDesirePlay.parseFrom(data);
+                return cCancelDesirePlay;
+            case CCHATMESSAGE:
+                Protocol.CChatMessage cChatMessage = Protocol.CChatMessage.parseFrom(data);
+                return cChatMessage;
+            case CGROUPCHATMESSAGE:
+                Protocol.CGroupChatMessage cGroupChatMessage = Protocol.CGroupChatMessage.parseFrom(data);
+                return cGroupChatMessage;
 
-		}
+            default:
+                Loger.printLog(" Wrong packet BLIADY");
+                return null;
 
-	}
+        }
+
+    }
 
 }

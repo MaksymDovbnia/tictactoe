@@ -9,12 +9,18 @@ public enum ProtoType {
     // from Main Server
     CLOGINTOGAME((byte) 0x01, 1), CUPDATEAOBOUTACTIVITYPLAYER((byte) 0x02, 2), CWANTTOPLAY(
             (byte) 0x03, 3), CSTARTGAME((byte) 0x04, 4), CDIDMOVE((byte) 0x05,
-            5), CCHATMESSAGE((byte) 0x08, 8), CEXITFROMGAME((byte) 0x0D, 13), CCONTINUEGAME(
+            5), CEXITFROMGAME((byte) 0x0D, 13), CCONTINUEGAME(
             (byte) 0x07, 7),
     CGETGROUPLIST((byte) 0x09, 9),
+    CCANCELDESIREPLAY((byte) 0x08, 8),
+
+    CCHATMESSAGE((byte)0x0C, 10),
+    CGROUPCHATMESSAGE((byte) 0x1C, 11),
+
 
     //OTHER
-    CONNECTION_TO_SERVER_LOST ((byte)0x40, 400),
+    CONNECTION_TO_SERVER_LOST((byte) 0x40, 400),
+
 
     // TO SERVER
     SGETUPDATE((byte) 0x02, Protocol.SGetUpdate.class), SLOGINTOGAME(
@@ -26,6 +32,8 @@ public enum ProtoType {
             Protocol.SWonGame.class), SGETGROUPLIST((byte) 0x09, Protocol.SGetGroupList.class),
     SENTERTOGROUP((byte) 0x8A, Protocol.SEnterToGroup.class),
     SСANCELDESIREPLAY((byte) 0x08, Protocol.SCancelDesirePlay.class),
+    SCHATMESSAGE((byte)0x0C, Protocol.SChatMessage.class),
+    SGROUPCHATMESSAGE((byte) 0x1C, Protocol.SGroupChatMessage.class),
 
     SEXITFROMGROUP((byte) 0x1D, Protocol.SExitFromGroup.class),
     SEXITFROMGLOBALGAME((byte) 0x2D,
@@ -33,7 +41,6 @@ public enum ProtoType {
 
 
     UNKNOWN((byte) 0x00, 0);
-
 
 
     private final byte b;

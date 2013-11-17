@@ -88,11 +88,6 @@
 
     <string name="connection_to_server_lost">Connection to server lost</string>
     <string name="please_try_to_connect_once_more">Please try to connect once more</string>
-
-
-
-
-
     <string name="is_won">is won</string>
     <string name="are_you_want_continue_game">Are you want to continue game?</string>
     <string name="yes">Yes</string>
@@ -104,11 +99,6 @@
     <string name="connecting">Connecting...</string>
     <string name="server_not_available">Sorry, now server isn\'t available, please try later</string>
 
-
-
-
-
-
     <string name="exit_from_group">Exit from group</string>
     <string name="left_the_game">left the game</string>
     <string name="exit_from_group_question">Do you real want to exit from this group?</string>
@@ -116,8 +106,6 @@
     <string name="exit_from_this_game_question">Do you real want to exit from  this game?</string>
     <string name="exit_from_online_game">Exit from online game</string>
     <string name="exit_from_game_online_question">Do you real want to exit from online game?</string>
-
-
 
     <string name="title_other_devices">Other devices</string>
     <string name="title_paired_devices">Paired devices</string>
@@ -128,16 +116,8 @@
     <string name="sec">sec</string>
     <string name="nick">nick</string>
     <string name="rating">rating</string>
-
-
-
-
-
-
-
-
-
-
-
+    <string name="sent">Sent</string>
+    <string name="input_your_message">Input your message:</string>
+    <string name="new_message">New message!</string>
 
 </resources>
