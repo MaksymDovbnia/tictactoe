@@ -12,11 +12,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.TextView;
 
 import com.entity.OneMove;
 import com.entity.TypeOfMove;
-import com.game.gamefield.handler.GameHandler;
+import com.game.gamefield.handler.IGameHandler;
 import com.game.TypeLine;
 import com.game.activity.R;
 import com.utils.Loger;
@@ -24,14 +23,14 @@ import com.utils.Loger;
 public class GameFieldAdapter extends BaseAdapter {
     private GameFieldItem[] fields = new GameFieldItem[225];
     private GameFieldItem[][] fieldsGrid = new GameFieldItem[15][15];
-    private GameHandler gameHandler;
+    private IGameHandler gameHandler;
     private LayoutInflater layoutInflater;
     private boolean isEnableGameField;
     private GameFieldItem lastGameFieldItem;
 
 
 
-    public GameFieldAdapter(Context context, GameHandler gameFiledSource) {
+    public GameFieldAdapter(Context context, IGameHandler gameFiledSource) {
         layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (context instanceof GameFieldActivityAction)
@@ -157,6 +156,8 @@ public class GameFieldAdapter extends BaseAdapter {
             fields[i].setEnabled(false);
         }
         isEnableGameField = false;
+
+
     }
 
     public void setEnableAllUnusedGameField(boolean isEnable) {
@@ -188,13 +189,14 @@ public class GameFieldAdapter extends BaseAdapter {
         public void onClick(View view) {
 
             GameFieldItem field = (GameFieldItem) view;
-            if (lastGameFieldItem != null) lastGameFieldItem.setMarkAboutLastMove(false);
-            lastGameFieldItem = field;
-            lastGameFieldItem.setMarkAboutLastMove(true);
-            field.setEnabled(false);
+//            if (lastGameFieldItem != null) lastGameFieldItem.setMarkAboutLastMove(false);
+//            lastGameFieldItem = field;
+//            lastGameFieldItem.setMarkAboutLastMove(true);
+//            field.setEnabled(false);
 
             int j = field.getJ(), i = field.getI();
-            field.setFieldTypeAndDraw(gameHandler.occurredMove(i, j));
+            //field.setFieldTypeAndDraw();
+            gameHandler.occurredMove(i, j);
 
         }
     }

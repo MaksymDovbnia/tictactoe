@@ -16,60 +16,58 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 public class StartActivity extends FragmentActivity implements OnClickListener {
-	Button start;
-	Button exit;
-    Button settings;
-
+    View start;
+    View exit;
+    View settings;
 
 
     @Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.start_activity_layout);
-		
-		Typeface mFont = Typeface.createFromAsset(getAssets(), "fonts/acquestscript.ttf");
-		start = (Button) findViewById(R.id.btn_start_activity_start_game);
-		start.setOnClickListener(this);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.start_activity_layout);
 
-		exit = (Button) findViewById(R.id.btn_start_activity_exit);
-		exit.setOnClickListener(this);
 
-		settings = (Button) findViewById(R.id.btn_start_activity_settings);
+        start = findViewById(R.id.btn_start_activity_start_game);
+        start.setOnClickListener(this);
+
+        exit =  findViewById(R.id.btn_start_activity_exit);
+        exit.setOnClickListener(this);
+
+        settings =  findViewById(R.id.btn_start_activity_settings);
         settings.setOnClickListener(this);
 
-		
-		
-	}
 
-	@Override
-	protected void onResume() {
-		super.onResume();
+    }
 
-	}
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-	@Override
-	public void onClick(View view) {
+    }
 
-		switch (view.getId()) {
-		case R.id.btn_start_activity_start_game:
-			// view.setBackgroundResource(R.drawable.button_white_withblueline);
-			Intent intent = new Intent(this, SelectTypeOfGameActivity.class);
-			startActivity(intent);
-			break;
+    @Override
+    public void onClick(View view) {
 
-		case R.id.btn_start_activity_exit: finish();
-		break;
+        switch (view.getId()) {
+            case R.id.btn_start_activity_start_game:
+                // view.setBackgroundResource(R.drawable.button_white_withblueline);
+                Intent intent = new Intent(this, SelectTypeOfGameActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.btn_start_activity_exit:
+                finish();
+                break;
 
             case R.id.btn_start_activity_settings:
-                Intent intent2 = new Intent(this, Test.class);
-                startActivity(intent2);
-                break;
-		default:
-			
-			break;
-		}
 
-	}
+                break;
+            default:
+
+                break;
+        }
+
+    }
 
 
     @Override

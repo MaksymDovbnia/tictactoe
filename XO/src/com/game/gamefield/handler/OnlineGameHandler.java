@@ -22,7 +22,7 @@ import com.net.online.WorkerOnlineConnection;
 import com.net.online.protobuf.ProtoType;
 import com.utils.Loger;
 
-public class OnlineGameHandler extends GlobalHandler implements GameHandler {
+public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
 
     private Handler handler;
     private WorkerOnlineConnection onlineGameWorker;
@@ -68,14 +68,14 @@ public class OnlineGameHandler extends GlobalHandler implements GameHandler {
                             indicator = FIRST_PLAYER;
                             OnlineGameHandler.super.player.setMoveType(TypeOfMove.X);
                             OnlineGameHandler.super.opponent.setMoveType(TypeOfMove.O);
-                            tvPlayer1Name.setBackgroundResource(R.drawable.ovalbound_red);
+                            tvPlayer1Name.setBackgroundResource(SELECT_PLAYER_BACKGROUND);
                             tvPlayer2Name.setBackgroundResource(R.drawable.button_white);
                             gameFieldAdapter.setEnableAllUnusedGameField(true);
                         } else {
                             indicator = SECOND_PLAYER;
                             OnlineGameHandler.super.player.setMoveType(TypeOfMove.O);
                             OnlineGameHandler.super.opponent.setMoveType(TypeOfMove.X);
-                            tvPlayer2Name.setBackgroundResource(R.drawable.ovalbound_red);
+                            tvPlayer2Name.setBackgroundResource(SELECT_PLAYER_BACKGROUND);
                             tvPlayer1Name.setBackgroundResource(R.drawable.button_white);
                         }
 
@@ -112,7 +112,8 @@ public class OnlineGameHandler extends GlobalHandler implements GameHandler {
         List<OneMove> list = gameActionHandler.oneMove(oneMove);
         if (list != null) {
             wonGame(list);
-            onlineGameWorker.sendPacket(Protocol.SWonGame.newBuilder().setIdWonPlayer(player.getId()).setIdLostPlayer(opponent.getId()).build());
+            onlineGameWorker.sendPacket(Protocol.SWonGame.newBuilder().setIdWonPlayer(player.getId()).
+                    setIdLostPlayer(opponent.getId()).build());
         }
 
         return list;
@@ -146,6 +147,7 @@ public class OnlineGameHandler extends GlobalHandler implements GameHandler {
             type = (opponent.getMoveType() == TypeOfMove.X) ? GameFieldItem.FieldType.X : GameFieldItem.FieldType.O;
             oneMove = new OneMove(i, j, opponent.getMoveType());
         }
+        gameFieldAdapter.showOneMove(oneMove);
         performedOneMove(oneMove);
         changeIndicator();
         gameFieldAdapter.setEnableAllUnusedGameField(false);
@@ -215,12 +217,12 @@ public class OnlineGameHandler extends GlobalHandler implements GameHandler {
             player.setMoveType(TypeOfMove.O);
             opponent.setMoveType(TypeOfMove.X);
             indicator = SECOND_PLAYER;
-            tvPlayer2Name.setBackgroundResource(R.drawable.ovalbound_red);
+            tvPlayer2Name.setBackgroundResource(SELECT_PLAYER_BACKGROUND);
             tvPlayer1Name.setBackgroundResource(R.drawable.button_white);
 
         } else {
             indicator = FIRST_PLAYER;
-            tvPlayer1Name.setBackgroundResource(R.drawable.ovalbound_red);
+            tvPlayer1Name.setBackgroundResource(SELECT_PLAYER_BACKGROUND);
             tvPlayer2Name.setBackgroundResource(R.drawable.button_white);
             player.setMoveType(TypeOfMove.X);
             opponent.setMoveType(TypeOfMove.O);

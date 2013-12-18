@@ -48,7 +48,7 @@ public class BluetoothGameActivity extends Activity implements View.OnClickListe
 
     @Override
     protected void onResume() {
-        bluetoothService = new BluetoothServiceViaProtobuf();
+        bluetoothService = new BluetoothServiceViaProtobuf(this);
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         super.onResume();
     }

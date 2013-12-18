@@ -21,6 +21,7 @@ import com.game.chat.ChatAction;
 import com.game.chat.ChatActionNotification;
 import com.game.chat.ChatFragment;
 import com.game.chat.ChatMessage;
+import com.game.gamefield.handler.AndroidGameHandler;
 import com.game.gamefield.handler.FriendGameHandler;
 import com.game.gamefield.handler.OnlineGameHandler;
 import com.game.popup.XOAlertDialog;
@@ -59,39 +60,70 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
         openChat = (Button) findViewById(R.id.btn_group_chat);
         openChat.setOnClickListener(this);
         openGroup.setOnClickListener(this);
+        String playerName = getString(R.string.player);
+        String opponentName = "";
+        Player player = new Player();
+        Player opponent1 = new Player();
+        if (gameType != null) {
+            switch (gameType) {
+                case ONLINE:
+                    Player opponent = (Player) intent.getSerializableExtra(BundleKeys.OPPONENT);
+                    this.opponent = opponent;
+                    TypeOfMove typeOfMove = (TypeOfMove) intent.getSerializableExtra(BundleKeys.TYPE_OF_MOVE);
+                    OnlineGameHandler onlineGameHandler = new OnlineGameHandler(
+                            Controller.getInstance().getOnlineWorker(), Controller.getInstance().getPlayer(), opponent, this, (typeOfMove == TypeOfMove.X), null);
+                    Controller.getInstance().setGameHandler(onlineGameHandler);
+                    onlineGameHandler.setActivityAction(this);
+                    newGame.setEnabled(false);
+                    newGame.setText("");
+                    break;
+                case FRIEND:
 
-        if (gameType != null && gameType == GameType.ONLINE) {
-            Player opponent = (Player) intent.getSerializableExtra(BundleKeys.OPPONENT);
-            this.opponent = opponent;
-            TypeOfMove typeOfMove = (TypeOfMove) intent.getSerializableExtra(BundleKeys.TYPE_OF_MOVE);
-            OnlineGameHandler onlineGameHandler = new OnlineGameHandler(
-                    Controller.getInstance().getOnlineWorker(), Controller.getInstance().getPlayer(), opponent, this, (typeOfMove == TypeOfMove.X), null);
-            Controller.getInstance().setGameHandler(onlineGameHandler);
-            onlineGameHandler.setActivityAction(this);
-            newGame.setEnabled(false);
-            newGame.setText("");
-        } else if (gameType != null && gameType == GameType.FRIEND) {
-            String playerName = "";
-            String opponentName = "";
-            if (intent.getStringExtra(FIRST_PLAYER_NAME) != null) {
-                playerName = intent.getStringExtra(FIRST_PLAYER_NAME);
+                    if (intent.getStringExtra(FIRST_PLAYER_NAME) != null) {
+                        playerName = intent.getStringExtra(FIRST_PLAYER_NAME);
+                    }
+
+                    if (intent.getStringExtra(SECOND_PLAYER_NAME) != null) {
+                        opponentName = intent.getStringExtra(SECOND_PLAYER_NAME);
+                    }
+                    player.setName(playerName);
+                    opponent1.setName(opponentName);
+                    //   mediaPlayer = MediaPlayer.create(this, R.raw.draw_sound);
+
+                    FriendGameHandler friendGameHandler = new FriendGameHandler(player, opponent1, this, mediaPlayer);
+                    Controller.getInstance().setGameHandler(friendGameHandler);
+                    Controller.getInstance().setPlayer(player);
+                    openChat.setEnabled(false);
+                    openChat.setText("");
+                    break;
+
+                case ANDROID:
+                    if (intent.getStringExtra(FIRST_PLAYER_NAME) != null) {
+                        playerName = intent.getStringExtra(FIRST_PLAYER_NAME);
+                    }
+
+                    opponentName = getString(R.string.android);
+                    if (intent.getStringExtra(FIRST_PLAYER_NAME) != null) {
+                        playerName = intent.getStringExtra(FIRST_PLAYER_NAME);
+                    }
+
+                    if (intent.getStringExtra(SECOND_PLAYER_NAME) != null) {
+                        opponentName = intent.getStringExtra(SECOND_PLAYER_NAME);
+                    }
+                    player.setName(playerName);
+                    opponent1.setName(opponentName);
+                    AndroidGameHandler androidGameHandler = new AndroidGameHandler(player, opponent1, this, mediaPlayer, this);
+                    Controller.getInstance().setGameHandler(androidGameHandler);
+                    Controller.getInstance().setPlayer(player);
+                    openChat.setEnabled(false);
+                    openChat.setText("");
+
+
+                    break;
+
             }
-
-            if (intent.getStringExtra(SECOND_PLAYER_NAME) != null) {
-                opponentName = intent.getStringExtra(SECOND_PLAYER_NAME);
-            }
-
-
-            Player player = new Player();
-            player.setName(playerName);
-            Player opponent = new Player();
-            opponent.setName(opponentName);
-            mediaPlayer = MediaPlayer.create(this, R.raw.draw_sound);
-
-            FriendGameHandler friendGameHandler = new FriendGameHandler(player, opponent, this, mediaPlayer);
-            Controller.getInstance().setGameHandler(friendGameHandler);
-            Controller.getInstance().setPlayer(player);
         }
+
 
         cureentTab = TAB.GAME;
         gameFieldFragment = new GameFieldFragment();

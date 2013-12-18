@@ -58,6 +58,9 @@ public class ProtoFactory {
             case CGROUPCHATMESSAGE:
                 Protocol.CGroupChatMessage cGroupChatMessage = Protocol.CGroupChatMessage.parseFrom(data);
                 return cGroupChatMessage;
+            case CTOP100:
+                Protocol.CTop100Player top100 = Protocol.CTop100Player.parseFrom(data);
+                return top100;
 
             default:
                 Loger.printLog(" Wrong packet BLIADY");

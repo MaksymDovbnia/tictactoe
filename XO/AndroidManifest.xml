@@ -43,7 +43,7 @@
                 android:name=".SelectTypeOfGameActivity"
                 android:label="@string/title_activity_type_of_game">
         </activity>
-     
+
         <activity
                 android:name="com.game.activity.DeviceListActivity"
 
@@ -58,14 +58,13 @@
         </activity>
         <activity
                 android:screenOrientation="portrait"
-                android:name=".OnlineGroupsActivity"
-                android:label="@string/title_activity_activity_online_group">
+                android:name="com.game.onlinegroups.OnlineGroupsActivity">
         </activity>
 
 
         <activity
                 android:screenOrientation="portrait"
-                android:name=".OnlineOpenedGroupActivity"/>
+                android:name=".OnlineOpenedRoomActivity"/>
         <activity
                 android:screenOrientation="portrait"
                 android:name=".BluetoothGameActivity"/>

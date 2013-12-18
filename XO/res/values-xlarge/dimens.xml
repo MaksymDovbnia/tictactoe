@@ -46,6 +46,7 @@
 
     <!--Online group list item-->
     <dimen name="general_list_item_text_size">35dp</dimen>
+    <dimen name="header_list_item_text_size">25dp</dimen>
 
     <!--Online group fragment layout-->
     <dimen name="online_group_fragment_layout_button_height">60dp</dimen>
@@ -86,6 +87,10 @@
     <dimen name="chat_list_item_message_text_size">23dp</dimen>
     <dimen name="chat_list_item_sender_text_size">22dp</dimen>
 
+    <!--Top 100 fragment-->
+    <dimen name="top_100_fragment_layout_padding_left_right">20dp</dimen>
+    <dimen name="top_100_fragment_list_item_text_size">40dp</dimen>
+    <dimen name="top_100_fragment_list_view_header_text_size">20dp</dimen>
 
 
 

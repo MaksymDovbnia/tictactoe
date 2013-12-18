@@ -97,35 +97,39 @@ public class GameFieldItem extends ImageView {
     static Bitmap scaledBitmapO;
 
 
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //i am svetlana garkusha and i am happy to pass my free time with maksym dovbnia because he is my little and bad boy
 
         if (bitmapMainBackGround == null)
-            bitmapMainBackGround =  Bitmap.createScaledBitmap(bitmap_main_backgroud, getLayoutParams().width, getLayoutParams().height, true);
+            bitmapMainBackGround = Bitmap.createScaledBitmap(bitmap_main_backgroud,
+                    getLayoutParams().width, getLayoutParams().height, true);
 
         canvas.drawBitmap(bitmapMainBackGround, 0, 0, null);
 
 
         if (fieldType != null) {
             if (scaledBitmapX == null)
-                scaledBitmapX = Bitmap.createScaledBitmap(bitmap_x, getLayoutParams().width, getLayoutParams().height, true);
+                scaledBitmapX = Bitmap.createScaledBitmap(bitmap_x, getLayoutParams().width,
+                        getLayoutParams().height, true);
 
             if (scaledBitmapO == null)
-                scaledBitmapO=  Bitmap.createScaledBitmap(bitmap_o, getLayoutParams().width, getLayoutParams().height, true);
+                scaledBitmapO = Bitmap.createScaledBitmap(bitmap_o, getLayoutParams().width,
+                        getLayoutParams().height, true);
 
             canvas.drawBitmap(fieldType == FieldType.X ? scaledBitmapX : scaledBitmapO, 0, 0, null);
         }
 
         if (isLastMove && !isInSight) {
-           if (  bitmapLastMove == null) bitmapLastMove = Bitmap.createScaledBitmap(this.bitmapLastMove, getLayoutParams().width, getLayoutParams().height, true);
+            if (bitmapLastMove == null) bitmapLastMove = Bitmap.createScaledBitmap(
+                    this.bitmapLastMove, getLayoutParams().width, getLayoutParams().height, true);
             canvas.drawBitmap(bitmapLastMove, 0, 0, null);
         }
 
         if (isInSight) {
-            Bitmap bitmapSight = Bitmap.createScaledBitmap(this.bitmapInSight, getLayoutParams().width, getLayoutParams().height, true);
+            Bitmap bitmapSight = Bitmap.createScaledBitmap(this.bitmapInSight,
+                    getLayoutParams().width, getLayoutParams().height, true);
             canvas.drawBitmap(bitmapSight, 0, 0, null);
         }
 
@@ -133,16 +137,24 @@ public class GameFieldItem extends ImageView {
             Bitmap bitmap = null;
             switch (winLineType) {
                 case HORIZONTAL:
-                    bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.horizontal_line),  getLayoutParams().width, getLayoutParams().height, true);
+                    bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
+                            R.drawable.horizontal_line), getLayoutParams().width,
+                            getLayoutParams().height, true);
                     break;
                 case VERTICAl:
-                    bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.vertical_line),  getLayoutParams().width, getLayoutParams().height, true);
+                    bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
+                            R.drawable.vertical_line), getLayoutParams().width,
+                            getLayoutParams().height, true);
                     break;
                 case LEFT:
-                    bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.left_line),  getLayoutParams().width, getLayoutParams().height, true);
+                    bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
+                            R.drawable.left_line), getLayoutParams().width,
+                            getLayoutParams().height, true);
                     break;
                 case RIGHT:
-                    bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.right_line), getLayoutParams().width, getLayoutParams().height, true);
+                    bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
+                            R.drawable.right_line), getLayoutParams().width,
+                            getLayoutParams().height, true);
                     break;
             }
 

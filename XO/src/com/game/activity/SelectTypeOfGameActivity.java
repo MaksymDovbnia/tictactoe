@@ -18,15 +18,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.config.BundleKeys;
-import com.entity.Font;
 import com.entity.Player;
 import com.game.Controller;
 import com.game.GameType;
 import com.game.gamefield.GameFieldActivity;
+import com.game.onlinegroups.OnlineGroupsActivity;
 import com.game.popup.XOAlertDialog;
 import com.net.online.WorkerOnlineConnection;
 import com.net.online.protobuf.ProtoType;
@@ -44,10 +44,10 @@ public class SelectTypeOfGameActivity extends FragmentActivity implements OnClic
     private static final String PLAYER_UUID_FOR_ONLINE_GAME = "player_uuid_for_online_game";
 
 
-    private Button friend;
-    private Button online;
-    private Button android;
-    private Button bluetooth;
+    private View friend;
+    private View online;
+    private View android;
+    private View bluetooth;
     private static final int OFFLINE_GAME_POPUP = 1;
     private SharedPreferences sharedPreferences;
     private String player1NameFromSharedPrefences;
@@ -73,21 +73,20 @@ public class SelectTypeOfGameActivity extends FragmentActivity implements OnClic
 
         Typeface mFont = Typeface.createFromAsset(getAssets(), "fonts/acquestscript.ttf");
 
-        friend = (Button) findViewById(R.id.btn_two_players);
+        friend = findViewById(R.id.btn_two_players);
         friend.setOnClickListener(this);
 
-        online = (Button) findViewById(R.id.btn_online);
+        online =  findViewById(R.id.btn_online);
         online.setOnClickListener(this);
 
-        android = (Button) findViewById(R.id.btn_android);
+        android =  findViewById(R.id.btn_android);
         android.setOnClickListener(this);
-        bluetooth = (Button) findViewById(R.id.btn_bluetooth);
+        bluetooth =  findViewById(R.id.btn_bluetooth);
         bluetooth.setOnClickListener(this);
         player = new Player();
         createHandler();
 
     }
-
 
 
     private void createHandler() {
@@ -250,12 +249,38 @@ public class SelectTypeOfGameActivity extends FragmentActivity implements OnClic
         xoAlertDialog.show(getSupportFragmentManager(), "");
     }
 
+    private void showPopupSelectBotLevel() {
+        final XOAlertDialog xoAlertDialog = new XOAlertDialog();
+        anonymousLoginPopup = xoAlertDialog;
+        xoAlertDialog.setContent(R.layout.select_bot_level_popup_layout);
+        xoAlertDialog.setContentInitialization(new XOAlertDialog.IContentInitialization() {
+            @Override
+            public void onContentItialization(View view) {
+                TextView textViewEasyLevel = (TextView) view.findViewById(R.id.tv_easy_level);
+                textViewEasyLevel.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startGameWithBot();
+                        xoAlertDialog.dismiss();
+                    }
+                });
+            }
+        });
+        xoAlertDialog.show(getSupportFragmentManager(), "");
+    }
+
+    private void startGameWithBot() {
+        Intent intent = new Intent(SelectTypeOfGameActivity.this, GameFieldActivity.class);
+        intent.putExtra(BundleKeys.TYPE_OF_GAME, GameType.ANDROID);
+        startActivity(intent);
+    }
 
     @Override
     public void onClick(View v) {
         Intent intent = null;
         switch (v.getId()) {
             case R.id.btn_android:
+                showPopupSelectBotLevel();
                 break;
             case R.id.btn_two_players:
                 showPopupForInputNameOfPlayers();
@@ -275,7 +300,7 @@ public class SelectTypeOfGameActivity extends FragmentActivity implements OnClic
 
 
     private String generateUUID() {
-        TelephonyManager tManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager tManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         String uuid = tManager.getDeviceId();
         return uuid + System.currentTimeMillis();
     }

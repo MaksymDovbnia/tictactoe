@@ -1,7 +1,7 @@
 package com.game;
 
 import com.entity.Player;
-import com.game.gamefield.handler.GameHandler;
+import com.game.gamefield.handler.IGameHandler;
 import com.net.bluetooth.BluetoothService;
 import com.net.online.WorkerOnlineConnection;
 
@@ -12,9 +12,9 @@ public class Controller {
     private static Controller controller;
 
 	private  Player player;
-	private  GameHandler gameFiledSource;
+	private IGameHandler gameFiledSource;
 
-	public  GameHandler getGameHandler() {
+	public IGameHandler getGameHandler() {
 		return gameFiledSource;
 	}
 
@@ -33,7 +33,7 @@ public class Controller {
         this.bluetoothService = bluetoothService;
     }
 
-    public  void setGameHandler(GameHandler handler) {
+    public  void setGameHandler(IGameHandler handler) {
 		gameFiledSource = handler;
 	}
 

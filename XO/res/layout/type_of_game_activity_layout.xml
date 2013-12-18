@@ -56,7 +56,7 @@
                     android:layout_gravity="bottom"
                     android:src="@drawable/clip_yellow"/>
 
-            <Button
+            <com.component.TextViewWithFontMainActivity
                     android:id="@+id/btn_two_players"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -80,12 +80,12 @@
                     android:layout_gravity="bottom"
                     android:src="@drawable/clip_yellow"/>
 
-            <Button
+            <com.component.TextViewWithFontMainActivity
                     android:id="@+id/btn_android"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/main_activity_layout_center_container__one_item_button_margin_left"
-                    android:text="@string/button_gametypes_android"
+                    android:text="@string/with_android"
                     style="@style/default_white_button"
                     />
         </LinearLayout>
@@ -104,7 +104,7 @@
                     android:layout_gravity="bottom"
                     android:src="@drawable/clip_yellow"/>
 
-            <Button
+            <com.component.TextViewWithFontMainActivity
                     android:id="@+id/btn_online"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -128,7 +128,7 @@
                     android:layout_gravity="bottom"
                     android:src="@drawable/clip_yellow"/>
 
-            <Button
+            <com.component.TextViewWithFontMainActivity
                     android:id="@+id/btn_bluetooth"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

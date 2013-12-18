@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by Maksym on 6/20/13.
  */
-public class BluetoothGameHandler implements GameHandler {
+public class BluetoothGameHandler implements IGameHandler {
 
     private GameFieldAdapter gameFieldAdapter;
     private Handler handler;

@@ -34,6 +34,7 @@ import android.widget.Toast;
 import com.entity.Font;
 import com.entity.Player;
 import com.game.Controller;
+import com.game.onlinegroups.OnlineGroupsActivity;
 import com.net.online.WorkerOnlineConnection;
 import com.net.online.protobuf.ProtoType;
 import com.utils.Loger;
@@ -192,7 +193,7 @@ public class OnlineTypeRegistrationActivity extends Activity implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.textView_registration_anon:
-                v.setBackgroundResource(R.drawable.stroke_red);
+                v.setBackgroundResource(R.drawable.ovalbound_red);
                 FrameLayout frame = (FrameLayout) findViewById(R.id.loginFrameLayout);
 
                 // LayoutInflater inflater = getLayoutInflater();
@@ -208,7 +209,7 @@ public class OnlineTypeRegistrationActivity extends Activity implements
 
                 break;
             case R.id.textView_registration_byTTT:
-                v.setBackgroundResource(R.drawable.stroke_red);
+                v.setBackgroundResource(R.drawable.ovalbound_red);
                 showDialog(XOACCOUNTDIALOG);
                 break;
             case R.id.button_open_regxoacount_activity:

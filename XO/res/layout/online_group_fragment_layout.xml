@@ -30,7 +30,7 @@
                 android:id="@+id/tv_online_group_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/group_list"
+                android:text="@string/room_list"
                 android:textSize="@dimen/default_text_size"
                 />
 
@@ -57,7 +57,7 @@
                android:layout_weight="1"
                android:layout_height="@dimen/online_group_fragment_layout_button_height"
                android:background="@drawable/selector_default_yelow_button"
-               android:text="@string/open_group"
+               android:text="@string/open_room"
                android:textSize="@dimen/small_text_size"
                />
        <Button
@@ -67,7 +67,7 @@
                android:layout_height="@dimen/online_group_fragment_layout_button_height"
                android:textSize="@dimen/small_text_size"
                android:background="@drawable/selector_default_yelow_button"
-               android:text="@string/update_group_list"
+               android:text="@string/update_room_list"
                />
 
    </LinearLayout>

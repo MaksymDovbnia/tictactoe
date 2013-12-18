@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.game.Controller;
 import com.game.activity.R;
-import com.game.gamefield.handler.GameHandler;
+import com.game.gamefield.handler.IGameHandler;
 
 /**
  * Created by Maksym on 9/1/13.
@@ -26,7 +26,7 @@ import com.game.gamefield.handler.GameHandler;
 public class GameFieldFragment extends Fragment implements View.OnClickListener, View.OnTouchListener, IGameFieldFragmentAction {
 
     private GridView gridView;
-    private GameHandler gameHandler;
+    private IGameHandler gameHandler;
     private Handler handler;
     private GameFieldAdapter gameFieldAdapter;
     private Button newGame;
@@ -64,13 +64,13 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
 
 
 
-
-                gridView.setScaleX(2);
-                gridView.setScaleY(2);
-                frame.getLayoutParams().width = frame.getLayoutParams().width+1000;
-                frame2.getLayoutParams().height = frame.getLayoutParams().height+1000;
-                frame.invalidate();
-                frame2.invalidate();
+//
+//                gridView.setScaleX(2);
+//                gridView.setScaleY(2);
+//                frame.getLayoutParams().width = frame.getLayoutParams().width+1000;
+//                frame2.getLayoutParams().height = frame.getLayoutParams().height+1000;
+//                frame.invalidate();
+//                frame2.invalidate();
 
             }
         });

@@ -14,8 +14,9 @@ public enum ProtoType {
     CGETGROUPLIST((byte) 0x09, 9),
     CCANCELDESIREPLAY((byte) 0x08, 8),
 
-    CCHATMESSAGE((byte)0x0C, 10),
+    CCHATMESSAGE((byte) 0x0C, 10),
     CGROUPCHATMESSAGE((byte) 0x1C, 11),
+    CTOP100((byte) 0x0E, 12),
 
 
     //OTHER
@@ -32,12 +33,13 @@ public enum ProtoType {
             Protocol.SWonGame.class), SGETGROUPLIST((byte) 0x09, Protocol.SGetGroupList.class),
     SENTERTOGROUP((byte) 0x8A, Protocol.SEnterToGroup.class),
     SСANCELDESIREPLAY((byte) 0x08, Protocol.SCancelDesirePlay.class),
-    SCHATMESSAGE((byte)0x0C, Protocol.SChatMessage.class),
+    SCHATMESSAGE((byte) 0x0C, Protocol.SChatMessage.class),
     SGROUPCHATMESSAGE((byte) 0x1C, Protocol.SGroupChatMessage.class),
 
     SEXITFROMGROUP((byte) 0x1D, Protocol.SExitFromGroup.class),
     SEXITFROMGLOBALGAME((byte) 0x2D,
             Protocol.SExitFromGlobalGame.class),
+    STOP100((byte) 0x0E, Protocol.STop100Player.class),
 
 
     UNKNOWN((byte) 0x00, 0);

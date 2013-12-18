@@ -7,9 +7,10 @@
 
     <TextView
             android:id="@+id/tv_online_group_item_name"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:text="name"
             android:textColor="@color/black"
@@ -18,10 +19,12 @@
 
     <TextView
             android:id="@+id/tv_count_of_online_players_in_group"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:textColor="@color/black"
+            android:layout_gravity="center_horizontal"
             android:text="30 /250 "
             android:textSize="@dimen/general_list_item_text_size"/>
 

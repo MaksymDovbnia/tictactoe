@@ -4,14 +4,17 @@ package com.net.bluetooth;
  * Created by Maksym on 6/20/13.
  */
 
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.protobuf.AbstractMessage;
 import com.google.protobuf.AbstractMessageLite;
@@ -62,7 +65,10 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
         handlerList.add(handler);
     }
 
-    public BluetoothServiceViaProtobuf() {
+    Activity activity;
+
+    public BluetoothServiceViaProtobuf(Activity activity) {
+        this.activity = activity;
         mAdapter = BluetoothAdapter.getDefaultAdapter();
         mState = STATE_NONE;
         handlerList = new ArrayList<Handler>();
@@ -249,7 +255,7 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
 //        mHandler.sendMessage(msg);
 
         // Start the service over to restart listening mode
-        BluetoothServiceViaProtobuf.this.start();
+//        BluetoothServiceViaProtobuf.this.start();
     }
 
     /**
@@ -275,21 +281,22 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
      * like a server-side client. It runs until a connection is accepted
      * (or until cancelled).
      */
-     public  class AcceptThread extends Thread {
+    public class AcceptThread extends Thread {
         // The local server socket
         private final BluetoothServerSocket mmServerSocket;
         private String mSocketType;
 
-        public AcceptThread(boolean secure) {            BluetoothServerSocket tmp = null;
+        public AcceptThread(boolean secure) {
+            BluetoothServerSocket tmp = null;
             mSocketType = secure ? "Secure" : "Insecure";
 
-//            try {
-//                    tmp = mAdapter.listenUsingInsecureRfcommWithServiceRecord(
-//                            NAME_INSECURE, MY_UUID_INSECURE);
-//
-//            } catch (IOException e) {
-//                Log.e(TAG, "Socket FieldType: " + mSocketType + "listen() failed", e);
-//            }
+            try {
+                tmp = mAdapter.listenUsingRfcommWithServiceRecord(
+                        NAME_SECURE, MY_UUID_SECURE);
+
+            } catch (IOException e) {
+                Log.e(TAG, "Socket FieldType: " + mSocketType + "listen() failed", e);
+            }
             mmServerSocket = tmp;
         }
 
@@ -305,13 +312,28 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
                 try {
                     // This is a blocking call and will only return on a
                     // successful connection or an exception
-                   Log.d(TAG, "Socket " + socket + " | ServerSocket " + mmServerSocket);
-                   socket = mmServerSocket.accept();
-                   Log.d(TAG, "new accepted Socket with " + socket.getRemoteDevice().getName());
+                    Log.d(TAG, "Socket " + socket + " | ServerSocket " + mmServerSocket);
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast toast = Toast.makeText(activity, "created server ", Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    });
 
-                } catch (IOException e) {
+                    socket = mmServerSocket.accept();
+                    Log.d(TAG, "new accepted Socket with " + socket.getRemoteDevice().getName());
+
+                } catch (final Exception e) {
                     Log.e(TAG, "Socket FieldType: " + mSocketType + "accept() failed", e);
-                //    BluetoothServiceViaProtobuf.this.start();
+                    //    BluetoothServiceViaProtobuf.this.start();
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast toast = Toast.makeText(activity, "EXCEPTION " + e.toString(), Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    });
                     break;
                 }
 
@@ -338,14 +360,15 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
                     }
                 }
             }
-            if (D) Log.i(TAG, "END mAcceptThread, socket FieldType: " + mSocketType + "  "+ BluetoothServiceViaProtobuf.this.getState());
+            if (D)
+                Log.i(TAG, "END mAcceptThread, socket FieldType: " + mSocketType + "  " + BluetoothServiceViaProtobuf.this.getState());
 
         }
 
         public void cancel() {
-            if (D) Log.d(TAG, "Socket FieldType" + mSocketType + "stop " + this );
+            if (D) Log.d(TAG, "Socket FieldType" + mSocketType + "stop " + this);
             try {
-               mmServerSocket.close();
+                mmServerSocket.close();
             } catch (IOException e) {
                 Log.e(TAG, "Socket FieldType" + mSocketType + "close() of server failed", e);
             }
@@ -370,17 +393,17 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
 
             // Get a BluetoothSocket for a connection with the
             // given BluetoothDevice
-//            try {
-//                if (secure) {
-//                    tmp = device.createRfcommSocketToServiceRecord(
-//                            MY_UUID_SECURE);
-//                } else {
-//                    tmp = device.createInsecureRfcommSocketToServiceRecord(
-//                            MY_UUID_INSECURE);
-//                }
-//            } catch (IOException e) {
-//                Log.e(TAG, "Socket FieldType: " + mSocketType + "create() failed", e);
-//            }
+            try {
+                if (secure) {
+                    tmp = device.createRfcommSocketToServiceRecord(
+                            MY_UUID_SECURE);
+                } else {
+                    tmp = device.createInsecureRfcommSocketToServiceRecord(
+                            MY_UUID_INSECURE);
+                }
+            } catch (IOException e) {
+                Log.e(TAG, "Socket FieldType: " + mSocketType + "create() failed", e);
+            }
             mmSocket = tmp;
         }
 
@@ -391,20 +414,39 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
             // Always stop discovery because it will slow down a connection
             mAdapter.cancelDiscovery();
 
+
             // Make a connection to the BluetoothSocket
             try {
                 // This is a blocking call and will only return on a
                 // successful connection or an exception
                 mmSocket.connect();
 
-            } catch (IOException e) {
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast toast = Toast.makeText(activity, "connected  to " + mmSocket.getRemoteDevice().getName(), Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                });
+
+
+            } catch (final Exception e) {
                 // Close the socket
-                try {
-                    mmSocket.close();
-                } catch (IOException e2) {
-                    Log.e(TAG, "unable to close() " + mSocketType +
-                            " socket during connection failure", e2);
-                }
+                Log.e(TAG, "",e);
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast toast = Toast.makeText(activity, "connected  to " + e.toString(), Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                });
+
+//                try {
+//                  //  mmSocket.close();
+//                } catch (IOException e2) {
+//                    Log.e(TAG, "unable to close() " + mSocketType +
+//                            " socket during connection failure", e2);
+//                }
                 connectionFailed();
                 return;
             }

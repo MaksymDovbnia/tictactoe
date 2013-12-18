@@ -18,6 +18,7 @@ import java.util.List;
 public class GlobalHandler {
     protected static final int FIRST_PLAYER = 1;
     protected static final int SECOND_PLAYER = 2;
+    protected static final int SELECT_PLAYER_BACKGROUND = R.drawable.ovalbound_blue;
     protected int player1ScoreNum = 0;
     protected int player2ScoreNum = 0;
     protected TextView tvPlayer1Name;
@@ -34,7 +35,8 @@ public class GlobalHandler {
     protected GameLogicHandler gameActionHandler;
     protected MediaPlayer mediaPlayer;
 
-    public GlobalHandler(Player player, Player opponent, GameFieldActivityAction activityAction, MediaPlayer mediaPlayer) {
+    public GlobalHandler(Player player, Player opponent, GameFieldActivityAction activityAction,
+                         MediaPlayer mediaPlayer) {
         gameActionHandler = new GameLogicHandler();
         this.player = player;
         this.opponent = opponent;
@@ -54,18 +56,19 @@ public class GlobalHandler {
         }
         gameActionHandler.newGame();
         gameFieldAdapter.drawWinLine(list);
-        activityAction.showWonPopup((indicator == FIRST_PLAYER) ? player.getName() : opponent.getName());
+        activityAction.showWonPopup((indicator == FIRST_PLAYER) ? player.getName()
+                : opponent.getName());
     }
 
     protected void changeIndicator() {
         if (indicator == FIRST_PLAYER) {
             indicator = SECOND_PLAYER;
-            tvPlayer2Name.setBackgroundResource(R.drawable.ovalbound_red);
+            tvPlayer2Name.setBackgroundResource(SELECT_PLAYER_BACKGROUND);
             tvPlayer1Name.setBackgroundResource(R.drawable.button_white);
 
         } else {
             indicator = FIRST_PLAYER;
-            tvPlayer1Name.setBackgroundResource(R.drawable.ovalbound_red);
+            tvPlayer1Name.setBackgroundResource(SELECT_PLAYER_BACKGROUND);
             tvPlayer2Name.setBackgroundResource(R.drawable.button_white);
 
         }

@@ -4,6 +4,7 @@ package com.net.bluetooth;
  * Created by Maksym on 6/20/13.
  */
 import android.bluetooth.BluetoothDevice;
+import android.content.Context;
 import android.os.Handler;
 public interface BluetoothService<E> {
     public static final int STATE_CONNECTED = 1;

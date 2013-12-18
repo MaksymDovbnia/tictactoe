@@ -1,9 +1,10 @@
 package com.game.gamefield.handler;
 
-import java.util.List;
+import android.app.Activity;
 
 import android.media.MediaPlayer;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.entity.OneMove;
@@ -14,36 +15,114 @@ import com.game.activity.R;
 import com.game.gamefield.GameFieldActivityAction;
 import com.game.gamefield.GameFieldAdapter;
 import com.game.gamefield.GameFieldItem;
+import com.sec.xologic.impl.ILoger;
+import com.sec.xologic.impl.LogicLevel;
+import com.sec.xologic.impl.OneMoveHolder;
+import com.sec.xologic.impl.ResultMoveListener;
+import com.sec.xologic.impl.StartNewGame;
+import com.sec.xologic.impl.TypeMove;
+import com.sec.xologic.impl.log.Logger;
 
-public class FriendGameHandler extends GlobalHandler implements IGameHandler {
+import java.util.List;
 
+/**
+ * Created by Maksym on 02.12.13.
+ */
+public class AndroidGameHandler extends GlobalHandler implements IGameHandler {
+    private StartNewGame startNewGame;
+    private static final TypeMove DEFAULT_TYPE_MOVE = TypeMove.O;
 
-    public FriendGameHandler(Player player, Player opponent, GameFieldActivityAction activityAction, MediaPlayer mediaPlayer) {
+    private TypeMove logicMoveType = DEFAULT_TYPE_MOVE;
+    private TypeMove moveType;
+    private Activity activity;
+
+    private ResultMoveListener resultMoveListener = new ResultMoveListener() {
+        @Override
+        public void resultMove(final OneMoveHolder oneMove) {
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    OneMove oneMove1 = new OneMove(oneMove.getI(), oneMove.getJ(), opponent.getMoveType());
+                    Log.d(Logger.TAG, "resultMove" + oneMove);
+                    gameFieldAdapter.showOneMove(oneMove1);
+                    gameFieldAdapter.setEnableAllUnusedGameField(true);
+                    List<OneMove> list = gameActionHandler.oneMove(oneMove1);
+                    if (list != null) {
+                        wonGame(list);
+                    }
+                    changeIndicator();
+                }
+            });
+
+        }
+    };
+
+    public AndroidGameHandler(Player player, Player opponent, GameFieldActivityAction activityAction,
+                              MediaPlayer mediaPlayer, Activity activity) {
         super(player, opponent, activityAction, mediaPlayer);
+        this.activity = activity;
+        logicMoveType = TypeMove.O;
+        moveType = TypeMove.X;
+        startNewGame = new StartNewGame(LogicLevel.EASY, resultMoveListener, logicMoveType);
+        startNewGame.setLogger(new ILoger() {
+            @Override
+            public void logMessage(String s, String s2) {
+                Log.d(s, s2);
+            }
+        });
+
     }
+
 
     @Override
     public void sendMessage(String message) {
-        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    protected void wonGame(List<OneMove> list) {
+
+        gameFieldAdapter.drawWinLine(list);
+        activityAction.showWonPopup((indicator == FIRST_PLAYER) ? player.getName()
+                : opponent.getName());
+
+
+        if (indicator == FIRST_PLAYER) {
+            player1ScoreNum++;
+            tvPlayer1Score.setText(player1ScoreNum + "");
+
+
+        } else {
+            player2ScoreNum++;
+            tvPlayer2Score.setText(player2ScoreNum + "");
+
+
+        }
+
+
     }
 
     @Override
     public GameType getGameType() {
-        return GameType.FRIEND;
+        return GameType.ANDROID;
     }
 
     @Override
     public Handler getHandler() {
-        // TODO Auto-generated method stub
         return null;
     }
 
     @Override
     public List<OneMove> performedOneMove(OneMove oneMove) {
         List<OneMove> list = gameActionHandler.oneMove(oneMove);
+
+
         if (list != null) {
             wonGame(list);
         }
+        startNewGame.nextMove(
+                new OneMoveHolder(oneMove.i, oneMove.j,
+                        moveType));
         return list;
     }
 
@@ -52,28 +131,33 @@ public class FriendGameHandler extends GlobalHandler implements IGameHandler {
         GameFieldItem.FieldType type = null;
         OneMove oneMove = null;
         if (indicator == FIRST_PLAYER) {
-            type = (player.getMoveType() == TypeOfMove.X) ? GameFieldItem.FieldType.X : GameFieldItem.FieldType.O;
+            type = (player.getMoveType() == TypeOfMove.X) ? GameFieldItem.FieldType.X
+                    : GameFieldItem.FieldType.O;
             oneMove = new OneMove(i, j, player.getMoveType());
         } else if (indicator == SECOND_PLAYER) {
-            type = (opponent.getMoveType() == TypeOfMove.X) ? GameFieldItem.FieldType.X : GameFieldItem.FieldType.O;
+            type = (opponent.getMoveType() == TypeOfMove.X) ? GameFieldItem.FieldType.X
+                    : GameFieldItem.FieldType.O;
             oneMove = new OneMove(i, j, opponent.getMoveType());
         }
+        gameFieldAdapter.setEnableAllUnusedGameField(false);
         gameFieldAdapter.showOneMove(oneMove);
+
+
         performedOneMove(oneMove);
         changeIndicator();
+
         return type;
     }
 
     @Override
     public void setAdapter(GameFieldAdapter adapter) {
         this.gameFieldAdapter = adapter;
-
     }
 
+    @Override
     public void setPlayer1TexView(TextView player1TexView) {
         this.tvPlayer1Name = player1TexView;
         this.tvPlayer1Name.setText(player.getName());
-
     }
 
     @Override
@@ -97,7 +181,6 @@ public class FriendGameHandler extends GlobalHandler implements IGameHandler {
         tvTimeInsicator = timerTexView;
     }
 
-
     @Override
     public void initIndicator() {
         indicator = FIRST_PLAYER;
@@ -117,10 +200,19 @@ public class FriendGameHandler extends GlobalHandler implements IGameHandler {
             tvPlayer1Name.setBackgroundResource(R.drawable.button_white);
             player.setMoveType(TypeOfMove.O);
             opponent.setMoveType(TypeOfMove.X);
+            logicMoveType = TypeMove.X;
+            moveType = TypeMove.O;
+            gameFieldAdapter.setEnableAllUnusedGameField(false);
+            startNewGame = new StartNewGame(LogicLevel.EASY, resultMoveListener, logicMoveType);
+            startNewGame.makeFirstMove();
+
         } else {
             indicator = FIRST_PLAYER;
             player.setMoveType(TypeOfMove.X);
             opponent.setMoveType(TypeOfMove.O);
+            logicMoveType = TypeMove.O;
+            moveType = TypeMove.X;
+            startNewGame = new StartNewGame(LogicLevel.EASY, resultMoveListener, logicMoveType);
             tvPlayer1Name.setBackgroundResource(SELECT_PLAYER_BACKGROUND);
             tvPlayer2Name.setBackgroundResource(R.drawable.button_white);
         }
@@ -128,6 +220,7 @@ public class FriendGameHandler extends GlobalHandler implements IGameHandler {
 
     @Override
     public void exitFromGame() {
+
     }
 
     @Override
@@ -139,7 +232,4 @@ public class FriendGameHandler extends GlobalHandler implements IGameHandler {
     public void unregisterHandler() {
 
     }
-
-
-
 }
