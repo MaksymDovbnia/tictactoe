@@ -3,7 +3,6 @@ package com.game.gamefield.handler;
 import java.util.List;
 
 import android.media.MediaPlayer;
-import android.os.Handler;
 import android.widget.TextView;
 
 import com.entity.OneMove;
@@ -32,15 +31,11 @@ public class FriendGameHandler extends GlobalHandler implements IGameHandler {
         return GameType.FRIEND;
     }
 
-    @Override
-    public Handler getHandler() {
-        // TODO Auto-generated method stub
-        return null;
-    }
+
 
     @Override
     public List<OneMove> performedOneMove(OneMove oneMove) {
-        List<OneMove> list = gameActionHandler.oneMove(oneMove);
+        List<OneMove> list = gameLogicHandler.oneMove(oneMove);
         if (list != null) {
             wonGame(list);
         }
@@ -109,7 +104,7 @@ public class FriendGameHandler extends GlobalHandler implements IGameHandler {
 
     @Override
     public void startNewGame() {
-        gameActionHandler.newGame();
+        gameLogicHandler.newGame();
         gameFieldAdapter.startNewGame();
         if (player.getMoveType() == TypeOfMove.X) {
             indicator = SECOND_PLAYER;

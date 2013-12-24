@@ -17,15 +17,18 @@
             android:paddingLeft="@dimen/general_top_buttons_layout_margin_left"
             >
 
-        <Button android:id="@+id/btn_opened_online_group"
+        <com.componentwithfont.ButtonWithComicsFont
+                android:id="@+id/btn_opened_online_group"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/button_big"
                 android:text="@string/game"
                 android:textSize="@dimen/general_top_buttons_text_size"
+                android:textColor="@color/black"
                 />
-        <Button
+
+        <com.componentwithfont.ButtonWithComicsFont
                 android:id="@+id/btn_group_chat"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -34,6 +37,7 @@
                 android:layout_marginLeft="@dimen/general_buttons_separate_width"
                 android:text="@string/chat"
                 android:textSize="@dimen/general_top_buttons_text_size"
+                android:textColor="@color/black"
                 />
     </LinearLayout>
 
@@ -59,15 +63,19 @@
             android:layout_marginLeft="@dimen/general_top_buttons_layout_margin_left"
             >
 
-        <Button android:id="@+id/btn_game_field_new_game"
+        <com.componentwithfont.ButtonWithComicsFont
+                android:id="@+id/btn_game_field_new_game"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/general_bottom_buttons_text_size"
                 android:background="@drawable/red_leftbutton"
                 android:text="@string/new_game"
+                android:textColor="@color/black"
                 />
-        <Button android:id="@+id/btn_game_field_back"
+
+        <com.componentwithfont.ButtonWithComicsFont
+                android:id="@+id/btn_game_field_back"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/general_buttons_separate_width"
@@ -75,6 +83,7 @@
                 android:textSize="@dimen/general_bottom_buttons_text_size"
                 android:background="@drawable/red_rightbutton"
                 android:text="@string/back"
+                android:textColor="@color/black"
                 />
 
     </LinearLayout>

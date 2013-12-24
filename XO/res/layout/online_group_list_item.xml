@@ -5,7 +5,7 @@
               android:orientation="horizontal"
               android:gravity="center">
 
-    <TextView
+    <com.componentwithfont.TextViewWirhComicsFont
             android:id="@+id/tv_online_group_item_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
             android:textSize="@dimen/general_list_item_text_size"
             />
 
-    <TextView
+    <com.componentwithfont.TextViewWirhComicsFont
             android:id="@+id/tv_count_of_online_players_in_group"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

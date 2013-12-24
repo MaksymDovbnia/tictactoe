@@ -1,4 +1,4 @@
-package com.component;
+package com.componentwithfont;
 
 import android.content.Context;
 import android.graphics.Typeface;

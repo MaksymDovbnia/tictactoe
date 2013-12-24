@@ -25,11 +25,14 @@
                 android:id="@+id/chat_list_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@color/gray_list_item_divider"
+                android:dividerHeight="@dimen/list_view_divider_height"
                 />
 
     </LinearLayout>
 
-    <TextView
+    <com.componentwithfont.TextViewWirhComicsFont
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/input_your_message"
@@ -37,14 +40,16 @@
             android:textSize="@dimen/small_text_size"
             android:textColor="@color/red"
             />
-    <EditText
+    <com.componentwithfont.EditTextWithComicsFont
             android:id="@+id/chat_input_edit_text"
             android:layout_width="match_parent"
             android:layout_height="@dimen/chat_fragment_layout_edit_text_height"
             android:inputType="text"
+            android:windowSoftInputMode="adjustPan"
+
             />
 
-    <Button
+    <com.componentwithfont.ButtonWithComicsFont
             android:id="@+id/btn_chat_sent_message"
             android:layout_width="@dimen/chat_fragment_layout_sent_button_width"
             android:layout_height="@dimen/chat_fragment_layout_sent_button_height"

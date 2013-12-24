@@ -6,7 +6,7 @@
                 android:background="@drawable/dialog_view"
         >
 
-    <TextView
+    <com.componentwithfont.TextViewWirhComicsFont
             android:id="@+id/tw_input_first_player_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -17,18 +17,17 @@
             android:textColor="@color/red"
             />
 
-    <EditText
+    <com.componentwithfont.EditTextWithComicsFont
             android:id="@+id/edt_first_player_name"
             android:layout_below="@+id/tw_input_first_player_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Player 1"
             android:paddingTop="5dp"
-
             android:layout_centerHorizontal="true"
             />
 
-    <TextView
+    <com.componentwithfont.TextViewWirhComicsFont
             android:paddingTop="10dp"
             android:id="@+id/tw_input_second_player_name"
             android:layout_width="wrap_content"
@@ -40,7 +39,7 @@
             android:textColor="@color/red"
             />
 
-    <EditText
+    <com.componentwithfont.EditTextWithComicsFont
             android:paddingTop="5dp"
             android:id="@+id/edt_second_player_name"
             android:layout_below="@+id/tw_input_second_player_name"
@@ -50,7 +49,7 @@
             android:layout_centerHorizontal="true"
             />
 
-    <Button
+    <com.componentwithfont.ButtonWithComicsFont
             android:id="@+id/btn_start_offline_game"
             android:text="@string/start_game"
             android:layout_width="120dp"

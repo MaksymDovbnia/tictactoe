@@ -1,10 +1,9 @@
-package com.net.bluetooth;
+package com.bluetooth;
 
 /**
  * Created by Maksym on 6/20/13.
  */
 import android.bluetooth.BluetoothDevice;
-import android.content.Context;
 import android.os.Handler;
 public interface BluetoothService<E> {
     public static final int STATE_CONNECTED = 1;
@@ -20,4 +19,8 @@ public interface BluetoothService<E> {
     public void stop();
     public int getState();
     public void connect(BluetoothDevice device, boolean secure);
+
+    public void registerListener(IBluetoothGameListener iServiceListener);
+    public void unRegisterListener();
+
 }

@@ -1,8 +1,8 @@
-package com.net.bluetooth.protobuf;
+package com.bluetooth.protobuf;
 
 import com.google.protobuf.AbstractMessageLite;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.net.bluetooth.protocol.BluetoothProtocol;
+import com.bluetooth.protocol.BluetoothProtocol;
 import com.utils.Loger;
 
 
@@ -10,13 +10,13 @@ public class BluetoothProtoFactory {
     public static AbstractMessageLite createProtoObject(byte data[],
                                                         BluetoothProtoType type) throws InvalidProtocolBufferException {
         switch (type) {
-            case DIDMOVE:
+            case DID_MOVE:
                 BluetoothProtocol.DidMove didMove = BluetoothProtocol.DidMove.parseFrom(data);
                 return didMove;
-            case CONTINUEGAME:
+            case CONTINUE_GAME:
                 BluetoothProtocol.ContinueGame continueGame = BluetoothProtocol.ContinueGame.parseFrom(data);
                 return continueGame;
-            case CHATMESSAGE:
+            case CHAT_MESSAGE:
                 BluetoothProtocol.ChatMessage chatMessage = BluetoothProtocol.ChatMessage.parseFrom(data);
                 return chatMessage;
             default:

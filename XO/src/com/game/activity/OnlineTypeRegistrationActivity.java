@@ -114,7 +114,7 @@ public class OnlineTypeRegistrationActivity extends Activity implements
             case ANNONDIALOG:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 LayoutInflater inflater = getLayoutInflater();
-                View view = inflater.inflate(R.layout.anonymous_popup_layout, null);
+                View view = inflater.inflate(R.layout.input_player_name_popup_layout, null);
                 window.getDecorView().getWindowVisibleDisplayFrame(displayRectangle);
                 view.setMinimumWidth((int) (displayRectangle.width() * 0.5f));
                 view.setMinimumHeight((int) (displayRectangle.height() * 0.5f));
@@ -125,7 +125,7 @@ public class OnlineTypeRegistrationActivity extends Activity implements
                 TextView tw = (TextView) view.findViewById(R.id.textView_anondailog);
                 tw.setTypeface(font);
                 login.setTypeface(font);
-                loginAnon = (EditText) view.findViewById(R.id.edt_anonymous_player_name);
+                loginAnon = (EditText) view.findViewById(R.id.edt_player_name);
                 loginAnon.setTypeface(font);
                 builder.setOnCancelListener(new OnCancelListener() {
                     @Override

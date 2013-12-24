@@ -45,7 +45,7 @@
         </activity>
 
         <activity
-                android:name="com.game.activity.DeviceListActivity"
+                android:name="com.game.bluetoothgame.DeviceListActivity"
 
                 android:configChanges="orientation|keyboardHidden"
                 android:screenOrientation="portrait"
@@ -67,7 +67,7 @@
                 android:name=".OnlineOpenedRoomActivity"/>
         <activity
                 android:screenOrientation="portrait"
-                android:name=".BluetoothGameActivity"/>
+                android:name="com.game.bluetoothgame.BluetoothGameActivity"/>
         <activity android:name=".Test"/>
     </application>
 

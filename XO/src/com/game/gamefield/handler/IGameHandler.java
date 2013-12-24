@@ -18,7 +18,7 @@ public interface IGameHandler {
 
     public GameType getGameType();
 
-    public Handler getHandler();
+
 
     public List<OneMove> performedOneMove(OneMove oneMove);
 

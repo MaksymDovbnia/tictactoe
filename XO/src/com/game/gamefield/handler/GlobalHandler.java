@@ -32,12 +32,12 @@ public class GlobalHandler {
 
     protected Player player;
     protected Player opponent;
-    protected GameLogicHandler gameActionHandler;
+    protected GameLogicHandler gameLogicHandler;
     protected MediaPlayer mediaPlayer;
 
     public GlobalHandler(Player player, Player opponent, GameFieldActivityAction activityAction,
                          MediaPlayer mediaPlayer) {
-        gameActionHandler = new GameLogicHandler();
+        gameLogicHandler = new GameLogicHandler();
         this.player = player;
         this.opponent = opponent;
         this.activityAction = activityAction;
@@ -54,7 +54,7 @@ public class GlobalHandler {
             player2ScoreNum++;
             tvPlayer2Score.setText(player2ScoreNum +"");
         }
-        gameActionHandler.newGame();
+        gameLogicHandler.newGame();
         gameFieldAdapter.drawWinLine(list);
         activityAction.showWonPopup((indicator == FIRST_PLAYER) ? player.getName()
                 : opponent.getName());

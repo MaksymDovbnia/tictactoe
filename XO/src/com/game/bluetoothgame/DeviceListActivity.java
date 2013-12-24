@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.game.activity;
+package com.game.bluetoothgame;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
@@ -34,6 +34,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.game.activity.R;
 
 import java.util.Set;
 

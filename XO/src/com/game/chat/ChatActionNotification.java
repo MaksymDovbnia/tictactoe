@@ -6,7 +6,7 @@ package com.game.chat;
 public interface ChatActionNotification {
 
 
-    public void actionSendMessage(ChatMessage chatMessage);
+    public void actionSendChatMessage(ChatMessage chatMessage);
     public String getPlayerName();
 
 

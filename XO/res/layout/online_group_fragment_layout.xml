@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <TextView
+        <com.componentwithfont.TextViewWirhComicsFont
                 android:id="@+id/tv_all_online_players"
                 android:gravity="right"
                 android:layout_width="match_parent"
@@ -26,11 +26,12 @@
                 android:textColor="@color/red"
                 />
 
-        <TextView
+        <com.componentwithfont.TextViewWirhComicsFont
                 android:id="@+id/tv_online_group_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/room_list"
+                android:textColor="@color/black"
                 android:textSize="@dimen/default_text_size"
                 />
 
@@ -41,6 +42,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@color/gray_list_item_divider"
+            android:dividerHeight="@dimen/list_view_divider_height"
             >
     </ListView>
 
@@ -51,22 +55,24 @@
                  android:paddingLeft="5dp"
                  android:paddingRight="5dp"
            >
-       <Button
+       <com.componentwithfont.ButtonWithComicsFont
                android:id="@+id/b_open_group"
                android:layout_width="match_parent"
                android:layout_weight="1"
                android:layout_height="@dimen/online_group_fragment_layout_button_height"
                android:background="@drawable/selector_default_yelow_button"
                android:text="@string/open_room"
+               android:textColor="@color/red"
                android:textSize="@dimen/small_text_size"
                />
-       <Button
+       <com.componentwithfont.ButtonWithComicsFont
                android:id="@+id/btn_update_group_list"
                android:layout_width="match_parent"
                android:layout_weight="1"
                android:layout_height="@dimen/online_group_fragment_layout_button_height"
                android:textSize="@dimen/small_text_size"
                android:background="@drawable/selector_default_yelow_button"
+               android:textColor="@color/red"
                android:text="@string/update_room_list"
                />
 

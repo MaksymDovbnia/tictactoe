@@ -126,6 +126,12 @@
     <string name="easy_level">- Easy level</string>
     <string name="player">Player</string>
     <string name="android">Android</string>
+    <string name="maximum_chars_in_nick_is">Maximum chars in nick is:</string>
+    <string name="wait_opponent_connection">Wait opponent connection</string>
+    <string name="wait_connection">Wait connection</string>
+    <string name="try_connect_to_game">Try connect to game</string>
+    <string name="server_started_wait_connection">Server started. Wait connection"</string>
+
 
 
 

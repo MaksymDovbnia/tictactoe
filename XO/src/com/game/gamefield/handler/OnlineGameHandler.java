@@ -29,10 +29,10 @@ public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
     private boolean isPlayerMoveFirst;
 
     public OnlineGameHandler(final WorkerOnlineConnection onlineGameWorker,
-                             Player player, final Player opponent, GameFieldActivityAction fieldActivityAction, final boolean isPlayerMoveFirst, MediaPlayer mediaPlayer) {
+                             Player player, final Player opponent,
+                             GameFieldActivityAction fieldActivityAction, final boolean isPlayerMoveFirst, MediaPlayer mediaPlayer) {
         super(player, opponent, fieldActivityAction, mediaPlayer);
         this.onlineGameWorker = onlineGameWorker;
-        this.activityAction = fieldActivityAction;
         this.isPlayerMoveFirst = isPlayerMoveFirst;
 
         this.handler = new Handler() {
@@ -52,7 +52,7 @@ public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
 
                         gameFieldAdapter.setEnableAllUnusedGameField(true);
                         gameFieldAdapter.showOneMove(oneMove);
-                        List<OneMove> list = gameActionHandler.oneMove(oneMove);
+                        List<OneMove> list = gameLogicHandler.oneMove(oneMove);
                         if (list != null) {
                             wonGame(list);
                         }
@@ -109,7 +109,7 @@ public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
                                 : Protocol.TypeMove.O).build();
 
         onlineGameWorker.sendPacket(sDidMove);
-        List<OneMove> list = gameActionHandler.oneMove(oneMove);
+        List<OneMove> list = gameLogicHandler.oneMove(oneMove);
         if (list != null) {
             wonGame(list);
             onlineGameWorker.sendPacket(Protocol.SWonGame.newBuilder().setIdWonPlayer(player.getId()).
@@ -130,7 +130,7 @@ public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
             opponent.setNumOfAllWonGame(opponent.getNumOfAllWonGame() + 1);
             tvPlayer2Score.setText(player2ScoreNum + " (" + opponent.getNumOfAllWonGame() + ")");
         }
-        gameActionHandler.newGame();
+        gameLogicHandler.newGame();
         gameFieldAdapter.drawWinLine(list);
         activityAction.showWonPopup((indicator == FIRST_PLAYER) ? player.getName() : opponent.getName());
     }
@@ -231,7 +231,7 @@ public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
 
     @Override
     public void startNewGame() {
-        gameActionHandler.newGame();
+        gameLogicHandler.newGame();
         gameFieldAdapter.startNewGame();
         gameFieldAdapter.setEnableAllUnusedGameField(false);
         onlineGameWorker.sendPacket(Protocol.SContinueGame.newBuilder().setPlayerId(player.getId()).setOpponentId(opponent.getId()).build());

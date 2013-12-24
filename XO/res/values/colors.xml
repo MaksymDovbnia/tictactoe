@@ -1,8 +1,9 @@
 <resources>
 
-   <color name="black">#000000</color>
-   <color name="blue">#0099CC</color> 
-   <color name="red">#FF4444</color> 
+    <color name="black">#000000</color>
+    <color name="blue">#0099CC</color>
+    <color name="red">#FF4444</color>
+    <color name="gray_list_item_divider">#f1f1f1</color>
 
- 
+
 </resources>

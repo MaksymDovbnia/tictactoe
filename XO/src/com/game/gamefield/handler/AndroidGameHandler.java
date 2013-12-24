@@ -3,7 +3,6 @@ package com.game.gamefield.handler;
 import android.app.Activity;
 
 import android.media.MediaPlayer;
-import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -46,7 +45,7 @@ public class AndroidGameHandler extends GlobalHandler implements IGameHandler {
                     Log.d(Logger.TAG, "resultMove" + oneMove);
                     gameFieldAdapter.showOneMove(oneMove1);
                     gameFieldAdapter.setEnableAllUnusedGameField(true);
-                    List<OneMove> list = gameActionHandler.oneMove(oneMove1);
+                    List<OneMove> list = gameLogicHandler.oneMove(oneMove1);
                     if (list != null) {
                         wonGame(list);
                     }
@@ -107,14 +106,10 @@ public class AndroidGameHandler extends GlobalHandler implements IGameHandler {
         return GameType.ANDROID;
     }
 
-    @Override
-    public Handler getHandler() {
-        return null;
-    }
 
     @Override
     public List<OneMove> performedOneMove(OneMove oneMove) {
-        List<OneMove> list = gameActionHandler.oneMove(oneMove);
+        List<OneMove> list = gameLogicHandler.oneMove(oneMove);
 
 
         if (list != null) {
@@ -192,7 +187,7 @@ public class AndroidGameHandler extends GlobalHandler implements IGameHandler {
 
     @Override
     public void startNewGame() {
-        gameActionHandler.newGame();
+        gameLogicHandler.newGame();
         gameFieldAdapter.startNewGame();
         if (player.getMoveType() == TypeOfMove.X) {
             indicator = SECOND_PLAYER;

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.bluetooth.protocol.BluetoothProtocol;
 import com.config.BundleKeys;
 import com.entity.Player;
 import com.entity.TypeOfMove;
@@ -22,7 +23,9 @@ import com.game.chat.ChatActionNotification;
 import com.game.chat.ChatFragment;
 import com.game.chat.ChatMessage;
 import com.game.gamefield.handler.AndroidGameHandler;
+import com.game.gamefield.handler.BluetoothGameHandler;
 import com.game.gamefield.handler.FriendGameHandler;
+import com.game.gamefield.handler.IGameHandler;
 import com.game.gamefield.handler.OnlineGameHandler;
 import com.game.popup.XOAlertDialog;
 
@@ -36,20 +39,18 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
     private ChatAction chatAction;
     private Player opponent;
 
-
     private enum TAB {GAME, CHAT}
 
     ;
     private Button openGroup;
     private Button openChat;
     private Button newGame;
-    MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
     private TAB cureentTab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         Intent intent = getIntent();
         GameType gameType = (GameType) intent.getSerializableExtra(BundleKeys.TYPE_OF_GAME);
         setContentView(R.layout.game_fileld_activity_layout);
@@ -78,53 +79,59 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
                     newGame.setText("");
                     break;
                 case FRIEND:
-
                     if (intent.getStringExtra(FIRST_PLAYER_NAME) != null) {
                         playerName = intent.getStringExtra(FIRST_PLAYER_NAME);
                     }
-
                     if (intent.getStringExtra(SECOND_PLAYER_NAME) != null) {
                         opponentName = intent.getStringExtra(SECOND_PLAYER_NAME);
                     }
                     player.setName(playerName);
                     opponent1.setName(opponentName);
                     //   mediaPlayer = MediaPlayer.create(this, R.raw.draw_sound);
-
                     FriendGameHandler friendGameHandler = new FriendGameHandler(player, opponent1, this, mediaPlayer);
                     Controller.getInstance().setGameHandler(friendGameHandler);
                     Controller.getInstance().setPlayer(player);
                     openChat.setEnabled(false);
                     openChat.setText("");
                     break;
-
                 case ANDROID:
                     if (intent.getStringExtra(FIRST_PLAYER_NAME) != null) {
                         playerName = intent.getStringExtra(FIRST_PLAYER_NAME);
                     }
-
                     opponentName = getString(R.string.android);
                     if (intent.getStringExtra(FIRST_PLAYER_NAME) != null) {
                         playerName = intent.getStringExtra(FIRST_PLAYER_NAME);
                     }
-
                     if (intent.getStringExtra(SECOND_PLAYER_NAME) != null) {
                         opponentName = intent.getStringExtra(SECOND_PLAYER_NAME);
                     }
                     player.setName(playerName);
                     opponent1.setName(opponentName);
-                    AndroidGameHandler androidGameHandler = new AndroidGameHandler(player, opponent1, this, mediaPlayer, this);
+                    AndroidGameHandler androidGameHandler = new AndroidGameHandler(player, opponent1, this,
+                            mediaPlayer, this);
                     Controller.getInstance().setGameHandler(androidGameHandler);
                     Controller.getInstance().setPlayer(player);
                     openChat.setEnabled(false);
                     openChat.setText("");
-
-
                     break;
-
+                case BLUETOOTH:
+                    boolean isFirst = getIntent().getBooleanExtra(BundleKeys.IS_PLAYER_MOVE_FIRST, false);
+                    BluetoothGameHandler bluetoothGameHandler = new BluetoothGameHandler(player, opponent1,
+                            this, mediaPlayer, Controller.getInstance().getBluetoothService(), isFirst);
+                    if (intent.getStringExtra(BundleKeys.PLAYER_NAME) != null) {
+                        playerName = intent.getStringExtra(BundleKeys.PLAYER_NAME);
+                    }
+                    if (intent.getStringExtra(BundleKeys.OPPONENT_NAME) != null) {
+                        opponentName = intent.getStringExtra(BundleKeys.OPPONENT_NAME);
+                    }
+                    player.setName(playerName);
+                    opponent1.setName(opponentName);
+                    this.opponent = opponent1;
+                    Controller.getInstance().setPlayer(player);
+                    Controller.getInstance().setGameHandler(bluetoothGameHandler);
+                    break;
             }
         }
-
-
         cureentTab = TAB.GAME;
         gameFieldFragment = new GameFieldFragment();
         chatFragment = new ChatFragment();
@@ -154,14 +161,9 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 newGame();
-
-
             }
         });
-
         xoAlertDialog.show(getSupportFragmentManager(), "");
-
-
     }
 
     private void newGame() {
@@ -185,8 +187,13 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
                 finish();
             }
         });
+        xoAlertDialog.setNegativeListener(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
         xoAlertDialog.show(getSupportFragmentManager(), "");
-
     }
 
     @Override
@@ -200,7 +207,6 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
         xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
                 finish();
             }
         });
@@ -213,8 +219,6 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
             openChat.setText(R.string.new_message);
             openChat.setTextColor(getResources().getColor(R.color.blue));
         }
-
-
         if (chatAction != null) {
             chatAction.receivedMessage(chatMessage);
         }
@@ -235,7 +239,6 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
                 break;
         }
         fragmentTransaction.commit();
-
     }
 
     @Override
@@ -249,7 +252,6 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
                 openChat.setTextColor(getResources().getColor(R.color.black));
                 switchToTab(TAB.CHAT);
                 break;
-
             case R.id.btn_game_field_back:
                 showExitFromThisGamePopup();
                 break;
@@ -272,19 +274,24 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
             }
         });
         xoAlertDialog.show(getSupportFragmentManager(), "");
-
-
     }
 
 
     @Override
-    public void actionSendMessage(ChatMessage chatMessage) {
-
-        Controller.getInstance().getOnlineWorker().sendPacket(Protocol.SChatMessage
-                .newBuilder().setMessage(chatMessage.getMessage())
-                .setOpponentId(opponent.getId())
-                .setPlayerId(Controller.getInstance().getPlayer().getId())
-                .build());
+    public void actionSendChatMessage(ChatMessage chatMessage) {
+        IGameHandler gameHandler = Controller.getInstance().getGameHandler();
+        if (gameHandler.getGameType() == GameType.BLUETOOTH) {
+            Controller.getInstance().getBluetoothService().sentPacket(BluetoothProtocol.ChatMessage
+                    .newBuilder()
+                    .setMessage(chatMessage.getMessage())
+                    .build());
+        } else if (gameHandler.getGameType() == GameType.ONLINE) {
+            Controller.getInstance().getOnlineWorker().sendPacket(Protocol.SChatMessage
+                    .newBuilder().setMessage(chatMessage.getMessage())
+                    .setOpponentId(opponent.getId())
+                    .setPlayerId(Controller.getInstance().getPlayer().getId())
+                    .build());
+        }
     }
 
     @Override

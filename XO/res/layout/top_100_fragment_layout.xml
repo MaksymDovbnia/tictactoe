@@ -16,6 +16,9 @@
             android:id="@+id/list_view_top_100"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@color/gray_list_item_divider"
+            android:dividerHeight="@dimen/list_view_divider_height"
             />
 
 </LinearLayout>

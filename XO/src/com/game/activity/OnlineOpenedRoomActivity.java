@@ -224,7 +224,7 @@ public class OnlineOpenedRoomActivity extends FragmentActivity implements View.O
     }
 
     @Override
-    public void actionSendMessage(ChatMessage chatMessage) {
+    public void actionSendChatMessage(ChatMessage chatMessage) {
         Controller.getInstance().getOnlineWorker().sendPacket(Protocol.SGroupChatMessage
                 .newBuilder().setMessage(chatMessage.getMessage())
                 .setGroupId(Controller.getInstance().getPlayer().getGroupId())

@@ -2,7 +2,6 @@ package com.game.chat;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +27,7 @@ public class ChatFragment extends Fragment implements ChatAction {
     private Activity activity;
     private ChatListViewAdapter chatListViewAdapter;
     private ChatActionNotification actionNotification;
+
 
 
     @Override
@@ -70,7 +70,7 @@ public class ChatFragment extends Fragment implements ChatAction {
     }
 
     private void sendNewMessage(ChatMessage chatMessage) {
-        actionNotification.actionSendMessage(chatMessage);
+        actionNotification.actionSendChatMessage(chatMessage);
         chatMessageList.add(chatMessage);
         chatListViewAdapter.notifyDataSetChanged();
         chatListView.setSelection(chatMessageList.size());
@@ -82,6 +82,7 @@ public class ChatFragment extends Fragment implements ChatAction {
         chatListView.setSelection(chatMessageList.size());
         chatMessageList.add(message);
         chatListViewAdapter.notifyDataSetChanged();
+        chatListView.setSelection(chatMessageList.size());
     }
 
     private void generateTesData() {

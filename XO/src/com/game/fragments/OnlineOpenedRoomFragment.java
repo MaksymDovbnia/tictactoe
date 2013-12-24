@@ -73,15 +73,11 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
         View v = inflater.inflate(R.layout.online_open_group_fragment, null);
         invite_to_play = (Button) v.findViewById(R.id.btn_invite_to_play);
         invite_to_play.setOnClickListener(this);
-
         startGame = (Button) v.findViewById(R.id.btn_start_game);
         startGame.setOnClickListener(this);
-
         cancelPlayer = (Button) v.findViewById(R.id.btn_cancel_player);
         cancelPlayer.setOnClickListener(this);
-
         updateList = (Button) v.findViewById(R.id.button_update_activitylist);
-
         updateList.setOnClickListener(this);
         // updateList.setOnTouchListener(this);
         /*
@@ -91,12 +87,10 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
 		 *
 		 * }
 		 */
-
         // create adapter for all list
         adapterForActivityList = new OnlinePlayersAdapter(context, listActivityPlayer);
         adapterForInvitedList = new OnlinePlayersAdapter(context, listInvitedPlayers);
         adapterForWantPlayList = new OnlinePlayersAdapter(context, listWantToPlayPlayer);
-
         // define lists and add appropriate adapter
         lvActivityPlayer = (ListView) v.findViewById(R.id.list_activity_players);
         ViewGroup header = (ViewGroup) inflater.inflate(R.layout.online_list_view_header_layout, lvActivityPlayer, false);
@@ -106,23 +100,17 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
         lvDesirePlayer.setAdapter(adapterForInvitedList);
         lvWantPlayPlayer = (ListView) v.findViewById(R.id.list_player_witch_want_to_play);
         lvWantPlayPlayer.setAdapter(adapterForWantPlayList);
-
         Intent intent = activity.getIntent();
         groupId = intent.getIntExtra(OnlineGroupsActivity.NUMBER_OF_GROUP, -10);
         myPlayer = Controller.getInstance().getPlayer();
-
-
-
         workerOnlineConnection = Controller.getInstance().getOnlineWorker();
         if (workerOnlineConnection != null) {
             workerOnlineConnection.registerHandler(handler);
             workerOnlineConnection.sendPacket(Protocol.SEnterToGroup.newBuilder()
                     .setGroupId(groupId).build());
-
             workerOnlineConnection.sendPacket(Protocol.SGetUpdate.newBuilder()
                     .setId(Controller.getInstance().getPlayer().getId()).setGroupId(groupId).build());
         }
-
         return v;
     }
 
@@ -135,16 +123,13 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
                 opponent.setNumOfAllWonGame(cStartGame.getNumberOfLostGame());
                 break;
             }
-
         }
-
         Intent intent = new Intent(context, GameFieldActivity.class);
         intent.putExtra(BundleKeys.TYPE_OF_GAME, GameType.ONLINE);
         intent.putExtra(BundleKeys.OPPONENT, opponent);
         intent.putExtra(BundleKeys.TYPE_OF_MOVE, (cStartGame.getTypeMove() == Protocol.TypeMove.X) ? TypeOfMove.X : TypeOfMove.O);
         startActivity(intent);
         activity.finish();
-
     }
 
     public void clearAllListView() {
@@ -175,12 +160,10 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-
             case R.id.button_update_activitylist:
                 workerOnlineConnection.sendPacket(Protocol.SGetUpdate.newBuilder()
                         .setId(Controller.getInstance().getPlayer().getId()).setGroupId(groupId).build());
                 break;
-
             case R.id.btn_invite_to_play:
                 int opponentId = adapterForActivityList.getIdLast();
                 Loger.printLog("switch " + opponentId);
@@ -195,7 +178,6 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
                     listInvitedPlayers.add(player);
                     adapterForInvitedList.notifyDataSetChanged();
                 }
-
                 break;
             case R.id.btn_cancel_player:
                 int cancelId = adapterForInvitedList.getIdLast();
@@ -203,7 +185,6 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
                 if (listInvitedPlayers.size() > 0 && cancelId >= 0) {
                     player1 = listInvitedPlayers.get(cancelId);
                 }
-
                 if (player1 != null) {
                     listInvitedPlayers.remove(player1);
                     adapterForInvitedList.notifyDataSetChanged();
@@ -212,20 +193,21 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
                 break;
             case R.id.btn_start_game:
                 int oppId = adapterForWantPlayList.getIdLast();
-                if (oppId == Integer.MIN_VALUE)
+                if (oppId == Integer.MIN_VALUE) {
                     return;
+                }
                 Player p = null;
-                if (listActivityPlayer.size() > 0) p = listActivityPlayer.get(oppId);
+                if (listWantToPlayPlayer.size() > 0) {
+                    p = listWantToPlayPlayer.get(oppId);
+                }
                 if (p != null)
                     workerOnlineConnection.sendPacket(Protocol.SWantToPlay.newBuilder()
                             .setOpponentId(p.getId()).setPlayerId(myPlayer.getId())
                             .build());
                 break;
-
             default:
                 break;
         }
-
     }
 
 
@@ -233,7 +215,6 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
     public void updateAboutActivityPlayer(Message msg) {
         Protocol.CUpdateAboutActivityPlayer cActivityPlayer =
                 (Protocol.CUpdateAboutActivityPlayer) msg.obj;
-
         for (Protocol.Player player : cActivityPlayer
                 .getNewPlayerList()) {
             Loger.printLog("get updt + " + player.getName());
@@ -244,19 +225,16 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
         for (Protocol.CExitFromGroup exitFromGroup : cActivityPlayer
                 .getExitPlayerList()) {
             int id = exitFromGroup.getPlayerId();
-
             for (Player player : listActivityPlayer)
                 if (player.getId() == id) {
                     listActivityPlayer.remove(player);
                     break;
                 }
-
             for (Player player : listInvitedPlayers)
                 if (player.getId() == id) {
                     listInvitedPlayers.remove(player);
                     break;
                 }
-
             for (Player player : listWantToPlayPlayer)
                 if (player.getId() == id) {
                     listWantToPlayPlayer.remove(player);
@@ -266,7 +244,6 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
         adapterForActivityList.notifyDataSetChanged();
         adapterForInvitedList.notifyDataSetChanged();
         adapterForWantPlayList.notifyDataSetChanged();
-
     }
 
     @Override
@@ -282,7 +259,6 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
         adapterForWantPlayList.notifyDataSetChanged();
         Toast toast = Toast.makeText(context, "Player " + opponent.getName() + " want to play with you", 40);
         toast.show();
-
     }
 
     @Override
@@ -290,7 +266,6 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
         Protocol.CStartGame startGamePacket = (Protocol.CStartGame) msg.obj;
         myPlayer.setNumOfAllWonGame(startGamePacket.getNumberOfWonGame());
         startOnlineGame(startGamePacket);
-
     }
 
     @Override
@@ -304,11 +279,9 @@ public class OnlineOpenedRoomFragment extends Fragment implements View.OnClickLi
                 listWantToPlayPlayer.remove(player);
                 adapterForWantPlayList.notifyDataSetChanged();
             }
-
         }
         Toast toastAboutCancel = Toast.makeText(context, "Player " + canceledPlayer.getName() + " canceled invite", 40);
         toastAboutCancel.show();
-
     }
 
     @Override

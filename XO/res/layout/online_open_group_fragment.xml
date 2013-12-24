@@ -17,7 +17,7 @@
             android:orientation="vertical"
             >
 
-        <TextView
+        <com.componentwithfont.TextViewWirhComicsFont
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/online_players"
@@ -42,6 +42,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/list_activity_players"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:divider="@color/gray_list_item_divider"
+                    android:dividerHeight="@dimen/list_view_divider_height"
                     />
         </LinearLayout>
 
@@ -51,14 +54,14 @@
                 android:orientation="vertical"
                 >
 
-            <Button
+            <com.componentwithfont.ButtonWithComicsFont
                     android:id="@+id/btn_invite_to_play"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/online_open_group_fragment_invite_update_button_height"
                     style="@style/default_yelow_button"
                     android:text="@string/invite_for_play"
                     />
-            <Button
+            <com.componentwithfont.ButtonWithComicsFont
                     android:id="@+id/button_update_activitylist"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/online_open_group_fragment_invite_update_button_height"
@@ -94,7 +97,7 @@
 
                 android:orientation="vertical">
 
-            <TextView
+            <com.componentwithfont.TextViewWirhComicsFont
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/wanted_battle"
@@ -118,10 +121,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/list_player_witch_want_to_play"
+                        android:cacheColorHint="@android:color/transparent"
+                        android:divider="@color/gray_list_item_divider"
+                        android:dividerHeight="@dimen/list_view_divider_height"
                         />
             </LinearLayout>
 
-            <Button
+            <com.componentwithfont.ButtonWithComicsFont
                     android:id="@+id/btn_start_game"
                     android:layout_width="@dimen/online_open_group_fragment_start__cancel_game_button_width"
                     android:layout_height="@dimen/online_open_group_fragment_start_cancel_game_button_height"
@@ -141,7 +147,7 @@
 
                 android:orientation="vertical">
 
-            <TextView
+            <com.componentwithfont.TextViewWirhComicsFont
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/invited_players"
@@ -166,10 +172,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/list_disered_players"
+                        android:cacheColorHint="@android:color/transparent"
+                        android:divider="@color/gray_list_item_divider"
+                        android:dividerHeight="@dimen/list_view_divider_height"
                         />
             </LinearLayout>
 
-            <Button
+            <com.componentwithfont.ButtonWithComicsFont
                     android:id="@+id/btn_cancel_player"
                     android:layout_width="@dimen/online_open_group_fragment_start__cancel_game_button_width"
                     android:layout_height="@dimen/online_open_group_fragment_start_cancel_game_button_height"
