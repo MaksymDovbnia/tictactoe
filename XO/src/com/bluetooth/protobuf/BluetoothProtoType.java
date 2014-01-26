@@ -13,6 +13,8 @@ public enum BluetoothProtoType {
     CONTINUE_GAME((byte) 0x8A, BluetoothProtocol.ContinueGame.class),
     CHAT_MESSAGE((byte) 0x4A, BluetoothProtocol.ChatMessage.class),
     STAR_GAME((byte) 0x9A, BluetoothProtocol.StartGame.class),
+    TIME_FINISHED((byte) 0x1B, BluetoothProtocol.TimeForMoveFullUp.class),
+
 
     UNKNOWN((byte) 0x00);
 

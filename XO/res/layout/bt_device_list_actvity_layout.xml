@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/general_background"
+        >
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            />
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:paddingLeft="@dimen/bt_device_list_paired_list_padding_left"
+            android:paddingTop="@dimen/bt_device_list_paired_list_padding_top"
+            android:background="@drawable/notebook2"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+
+            >
+
+        <com.componentwithfont.TextViewWirhComicsFont
+                android:id="@+id/title_paired_devices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_paired_devices"
+                android:visibility="gone"
+                android:textColor="@color/red"
+                android:textSize="@dimen/bt_device_list_paired_list_text_size"
+                />
+
+        <ListView
+                android:id="@+id/paired_devices"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:cacheColorHint="@android:color/transparent"
+                />
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/ll_title_new_devices"
+                android:visibility="gone"
+                >
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/ll_search_new_devices"
+                    >
+
+                <com.componentwithfont.TextViewWirhComicsFont
+                        android:id="@+id/tv_scanning_for_devices"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/scanning_for_devices"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/bt_device_list_paired_list_text_size"/>
+
+                <ProgressBar
+                        android:layout_width="@dimen/bt_device_list_progress_bar_size"
+                        android:layout_height="@dimen/bt_device_list_progress_bar_size"
+                        android:id="@+id/progress_bar_search_bt_devices"
+
+                        android:layout_gravity="right"/>
+            </LinearLayout>
+
+            <com.componentwithfont.TextViewWirhComicsFont
+                    android:id="@+id/title_new_devices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title_other_devices"
+
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/bt_device_list_paired_list_text_size"
+                    />
+        </LinearLayout>
+
+        <ListView
+                android:id="@+id/new_devices"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:cacheColorHint="@android:color/transparent"
+                />
+
+        <com.componentwithfont.ButtonWithComicsFont
+                android:id="@+id/button_scan"
+                android:layout_width="@dimen/chat_fragment_layout_sent_button_width"
+                android:layout_height="@dimen/chat_fragment_layout_sent_button_height"
+                android:text="@string/button_scan"
+                style="@style/default_yelow_button"
+                />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            />
+
+
+</LinearLayout>

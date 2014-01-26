@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:ads="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingTop="@dimen/chat_fragment_layout_padding_top">
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:paddingLeft="@dimen/online_opened_room_fragment_general_padding_size"
+            android:paddingRight="@dimen/online_opened_room_fragment_general_padding_size"
+            android:orientation="vertical"
+            >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+            <com.componentwithfont.TextViewWirhComicsFont
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/online_players"
+                    style="@style/list_view_header_item"/>
+
+            <com.componentwithfont.TextViewWirhComicsFont
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rating"
+                    style="@style/list_view_header_item"/>
+
+            <com.componentwithfont.TextViewWirhComicsFont
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/invited_to_play"
+                    style="@style/list_view_header_item"/>
+
+        </LinearLayout>
+
+        <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/list_activity_players"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="@dimen/list_view_divider_height"
+                android:cacheColorHint="@android:color/transparent"
+                />
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:paddingLeft="@dimen/online_opened_room_fragment_general_padding_size"
+            android:paddingRight="@dimen/online_opened_room_fragment_general_padding_size"
+            android:orientation="vertical"
+            >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@color/wanted_play_player_list_header_background"
+                android:paddingLeft="@dimen/online_opened_room_fragment_wanted_header_padding_left"
+                android:orientation="horizontal">
+
+            <com.componentwithfont.TextViewWirhComicsFont
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/wants_to_battle_with_you"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="@dimen/header_list_item_text_size"/>
+
+
+        </LinearLayout>
+
+
+        <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/list_player_witch_want_to_play"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@color/wanted_play_player_list_header_background"
+                android:dividerHeight="@dimen/list_view_divider_height"
+                android:paddingLeft="@dimen/online_opened_room_fragment_wanted_item_padding_left"
+                />
+    </LinearLayout>
+
+    <com.google.android.gms.ads.AdView
+            android:id="@+id/ad_view"
+            android:layout_width="@dimen/ad_view_width"
+            android:layout_height="@dimen/ad_view_height"
+            android:layout_gravity="center_horizontal"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-8596819956320879/9908452347"/>
+
+
+</LinearLayout>

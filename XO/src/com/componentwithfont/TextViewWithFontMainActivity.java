@@ -29,7 +29,7 @@ public class TextViewWithFontMainActivity extends TextView {
     }
 
     private void initFont(Context context) {
-        Typeface mFont = Typeface.createFromAsset(context.getAssets(), "fonts/floyd.TTF");
+        Typeface mFont = Typeface.createFromAsset(context.getAssets(), "fonts/COMIC.TTF");
         setTypeface(mFont);
     }
 

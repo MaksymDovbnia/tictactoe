@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="app_name">Великі хрестики-нулики онлайн</string>
+    <string name="title_activity_second">Великі хрестики-нулики онлайн</string>
+    <string name="with_android">З андроїдом</string>
+    <string name="button_gametypes_online">Онлайн</string>
+    <string name="two_players">2 гравця</string>
+    <string name="bluetooth">Bluetooth</string>
+
+    <string name="update_list">Update list</string>
+    <string name="start_game">Розпочати гру</string>
+    <string name="settings">Настройки</string>
+    <string name="about">Про гру</string>
+    <string name="quit">Вийти</string>
+
+    <string name="action_settings">Настройки</string>
+
+    <string name="anonymous">Анонім</string>
+    <string name="anonym_player">Анонім-гравець</string>
+    <string name="please_enter_your_nick_name">Будь ласка, введіть Ваш нік</string>
+    <string name="your_nick">Ваш нік:</string>
+    <string name="login">Логін</string>
+    <string name="nick">Нік:</string>
+    <string name="open_room">Відкрити кімнату</string>
+    <string name="online_rooms">Онлайн кімнати</string>
+    <string name="online_room">Онлайн кімната</string>
+    <string name="all_online_players">Всі онлайн-гравці:</string>
+    <string name="chat">Чат</string>
+    <string name="top_100">Топ 100</string>
+    <string name="game">Гра</string>
+    <string name="room">Кімната</string>
+    <string name="opened_room">Відкрита кімната</string>
+    <string name="scanning">Сканування</string>
+    <string name="select_device">Виберіть пристрій</string>
+    <string name="none_found">Нічого не знайдено</string>
+    <string name="none_paired">Нічого не знайдено</string>
+    <string name="bluetooth_game">Bluetooth гра</string>
+    <string name="button_scan">Сканувати</string>
+    <string name="ok">Добре</string>
+    <string name="cancel">Відмінити</string>
+    <string name="exit_from_game">Вийти з гри</string>
+    <string name="exit_from_this_game">Вийти з цієї гри</string>
+    <string name="connection_to_server_lost">З\'єднання з сервером втрачено</string>
+    <string name="please_try_to_connect_once_more">Будь ласка, спробуйте підключитися ще раз
+    </string>
+    <string name="is_won">виграв/-ла</string>
+    <string name="are_you_want_continue_game">Зіграти ще?</string>
+    <string name="yes">Так</string>
+    <string name="no">Ні</string>
+    <string name="the_first_player_name">Ім’я першого гравця:</string>
+    <string name="the_second_player_name">Ім’я другого гравця:</string>
+    <string name="login_by">Login by:</string>
+    <string name="connection">З’єднання</string>
+    <string name="connecting_server">Триває з’єднання до онлайн сервера...</string>
+    <string name="server_not_available">На жаль, зараз сервер не доступний, спробуйте пізніше
+    </string>
+    <string name="exit_from_room">Вийти з кімнати</string>
+    <string name="left_the_game">Залишити гру</string>
+    <string name="exit_from_room_question">Вийти з цієї кімнати?</string>
+    <string name="exit_from_game_question">Залишити гру?</string>
+    <string name="exit_from_this_game_question">Залишити цю гру?</string>
+    <string name="exit_from_online_game">Вихід з онлайн-гри</string>
+    <string name="exit_from_game_online_question">Залишити онлайн-гру?</string>
+    <string name="title_other_devices">Інші пристрої:</string>
+    <string name="scanning_for_devices">Сканування пристроїв...</string>
+    <string name="title_paired_devices">Спарені пристрої:</string>
+    <string name="create_bluetooth_game">Створити bluetooth гру</string>
+    <string name="connect_to_bluetooth_game">Підключитися до Bluetooth гри</string>
+    <string name="new_game">Нова гра</string>
+    <string name="back">Назад</string>
+    <string name="sec">сек</string>
+    <string name="nick">Нік</string>
+    <string name="online_players">Онлайн-гравці</string>
+    <string name="wanted_to_play_with_you">Бажають зіграти з Вами:</string>
+    <string name="room_number">Номер кімнати</string>
+    <string name="number_players_max_number_players">Кількість гравців/максимум</string>
+    <string name="rating">Рейтинг</string>
+    <string name="invited_to_play">Запрошені</string>
+    <string name="player_name">Ім’я гравця</string>
+    <string name="position">Позиція</string>
+    <string name="send">Відправити</string>
+    <string name="input_your_message">Введіть Ваше повідомлення:</string>
+    <string name="message">Повідомлення</string>
+    <string name="easy_level">- Легкий рівень</string>
+    <string name="player">Гравець</string>
+    <string name="android">Андроїд</string>
+    <string name="maximum_chars_in_nick_is">Максимум символів в ніку:</string>
+    <string name="wait_opponent_connection">Зачекайте з’єднання з опонентом</string>
+
+    <string name="server_started_wait_connection">Сервер запущено. Очікування з’єднання</string>
+    <string name="try_to_connect_failed">Спроба підключення невдала</string>
+    <string name="about_text">Хрестики-нулики - логічна гра між двома противниками на квадратному
+        полі 15 на 15 клітин (в даній грі). Один з гравців грає «хрестиками», другий - «нуликами».
+        Правила гри. Гравці по черзі ставлять на вільні клітини поля 15х15 знаки (один завжди
+        хрестики, інший завжди нулики). Перший, який вибудував в ряд 5 своїх фігур по вертикалі,
+        горизонталі або діагоналі, виграє. Зазвичай по завершенні партії переможець, закреслює
+        лінією своїх 5 знаків (нулика або хрестика), які складають суцільний ряд.
+
+    </string>
+
+    <string name="your_device_doesnt_support_bluetooth">Ваш пристрій не підтримує bluetooth</string>
+    <string name="want_to_battle_with_you">хоче поєдинок з вами</string>
+    <string name="wants_to_battle_with_you">Хочуть поєдинок з вами:</string>
+    <string name="connecting_to_bluetooth_server">Триває з’єднання до bluetooth сервера...</string>
+    <string name="canceled_inviting">відмінив запрошення</string>
+    <string name="connecting_to">Підключення до</string>
+    <string name="to">До</string>
+    <string name="player_1">Гравець 1</string>
+    <string name="player_2">Гравець 2</string>
+    <string name="no_internet_connection">Немає інтернет зєднання</string>
+</resources>

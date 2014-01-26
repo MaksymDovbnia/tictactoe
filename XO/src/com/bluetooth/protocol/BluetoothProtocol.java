@@ -50,7 +50,7 @@ public final class BluetoothProtocol {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return BluetoothProtocol.getDescriptor().getEnumTypes().get(0);
+      return com.bluetooth.protocol.BluetoothProtocol.getDescriptor().getEnumTypes().get(0);
     }
     
     private static final TypeMove[] VALUES = {
@@ -60,7 +60,7 @@ public final class BluetoothProtocol {
     public static TypeMove valueOf(
         com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
       if (desc.getType() != getDescriptor()) {
-        throw new IllegalArgumentException(
+        throw new java.lang.IllegalArgumentException(
           "EnumValueDescriptor is not for this type.");
       }
       return VALUES[desc.getIndex()];
@@ -104,23 +104,23 @@ public final class BluetoothProtocol {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return BluetoothProtocol.internal_static_net_bluetooth_protocol_StartGame_descriptor;
+      return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_StartGame_descriptor;
     }
     
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return BluetoothProtocol.internal_static_net_bluetooth_protocol_StartGame_fieldAccessorTable;
+      return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_StartGame_fieldAccessorTable;
     }
     
     private int bitField0_;
     // required string oponentName = 1;
     public static final int OPONENTNAME_FIELD_NUMBER = 1;
-    private Object oponentName_;
+    private java.lang.Object oponentName_;
     public boolean hasOponentName() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     public String getOponentName() {
-      Object ref = oponentName_;
+      java.lang.Object ref = oponentName_;
       if (ref instanceof String) {
         return (String) ref;
       } else {
@@ -134,7 +134,7 @@ public final class BluetoothProtocol {
       }
     }
     private com.google.protobuf.ByteString getOponentNameBytes() {
-      Object ref = oponentName_;
+      java.lang.Object ref = oponentName_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8((String) ref);
@@ -186,47 +186,47 @@ public final class BluetoothProtocol {
     }
     
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
     
-    public static StartGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.StartGame parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static StartGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.StartGame parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static StartGame parseFrom(byte[] data)
+    public static com.bluetooth.protocol.BluetoothProtocol.StartGame parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static StartGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.StartGame parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static StartGame parseFrom(java.io.InputStream input)
+    public static com.bluetooth.protocol.BluetoothProtocol.StartGame parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static StartGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.StartGame parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input, extensionRegistry)
                .buildParsed();
     }
-    public static StartGame parseDelimitedFrom(java.io.InputStream input)
+    public static com.bluetooth.protocol.BluetoothProtocol.StartGame parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       Builder builder = newBuilder();
       if (builder.mergeDelimitedFrom(input)) {
@@ -235,7 +235,7 @@ public final class BluetoothProtocol {
         return null;
       }
     }
-    public static StartGame parseDelimitedFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.StartGame parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -246,12 +246,12 @@ public final class BluetoothProtocol {
         return null;
       }
     }
-    public static StartGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.StartGame parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static StartGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.StartGame parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -261,28 +261,28 @@ public final class BluetoothProtocol {
     
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(StartGame prototype) {
+    public static Builder newBuilder(com.bluetooth.protocol.BluetoothProtocol.StartGame prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements StartGameOrBuilder {
+       implements com.bluetooth.protocol.BluetoothProtocol.StartGameOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return BluetoothProtocol.internal_static_net_bluetooth_protocol_StartGame_descriptor;
+        return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_StartGame_descriptor;
       }
       
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return BluetoothProtocol.internal_static_net_bluetooth_protocol_StartGame_fieldAccessorTable;
+        return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_StartGame_fieldAccessorTable;
       }
       
       // Construct using com.bluetooth.protocol.BluetoothProtocol.StartGame.newBuilder()
@@ -315,24 +315,24 @@ public final class BluetoothProtocol {
       
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return StartGame.getDescriptor();
+        return com.bluetooth.protocol.BluetoothProtocol.StartGame.getDescriptor();
       }
       
-      public StartGame getDefaultInstanceForType() {
-        return StartGame.getDefaultInstance();
+      public com.bluetooth.protocol.BluetoothProtocol.StartGame getDefaultInstanceForType() {
+        return com.bluetooth.protocol.BluetoothProtocol.StartGame.getDefaultInstance();
       }
       
-      public StartGame build() {
-        StartGame result = buildPartial();
+      public com.bluetooth.protocol.BluetoothProtocol.StartGame build() {
+        com.bluetooth.protocol.BluetoothProtocol.StartGame result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
       
-      private StartGame buildParsed()
+      private com.bluetooth.protocol.BluetoothProtocol.StartGame buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        StartGame result = buildPartial();
+        com.bluetooth.protocol.BluetoothProtocol.StartGame result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
@@ -340,8 +340,8 @@ public final class BluetoothProtocol {
         return result;
       }
       
-      public StartGame buildPartial() {
-        StartGame result = new StartGame(this);
+      public com.bluetooth.protocol.BluetoothProtocol.StartGame buildPartial() {
+        com.bluetooth.protocol.BluetoothProtocol.StartGame result = new com.bluetooth.protocol.BluetoothProtocol.StartGame(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -354,16 +354,16 @@ public final class BluetoothProtocol {
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof StartGame) {
-          return mergeFrom((StartGame)other);
+        if (other instanceof com.bluetooth.protocol.BluetoothProtocol.StartGame) {
+          return mergeFrom((com.bluetooth.protocol.BluetoothProtocol.StartGame)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
       
-      public Builder mergeFrom(StartGame other) {
-        if (other == StartGame.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.bluetooth.protocol.BluetoothProtocol.StartGame other) {
+        if (other == com.bluetooth.protocol.BluetoothProtocol.StartGame.getDefaultInstance()) return this;
         if (other.hasOponentName()) {
           setOponentName(other.getOponentName());
         }
@@ -414,12 +414,12 @@ public final class BluetoothProtocol {
       private int bitField0_;
       
       // required string oponentName = 1;
-      private Object oponentName_ = "";
+      private java.lang.Object oponentName_ = "";
       public boolean hasOponentName() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public String getOponentName() {
-        Object ref = oponentName_;
+        java.lang.Object ref = oponentName_;
         if (!(ref instanceof String)) {
           String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
           oponentName_ = s;
@@ -473,7 +473,7 @@ public final class BluetoothProtocol {
     
     // required .net.bluetooth.protocol.TypeMove type = 3;
     boolean hasType();
-    TypeMove getType();
+    com.bluetooth.protocol.BluetoothProtocol.TypeMove getType();
   }
   public static final class DidMove extends
       com.google.protobuf.GeneratedMessage
@@ -495,12 +495,12 @@ public final class BluetoothProtocol {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return BluetoothProtocol.internal_static_net_bluetooth_protocol_DidMove_descriptor;
+      return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_DidMove_descriptor;
     }
     
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return BluetoothProtocol.internal_static_net_bluetooth_protocol_DidMove_fieldAccessorTable;
+      return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_DidMove_fieldAccessorTable;
     }
     
     private int bitField0_;
@@ -526,18 +526,18 @@ public final class BluetoothProtocol {
     
     // required .net.bluetooth.protocol.TypeMove type = 3;
     public static final int TYPE_FIELD_NUMBER = 3;
-    private TypeMove type_;
+    private com.bluetooth.protocol.BluetoothProtocol.TypeMove type_;
     public boolean hasType() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
-    public TypeMove getType() {
+    public com.bluetooth.protocol.BluetoothProtocol.TypeMove getType() {
       return type_;
     }
     
     private void initFields() {
       i_ = 0;
       j_ = 0;
-      type_ = TypeMove.X;
+      type_ = com.bluetooth.protocol.BluetoothProtocol.TypeMove.X;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -599,47 +599,47 @@ public final class BluetoothProtocol {
     }
     
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
     
-    public static DidMove parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.DidMove parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static DidMove parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.DidMove parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static DidMove parseFrom(byte[] data)
+    public static com.bluetooth.protocol.BluetoothProtocol.DidMove parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static DidMove parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.DidMove parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static DidMove parseFrom(java.io.InputStream input)
+    public static com.bluetooth.protocol.BluetoothProtocol.DidMove parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static DidMove parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.DidMove parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input, extensionRegistry)
                .buildParsed();
     }
-    public static DidMove parseDelimitedFrom(java.io.InputStream input)
+    public static com.bluetooth.protocol.BluetoothProtocol.DidMove parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       Builder builder = newBuilder();
       if (builder.mergeDelimitedFrom(input)) {
@@ -648,7 +648,7 @@ public final class BluetoothProtocol {
         return null;
       }
     }
-    public static DidMove parseDelimitedFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.DidMove parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -659,12 +659,12 @@ public final class BluetoothProtocol {
         return null;
       }
     }
-    public static DidMove parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.DidMove parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static DidMove parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.DidMove parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -674,28 +674,28 @@ public final class BluetoothProtocol {
     
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(DidMove prototype) {
+    public static Builder newBuilder(com.bluetooth.protocol.BluetoothProtocol.DidMove prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements DidMoveOrBuilder {
+       implements com.bluetooth.protocol.BluetoothProtocol.DidMoveOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return BluetoothProtocol.internal_static_net_bluetooth_protocol_DidMove_descriptor;
+        return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_DidMove_descriptor;
       }
       
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return BluetoothProtocol.internal_static_net_bluetooth_protocol_DidMove_fieldAccessorTable;
+        return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_DidMove_fieldAccessorTable;
       }
       
       // Construct using com.bluetooth.protocol.BluetoothProtocol.DidMove.newBuilder()
@@ -721,7 +721,7 @@ public final class BluetoothProtocol {
         bitField0_ = (bitField0_ & ~0x00000001);
         j_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        type_ = TypeMove.X;
+        type_ = com.bluetooth.protocol.BluetoothProtocol.TypeMove.X;
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
@@ -732,24 +732,24 @@ public final class BluetoothProtocol {
       
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return DidMove.getDescriptor();
+        return com.bluetooth.protocol.BluetoothProtocol.DidMove.getDescriptor();
       }
       
-      public DidMove getDefaultInstanceForType() {
-        return DidMove.getDefaultInstance();
+      public com.bluetooth.protocol.BluetoothProtocol.DidMove getDefaultInstanceForType() {
+        return com.bluetooth.protocol.BluetoothProtocol.DidMove.getDefaultInstance();
       }
       
-      public DidMove build() {
-        DidMove result = buildPartial();
+      public com.bluetooth.protocol.BluetoothProtocol.DidMove build() {
+        com.bluetooth.protocol.BluetoothProtocol.DidMove result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
       
-      private DidMove buildParsed()
+      private com.bluetooth.protocol.BluetoothProtocol.DidMove buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        DidMove result = buildPartial();
+        com.bluetooth.protocol.BluetoothProtocol.DidMove result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
@@ -757,8 +757,8 @@ public final class BluetoothProtocol {
         return result;
       }
       
-      public DidMove buildPartial() {
-        DidMove result = new DidMove(this);
+      public com.bluetooth.protocol.BluetoothProtocol.DidMove buildPartial() {
+        com.bluetooth.protocol.BluetoothProtocol.DidMove result = new com.bluetooth.protocol.BluetoothProtocol.DidMove(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -779,16 +779,16 @@ public final class BluetoothProtocol {
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof DidMove) {
-          return mergeFrom((DidMove)other);
+        if (other instanceof com.bluetooth.protocol.BluetoothProtocol.DidMove) {
+          return mergeFrom((com.bluetooth.protocol.BluetoothProtocol.DidMove)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
       
-      public Builder mergeFrom(DidMove other) {
-        if (other == DidMove.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.bluetooth.protocol.BluetoothProtocol.DidMove other) {
+        if (other == com.bluetooth.protocol.BluetoothProtocol.DidMove.getDefaultInstance()) return this;
         if (other.hasI()) {
           setI(other.getI());
         }
@@ -853,7 +853,7 @@ public final class BluetoothProtocol {
             }
             case 24: {
               int rawValue = input.readEnum();
-              TypeMove value = TypeMove.valueOf(rawValue);
+              com.bluetooth.protocol.BluetoothProtocol.TypeMove value = com.bluetooth.protocol.BluetoothProtocol.TypeMove.valueOf(rawValue);
               if (value == null) {
                 unknownFields.mergeVarintField(3, rawValue);
               } else {
@@ -911,14 +911,14 @@ public final class BluetoothProtocol {
       }
       
       // required .net.bluetooth.protocol.TypeMove type = 3;
-      private TypeMove type_ = TypeMove.X;
+      private com.bluetooth.protocol.BluetoothProtocol.TypeMove type_ = com.bluetooth.protocol.BluetoothProtocol.TypeMove.X;
       public boolean hasType() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
-      public TypeMove getType() {
+      public com.bluetooth.protocol.BluetoothProtocol.TypeMove getType() {
         return type_;
       }
-      public Builder setType(TypeMove value) {
+      public Builder setType(com.bluetooth.protocol.BluetoothProtocol.TypeMove value) {
         if (value == null) {
           throw new NullPointerException();
         }
@@ -929,7 +929,7 @@ public final class BluetoothProtocol {
       }
       public Builder clearType() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        type_ = TypeMove.X;
+        type_ = com.bluetooth.protocol.BluetoothProtocol.TypeMove.X;
         onChanged();
         return this;
       }
@@ -972,12 +972,12 @@ public final class BluetoothProtocol {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return BluetoothProtocol.internal_static_net_bluetooth_protocol_ContinueGame_descriptor;
+      return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_ContinueGame_descriptor;
     }
     
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return BluetoothProtocol.internal_static_net_bluetooth_protocol_ContinueGame_fieldAccessorTable;
+      return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_ContinueGame_fieldAccessorTable;
     }
     
     private int bitField0_;
@@ -1032,47 +1032,47 @@ public final class BluetoothProtocol {
     }
     
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
     
-    public static ContinueGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ContinueGame parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static ContinueGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ContinueGame parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static ContinueGame parseFrom(byte[] data)
+    public static com.bluetooth.protocol.BluetoothProtocol.ContinueGame parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static ContinueGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ContinueGame parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static ContinueGame parseFrom(java.io.InputStream input)
+    public static com.bluetooth.protocol.BluetoothProtocol.ContinueGame parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static ContinueGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ContinueGame parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input, extensionRegistry)
                .buildParsed();
     }
-    public static ContinueGame parseDelimitedFrom(java.io.InputStream input)
+    public static com.bluetooth.protocol.BluetoothProtocol.ContinueGame parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       Builder builder = newBuilder();
       if (builder.mergeDelimitedFrom(input)) {
@@ -1081,7 +1081,7 @@ public final class BluetoothProtocol {
         return null;
       }
     }
-    public static ContinueGame parseDelimitedFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ContinueGame parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1092,12 +1092,12 @@ public final class BluetoothProtocol {
         return null;
       }
     }
-    public static ContinueGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ContinueGame parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static ContinueGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ContinueGame parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1107,28 +1107,28 @@ public final class BluetoothProtocol {
     
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(ContinueGame prototype) {
+    public static Builder newBuilder(com.bluetooth.protocol.BluetoothProtocol.ContinueGame prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements ContinueGameOrBuilder {
+       implements com.bluetooth.protocol.BluetoothProtocol.ContinueGameOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return BluetoothProtocol.internal_static_net_bluetooth_protocol_ContinueGame_descriptor;
+        return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_ContinueGame_descriptor;
       }
       
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return BluetoothProtocol.internal_static_net_bluetooth_protocol_ContinueGame_fieldAccessorTable;
+        return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_ContinueGame_fieldAccessorTable;
       }
       
       // Construct using com.bluetooth.protocol.BluetoothProtocol.ContinueGame.newBuilder()
@@ -1161,24 +1161,24 @@ public final class BluetoothProtocol {
       
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ContinueGame.getDescriptor();
+        return com.bluetooth.protocol.BluetoothProtocol.ContinueGame.getDescriptor();
       }
       
-      public ContinueGame getDefaultInstanceForType() {
-        return ContinueGame.getDefaultInstance();
+      public com.bluetooth.protocol.BluetoothProtocol.ContinueGame getDefaultInstanceForType() {
+        return com.bluetooth.protocol.BluetoothProtocol.ContinueGame.getDefaultInstance();
       }
       
-      public ContinueGame build() {
-        ContinueGame result = buildPartial();
+      public com.bluetooth.protocol.BluetoothProtocol.ContinueGame build() {
+        com.bluetooth.protocol.BluetoothProtocol.ContinueGame result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
       
-      private ContinueGame buildParsed()
+      private com.bluetooth.protocol.BluetoothProtocol.ContinueGame buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        ContinueGame result = buildPartial();
+        com.bluetooth.protocol.BluetoothProtocol.ContinueGame result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
@@ -1186,8 +1186,8 @@ public final class BluetoothProtocol {
         return result;
       }
       
-      public ContinueGame buildPartial() {
-        ContinueGame result = new ContinueGame(this);
+      public com.bluetooth.protocol.BluetoothProtocol.ContinueGame buildPartial() {
+        com.bluetooth.protocol.BluetoothProtocol.ContinueGame result = new com.bluetooth.protocol.BluetoothProtocol.ContinueGame(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1200,16 +1200,16 @@ public final class BluetoothProtocol {
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ContinueGame) {
-          return mergeFrom((ContinueGame)other);
+        if (other instanceof com.bluetooth.protocol.BluetoothProtocol.ContinueGame) {
+          return mergeFrom((com.bluetooth.protocol.BluetoothProtocol.ContinueGame)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
       
-      public Builder mergeFrom(ContinueGame other) {
-        if (other == ContinueGame.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.bluetooth.protocol.BluetoothProtocol.ContinueGame other) {
+        if (other == com.bluetooth.protocol.BluetoothProtocol.ContinueGame.getDefaultInstance()) return this;
         if (other.hasContinueGame()) {
           setContinueGame(other.getContinueGame());
         }
@@ -1291,6 +1291,352 @@ public final class BluetoothProtocol {
     // @@protoc_insertion_point(class_scope:net.bluetooth.protocol.ContinueGame)
   }
   
+  public interface TimeForMoveFullUpOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required bool timeFullUp = 1;
+    boolean hasTimeFullUp();
+    boolean getTimeFullUp();
+  }
+  public static final class TimeForMoveFullUp extends
+      com.google.protobuf.GeneratedMessage
+      implements TimeForMoveFullUpOrBuilder {
+    // Use TimeForMoveFullUp.newBuilder() to construct.
+    private TimeForMoveFullUp(Builder builder) {
+      super(builder);
+    }
+    private TimeForMoveFullUp(boolean noInit) {}
+    
+    private static final TimeForMoveFullUp defaultInstance;
+    public static TimeForMoveFullUp getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public TimeForMoveFullUp getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_TimeForMoveFullUp_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_TimeForMoveFullUp_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required bool timeFullUp = 1;
+    public static final int TIMEFULLUP_FIELD_NUMBER = 1;
+    private boolean timeFullUp_;
+    public boolean hasTimeFullUp() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public boolean getTimeFullUp() {
+      return timeFullUp_;
+    }
+    
+    private void initFields() {
+      timeFullUp_ = false;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasTimeFullUp()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBool(1, timeFullUp_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, timeFullUp_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUpOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_TimeForMoveFullUp_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_TimeForMoveFullUp_fieldAccessorTable;
+      }
+      
+      // Construct using com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        timeFullUp_ = false;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp.getDescriptor();
+      }
+      
+      public com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp getDefaultInstanceForType() {
+        return com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp.getDefaultInstance();
+      }
+      
+      public com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp build() {
+        com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp buildPartial() {
+        com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp result = new com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.timeFullUp_ = timeFullUp_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp) {
+          return mergeFrom((com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp other) {
+        if (other == com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp.getDefaultInstance()) return this;
+        if (other.hasTimeFullUp()) {
+          setTimeFullUp(other.getTimeFullUp());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasTimeFullUp()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              timeFullUp_ = input.readBool();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required bool timeFullUp = 1;
+      private boolean timeFullUp_ ;
+      public boolean hasTimeFullUp() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public boolean getTimeFullUp() {
+        return timeFullUp_;
+      }
+      public Builder setTimeFullUp(boolean value) {
+        bitField0_ |= 0x00000001;
+        timeFullUp_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearTimeFullUp() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        timeFullUp_ = false;
+        onChanged();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:net.bluetooth.protocol.TimeForMoveFullUp)
+    }
+    
+    static {
+      defaultInstance = new TimeForMoveFullUp(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:net.bluetooth.protocol.TimeForMoveFullUp)
+  }
+  
   public interface ChatMessageOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
@@ -1318,23 +1664,23 @@ public final class BluetoothProtocol {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return BluetoothProtocol.internal_static_net_bluetooth_protocol_ChatMessage_descriptor;
+      return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_ChatMessage_descriptor;
     }
     
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return BluetoothProtocol.internal_static_net_bluetooth_protocol_ChatMessage_fieldAccessorTable;
+      return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_ChatMessage_fieldAccessorTable;
     }
     
     private int bitField0_;
     // required string message = 1;
     public static final int MESSAGE_FIELD_NUMBER = 1;
-    private Object message_;
+    private java.lang.Object message_;
     public boolean hasMessage() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     public String getMessage() {
-      Object ref = message_;
+      java.lang.Object ref = message_;
       if (ref instanceof String) {
         return (String) ref;
       } else {
@@ -1348,7 +1694,7 @@ public final class BluetoothProtocol {
       }
     }
     private com.google.protobuf.ByteString getMessageBytes() {
-      Object ref = message_;
+      java.lang.Object ref = message_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8((String) ref);
@@ -1400,47 +1746,47 @@ public final class BluetoothProtocol {
     }
     
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
     
-    public static ChatMessage parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ChatMessage parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static ChatMessage parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ChatMessage parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static ChatMessage parseFrom(byte[] data)
+    public static com.bluetooth.protocol.BluetoothProtocol.ChatMessage parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static ChatMessage parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ChatMessage parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static ChatMessage parseFrom(java.io.InputStream input)
+    public static com.bluetooth.protocol.BluetoothProtocol.ChatMessage parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static ChatMessage parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ChatMessage parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input, extensionRegistry)
                .buildParsed();
     }
-    public static ChatMessage parseDelimitedFrom(java.io.InputStream input)
+    public static com.bluetooth.protocol.BluetoothProtocol.ChatMessage parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       Builder builder = newBuilder();
       if (builder.mergeDelimitedFrom(input)) {
@@ -1449,7 +1795,7 @@ public final class BluetoothProtocol {
         return null;
       }
     }
-    public static ChatMessage parseDelimitedFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ChatMessage parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1460,12 +1806,12 @@ public final class BluetoothProtocol {
         return null;
       }
     }
-    public static ChatMessage parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ChatMessage parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static ChatMessage parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ChatMessage parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1475,28 +1821,28 @@ public final class BluetoothProtocol {
     
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(ChatMessage prototype) {
+    public static Builder newBuilder(com.bluetooth.protocol.BluetoothProtocol.ChatMessage prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements ChatMessageOrBuilder {
+       implements com.bluetooth.protocol.BluetoothProtocol.ChatMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return BluetoothProtocol.internal_static_net_bluetooth_protocol_ChatMessage_descriptor;
+        return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_ChatMessage_descriptor;
       }
       
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return BluetoothProtocol.internal_static_net_bluetooth_protocol_ChatMessage_fieldAccessorTable;
+        return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_ChatMessage_fieldAccessorTable;
       }
       
       // Construct using com.bluetooth.protocol.BluetoothProtocol.ChatMessage.newBuilder()
@@ -1529,24 +1875,24 @@ public final class BluetoothProtocol {
       
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ChatMessage.getDescriptor();
+        return com.bluetooth.protocol.BluetoothProtocol.ChatMessage.getDescriptor();
       }
       
-      public ChatMessage getDefaultInstanceForType() {
-        return ChatMessage.getDefaultInstance();
+      public com.bluetooth.protocol.BluetoothProtocol.ChatMessage getDefaultInstanceForType() {
+        return com.bluetooth.protocol.BluetoothProtocol.ChatMessage.getDefaultInstance();
       }
       
-      public ChatMessage build() {
-        ChatMessage result = buildPartial();
+      public com.bluetooth.protocol.BluetoothProtocol.ChatMessage build() {
+        com.bluetooth.protocol.BluetoothProtocol.ChatMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
       
-      private ChatMessage buildParsed()
+      private com.bluetooth.protocol.BluetoothProtocol.ChatMessage buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        ChatMessage result = buildPartial();
+        com.bluetooth.protocol.BluetoothProtocol.ChatMessage result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
@@ -1554,8 +1900,8 @@ public final class BluetoothProtocol {
         return result;
       }
       
-      public ChatMessage buildPartial() {
-        ChatMessage result = new ChatMessage(this);
+      public com.bluetooth.protocol.BluetoothProtocol.ChatMessage buildPartial() {
+        com.bluetooth.protocol.BluetoothProtocol.ChatMessage result = new com.bluetooth.protocol.BluetoothProtocol.ChatMessage(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1568,16 +1914,16 @@ public final class BluetoothProtocol {
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ChatMessage) {
-          return mergeFrom((ChatMessage)other);
+        if (other instanceof com.bluetooth.protocol.BluetoothProtocol.ChatMessage) {
+          return mergeFrom((com.bluetooth.protocol.BluetoothProtocol.ChatMessage)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
       
-      public Builder mergeFrom(ChatMessage other) {
-        if (other == ChatMessage.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.bluetooth.protocol.BluetoothProtocol.ChatMessage other) {
+        if (other == com.bluetooth.protocol.BluetoothProtocol.ChatMessage.getDefaultInstance()) return this;
         if (other.hasMessage()) {
           setMessage(other.getMessage());
         }
@@ -1628,12 +1974,12 @@ public final class BluetoothProtocol {
       private int bitField0_;
       
       // required string message = 1;
-      private Object message_ = "";
+      private java.lang.Object message_ = "";
       public boolean hasMessage() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       public String getMessage() {
-        Object ref = message_;
+        java.lang.Object ref = message_;
         if (!(ref instanceof String)) {
           String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
           message_ = s;
@@ -1701,12 +2047,12 @@ public final class BluetoothProtocol {
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return BluetoothProtocol.internal_static_net_bluetooth_protocol_ExitFromGame_descriptor;
+      return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_ExitFromGame_descriptor;
     }
     
-    protected FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return BluetoothProtocol.internal_static_net_bluetooth_protocol_ExitFromGame_fieldAccessorTable;
+      return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_ExitFromGame_fieldAccessorTable;
     }
     
     private int bitField0_;
@@ -1761,47 +2107,47 @@ public final class BluetoothProtocol {
     }
     
     private static final long serialVersionUID = 0L;
-    @Override
-    protected Object writeReplace()
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
         throws java.io.ObjectStreamException {
       return super.writeReplace();
     }
     
-    public static ExitFromGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ExitFromGame parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static ExitFromGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ExitFromGame parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static ExitFromGame parseFrom(byte[] data)
+    public static com.bluetooth.protocol.BluetoothProtocol.ExitFromGame parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static ExitFromGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ExitFromGame parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static ExitFromGame parseFrom(java.io.InputStream input)
+    public static com.bluetooth.protocol.BluetoothProtocol.ExitFromGame parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static ExitFromGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ExitFromGame parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input, extensionRegistry)
                .buildParsed();
     }
-    public static ExitFromGame parseDelimitedFrom(java.io.InputStream input)
+    public static com.bluetooth.protocol.BluetoothProtocol.ExitFromGame parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       Builder builder = newBuilder();
       if (builder.mergeDelimitedFrom(input)) {
@@ -1810,7 +2156,7 @@ public final class BluetoothProtocol {
         return null;
       }
     }
-    public static ExitFromGame parseDelimitedFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ExitFromGame parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1821,12 +2167,12 @@ public final class BluetoothProtocol {
         return null;
       }
     }
-    public static ExitFromGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ExitFromGame parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static ExitFromGame parseFrom(
+    public static com.bluetooth.protocol.BluetoothProtocol.ExitFromGame parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1836,28 +2182,28 @@ public final class BluetoothProtocol {
     
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(ExitFromGame prototype) {
+    public static Builder newBuilder(com.bluetooth.protocol.BluetoothProtocol.ExitFromGame prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
     
-    @Override
+    @java.lang.Override
     protected Builder newBuilderForType(
-        BuilderParent parent) {
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements ExitFromGameOrBuilder {
+       implements com.bluetooth.protocol.BluetoothProtocol.ExitFromGameOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return BluetoothProtocol.internal_static_net_bluetooth_protocol_ExitFromGame_descriptor;
+        return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_ExitFromGame_descriptor;
       }
       
-      protected FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return BluetoothProtocol.internal_static_net_bluetooth_protocol_ExitFromGame_fieldAccessorTable;
+        return com.bluetooth.protocol.BluetoothProtocol.internal_static_net_bluetooth_protocol_ExitFromGame_fieldAccessorTable;
       }
       
       // Construct using com.bluetooth.protocol.BluetoothProtocol.ExitFromGame.newBuilder()
@@ -1890,24 +2236,24 @@ public final class BluetoothProtocol {
       
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return ExitFromGame.getDescriptor();
+        return com.bluetooth.protocol.BluetoothProtocol.ExitFromGame.getDescriptor();
       }
       
-      public ExitFromGame getDefaultInstanceForType() {
-        return ExitFromGame.getDefaultInstance();
+      public com.bluetooth.protocol.BluetoothProtocol.ExitFromGame getDefaultInstanceForType() {
+        return com.bluetooth.protocol.BluetoothProtocol.ExitFromGame.getDefaultInstance();
       }
       
-      public ExitFromGame build() {
-        ExitFromGame result = buildPartial();
+      public com.bluetooth.protocol.BluetoothProtocol.ExitFromGame build() {
+        com.bluetooth.protocol.BluetoothProtocol.ExitFromGame result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
       
-      private ExitFromGame buildParsed()
+      private com.bluetooth.protocol.BluetoothProtocol.ExitFromGame buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        ExitFromGame result = buildPartial();
+        com.bluetooth.protocol.BluetoothProtocol.ExitFromGame result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
@@ -1915,8 +2261,8 @@ public final class BluetoothProtocol {
         return result;
       }
       
-      public ExitFromGame buildPartial() {
-        ExitFromGame result = new ExitFromGame(this);
+      public com.bluetooth.protocol.BluetoothProtocol.ExitFromGame buildPartial() {
+        com.bluetooth.protocol.BluetoothProtocol.ExitFromGame result = new com.bluetooth.protocol.BluetoothProtocol.ExitFromGame(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1929,16 +2275,16 @@ public final class BluetoothProtocol {
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof ExitFromGame) {
-          return mergeFrom((ExitFromGame)other);
+        if (other instanceof com.bluetooth.protocol.BluetoothProtocol.ExitFromGame) {
+          return mergeFrom((com.bluetooth.protocol.BluetoothProtocol.ExitFromGame)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
       
-      public Builder mergeFrom(ExitFromGame other) {
-        if (other == ExitFromGame.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.bluetooth.protocol.BluetoothProtocol.ExitFromGame other) {
+        if (other == com.bluetooth.protocol.BluetoothProtocol.ExitFromGame.getDefaultInstance()) return this;
         if (other.hasOpponentId()) {
           setOpponentId(other.getOpponentId());
         }
@@ -2036,6 +2382,11 @@ public final class BluetoothProtocol {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_net_bluetooth_protocol_ContinueGame_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_net_bluetooth_protocol_TimeForMoveFullUp_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_net_bluetooth_protocol_TimeForMoveFullUp_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_net_bluetooth_protocol_ChatMessage_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -2053,16 +2404,17 @@ public final class BluetoothProtocol {
   private static com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
-    String[] descriptorData = {
+    java.lang.String[] descriptorData = {
       "\n\027BluetoothProtocol.proto\022\026net.bluetooth" +
       ".protocol\" \n\tStartGame\022\023\n\013oponentName\030\001 " +
       "\002(\t\"O\n\007DidMove\022\t\n\001i\030\001 \002(\005\022\t\n\001j\030\002 \002(\005\022.\n\004" +
       "type\030\003 \002(\0162 .net.bluetooth.protocol.Type" +
       "Move\"$\n\014ContinueGame\022\024\n\014continueGame\030\001 \002" +
-      "(\010\"\036\n\013ChatMessage\022\017\n\007message\030\001 \002(\t\"\"\n\014Ex" +
-      "itFromGame\022\022\n\nopponentId\030\001 \002(\005*\030\n\010TypeMo" +
-      "ve\022\005\n\001X\020\001\022\005\n\001O\020\002B+\n\026com.bluetooth.protoc" +
-      "olB\021BluetoothProtocol"
+      "(\010\"\'\n\021TimeForMoveFullUp\022\022\n\ntimeFullUp\030\001 " +
+      "\002(\010\"\036\n\013ChatMessage\022\017\n\007message\030\001 \002(\t\"\"\n\014E" +
+      "xitFromGame\022\022\n\nopponentId\030\001 \002(\005*\030\n\010TypeM" +
+      "ove\022\005\n\001X\020\001\022\005\n\001O\020\002B+\n\026com.bluetooth.proto" +
+      "colB\021BluetoothProtocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2074,41 +2426,49 @@ public final class BluetoothProtocol {
           internal_static_net_bluetooth_protocol_StartGame_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_bluetooth_protocol_StartGame_descriptor,
-              new String[] { "OponentName", },
-              StartGame.class,
-              StartGame.Builder.class);
+              new java.lang.String[] { "OponentName", },
+              com.bluetooth.protocol.BluetoothProtocol.StartGame.class,
+              com.bluetooth.protocol.BluetoothProtocol.StartGame.Builder.class);
           internal_static_net_bluetooth_protocol_DidMove_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_net_bluetooth_protocol_DidMove_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_bluetooth_protocol_DidMove_descriptor,
-              new String[] { "I", "J", "Type", },
-              DidMove.class,
-              DidMove.Builder.class);
+              new java.lang.String[] { "I", "J", "Type", },
+              com.bluetooth.protocol.BluetoothProtocol.DidMove.class,
+              com.bluetooth.protocol.BluetoothProtocol.DidMove.Builder.class);
           internal_static_net_bluetooth_protocol_ContinueGame_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_net_bluetooth_protocol_ContinueGame_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_bluetooth_protocol_ContinueGame_descriptor,
-              new String[] { "ContinueGame", },
-              ContinueGame.class,
-              ContinueGame.Builder.class);
-          internal_static_net_bluetooth_protocol_ChatMessage_descriptor =
+              new java.lang.String[] { "ContinueGame", },
+              com.bluetooth.protocol.BluetoothProtocol.ContinueGame.class,
+              com.bluetooth.protocol.BluetoothProtocol.ContinueGame.Builder.class);
+          internal_static_net_bluetooth_protocol_TimeForMoveFullUp_descriptor =
             getDescriptor().getMessageTypes().get(3);
+          internal_static_net_bluetooth_protocol_TimeForMoveFullUp_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_net_bluetooth_protocol_TimeForMoveFullUp_descriptor,
+              new java.lang.String[] { "TimeFullUp", },
+              com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp.class,
+              com.bluetooth.protocol.BluetoothProtocol.TimeForMoveFullUp.Builder.class);
+          internal_static_net_bluetooth_protocol_ChatMessage_descriptor =
+            getDescriptor().getMessageTypes().get(4);
           internal_static_net_bluetooth_protocol_ChatMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_bluetooth_protocol_ChatMessage_descriptor,
-              new String[] { "Message", },
-              ChatMessage.class,
-              ChatMessage.Builder.class);
+              new java.lang.String[] { "Message", },
+              com.bluetooth.protocol.BluetoothProtocol.ChatMessage.class,
+              com.bluetooth.protocol.BluetoothProtocol.ChatMessage.Builder.class);
           internal_static_net_bluetooth_protocol_ExitFromGame_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_net_bluetooth_protocol_ExitFromGame_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_bluetooth_protocol_ExitFromGame_descriptor,
-              new String[] { "OpponentId", },
-              ExitFromGame.class,
-              ExitFromGame.Builder.class);
+              new java.lang.String[] { "OpponentId", },
+              com.bluetooth.protocol.BluetoothProtocol.ExitFromGame.class,
+              com.bluetooth.protocol.BluetoothProtocol.ExitFromGame.Builder.class);
           return null;
         }
       };

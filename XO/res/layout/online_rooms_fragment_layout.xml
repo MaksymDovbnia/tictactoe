@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:ads="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp"
+              android:paddingTop="10dp"
+              android:layout_gravity="right|bottom"
+        >
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <com.componentwithfont.TextViewWirhComicsFont
+                android:id="@+id/tv_all_online_players"
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/default_text_size"
+                android:text="@string/all_online_players"
+                android:textColor="@color/dark_blue"
+                />
+
+    </LinearLayout>
+    <View android:layout_width="match_parent"
+          android:layout_height="@dimen/default_red_split_line_height"
+          android:background="@drawable/split_line"/>
+
+    <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center"
+                  android:orientation="horizontal">
+
+        <com.componentwithfont.TextViewWirhComicsFont
+
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/room_number"
+                style="@style/list_view_header_item"/>
+
+        <com.componentwithfont.TextViewWirhComicsFont
+
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/number_players_max_number_players"
+                style="@style/list_view_header_item"/>
+
+
+    </LinearLayout>
+
+
+    <ListView
+            android:id="@+id/listOnlineGroup"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="@dimen/list_view_divider_height"
+            >
+    </ListView>
+
+    <com.google.android.gms.ads.AdView
+            android:id="@+id/ad_view"
+            android:layout_width="@dimen/ad_view_width"
+            android:layout_height="@dimen/ad_view_height"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="-4dp"
+            android:paddingRight="-4dp"
+
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-8596819956320879/9908452347"/>
+
+
+
+</LinearLayout>

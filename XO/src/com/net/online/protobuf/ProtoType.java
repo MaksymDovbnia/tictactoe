@@ -1,5 +1,7 @@
 package com.net.online.protobuf;
 
+import com.bluetooth.protocol.BluetoothProtocol;
+
 import java.util.HashMap;
 
 import net.protocol.Protocol;
@@ -7,17 +9,21 @@ import net.protocol.Protocol;
 public enum ProtoType {
 
     // from Main Server
-    CLOGINTOGAME((byte) 0x01, 1), CUPDATEAOBOUTACTIVITYPLAYER((byte) 0x02, 2), CWANTTOPLAY(
-            (byte) 0x03, 3), CSTARTGAME((byte) 0x04, 4), CDIDMOVE((byte) 0x05,
-            5), CEXITFROMGAME((byte) 0x0D, 13), CCONTINUEGAME(
-            (byte) 0x07, 7),
+    CLOGINTOGAME((byte) 0x01, 1),
+    CUPDATEAOBOUTACTIVITYPLAYER((byte) 0x02, 2),
+    CWANTTOPLAY((byte) 0x03, 3),
+    CSTARTGAME((byte) 0x04, 4),
+    CDIDMOVE((byte) 0x05, 5),
+    CEXITFROMGAME((byte) 0x0D, 13),
+    CCONTINUEGAME((byte) 0x07, 7),
     CGETGROUPLIST((byte) 0x09, 9),
     CCANCELDESIREPLAY((byte) 0x08, 8),
 
     CCHATMESSAGE((byte) 0x0C, 10),
     CGROUPCHATMESSAGE((byte) 0x1C, 11),
     CTOP100((byte) 0x0E, 12),
-
+    TIME_FOR_MOVE_FULL_UP((byte) 0x9B, Protocol.TimeForMoveFullUp.class),
+//    TIME_FOR_MOVE_FULL_UP((byte) 0x9B, 19),
 
     //OTHER
     CONNECTION_TO_SERVER_LOST((byte) 0x40, 400),
@@ -64,6 +70,9 @@ public enum ProtoType {
             }
 
         }
+        // add additional
+        byteMap.put(TIME_FOR_MOVE_FULL_UP.b, TIME_FOR_MOVE_FULL_UP);
+        intMap.put(TIME_FOR_MOVE_FULL_UP.index, TIME_FOR_MOVE_FULL_UP);
     }
 
     private ProtoType(byte b, Class protoClass) {

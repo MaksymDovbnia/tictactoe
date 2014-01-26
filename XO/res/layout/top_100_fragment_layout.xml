@@ -7,17 +7,45 @@
               android:paddingLeft="@dimen/top_100_fragment_layout_padding_left_right"
               android:paddingRight="@dimen/top_100_fragment_layout_padding_left_right"
               android:paddingTop="@dimen/top_100_fragment_layout_padding_left_right"
-              android:paddingBottom="@dimen/top_100_fragment_layout_padding_left_right"
+              android:paddingBottom="@dimen/top_100_fragment_layout_padding_left_right">
 
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        >
+        <com.componentwithfont.TextViewWirhComicsFont
+                android:id="@+id/tv_position"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/position"
+                style="@style/list_view_header_item"/>
+
+        <com.componentwithfont.TextViewWirhComicsFont
+                android:id="@+id/tv_player_name"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/player_name"
+                style="@style/list_view_header_item"/>
+
+        <com.componentwithfont.TextViewWirhComicsFont
+                android:id="@+id/tv_player_rating"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/rating"
+                style="@style/list_view_header_item"/>
+
+    </LinearLayout>
 
     <ListView
             android:id="@+id/list_view_top_100"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:cacheColorHint="@android:color/transparent"
-            android:divider="@color/gray_list_item_divider"
+            android:divider="@android:color/transparent"
             android:dividerHeight="@dimen/list_view_divider_height"
             />
 

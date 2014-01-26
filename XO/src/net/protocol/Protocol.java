@@ -445,6 +445,10 @@ public final class Protocol {
     // optional string uuid = 3;
     boolean hasUuid();
     String getUuid();
+    
+    // optional bool isBot = 4;
+    boolean hasIsBot();
+    boolean getIsBot();
   }
   public static final class SLoginToGame extends
       com.google.protobuf.GeneratedMessage
@@ -549,10 +553,21 @@ public final class Protocol {
       }
     }
     
+    // optional bool isBot = 4;
+    public static final int ISBOT_FIELD_NUMBER = 4;
+    private boolean isBot_;
+    public boolean hasIsBot() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public boolean getIsBot() {
+      return isBot_;
+    }
+    
     private void initFields() {
       name_ = "";
       registarionType_ = net.protocol.Protocol.RegistrationType.annonymous;
       uuid_ = "";
+      isBot_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -583,6 +598,9 @@ public final class Protocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(3, getUuidBytes());
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBool(4, isBot_);
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -603,6 +621,10 @@ public final class Protocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(3, getUuidBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, isBot_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -734,6 +756,8 @@ public final class Protocol {
         bitField0_ = (bitField0_ & ~0x00000002);
         uuid_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
+        isBot_ = false;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       
@@ -784,6 +808,10 @@ public final class Protocol {
           to_bitField0_ |= 0x00000004;
         }
         result.uuid_ = uuid_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.isBot_ = isBot_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -808,6 +836,9 @@ public final class Protocol {
         }
         if (other.hasUuid()) {
           setUuid(other.getUuid());
+        }
+        if (other.hasIsBot()) {
+          setIsBot(other.getIsBot());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -867,6 +898,11 @@ public final class Protocol {
             case 26: {
               bitField0_ |= 0x00000004;
               uuid_ = input.readBytes();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              isBot_ = input.readBool();
               break;
             }
           }
@@ -969,6 +1005,27 @@ public final class Protocol {
         bitField0_ |= 0x00000004;
         uuid_ = value;
         onChanged();
+      }
+      
+      // optional bool isBot = 4;
+      private boolean isBot_ ;
+      public boolean hasIsBot() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      public boolean getIsBot() {
+        return isBot_;
+      }
+      public Builder setIsBot(boolean value) {
+        bitField0_ |= 0x00000008;
+        isBot_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearIsBot() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        isBot_ = false;
+        onChanged();
+        return this;
       }
       
       // @@protoc_insertion_point(builder_scope:net.protocol.SLoginToGame)
@@ -16744,6 +16801,352 @@ public final class Protocol {
     // @@protoc_insertion_point(class_scope:net.protocol.CTop100Player)
   }
   
+  public interface TimeForMoveFullUpOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required bool timeFullUp = 1;
+    boolean hasTimeFullUp();
+    boolean getTimeFullUp();
+  }
+  public static final class TimeForMoveFullUp extends
+      com.google.protobuf.GeneratedMessage
+      implements TimeForMoveFullUpOrBuilder {
+    // Use TimeForMoveFullUp.newBuilder() to construct.
+    private TimeForMoveFullUp(Builder builder) {
+      super(builder);
+    }
+    private TimeForMoveFullUp(boolean noInit) {}
+    
+    private static final TimeForMoveFullUp defaultInstance;
+    public static TimeForMoveFullUp getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public TimeForMoveFullUp getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return net.protocol.Protocol.internal_static_net_protocol_TimeForMoveFullUp_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return net.protocol.Protocol.internal_static_net_protocol_TimeForMoveFullUp_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required bool timeFullUp = 1;
+    public static final int TIMEFULLUP_FIELD_NUMBER = 1;
+    private boolean timeFullUp_;
+    public boolean hasTimeFullUp() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public boolean getTimeFullUp() {
+      return timeFullUp_;
+    }
+    
+    private void initFields() {
+      timeFullUp_ = false;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasTimeFullUp()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBool(1, timeFullUp_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, timeFullUp_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static net.protocol.Protocol.TimeForMoveFullUp parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static net.protocol.Protocol.TimeForMoveFullUp parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static net.protocol.Protocol.TimeForMoveFullUp parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static net.protocol.Protocol.TimeForMoveFullUp parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static net.protocol.Protocol.TimeForMoveFullUp parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static net.protocol.Protocol.TimeForMoveFullUp parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static net.protocol.Protocol.TimeForMoveFullUp parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static net.protocol.Protocol.TimeForMoveFullUp parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static net.protocol.Protocol.TimeForMoveFullUp parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static net.protocol.Protocol.TimeForMoveFullUp parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(net.protocol.Protocol.TimeForMoveFullUp prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements net.protocol.Protocol.TimeForMoveFullUpOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.protocol.Protocol.internal_static_net_protocol_TimeForMoveFullUp_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.protocol.Protocol.internal_static_net_protocol_TimeForMoveFullUp_fieldAccessorTable;
+      }
+      
+      // Construct using net.protocol.Protocol.TimeForMoveFullUp.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        timeFullUp_ = false;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return net.protocol.Protocol.TimeForMoveFullUp.getDescriptor();
+      }
+      
+      public net.protocol.Protocol.TimeForMoveFullUp getDefaultInstanceForType() {
+        return net.protocol.Protocol.TimeForMoveFullUp.getDefaultInstance();
+      }
+      
+      public net.protocol.Protocol.TimeForMoveFullUp build() {
+        net.protocol.Protocol.TimeForMoveFullUp result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private net.protocol.Protocol.TimeForMoveFullUp buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        net.protocol.Protocol.TimeForMoveFullUp result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public net.protocol.Protocol.TimeForMoveFullUp buildPartial() {
+        net.protocol.Protocol.TimeForMoveFullUp result = new net.protocol.Protocol.TimeForMoveFullUp(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.timeFullUp_ = timeFullUp_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof net.protocol.Protocol.TimeForMoveFullUp) {
+          return mergeFrom((net.protocol.Protocol.TimeForMoveFullUp)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(net.protocol.Protocol.TimeForMoveFullUp other) {
+        if (other == net.protocol.Protocol.TimeForMoveFullUp.getDefaultInstance()) return this;
+        if (other.hasTimeFullUp()) {
+          setTimeFullUp(other.getTimeFullUp());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasTimeFullUp()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              timeFullUp_ = input.readBool();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required bool timeFullUp = 1;
+      private boolean timeFullUp_ ;
+      public boolean hasTimeFullUp() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public boolean getTimeFullUp() {
+        return timeFullUp_;
+      }
+      public Builder setTimeFullUp(boolean value) {
+        bitField0_ |= 0x00000001;
+        timeFullUp_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearTimeFullUp() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        timeFullUp_ = false;
+        onChanged();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:net.protocol.TimeForMoveFullUp)
+    }
+    
+    static {
+      defaultInstance = new TimeForMoveFullUp(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:net.protocol.TimeForMoveFullUp)
+  }
+  
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_net_protocol_SLoginToGame_descriptor;
   private static
@@ -16924,6 +17327,11 @@ public final class Protocol {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_net_protocol_CTop100Player_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_net_protocol_TimeForMoveFullUp_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_net_protocol_TimeForMoveFullUp_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -16933,74 +17341,76 @@ public final class Protocol {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016Protocol.proto\022\014net.protocol\"c\n\014SLogin" +
+      "\n\016Protocol.proto\022\014net.protocol\"r\n\014SLogin" +
       "ToGame\022\014\n\004name\030\001 \002(\t\0227\n\017registarionType\030" +
       "\002 \002(\0162\036.net.protocol.RegistrationType\022\014\n" +
-      "\004uuid\030\003 \001(\t\"]\n\014CLoginToGame\022\017\n\007isLogin\030\002" +
-      " \002(\010\022\n\n\002id\030\001 \001(\005\0220\n\014loginProblem\030\003 \001(\0162\032" +
-      ".net.protocol.LoginProblem\"{\n\031SRegistrat" +
-      "ionNewXOAccount\022\014\n\004name\030\001 \002(\t\022\020\n\010passwor" +
-      "d\030\002 \002(\t\022\r\n\005email\030\003 \002(\t\022\036\n\003sex\030\004 \002(\0162\021.ne" +
-      "t.protocol.Sex\022\017\n\007country\030\005 \001(\t\"d\n\031CRegi" +
-      "strationNewXOAccount\022\023\n\013isRegistred\030\001 \002(",
-      "\010\0222\n\007problem\030\002 \001(\0162!.net.protocol.Regist" +
-      "rationProblem\")\n\030SForgotXOAccountPasswor" +
-      "d\022\r\n\005email\030\001 \002(\t\"V\n\030CForgotXOAccountPass" +
-      "word\022:\n\010pesponse\030\001 \002(\0162(.net.protocol.Re" +
-      "sponseForRestorePassword\"\210\001\n\032CUpdateAbou" +
-      "tActivityPlayer\022\'\n\tnewPlayer\030\001 \003(\0132\024.net" +
-      ".protocol.Player\0220\n\nexitPlayer\030\002 \003(\0132\034.n" +
-      "et.protocol.CExitFromGroup\022\017\n\007groupId\030\003 " +
-      "\002(\005\")\n\nSGetUpdate\022\n\n\002id\030\001 \002(\005\022\017\n\007groupId" +
-      "\030\002 \002(\005\"2\n\006Player\022\014\n\004name\030\001 \002(\t\022\n\n\002id\030\002 \002",
-      "(\005\022\016\n\006rating\030\003 \001(\005\"\033\n\rSGetGroupList\022\n\n\002i" +
-      "d\030\001 \002(\005\"P\n\rCGetGroupList\022\"\n\005group\030\001 \003(\0132" +
-      "\023.net.protocol.Group\022\033\n\023numAllOnlinePlay" +
-      "ers\030\002 \001(\005\"I\n\005Group\022\017\n\007groupId\030\003 \002(\005\022\030\n\020n" +
-      "umOnlinePlayers\030\001 \002(\005\022\025\n\rnumOnlineBots\030\002" +
-      " \001(\005\" \n\rSEnterToGroup\022\017\n\007groupId\030\001 \002(\005\"\'" +
-      "\n\rCEnterToGroup\022\026\n\016isEnteredGroup\030\001 \002(\010\"" +
-      "3\n\013SWantToPlay\022\020\n\010playerId\030\001 \002(\005\022\022\n\noppo" +
-      "nentId\030\002 \002(\005\"!\n\013CWantToPlay\022\022\n\nopponentI" +
-      "d\030\001 \002(\005\"9\n\021SCancelDesirePlay\022\020\n\010playerId",
-      "\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"\'\n\021CCancelDes" +
-      "irePlay\022\022\n\nopponentId\030\001 \002(\005\"2\n\nSStartGam" +
-      "e\022\020\n\010playerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"" +
-      "}\n\nCStartGame\022\022\n\nopponentId\030\001 \002(\005\022(\n\010typ" +
-      "eMove\030\002 \002(\0162\026.net.protocol.TypeMove\022\027\n\017n" +
-      "umberOfWonGame\030\003 \001(\005\022\030\n\020numberOfLostGame" +
-      "\030\004 \001(\005\"l\n\010SDidMove\022\020\n\010playerId\030\001 \002(\005\022\022\n\n" +
-      "opponentId\030\002 \002(\005\022\t\n\001i\030\003 \002(\005\022\t\n\001j\030\004 \002(\005\022$" +
-      "\n\004type\030\005 \002(\0162\026.net.protocol.TypeMove\"F\n\010" +
-      "CDidMove\022\t\n\001i\030\001 \002(\005\022\t\n\001j\030\002 \002(\005\022$\n\004type\030\003",
-      " \002(\0162\026.net.protocol.TypeMove\"5\n\010SWonGame" +
-      "\022\023\n\013idWonPlayer\030\001 \002(\005\022\024\n\014idLostPlayer\030\002 " +
-      "\002(\005\"5\n\rSContinueGame\022\020\n\010playerId\030\001 \002(\005\022\022" +
-      "\n\nopponentId\030\002 \002(\005\"K\n\rCContinueGame\022\024\n\014c" +
-      "ontinueGame\030\001 \002(\010\022$\n\004type\030\003 \002(\0162\026.net.pr" +
-      "otocol.TypeMove\"E\n\014SChatMessage\022\020\n\010playe" +
-      "rId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\022\017\n\007message" +
-      "\030\003 \002(\t\"\037\n\014CChatMessage\022\017\n\007message\030\001 \002(\t\"" +
-      "G\n\021SGroupChatMessage\022\020\n\010playerId\030\001 \002(\005\022\017" +
-      "\n\007message\030\002 \002(\t\022\017\n\007groupId\030\003 \002(\005\"6\n\021CGro",
-      "upChatMessage\022\020\n\010playerId\030\001 \002(\005\022\017\n\007messa" +
-      "ge\030\002 \002(\t\"5\n\rSExitFromGame\022\020\n\010playerId\030\001 " +
-      "\002(\005\022\022\n\nopponentId\030\002 \002(\005\"#\n\rCExitFromGame" +
-      "\022\022\n\nopponentId\030\001 \002(\005\"3\n\016SExitFromGroup\022\020" +
-      "\n\010playerId\030\001 \002(\005\022\017\n\007groupId\030\002 \002(\005\"\"\n\016CEx" +
-      "itFromGroup\022\020\n\010playerId\030\001 \002(\005\"\'\n\023SExitFr" +
-      "omGlobalGame\022\020\n\010playerId\030\001 \002(\005\"!\n\rSTop10" +
-      "0Player\022\020\n\010playerId\030\001 \002(\005\"5\n\rCTop100Play" +
-      "er\022$\n\006player\030\001 \003(\0132\024.net.protocol.Player" +
-      "*L\n\020RegistrationType\022\016\n\nannonymous\020\001\022\006\n\002",
-      "xo\020\002\022\n\n\006google\020\003\022\014\n\010facebook\020\004\022\006\n\002vk\020\005*@" +
-      "\n\014LoginProblem\022\033\n\027nickOrPasswordUnCorrec" +
-      "t\020\001\022\023\n\017accountUnlocked\020\002*<\n\023Registration" +
-      "Problem\022\022\n\016emailUnCorrect\020\001\022\021\n\rnickUnCor" +
-      "rect\020\002*\033\n\003Sex\022\010\n\004male\020\001\022\n\n\006female\020\002*C\n\032R" +
-      "esponseForRestorePassword\022\017\n\013sendToEmail" +
-      "\020\001\022\024\n\020emailUnCorrected\020\002*\030\n\010TypeMove\022\005\n\001" +
-      "X\020\001\022\005\n\001O\020\002B\030\n\014net.protocolB\010Protocol"
+      "\004uuid\030\003 \001(\t\022\r\n\005isBot\030\004 \001(\010\"]\n\014CLoginToGa" +
+      "me\022\017\n\007isLogin\030\002 \002(\010\022\n\n\002id\030\001 \001(\005\0220\n\014login" +
+      "Problem\030\003 \001(\0162\032.net.protocol.LoginProble" +
+      "m\"{\n\031SRegistrationNewXOAccount\022\014\n\004name\030\001" +
+      " \002(\t\022\020\n\010password\030\002 \002(\t\022\r\n\005email\030\003 \002(\t\022\036\n" +
+      "\003sex\030\004 \002(\0162\021.net.protocol.Sex\022\017\n\007country" +
+      "\030\005 \001(\t\"d\n\031CRegistrationNewXOAccount\022\023\n\013i",
+      "sRegistred\030\001 \002(\010\0222\n\007problem\030\002 \001(\0162!.net." +
+      "protocol.RegistrationProblem\")\n\030SForgotX" +
+      "OAccountPassword\022\r\n\005email\030\001 \002(\t\"V\n\030CForg" +
+      "otXOAccountPassword\022:\n\010pesponse\030\001 \002(\0162(." +
+      "net.protocol.ResponseForRestorePassword\"" +
+      "\210\001\n\032CUpdateAboutActivityPlayer\022\'\n\tnewPla" +
+      "yer\030\001 \003(\0132\024.net.protocol.Player\0220\n\nexitP" +
+      "layer\030\002 \003(\0132\034.net.protocol.CExitFromGrou" +
+      "p\022\017\n\007groupId\030\003 \002(\005\")\n\nSGetUpdate\022\n\n\002id\030\001" +
+      " \002(\005\022\017\n\007groupId\030\002 \002(\005\"2\n\006Player\022\014\n\004name\030",
+      "\001 \002(\t\022\n\n\002id\030\002 \002(\005\022\016\n\006rating\030\003 \001(\005\"\033\n\rSGe" +
+      "tGroupList\022\n\n\002id\030\001 \002(\005\"P\n\rCGetGroupList\022" +
+      "\"\n\005group\030\001 \003(\0132\023.net.protocol.Group\022\033\n\023n" +
+      "umAllOnlinePlayers\030\002 \001(\005\"I\n\005Group\022\017\n\007gro" +
+      "upId\030\003 \002(\005\022\030\n\020numOnlinePlayers\030\001 \002(\005\022\025\n\r" +
+      "numOnlineBots\030\002 \001(\005\" \n\rSEnterToGroup\022\017\n\007" +
+      "groupId\030\001 \002(\005\"\'\n\rCEnterToGroup\022\026\n\016isEnte" +
+      "redGroup\030\001 \002(\010\"3\n\013SWantToPlay\022\020\n\010playerI" +
+      "d\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"!\n\013CWantToPl" +
+      "ay\022\022\n\nopponentId\030\001 \002(\005\"9\n\021SCancelDesireP",
+      "lay\022\020\n\010playerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(" +
+      "\005\"\'\n\021CCancelDesirePlay\022\022\n\nopponentId\030\001 \002" +
+      "(\005\"2\n\nSStartGame\022\020\n\010playerId\030\001 \002(\005\022\022\n\nop" +
+      "ponentId\030\002 \002(\005\"}\n\nCStartGame\022\022\n\nopponent" +
+      "Id\030\001 \002(\005\022(\n\010typeMove\030\002 \002(\0162\026.net.protoco" +
+      "l.TypeMove\022\027\n\017numberOfWonGame\030\003 \001(\005\022\030\n\020n" +
+      "umberOfLostGame\030\004 \001(\005\"l\n\010SDidMove\022\020\n\010pla" +
+      "yerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\022\t\n\001i\030\003 \002" +
+      "(\005\022\t\n\001j\030\004 \002(\005\022$\n\004type\030\005 \002(\0162\026.net.protoc" +
+      "ol.TypeMove\"F\n\010CDidMove\022\t\n\001i\030\001 \002(\005\022\t\n\001j\030",
+      "\002 \002(\005\022$\n\004type\030\003 \002(\0162\026.net.protocol.TypeM" +
+      "ove\"5\n\010SWonGame\022\023\n\013idWonPlayer\030\001 \002(\005\022\024\n\014" +
+      "idLostPlayer\030\002 \002(\005\"5\n\rSContinueGame\022\020\n\010p" +
+      "layerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"K\n\rCCo" +
+      "ntinueGame\022\024\n\014continueGame\030\001 \002(\010\022$\n\004type" +
+      "\030\003 \002(\0162\026.net.protocol.TypeMove\"E\n\014SChatM" +
+      "essage\022\020\n\010playerId\030\001 \002(\005\022\022\n\nopponentId\030\002" +
+      " \002(\005\022\017\n\007message\030\003 \002(\t\"\037\n\014CChatMessage\022\017\n" +
+      "\007message\030\001 \002(\t\"G\n\021SGroupChatMessage\022\020\n\010p" +
+      "layerId\030\001 \002(\005\022\017\n\007message\030\002 \002(\t\022\017\n\007groupI",
+      "d\030\003 \002(\005\"6\n\021CGroupChatMessage\022\020\n\010playerId" +
+      "\030\001 \002(\005\022\017\n\007message\030\002 \002(\t\"5\n\rSExitFromGame" +
+      "\022\020\n\010playerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"#" +
+      "\n\rCExitFromGame\022\022\n\nopponentId\030\001 \002(\005\"3\n\016S" +
+      "ExitFromGroup\022\020\n\010playerId\030\001 \002(\005\022\017\n\007group" +
+      "Id\030\002 \002(\005\"\"\n\016CExitFromGroup\022\020\n\010playerId\030\001" +
+      " \002(\005\"\'\n\023SExitFromGlobalGame\022\020\n\010playerId\030" +
+      "\001 \002(\005\"!\n\rSTop100Player\022\020\n\010playerId\030\001 \002(\005" +
+      "\"5\n\rCTop100Player\022$\n\006player\030\001 \003(\0132\024.net." +
+      "protocol.Player\"\'\n\021TimeForMoveFullUp\022\022\n\n",
+      "timeFullUp\030\001 \002(\010*L\n\020RegistrationType\022\016\n\n" +
+      "annonymous\020\001\022\006\n\002xo\020\002\022\n\n\006google\020\003\022\014\n\010face" +
+      "book\020\004\022\006\n\002vk\020\005*@\n\014LoginProblem\022\033\n\027nickOr" +
+      "PasswordUnCorrect\020\001\022\023\n\017accountUnlocked\020\002" +
+      "*<\n\023RegistrationProblem\022\022\n\016emailUnCorrec" +
+      "t\020\001\022\021\n\rnickUnCorrect\020\002*\033\n\003Sex\022\010\n\004male\020\001\022" +
+      "\n\n\006female\020\002*C\n\032ResponseForRestorePasswor" +
+      "d\022\017\n\013sendToEmail\020\001\022\024\n\020emailUnCorrected\020\002" +
+      "*\030\n\010TypeMove\022\005\n\001X\020\001\022\005\n\001O\020\002B\030\n\014net.protoc" +
+      "olB\010Protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -17012,7 +17422,7 @@ public final class Protocol {
           internal_static_net_protocol_SLoginToGame_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_protocol_SLoginToGame_descriptor,
-              new java.lang.String[] { "Name", "RegistarionType", "Uuid", },
+              new java.lang.String[] { "Name", "RegistarionType", "Uuid", "IsBot", },
               net.protocol.Protocol.SLoginToGame.class,
               net.protocol.Protocol.SLoginToGame.Builder.class);
           internal_static_net_protocol_CLoginToGame_descriptor =
@@ -17295,6 +17705,14 @@ public final class Protocol {
               new java.lang.String[] { "Player", },
               net.protocol.Protocol.CTop100Player.class,
               net.protocol.Protocol.CTop100Player.Builder.class);
+          internal_static_net_protocol_TimeForMoveFullUp_descriptor =
+            getDescriptor().getMessageTypes().get(36);
+          internal_static_net_protocol_TimeForMoveFullUp_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_net_protocol_TimeForMoveFullUp_descriptor,
+              new java.lang.String[] { "TimeFullUp", },
+              net.protocol.Protocol.TimeForMoveFullUp.class,
+              net.protocol.Protocol.TimeForMoveFullUp.Builder.class);
           return null;
         }
       };

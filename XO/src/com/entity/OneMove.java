@@ -1,12 +1,12 @@
 package com.entity;
 
-import com.game.TypeLine;
+import com.bigtictactoeonlinegame.LineType;
 
 public class OneMove {
 	public int j;
 	public int i;
 	public TypeOfMove type;
-	public TypeLine typeLine;
+	public LineType typeLine;
 
 	public OneMove(int i, int j, TypeOfMove typeFieldElement) {
 		this.type = typeFieldElement;
@@ -15,7 +15,7 @@ public class OneMove {
 	}
 
 	public OneMove(int i, int j, TypeOfMove typeFieldElement,
-			TypeLine typeLine) {
+			LineType typeLine) {
 		this.typeLine = typeLine;
 		this.type = typeFieldElement;
 		this.j = j;

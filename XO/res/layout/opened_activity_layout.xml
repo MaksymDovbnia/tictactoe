@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:ads="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@drawable/background2"
+              android:background="@drawable/general_background"
               android:paddingRight="@dimen/opened_activity_layout_padding_right"
         >
 
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:paddingLeft="@dimen/general_top_buttons_layout_margin_left"
             >
 
@@ -21,7 +22,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/button_big"
+                android:background="@drawable/general_top_button_selector"
                 android:text="@string/open_room"
                 android:textSize="@dimen/general_top_buttons_text_size"
                 android:textColor="@color/black"
@@ -33,7 +34,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/button_big"
+                android:background="@drawable/general_top_button_selector"
                 android:layout_marginLeft="@dimen/general_buttons_separate_width"
                 android:text="@string/chat"
                 android:textSize="@dimen/general_top_buttons_text_size"
@@ -47,9 +48,9 @@
             android:id="@+id/center_for_fragment"
 
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.7"
-            android:background="@drawable/notebook5"
+            android:layout_height="0dp"
+            android:layout_weight="15"
+            android:background="@drawable/notebook2"
             android:paddingLeft="@dimen/opened_activity_layout_fragment_container_padding_left"
             >
 
@@ -59,8 +60,8 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="5">
+            android:layout_height="0dp"
+            android:layout_weight="0.2">
 
 
     </LinearLayout>

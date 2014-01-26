@@ -6,7 +6,10 @@
     <dimen name="online_activity_text_size">15dp</dimen>
     <dimen name="main_button_text_size">25dp</dimen>
     <dimen name="main_activity_item_default_text_size">50dp</dimen>
+    <dimen name="bluetooth_activity_default_text_size">40dp</dimen>
+    <dimen name="default_red_split_line_width">500dp</dimen>
 
+    <dimen name="default_red_split_line_height">5dp</dimen>
 
 
     <dimen name="big_text_size">50sp</dimen>
@@ -21,6 +24,10 @@
     <dimen name="game_field_fragment_game_field_horizontal_scroll_size">720dp</dimen>
     <dimen name="game_field_fragment_game_field_layout_margin_top">40dp</dimen>
     <dimen name="game_field_fragment_game_field_grid_view_size">720dp</dimen>
+    <dimen name="game_field_fragment_player_name_padding_top_bottom">10dp</dimen>
+    <dimen name="game_field_fragment_player_name_padding_left_right">15dp</dimen>
+    <dimen name="game_field_fragment_timer_padding_right">12dp</dimen>
+
     <!--Game field item-->
     <dimen name="game_field_item_size">48dp</dimen>
     <!--Online opened group fragment-->
@@ -28,10 +35,12 @@
     <dimen name="online_open_group_fragment_start_cancel_game_button_height">50dp</dimen>
     <dimen name="online_open_group_fragment_divider_line_width">15dp</dimen>
     <dimen name="online_open_group_fragment_invite_update_button_height">60dp</dimen>
-    <dimen name="online_open_group_fragment_text_size_inscription">25dp</dimen>
-    <dimen name="online_open_group_fragment_padding_for_small_list">10dp</dimen>
-    <dimen name="online_open_group_fragment_padding_for_large_list">65dp</dimen>
-    <dimen name="online_open_group_fragment_general_padding_size">10dp</dimen>
+    <dimen name="online_opened_room_fragment_text_size_inscription">25dp</dimen>
+    <dimen name="online_opened_room_fragment_padding_for_small_list">10dp</dimen>
+    <dimen name="online_opened_room_fragment_padding_for_large_list">65dp</dimen>
+    <dimen name="online_opened_room_fragment_general_padding_size">10dp</dimen>
+    <dimen name="online_opened_room_fragment_wanted_header_padding_left">20dp</dimen>
+    <dimen name="online_opened_room_fragment_wanted_item_padding_left">25dp</dimen>
 
     <!--Opened activity layout-->
     <dimen name="opened_activity_layout_fragment_container_padding_left">40dp</dimen>
@@ -57,6 +66,8 @@
 
     <dimen name="start_activity_layout_center_container_xo_image_height">280dp</dimen>
     <dimen name="start_activity_layout_center_container_xo_image_width">400dp</dimen>
+    <dimen name="start_activity_layout_center_container_margin_top">20dp</dimen>
+
     <dimen name="start_activity_layout_center_container_pencil_image_height">800dp</dimen>
     <dimen name="start_activity_layout_center_container_pencil_image_width">200dp</dimen>
 
@@ -75,7 +86,7 @@
     <dimen name="chat_fragment_layout_padding_top">20dp</dimen>
     <dimen name="chat_fragment_layout_padding_bottom">20dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_left">50dp</dimen>
-    <dimen name="chat_fragment_layout_chat_container_padding_right">60dp</dimen>
+    <dimen name="chat_fragment_layout_chat_container_padding_right">65dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_top">50dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_bottom">50dp</dimen>
 
@@ -93,16 +104,22 @@
     <dimen name="top_100_fragment_list_view_header_text_size">20dp</dimen>
 
 
+    <!--BT device list activity-->
+    <dimen name="bt_device_list_paired_list_padding_left">60dp</dimen>
+    <dimen name="bt_device_list_paired_list_padding_top">30dp</dimen>
+    <dimen name="bt_device_list_paired_list_text_size">30dp</dimen>
+    <dimen name="bt_device_list_progress_bar_size">40dp</dimen>
+    <dimen name="bt_device_list_item_text_size">25dp</dimen>
+
+    <!--About activity-->
+    <dimen name="about_activity_text_size">40dp</dimen>
+    <dimen name="about_activity_padding_top">40dp</dimen>
+    <dimen name="about_activity_padding_left">60dp</dimen>
+    <dimen name="about_activity_padding_right">20dp</dimen>
 
 
-
-
-
-
-
-
-
-
-
+    <dimen name="popup_button_width">200dp</dimen>
+    <dimen name="popup_button_height">100dp</dimen>
+    <dimen name="check_box_invite_to_play_size">50dp</dimen>
 
 </resources>

@@ -35,7 +35,7 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
     private static final String NAME_SECURE = "BluetoothChatSecure";
     private static final String NAME_INSECURE = "BluetoothChatInsecure";
     public static final int MESSAGE_STATE_CHANGE = 1;
-
+    private static final int MAX_QUANTITY_CONNECT = 3;
 
     // Unique UUID for this application
     private static final UUID MY_UUID_SECURE =
@@ -54,15 +54,16 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
     private AcceptThread mSecureAcceptThread;
     private AcceptThread mInsecureAcceptThread;
     private ConnectThread mConnectThread;
-    private ConnectedThread mConnectedThread;
+    private TransferThread mTransferThread;
 
-    private Activity activity;
+    // private Activity activity;
     private Handler handler;
     private IBluetoothGameListener bluetoothGameListener;
     private String playerName;
+    private int quantityOfAttemptToConnect = 0;
 
-    public BluetoothServiceViaProtobuf(Activity activity, String playerName) {
-        this.activity = activity;
+    public BluetoothServiceViaProtobuf(String playerName) {
+
         mAdapter = BluetoothAdapter.getDefaultAdapter();
         mState = STATE_NONE;
         handler = new Handler(Looper.getMainLooper());
@@ -103,9 +104,9 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
             mConnectThread = null;
         }
         // Cancel any thread currently running a connection
-        if (mConnectedThread != null) {
-            mConnectedThread.cancel();
-            mConnectedThread = null;
+        if (mTransferThread != null) {
+            mTransferThread.cancel();
+            mTransferThread = null;
         }
         setState(STATE_LISTENING);
         // Start the thread to listen on a BluetoothServerSocket
@@ -125,7 +126,7 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
 
     @Override
     public void sentPacket(AbstractMessageLite o) {
-        mConnectedThread.write(o);
+        mTransferThread.write(o);
     }
 
     @Override
@@ -145,9 +146,9 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
             mConnectThread.cancel();
             mConnectThread = null;
         }
-        if (mConnectedThread != null) {
-            mConnectedThread.cancel();
-            mConnectedThread = null;
+        if (mTransferThread != null) {
+            mTransferThread.cancel();
+            mTransferThread = null;
         }
         if (mSecureAcceptThread != null) {
             mSecureAcceptThread.cancel();
@@ -182,9 +183,9 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
             }
         }
         // Cancel any thread currently running a connection
-        if (mConnectedThread != null) {
-            mConnectedThread.cancel();
-            mConnectedThread = null;
+        if (mTransferThread != null) {
+            mTransferThread.cancel();
+            mTransferThread = null;
         }
         // Start the thread to connect with the given device
         mConnectThread = new ConnectThread(device, secure);
@@ -193,23 +194,23 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
     }
 
     /**
-     * Start the ConnectedThread to begin managing a Bluetooth connection
+     * Start the TransferThread to begin managing a Bluetooth connection
      *
      * @param socket The BluetoothSocket on which the connection was made
-     * @param device The BluetoothDevice that has been connected
+     * @param device The BluetoothDevice that has been startTranferThread
      */
-    public synchronized void connected(BluetoothSocket socket, BluetoothDevice
+    public synchronized void startTranferThread(BluetoothSocket socket, BluetoothDevice
             device, final String socketType) {
-        if (D) Log.d(TAG, "connected, Socket FieldType:" + socketType);
+        if (D) Log.d(TAG, "startTranferThread, Socket FieldType:" + socketType);
         // Cancel the thread that completed the connection
         if (mConnectThread != null) {
             mConnectThread.cancel();
             mConnectThread = null;
         }
         // Cancel any thread currently running a connection
-        if (mConnectedThread != null) {
-            mConnectedThread.cancel();
-            mConnectedThread = null;
+        if (mTransferThread != null) {
+            mTransferThread.cancel();
+            mTransferThread = null;
         }
         // Cancel the accept thread because we only want to connect to one device
 //        if (mSecureAcceptThread != null) {
@@ -221,9 +222,9 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
             mInsecureAcceptThread = null;
         }
         // Start the thread to manage the connection and perform transmissions
-        mConnectedThread = new ConnectedThread(socket, socketType);
-        mConnectedThread.start();
-        // Send the name of the connected device back to the UI Activity
+        mTransferThread = new TransferThread(socket, socketType);
+        mTransferThread.start();
+        // Send the name of the startTranferThread device back to the UI Activity
 //        Message msg = mHandler.obtainMessage(BluetoothChat.MESSAGE_DEVICE_NAME);
 //        Bundle bundle = new Bundle();
 //        bundle.putString(BluetoothChat.DEVICE_NAME, device.getName());
@@ -244,6 +245,14 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
 //        mHandler.sendMessage(msg);
         // Start the service over to restart listening mode
 //        BluetoothServiceViaProtobuf.this.start();
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                if (bluetoothGameListener != null) {
+                    bluetoothGameListener.connectionFailed();
+                }
+            }
+        });
     }
 
     /**
@@ -295,38 +304,38 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
                     "BEGIN mAcceptThread" + this);
             setName("AcceptThread" + mSocketType);
             BluetoothSocket socket = null;
-            // Listen to the server socket if we're not connected
+            // Listen to the server socket if we're not startTranferThread
             while (mState != STATE_CONNECTED) {
                 try {
                     // This is a blocking call and will only return on a
                     // successful connection or an exception
                     Log.d(TAG, "Socket " + socket + " | ServerSocket " + mmServerSocket);
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast toast = Toast.makeText(activity, "created server for connecting ", Toast.LENGTH_LONG);
-                            toast.show();
-                        }
-                    });
+//                    activity.runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Toast toast = Toast.makeText(activity, "created server for connecting ", Toast.LENGTH_LONG);
+//                            toast.show();
+//                        }
+//                    });
                     socket = mmServerSocket.accept();
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast toast = Toast.makeText(activity, "! new accepted Socket !", Toast.LENGTH_LONG);
-                            toast.show();
-                        }
-                    });
+//                    activity.runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Toast toast = Toast.makeText(activity, "! new accepted Socket !", Toast.LENGTH_LONG);
+//                            toast.show();
+//                        }
+//                    });
                     Log.d(TAG, "new accepted Socket with " + socket.getRemoteDevice().getName());
                 } catch (final Exception e) {
                     Log.e(TAG, "Socket FieldType: " + mSocketType + "accept() failed", e);
                     //    BluetoothServiceViaProtobuf.this.start();
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast toast = Toast.makeText(activity, "EXCEPTION " + e.toString(), Toast.LENGTH_LONG);
-                            toast.show();
-                        }
-                    });
+//                    activity.runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Toast toast = Toast.makeText(activity, "EXCEPTION " + e.toString(), Toast.LENGTH_LONG);
+//                            toast.show();
+//                        }
+//                    });
                     return;
                 }
                 // If a connection was accepted
@@ -335,14 +344,14 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
                         switch (mState) {
                             case STATE_LISTENING:
                             case STATE_CONNECTING:
-                                // Situation normal. Start the connected thread.
-                                connected(socket, socket.getRemoteDevice(),
+                                // Situation normal. Start the startTranferThread thread.
+                                startTranferThread(socket, socket.getRemoteDevice(),
                                         mSocketType);
                                 mState = STATE_CONNECTED;
                                 return;
                             case STATE_NONE:
                             case STATE_CONNECTED:
-                                // Either not ready or already connected. Terminate new socket.
+                                // Either not ready or already startTranferThread. Terminate new socket.
                                 try {
                                     socket.close();
                                 } catch (IOException e) {
@@ -377,10 +386,13 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
         private final BluetoothSocket mmSocket;
         private final BluetoothDevice mmDevice;
         private String mSocketType;
+        private boolean secure;
+
 
         public ConnectThread(BluetoothDevice device, boolean secure) {
             mmDevice = device;
             BluetoothSocket bluetoothSocketTmp = null;
+            this.secure = secure;
             mSocketType = secure ? "Secure" : "Insecure";
             // Get a BluetoothSocket for a connection with the
             // given BluetoothDevice
@@ -394,6 +406,12 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
                 }
             } catch (IOException e) {
                 Log.e(TAG, "Socket FieldType: " + mSocketType + "create() failed", e);
+//                activity.runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Toast.makeText(activity, "Fail in creating socket from device", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
             }
             mmSocket = bluetoothSocketTmp;
         }
@@ -403,43 +421,48 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
             setName("ConnectThread" + mSocketType);
             // Always stop discovery because it will slow down a connection
             mAdapter.cancelDiscovery();
+
             // Make a connection to the BluetoothSocket
             try {
                 // This is a blocking call and will only return on a
                 // successful connection or an exception
                 mmSocket.connect();
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast toast = Toast.makeText(activity, "SUCCESS connected  to " + mmSocket.getRemoteDevice().getName(), Toast.LENGTH_LONG);
-                        toast.show();
-                    }
-                });
+//                activity.runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Toast toast = Toast.makeText(activity, "SUCCESS startTranferThread  to " + mmSocket.getRemoteDevice().getName(), Toast.LENGTH_LONG);
+//                        toast.show();
+//                    }
+//                });
             } catch (final Exception e) {
                 // Close the socket
                 Log.e(TAG, "connection failed : ", e);
-                activity.runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast toast = Toast.makeText(activity, "connection failed : " + e.toString(), Toast.LENGTH_LONG);
-                        toast.show();
+//                activity.runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        Toast toast = Toast.makeText(activity, "connection failed in creating socket: " + e.toString(), Toast.LENGTH_LONG);
+//                        toast.show();
+//                    }
+//                });
+
+                if (quantityOfAttemptToConnect++ < MAX_QUANTITY_CONNECT) {
+                    try {
+                        Thread.sleep(200);
+                    } catch (InterruptedException e1) {
+                        e1.printStackTrace();
                     }
-                });
-//                try {
-//                  //  mmSocket.close();
-//                } catch (IOException e2) {
-//                    Log.e(TAG, "unable to close() " + mSocketType +
-//                            " socket during connection failure", e2);
-//                }
-                connectionFailed();
+                    connect(mmDevice, secure);
+                } else {
+                    connectionFailed();
+                }
                 return;
             }
             // Reset the ConnectThread because we're done
             synchronized (BluetoothServiceViaProtobuf.this) {
                 mConnectThread = null;
             }
-            // Start the connected thread
-            connected(mmSocket, mmDevice, mSocketType);
+            // Start the transfer thread
+            startTranferThread(mmSocket, mmDevice, mSocketType);
         }
 
         public void cancel() {
@@ -455,15 +478,16 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
      * This thread runs during a connection with a remote device.
      * It handles all incoming and outgoing transmissions.
      */
-    private class ConnectedThread extends Thread {
+    private class TransferThread extends Thread {
         private final BluetoothSocket mmSocket;
 
         private final DataOutputStream dataOutputStream;
         private final DataInputStream dataInputStream;
         private final InputStream inputStream;
+        private boolean isThreadWorking = true;
 
-        public ConnectedThread(BluetoothSocket socket, String socketType) {
-            Log.d(TAG, "create ConnectedThread: " + socketType);
+        public TransferThread(BluetoothSocket socket, String socketType) {
+            Log.d(TAG, "create TransferThread: " + socketType);
             mmSocket = socket;
             DataInputStream tempDI = null;
             DataOutputStream tempDO = null;
@@ -482,10 +506,10 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
         }
 
         public void run() {
-            Log.i(TAG, "BEGIN mConnectedThread");
-            // Keep listening to the InputStream while connected
+            Log.i(TAG, "BEGIN mTransferThread");
+            // Keep listening to the InputStream while startTranferThread
             sentPacket(BluetoothProtocol.StartGame.newBuilder().setOponentName(playerName).build());
-            while (true) {
+            while (isThreadWorking) {
                 try {
                     byte type = dataInputStream.readByte();
                     int length = dataInputStream.readInt();
@@ -493,8 +517,7 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
                     dataInputStream.read(data);
                     final BluetoothProtoType protoType = BluetoothProtoType.fromByte(type);
                     Log.d(TAG, "received  type " + protoType + " t " + type);
-                    AbstractMessageLite protoObject =
-                            BluetoothProtoFactory.createProtoObject(data, protoType);
+
                     switch (protoType) {
                         case DID_MOVE:
                             final BluetoothProtocol.DidMove didMove =
@@ -546,13 +569,21 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
                                 }
                             });
                             break;
+                        case TIME_FINISHED:
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    bluetoothGameListener.opponentsTimeFinished();
+                                }
+                            });
+                            break;
                     }
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(activity, "NEW MESSAGE + " + protoType.toString(), Toast.LENGTH_LONG).show();
-                        }
-                    });
+//                    activity.runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            Toast.makeText(activity, "NEW MESSAGE + " + protoType.toString(), Toast.LENGTH_LONG).show();
+//                        }
+//                    });
                 } catch (IOException e) {
                     Log.e(TAG, "disconnected", e);
                     connectionLost();
@@ -562,7 +593,7 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
         }
 
         /**
-         * Write to the connected OutStream.
+         * Write to the startTranferThread OutStream.
          */
         public void write(AbstractMessageLite messageLite) {
             byte type = BluetoothProtoType.fromClass(messageLite.getClass()).getByteValue();
@@ -582,6 +613,7 @@ public class BluetoothServiceViaProtobuf implements BluetoothService<AbstractMes
         }
 
         public void cancel() {
+            isThreadWorking = false;
             try {
                 mmSocket.close();
                 dataOutputStream.close();

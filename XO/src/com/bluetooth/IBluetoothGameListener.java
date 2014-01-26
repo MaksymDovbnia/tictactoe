@@ -18,4 +18,8 @@ public interface IBluetoothGameListener {
     public void playerExitFromGame();
 
     public void continueGame();
+
+    public void connectionFailed();
+
+    public void opponentsTimeFinished();
 }

@@ -61,6 +61,9 @@ public class ProtoFactory {
             case CTOP100:
                 Protocol.CTop100Player top100 = Protocol.CTop100Player.parseFrom(data);
                 return top100;
+            case TIME_FOR_MOVE_FULL_UP:
+                Protocol.TimeForMoveFullUp timeForMoveFullUp = Protocol.TimeForMoveFullUp.parseFrom(data);
+                return timeForMoveFullUp;
 
             default:
                 Loger.printLog(" Wrong packet BLIADY");

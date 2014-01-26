@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:cacheColorHint="@android:color/transparent"
-                android:divider="@color/gray_list_item_divider"
+                android:divider="@drawable/split_line"
                 android:dividerHeight="@dimen/list_view_divider_height"
                 />
 
@@ -44,8 +44,8 @@
             android:id="@+id/chat_input_edit_text"
             android:layout_width="match_parent"
             android:layout_height="@dimen/chat_fragment_layout_edit_text_height"
-            android:inputType="text"
-            android:windowSoftInputMode="adjustPan"
+
+
 
             />
 
@@ -54,7 +54,7 @@
             android:layout_width="@dimen/chat_fragment_layout_sent_button_width"
             android:layout_height="@dimen/chat_fragment_layout_sent_button_height"
             android:layout_gravity="right"
-            android:text="@string/sent"
+            android:text="@string/send"
             style="@style/default_yelow_button"
             />
 
