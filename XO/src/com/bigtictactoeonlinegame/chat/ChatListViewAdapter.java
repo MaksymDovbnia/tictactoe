@@ -12,29 +12,28 @@ import com.bigtictactoeonlinegame.activity.R;
 import java.util.List;
 
 /**
- * Created by Maksym on 09.11.13.
+ * Date: 06.09.13
+ *
+ * @author Maksym Dovbnia (maksym.dovbnia@gmail.com)
  */
 public class ChatListViewAdapter extends BaseAdapter {
-
-
-    private List<ChatMessage> messages;
-    private LayoutInflater layoutInflater;
+    private List<ChatMessage> mMessagesList;
+    private LayoutInflater mLayoutInflater;
 
     public ChatListViewAdapter(Context context, List<ChatMessage> messages) {
-        layoutInflater = (LayoutInflater) context
+        mLayoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-        this.messages = messages;
+        mMessagesList = messages;
     }
 
     @Override
     public int getCount() {
-        return messages.size();
+        return mMessagesList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return messages.get(position);
+        return mMessagesList.get(position);
     }
 
     @Override
@@ -42,16 +41,17 @@ public class ChatListViewAdapter extends BaseAdapter {
         return position;
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-       View view = convertView;
+        View view = convertView;
         if (view == null) {
-            view = layoutInflater.inflate(R.layout.chat_list_item, parent, false);
+            view = mLayoutInflater.inflate(R.layout.chat_list_item, parent, false);
         }
         TextView sender = (TextView) view.findViewById(R.id.tv_sender_name);
         TextView message = (TextView) view.findViewById(R.id.tv_message);
-        ChatMessage chatMessage = messages.get(position);
-        sender.setText(chatMessage.getSender() +":");
+        ChatMessage chatMessage = mMessagesList.get(position);
+        sender.setText(chatMessage.getSender() + ":");
         message.setText(chatMessage.getMessage());
         return view;
     }

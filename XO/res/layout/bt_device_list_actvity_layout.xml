@@ -84,10 +84,9 @@ limitations under the License.
                         android:textSize="@dimen/bt_device_list_paired_list_text_size"/>
 
                 <ProgressBar
-                        android:layout_width="@dimen/bt_device_list_progress_bar_size"
-                        android:layout_height="@dimen/bt_device_list_progress_bar_size"
+                        android:layout_width="@dimen/progress_bar_size"
+                        android:layout_height="@dimen/progress_bar_size"
                         android:id="@+id/progress_bar_search_bt_devices"
-
                         android:layout_gravity="right"/>
             </LinearLayout>
 

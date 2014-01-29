@@ -1,62 +1,51 @@
 package com.bigtictactoeonlinegame.onlinerooms;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.content.*;
+import android.os.*;
+import android.support.v4.app.*;
+import android.view.*;
+import android.widget.*;
 
-import com.entity.Player;
-import com.bigtictactoeonlinegame.activity.R;
+import com.bigtictactoeonlinegame.activity.*;
+import com.entity.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
- * Created by Maksym on 17.11.13.
+ * Date: 07.11.13
+ *
+ * @author Maksym Dovbnia (maksym.dovbnia@gmail.com)
  */
-public class Top100Fragmnet extends Fragment implements Top100Action {
+public class Top100Fragment extends Fragment implements Top100Action {
 
-    private ListView listView;
-    private ListViewAdapter listViewAdapter;
-    private List<Player> players;
+    private ListViewAdapter mListViewAdapter;
+    private List<Player> mPlayersList;
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-    }
-
+    @SuppressWarnings("ConstantConditions")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.top_100_fragment_layout, null);
-        players = new ArrayList<Player>();
-        listViewAdapter = new ListViewAdapter(players, getActivity());
-        listView = (ListView) view.findViewById(R.id.list_view_top_100);
+        mPlayersList = new ArrayList<Player>();
+        mListViewAdapter = new ListViewAdapter(mPlayersList, getActivity());
+        ListView listView = (ListView) view.findViewById(R.id.list_view_top_100);
+        listView.setAdapter(mListViewAdapter);
 
-        listView.setAdapter(listViewAdapter);
-
-
-//        generateTestData();
         return view;
     }
 
     @Override
     public void receivedListTop100(List<Player> players) {
-        this.players.clear();
-        this.players.addAll(players);
-        listViewAdapter.notifyDataSetChanged();
+        getView().findViewById(R.id.ll_updating_top100).setVisibility(View.GONE);
+        this.mPlayersList.clear();
+        this.mPlayersList.addAll(players);
+        mListViewAdapter.notifyDataSetChanged();
     }
 
     private void generateTestData() {
         for (int i = 0; i < 100; i++) {
-            players.add(new Player(1, "Player " + i, i * 10));
+            mPlayersList.add(new Player(1, "Player " + i, i * 10));
         }
-        listViewAdapter.notifyDataSetChanged();
+        mListViewAdapter.notifyDataSetChanged();
     }
 
     private static class ListViewAdapter extends BaseAdapter {
@@ -84,6 +73,7 @@ public class Top100Fragmnet extends Fragment implements Top100Action {
             return position;
         }
 
+        @SuppressWarnings("ConstantConditions")
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = convertView;
@@ -96,13 +86,11 @@ public class Top100Fragmnet extends Fragment implements Top100Action {
             rating = (TextView) view.findViewById(R.id.tv_player_rating);
             if (players.get(position) != null) {
                 Player player = players.get(position);
-                name.setText(player.getName() + "");
-                rating.setText(player.getRating() + "");
-                playerPosition.setText((position + 1) + "");
+                name.setText(String.valueOf(player.getName()));
+                rating.setText(String.valueOf(player.getRating()));
+                playerPosition.setText(String.valueOf(position + 1));
 
             }
-
-
             return view;
         }
     }

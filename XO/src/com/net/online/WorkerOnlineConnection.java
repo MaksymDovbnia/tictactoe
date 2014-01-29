@@ -183,7 +183,7 @@ public class WorkerOnlineConnection extends Thread {
                     // dataOutputStream.close();
                     Loger.printLog("SEND " + abstractMessageLite);
                 } catch (IOException e) {
-                    // Log.d(TAG, e.toString());
+                    // Log.d(LOG_TAG, e.toString());
                 }
 
             }

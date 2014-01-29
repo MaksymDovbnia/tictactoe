@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="app_name">Великі хрестики-нулики онлайн</string>
-    <string name="title_activity_second">Великі хрестики-нулики онлайн</string>
+    <string name="app_name">Xрестики-нулики онлайн</string>
+    <string name="title_activity_second">Xрестики-нулики онлайн</string>
     <string name="with_android">З андроїдом</string>
     <string name="button_gametypes_online">Онлайн</string>
     <string name="two_players">2 гравця</string>

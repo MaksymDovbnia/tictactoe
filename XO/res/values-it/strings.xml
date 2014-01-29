@@ -99,4 +99,14 @@
     </string>
     <string name="your_device_doesnt_support_bluetooth">Il tuo dispositivo non supporta bluetooth
     </string>
+
+    <string name="want_to_battle_with_you">Vuole giocare con te</string>
+    <string name="wants_to_battle_with_you">Vogliono giocare con te:</string>
+    <string name="connecting_to_bluetooth_server">Connessione al bluetooth server...</string>
+    <string name="canceled_inviting">Invito annullato</string>
+    <string name="to">A</string>
+    <string name="player_1">Giocatore 1</string>
+    <string name="player_2">Giocatore 2</string>
+    <string name="no_internet_connection">Senza connessione a internet</string>
+
 </resources>

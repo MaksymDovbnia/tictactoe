@@ -154,6 +154,7 @@ public class BTDeviceListActivity extends Activity {
 
     // The on-click listener for all devices in the ListViews
     private OnItemClickListener mDeviceClickListener = new OnItemClickListener() {
+        @SuppressWarnings("ConstantConditions")
         public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
             // Cancel discovery because it's costly and we're about to connect
             mBtAdapter.cancelDiscovery();
@@ -175,6 +176,7 @@ public class BTDeviceListActivity extends Activity {
     // The BroadcastReceiver that listens for discovered devices and
     // changes the title when discovery is finished
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @SuppressWarnings("ConstantConditions")
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();

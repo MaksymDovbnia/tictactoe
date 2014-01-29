@@ -39,6 +39,27 @@
                 style="@style/list_view_header_item"/>
 
     </LinearLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/ll_updating_top100"
+            >
+
+        <com.componentwithfont.TextViewWirhComicsFont
+                android:id="@+id/tv_scanning_for_devices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/updating_top_100_list"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/bt_device_list_paired_list_text_size"/>
+
+        <ProgressBar
+                android:layout_width="@dimen/progress_bar_size"
+                android:layout_height="@dimen/progress_bar_size"
+                android:id="@+id/progress_bar_updating_top100"
+                android:layout_gravity="right"/>
+    </LinearLayout>
 
     <ListView
             android:id="@+id/list_view_top_100"

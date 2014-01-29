@@ -9,15 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.bigtictactoeonlinegame.chat.ChatActionNotification;
-import com.bigtictactoeonlinegame.chat.ChatMessage;
+import com.bigtictactoeonlinegame.chat.*;
+import com.bigtictactoeonlinegame.chat.IChatActionNotification;
 import com.bigtictactoeonlinegame.onlinerooms.OnlineRoomsFragment;
 import com.bigtictactoeonlinegame.popup.XOAlertDialog;
 import com.entity.Player;
 import com.bigtictactoeonlinegame.Controller;
 import com.bigtictactoeonlinegame.activity.R;
-import com.bigtictactoeonlinegame.chat.ChatAction;
-import com.bigtictactoeonlinegame.chat.ChatFragment;
 import com.bigtictactoeonlinegame.mainactivity.GeneralAdActivity;
 import com.google.android.gms.ads.AdView;
 import com.net.online.protobuf.ProtoType;
@@ -27,7 +25,7 @@ import net.protocol.Protocol;
 /**
  * @author Maksym Dovbnia on 6/19/13.
  */
-public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.OnClickListener, ChatActionNotification {
+public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.OnClickListener, IChatActionNotification {
     private Fragment openedGroupFragment;
     private ChatFragment chatFragment;
     private FragmentTransaction fragmentTransaction;

@@ -1,12 +1,15 @@
 package com.bigtictactoeonlinegame.chat;
 
 /**
- * Created by Maksym on 09.11.13.
+ * Date: 06.09.13
+ *
+ * @author Maksym Dovbnia (maksym.dovbnia@gmail.com)
  */
-public interface ChatActionNotification {
+public interface IChatActionNotification {
 
 
     public void actionSendChatMessage(ChatMessage chatMessage);
+
     public String getPlayerName();
 
 

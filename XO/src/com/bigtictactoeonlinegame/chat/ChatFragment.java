@@ -18,45 +18,56 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Maksym on 6/19/13.
+ * Date: 06.09.13
+ *
+ * @author Maksym Dovbnia (maksym.dovbnia@gmail.com)
  */
 public class ChatFragment extends Fragment implements ChatAction {
 
-    private Button btnSentMessage;
-    private ListView chatListView;
-    private EditText inputText;
-    private List<ChatMessage> chatMessageList;
-
-    private ChatListViewAdapter chatListViewAdapter;
-    private ChatActionNotification actionNotification;
-
+    private static final String EMPTY_STRING = "";
+    private ListView mChatListView;
+    private EditText mInputText;
+    private List<ChatMessage> mChatMessageList;
+    private ChatListViewAdapter mChatListViewAdapter;
+    private IChatActionNotification mActionNotification;
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            actionNotification = (ChatActionNotification) activity;
+            mActionNotification = (IChatActionNotification) activity;
         } catch (ClassCastException e) {
             throw new IllegalArgumentException("Each activity witch " +
-                    "use ChatFragment must implement  ChatActionNotification " + e);
+                    "use ChatFragment must implement  IChatActionNotification " + e);
         }
 
 
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View chat = inflater.inflate(R.layout.chat_fragment_layout, null);
-        btnSentMessage = (Button) chat.findViewById(R.id.btn_chat_sent_message);
+        initViews(chat);
+        mChatMessageList = new ArrayList<ChatMessage>();
+        mChatListViewAdapter = new ChatListViewAdapter(getActivity(), mChatMessageList);
+        mChatListView.setAdapter(mChatListViewAdapter);
+        // generateTesData();
+        mChatListView.setSelection(mChatMessageList.size());
+        return chat;
+    }
+
+    private void initViews(View chatView) {
+        Button btnSentMessage = (Button) chatView.findViewById(R.id.btn_chat_sent_message);
         btnSentMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkInputAndSent();
             }
         });
-        chatListView = (ListView) chat.findViewById(R.id.chat_list_view);
-        inputText = (EditText) chat.findViewById(R.id.chat_input_edit_text);
-        inputText.setOnKeyListener(new View.OnKeyListener() {
+        mChatListView = (ListView) chatView.findViewById(R.id.chat_list_view);
+        mInputText = (EditText) chatView.findViewById(R.id.chat_input_edit_text);
+        mInputText.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_DOWN
@@ -67,45 +78,37 @@ public class ChatFragment extends Fragment implements ChatAction {
                 return false;
             }
         });
-        //    inputText.setImeActionLabel(getString(R.string.send), KeyEvent.KEYCODE_ENTER);
-        chatMessageList = new ArrayList<ChatMessage>();
-        chatListViewAdapter = new ChatListViewAdapter(getActivity(), chatMessageList);
-        chatListView.setAdapter(chatListViewAdapter);
-        // generateTesData();
-        chatListView.setSelection(chatMessageList.size());
-        return chat;
     }
 
 
+    @SuppressWarnings("ConstantConditions")
     private void checkInputAndSent() {
-        if (inputText.getText().toString().length() > 0) {
-            sendNewMessage(new ChatMessage(inputText.getText().toString(), actionNotification.getPlayerName()));
+        if (mInputText.getText().toString().length() > 0) {
+            sendNewMessage(new ChatMessage(mInputText.getText().toString(), mActionNotification.getPlayerName()));
         }
     }
 
     private void sendNewMessage(ChatMessage chatMessage) {
-        actionNotification.actionSendChatMessage(chatMessage);
-        chatMessageList.add(chatMessage);
-        chatListViewAdapter.notifyDataSetChanged();
-        chatListView.setSelection(chatMessageList.size());
-        inputText.setText("");
+        mActionNotification.actionSendChatMessage(chatMessage);
+        mChatMessageList.add(chatMessage);
+        mChatListViewAdapter.notifyDataSetChanged();
+        mChatListView.setSelection(mChatMessageList.size());
+        mInputText.setText(EMPTY_STRING);
     }
 
     @Override
     public void receivedMessage(ChatMessage message) {
-        chatListView.setSelection(chatMessageList.size());
-        chatMessageList.add(message);
-        chatListViewAdapter.notifyDataSetChanged();
-        chatListView.setSelection(chatMessageList.size());
+        mChatListView.setSelection(mChatMessageList.size());
+        mChatMessageList.add(message);
+        mChatListViewAdapter.notifyDataSetChanged();
+        mChatListView.setSelection(mChatMessageList.size());
     }
 
 
-
     private void generateTesData() {
-
         for (int i = 0; i < 30; i++) {
-            chatMessageList.add(new ChatMessage("Message " + i, "Sender " + i / 2));
-            chatListViewAdapter.notifyDataSetChanged();
+            mChatMessageList.add(new ChatMessage("Message " + i, "Sender " + i / 2));
+            mChatListViewAdapter.notifyDataSetChanged();
         }
     }
 

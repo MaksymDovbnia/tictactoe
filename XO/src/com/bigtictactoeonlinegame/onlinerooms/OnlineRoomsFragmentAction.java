@@ -7,6 +7,6 @@ import com.bigtictactoeonlinegame.mainactivity.IAdViewProvider;
  */
 public interface OnlineRoomsFragmentAction extends IAdViewProvider {
 
-   public void getGroupList(Object o);
+   public void gotGroupList(Object o);
 
 }

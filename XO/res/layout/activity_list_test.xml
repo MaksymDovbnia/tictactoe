@@ -5,7 +5,7 @@
     tools:context=".ListTest" >
 
     <ListView
-        android:id="@+id/listOnlineGroup"
+        android:id="@+id/list_online_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="app_name">Большые крестики-нолики онлайн</string>
-    <string name="title_activity_second">Большые крестики-нолики онлайн</string>
+    <string name="app_name">Крестики-нолики онлайн</string>
+    <string name="title_activity_second">Крестики-нолики онлайн</string>
     <string name="with_android">С андроидом</string>
     <string name="button_gametypes_online">Онлайн</string>
     <string name="two_players">2 игрока</string>

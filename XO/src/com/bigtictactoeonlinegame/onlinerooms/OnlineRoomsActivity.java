@@ -1,69 +1,77 @@
 package com.bigtictactoeonlinegame.onlinerooms;
 
-import com.bigtictactoeonlinegame.popup.XOAlertDialog;
-import com.entity.Player;
-import com.bigtictactoeonlinegame.Controller;
-import com.bigtictactoeonlinegame.activity.R;
-import com.bigtictactoeonlinegame.mainactivity.GeneralAdActivity;
-import com.google.android.gms.ads.AdView;
-import com.net.online.WorkerOnlineConnection;
-import com.net.online.protobuf.ProtoType;
+import android.content.*;
+import android.os.*;
+import android.support.v4.app.*;
+import android.util.*;
+import android.view.*;
 
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
-import android.view.View;
+import com.bigtictactoeonlinegame.*;
+import com.bigtictactoeonlinegame.activity.*;
+import com.bigtictactoeonlinegame.mainactivity.*;
+import com.bigtictactoeonlinegame.popup.*;
+import com.entity.*;
+import com.google.android.gms.ads.*;
+import com.net.online.*;
+import com.net.online.protobuf.*;
 
-import net.protocol.Protocol;
+import net.protocol.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+/**
+ * Date: 09.03.13
+ *
+ * @author Maksym Dovbnia (maksym.dovbnia@gmail.com)
+ */
 
 public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoomsAction {
-    private static final String TAG = OnlineRoomsActivity.class.getCanonicalName();
     public static final String NUMBER_OF_GROUP = "NUMBER_OF_GROUP";
-    private Handler handler;
-    private WorkerOnlineConnection conectionGameWorker;
-    private Fragment onlineGroupsFragment, top100Fgragment;
-    private FragmentTransaction fragmentTransaction;
-    private Top100Action top100Action;
-    private final Player player = Controller.getInstance().getPlayer();
-    private OnlineRoomsFragmentAction onlineRoomsFragmentAction;
+    private static final String LOG_TAG = OnlineRoomsActivity.class.getCanonicalName();
+    private Handler mHandler;
+    private WorkerOnlineConnection mConnectionGameWorker;
+    private Fragment mOnlineGroupsFragment, mTop100Fragment;
+    private FragmentTransaction mFragmentTransaction;
+    private Top100Action mTop100Action;
+    private final Player mPlayer = Controller.getInstance().getPlayer();
+    private OnlineRoomsFragmentAction mOnlineRoomsFragmentAction;
 
     @Override
     public void getListOfGroup() {
-        Protocol.SGetGroupList sGetGroupList = Protocol.SGetGroupList.newBuilder().setId(player.getId()).build();
-        conectionGameWorker.sendPacket(sGetGroupList);
-        Log.d(TAG, "sent packet " + sGetGroupList);
+        Protocol.SGetGroupList sGetGroupList = Protocol.SGetGroupList.newBuilder().setId(mPlayer.getId()).build();
+        mConnectionGameWorker.sendPacket(sGetGroupList);
+        Log.d(LOG_TAG, "sent packet " + sGetGroupList);
     }
 
-    private enum TAB {GROUP_LIST, TOP100}
+    private enum TAB {GROUP_LIST, TOP_100}
 
     ;
-    private TAB currentTab;
+    private TAB mCurrentTab;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.online_rooms_activity_layout);
-        onlineGroupsFragment = new OnlineRoomsFragment();
-        top100Fgragment = new Top100Fragmnet();
-        top100Action = (Top100Action) top100Fgragment;
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.center_for_fragment, onlineGroupsFragment);
-        fragmentTransaction.add(R.id.center_for_fragment, top100Fgragment);
-        fragmentTransaction.hide(top100Fgragment);
-        onlineRoomsFragmentAction = (OnlineRoomsFragmentAction) onlineGroupsFragment;
-        fragmentTransaction.commit();
-        currentTab = TAB.GROUP_LIST;
+        initViews();
+        initHandler();
+        mConnectionGameWorker = Controller.getInstance().getOnlineWorker();
+    }
+
+    private void initViews() {
+        mOnlineGroupsFragment = new OnlineRoomsFragment();
+        mTop100Fragment = new Top100Fragment();
+        mTop100Action = (Top100Action) mTop100Fragment;
+        mFragmentTransaction = getSupportFragmentManager().beginTransaction();
+        mFragmentTransaction.add(R.id.center_for_fragment, mOnlineGroupsFragment);
+        mFragmentTransaction.add(R.id.center_for_fragment, mTop100Fragment);
+        mFragmentTransaction.hide(mTop100Fragment);
+        mOnlineRoomsFragmentAction = (OnlineRoomsFragmentAction) mOnlineGroupsFragment;
+        mFragmentTransaction.commit();
+        mCurrentTab = TAB.GROUP_LIST;
         findViewById(R.id.btn_top_100).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchToTab(TAB.TOP100);
+                switchToTab(TAB.TOP_100);
             }
         });
         findViewById(R.id.btn_online_groups).setOnClickListener(new View.OnClickListener() {
@@ -72,13 +80,16 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
                 switchToTab(TAB.GROUP_LIST);
             }
         });
-        handler = new Handler() {
+    }
+
+    private void initHandler() {
+        mHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
                 ProtoType protoType = ProtoType.fromInt(msg.what);
                 switch (protoType) {
                     case CGETGROUPLIST:
-                        onlineRoomsFragmentAction.getGroupList(msg.obj);
+                        mOnlineRoomsFragmentAction.gotGroupList(msg.obj);
                         break;
                     case CTOP100:
                         Protocol.CTop100Player cTop100Player = (Protocol.CTop100Player) msg.obj;
@@ -86,7 +97,7 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
                         for (Protocol.Player protocolPlayer : cTop100Player.getPlayerList()) {
                             playerList.add(new Player(protocolPlayer.getId(), protocolPlayer.getName(), protocolPlayer.getRating()));
                         }
-                        top100Action.receivedListTop100(playerList);
+                        mTop100Action.receivedListTop100(playerList);
                         break;
                     case CONNECTION_TO_SERVER_LOST:
                         connectionToServerLost();
@@ -97,44 +108,43 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
                 super.handleMessage(msg);
             }
         };
-        conectionGameWorker = Controller.getInstance().getOnlineWorker();
     }
 
 
     @Override
     public AdView getAdView() {
-        return onlineRoomsFragmentAction.getAdView();
+        return mOnlineRoomsFragmentAction.getAdView();
     }
 
     private void switchToTab(TAB tab) {
-        fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        currentTab = tab;
+        mFragmentTransaction = getSupportFragmentManager().beginTransaction();
+        mCurrentTab = tab;
         switch (tab) {
             case GROUP_LIST:
-                fragmentTransaction.hide(top100Fgragment);
-                fragmentTransaction.show(onlineGroupsFragment);
+                mFragmentTransaction.hide(mTop100Fragment);
+                mFragmentTransaction.show(mOnlineGroupsFragment);
                 break;
-            case TOP100:
-                fragmentTransaction.hide(onlineGroupsFragment);
-                fragmentTransaction.show(top100Fgragment);
-                sendPacketGetTOP100List();
+            case TOP_100:
+                mFragmentTransaction.hide(mOnlineGroupsFragment);
+                mFragmentTransaction.show(mTop100Fragment);
+                sendPacketGetTop100List();
                 break;
         }
-        fragmentTransaction.commit();
+        mFragmentTransaction.commit();
     }
 
-    private void sendPacketGetTOP100List() {
-        conectionGameWorker
+    private void sendPacketGetTop100List() {
+        mConnectionGameWorker
                 .sendPacket(Protocol
                         .STop100Player
                         .newBuilder()
-                        .setPlayerId(player.getId())
+                        .setPlayerId(mPlayer.getId())
                         .build());
     }
 
     @Override
     public void onBackPressed() {
-        if (currentTab == TAB.TOP100) {
+        if (mCurrentTab == TAB.TOP_100) {
             switchToTab(TAB.GROUP_LIST);
         } else {
             XOAlertDialog xoAlertDialog = new XOAlertDialog();
@@ -155,11 +165,11 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
     @Override
     public void onResume() {
         super.onResume();
-        if (!conectionGameWorker.isSockedInLive()) {
+        if (!mConnectionGameWorker.isSockedInLive()) {
             finish();
         }
-        conectionGameWorker.registerHandler(handler);
-        if (conectionGameWorker != null) {
+        mConnectionGameWorker.registerHandler(mHandler);
+        if (mConnectionGameWorker != null) {
             getListOfGroup();
         }
     }
@@ -167,8 +177,8 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
     @Override
     protected void onPause() {
         super.onPause();
-        if (conectionGameWorker != null) {
-            conectionGameWorker.unRegisterHandler(handler);
+        if (mConnectionGameWorker != null) {
+            mConnectionGameWorker.unRegisterHandler(mHandler);
         }
     }
 
@@ -190,10 +200,10 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
 
     @Override
     protected void onDestroy() {
-        if (conectionGameWorker == null) return;
-        conectionGameWorker.sendPacket(Protocol.SExitFromGlobalGame.newBuilder().setPlayerId(player.getId()).build());
-        conectionGameWorker.unRegisterHandler(handler);
-        conectionGameWorker.disconnect();
+        if (mConnectionGameWorker == null) return;
+        mConnectionGameWorker.sendPacket(Protocol.SExitFromGlobalGame.newBuilder().setPlayerId(mPlayer.getId()).build());
+        mConnectionGameWorker.unRegisterHandler(mHandler);
+        mConnectionGameWorker.disconnect();
         super.onDestroy();
     }
 }

@@ -18,7 +18,7 @@ import com.entity.*;
 
 import net.protocol.*;
 
-public class GameFieldActivity extends FragmentActivity implements OnClickListener, GameFieldActivityAction, ChatActionNotification {
+public class GameFieldActivity extends FragmentActivity implements OnClickListener, GameFieldActivityAction, IChatActionNotification {
     public static final String FIRST_PLAYER_NAME = "first_player_name";
     public static final String SECOND_PLAYER_NAME = "second_player_name";
     private static final String OPPONENT_EXIT_FROM_GAME_POPUP_TAG = "opponent_exit_from_game";

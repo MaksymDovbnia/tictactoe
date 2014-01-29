@@ -45,6 +45,27 @@
                     style="@style/list_view_header_item"/>
 
         </LinearLayout>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/ll_updating_group"
+                >
+
+            <com.componentwithfont.TextViewWirhComicsFont
+                    android:id="@+id/tv_scanning_for_devices"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/updating_room_list"
+                    android:textColor="@color/blue"
+                    android:textSize="@dimen/bt_device_list_paired_list_text_size"/>
+
+            <ProgressBar
+                    android:layout_width="@dimen/progress_bar_size"
+                    android:layout_height="@dimen/progress_bar_size"
+                    android:id="@+id/progress_bar_updating_group_list"
+                    android:layout_gravity="right"/>
+        </LinearLayout>
 
         <ListView
                 android:layout_width="match_parent"
@@ -82,7 +103,6 @@
                     android:text="@string/wants_to_battle_with_you"
                     android:textColor="@color/dark_blue"
                     android:textSize="@dimen/header_list_item_text_size"/>
-
 
         </LinearLayout>
 

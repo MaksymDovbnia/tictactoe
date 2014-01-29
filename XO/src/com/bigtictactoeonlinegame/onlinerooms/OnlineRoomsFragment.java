@@ -1,82 +1,63 @@
 package com.bigtictactoeonlinegame.onlinerooms;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.os.*;
+import android.support.v4.app.*;
+import android.util.*;
+import android.view.*;
+import android.widget.*;
 
-import com.entity.Group;
-import com.entity.Player;
-import com.bigtictactoeonlinegame.Controller;
-import com.bigtictactoeonlinegame.activity.R;
-import com.google.android.gms.ads.AdView;
+import com.bigtictactoeonlinegame.activity.*;
+import com.entity.*;
+import com.google.android.gms.ads.*;
 
-import net.protocol.Protocol;
+import net.protocol.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
- * Created by Maksym on 9/3/13.
+ * Date: 09.03.13
+ *
+ * @author Maksym Dovbnia (maksym.dovbnia@gmail.com)
  */
 public class OnlineRoomsFragment extends Fragment implements OnlineRoomsFragmentAction {
-    public static final String TAG = OnlineRoomsFragment.class.getCanonicalName();
-    private ListView listViewOnlineGroup;
-    private List<Group> groups;
-    private OnlineRoomsAdapter adapter;
-    private final Player player = Controller.getInstance().getPlayer();
+    public static final String LOG_TAG = OnlineRoomsFragment.class.getCanonicalName();
     public static final String NUMBER_OF_GROUP = "NUMBER_OF_GROUP";
-    private TextView allPlayers;
-    private int numberOfAllPlayers = 0;
-    private Activity activity;
-    private IOnlineRoomsAction iOnlineRoomsAction;
+    private List<Group> mGroups;
+    private OnlineRoomsAdapter mAdapter;
+    private TextView mTextViewAllPlayers;
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        this.activity = activity;
-        iOnlineRoomsAction = (IOnlineRoomsAction) activity;
-    }
-
+    @SuppressWarnings("ConstantConditions")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.online_rooms_fragment_layout, null);
-        listViewOnlineGroup = (ListView) view.findViewById(R.id.listOnlineGroup);
-        groups = new ArrayList<Group>();
-        allPlayers = (TextView) view.findViewById(R.id.tv_all_online_players);
-        adapter = new OnlineRoomsAdapter(activity, groups);
-        listViewOnlineGroup.setAdapter(adapter);
+        ListView listViewOnlineGroup = (ListView) view.findViewById(R.id.list_online_group);
+        mGroups = new ArrayList<Group>();
+        mTextViewAllPlayers = (TextView) view.findViewById(R.id.tv_all_online_players);
+        mAdapter = new OnlineRoomsAdapter(getActivity(), mGroups);
+        listViewOnlineGroup.setAdapter(mAdapter);
         return view;
     }
 
-    private void getListOfGroup() {
-        iOnlineRoomsAction.getListOfGroup();
-    }
-
     @Override
-    public void getGroupList(Object o) {
-        numberOfAllPlayers = 0;
-        groups.clear();
+    public void gotGroupList(Object o) {
+        getView().findViewById(R.id.ll_updating_rooms_list).setVisibility(View.GONE);
+        int numberOfAllPlayers = 0;
+        mGroups.clear();
         Protocol.CGetGroupList getGroupList = (Protocol.CGetGroupList) o;
         for (Protocol.Group group : getGroupList.getGroupList()) {
             numberOfAllPlayers += group.getNumOnlinePlayers();
-            groups.add(new Group(group.getGroupId(), group.getNumOnlinePlayers(), 50));
+            mGroups.add(new Group(group.getGroupId(), group.getNumOnlinePlayers(), 50));
         }
 //                        for (int i = 0; i < 30; i++) {
 //                            Group group = new Group(i, i * 2, i * 20);
-//                            groups.add(group);
-//                            adapter.notifyDataSetChanged();
+//                            mGroups.add(group);
+//                            mAdapter.notifyDataSetChanged();
 //
 //                        }
-        Log.d(TAG, "get  " + groups.size() + "  groups");
+        Log.d(LOG_TAG, "get  " + mGroups.size() + "  mGroups");
         numberOfAllPlayers += 1;
-        allPlayers.setText(getResources().getString(R.string.all_online_players) + " " + numberOfAllPlayers);
-        adapter.notifyDataSetChanged();
+        mTextViewAllPlayers.setText(getResources().getString(R.string.all_online_players) + " " + numberOfAllPlayers);
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override

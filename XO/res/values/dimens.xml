@@ -27,6 +27,8 @@
     <dimen name="game_field_fragment_player_name_padding_top_bottom">5dp</dimen>
     <dimen name="game_field_fragment_player_name_padding_left_right">10dp</dimen>
     <dimen name="game_field_fragment_timer_padding_right">5dp</dimen>
+    <dimen name="game_field_fragment_padding_right">5dp</dimen>
+
 
     <!--Game field item-->
     <dimen name="game_field_item_size">25dp</dimen>
@@ -86,7 +88,7 @@
     <dimen name="chat_fragment_layout_padding_bottom">10dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_left">30dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_right">25dp</dimen>
-    <dimen name="chat_fragment_layout_chat_container_padding_top">20dp</dimen>
+    <dimen name="chat_fragment_layout_chat_container_padding_top">30dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_bottom">20dp</dimen>
 
     <dimen name="chat_fragment_layout_text_view_padding_top">0dp</dimen>
@@ -111,7 +113,7 @@
     <dimen name="bt_device_list_paired_list_padding_left">25dp</dimen>
     <dimen name="bt_device_list_paired_list_padding_top">10dp</dimen>
     <dimen name="bt_device_list_paired_list_text_size">15dp</dimen>
-    <dimen name="bt_device_list_progress_bar_size">20dp</dimen>
+    <dimen name="progress_bar_size">20dp</dimen>
     <dimen name="bt_device_list_item_text_size">15dp</dimen>
 
     <!--About activity-->
