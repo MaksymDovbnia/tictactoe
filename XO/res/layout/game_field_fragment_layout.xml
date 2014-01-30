@@ -15,9 +15,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:orientation="horizontal"
-
-            >
+            android:orientation="horizontal"           >
 
         <LinearLayout
                 android:layout_width="0dp"
@@ -60,10 +58,9 @@
                     android:paddingRight="@dimen/game_field_fragment_player_name_padding_left_right"
                     android:paddingTop="@dimen/game_field_fragment_player_name_padding_top_bottom"
                     android:paddingBottom="@dimen/game_field_fragment_player_name_padding_top_bottom"
-
                     android:singleLine="true"
                     android:ellipsize="marquee"
-
+                    android:gravity="center_horizontal"
                     android:text="@string/player_2"
                     android:textSize="@dimen/default_text_size"
                     android:textColor="@color/blue"/>
@@ -141,7 +138,7 @@
             android:background="@drawable/frame_for_fame_field">
 
         <ScrollView
-                android:id="@+id/frame2"
+                android:id="@+id/vertical_scroll_game_field"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:paddingLeft="2dp"
@@ -154,7 +151,7 @@
                     android:layout_height="wrap_content">
 
                 <HorizontalScrollView
-                        android:id="@+id/frame"
+                        android:id="@+id/horizontal_scroll_game_field"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center">
@@ -167,7 +164,8 @@
                                 android:id="@+id/grid_view_game_field"
                                 android:layout_width="@dimen/game_field_fragment_game_field_grid_view_size"
                                 android:layout_height="@dimen/game_field_fragment_game_field_grid_view_size"
-                                android:numColumns="15">
+                                android:numColumns="15"
+                                android:splitMotionEvents="false">
                         </GridView>
 
                     </FrameLayout>

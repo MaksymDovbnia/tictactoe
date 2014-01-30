@@ -44,14 +44,14 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
         Intent intent = activity.getIntent();
         String firstPlayerName = intent.getStringExtra(FIRST_PLAYER_NAME);
         String secondPlayerName = intent.getStringExtra(SECOND_PLAYER_NAME);
-        TextView  textViewPlayer1 = ((TextView) view.findViewById(R.id.tv_field_item));
+        TextView textViewPlayer1 = ((TextView) view.findViewById(R.id.tv_field_item));
         textViewPlayer1.setText(firstPlayerName);
 
         TextView textViewSecond = ((TextView) view.findViewById(R.id.tv_second_player_name));
         textViewSecond.setText(secondPlayerName);
         final LinearLayout containerGameFiled = (LinearLayout) view.findViewById(R.id.game_field_container);
-        final FrameLayout frame = (FrameLayout) view.findViewById(R.id.frame);
-        final ScrollView frame2 = (ScrollView) view.findViewById(R.id.frame2);
+        final FrameLayout frame = (FrameLayout) view.findViewById(R.id.horizontal_scroll_game_field);
+
         textViewSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,28 +60,30 @@ public class GameFieldFragment extends Fragment implements View.OnClickListener,
             }
         });
 
-        ViewTreeObserver vto = containerGameFiled.getViewTreeObserver();
+/*        ViewTreeObserver vto = containerGameFiled.getViewTreeObserver();
 
 
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-            //    containerGameFiled.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                //    containerGameFiled.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 width = containerGameFiled.getMeasuredWidth();
                 height = containerGameFiled.getMeasuredHeight();
 
 
             }
-        });
+        });*/
 
 
         gameHandler = Controller.getInstance().getGameHandler();
 
-        gameFieldAdapter = new GameFieldAdapter(activity, gameHandler);
+        gameFieldAdapter = new GameFieldAdapter(activity, gameHandler, (HorizontalScrollView) view
+                .findViewById(R.id.horizontal_scroll_game_field),
+                (ScrollView) view.findViewById(R.id.vertical_scroll_game_field));
         gameHandler
-                .setPlayer1TexView((TextView) view.findViewById(R.id.tv_field_item));
+                .setPlayer1TextView((TextView) view.findViewById(R.id.tv_field_item));
         gameHandler
-                .setPlayer2TexView((TextView) view.findViewById(R.id.tv_second_player_name));
+                .setPlayer2TextView((TextView) view.findViewById(R.id.tv_second_player_name));
         gameHandler
                 .setPlayer1ScoreTextView((TextView) view.findViewById(R.id.tv_score_player_1));
         gameHandler

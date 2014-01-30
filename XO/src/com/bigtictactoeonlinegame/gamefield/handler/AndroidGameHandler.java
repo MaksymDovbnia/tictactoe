@@ -149,13 +149,13 @@ public class AndroidGameHandler extends GlobalHandler implements IGameHandler {
     }
 
     @Override
-    public void setPlayer1TexView(TextView player1TexView) {
+    public void setPlayer1TextView(TextView player1TexView) {
         this.tvPlayer1Name = player1TexView;
         this.tvPlayer1Name.setText(player.getName());
     }
 
     @Override
-    public void setPlayer2TexView(TextView player2TexView) {
+    public void setPlayer2TextView(TextView player2TexView) {
         this.tvPlayer2Name = player2TexView;
         this.tvPlayer2Name.setText(opponent.getName());
     }

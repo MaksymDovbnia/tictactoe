@@ -28,7 +28,7 @@ public class SettingsActivity extends Activity implements GameFieldActivityActio
         com.entity.Player opponent1 = new Player();
         opponent1.setName("");
         FriendGameHandler friendGameHandler = new FriendGameHandler(player, opponent1, this);
-        gameFieldAdapter = new GameFieldAdapter(this, friendGameHandler);
+
         gridView = (GridView) findViewById(R.id.grid_view_game_field_2);
         gridView.setAdapter(gameFieldAdapter);
 

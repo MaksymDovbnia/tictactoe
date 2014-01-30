@@ -1,26 +1,20 @@
 package com.bigtictactoeonlinegame.gamefield.handler;
 
-import java.util.List;
+import android.os.*;
+import android.widget.*;
 
-import net.protocol.Protocol;
+import com.bigtictactoeonlinegame.*;
+import com.bigtictactoeonlinegame.activity.*;
+import com.bigtictactoeonlinegame.chat.*;
+import com.bigtictactoeonlinegame.gamefield.*;
+import com.entity.*;
+import com.net.online.*;
+import com.net.online.protobuf.*;
+import com.utils.*;
 
-import android.os.Handler;
-import android.os.Message;
-import android.widget.TextView;
+import net.protocol.*;
 
-import com.entity.OneMove;
-import com.entity.Player;
-import com.entity.TypeOfMove;
-import com.bigtictactoeonlinegame.GameType;
-import com.bigtictactoeonlinegame.activity.R;
-import com.bigtictactoeonlinegame.chat.ChatMessage;
-import com.bigtictactoeonlinegame.gamefield.GameFieldActivityAction;
-import com.bigtictactoeonlinegame.gamefield.GameFieldAdapter;
-import com.bigtictactoeonlinegame.gamefield.GameFieldItem;
-import com.bigtictactoeonlinegame.gamefield.OneMoveTimer;
-import com.net.online.WorkerOnlineConnection;
-import com.net.online.protobuf.ProtoType;
-import com.utils.Loger;
+import java.util.*;
 
 public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
     private static final int TIME_FOR_MOVE_IN_SEC = 60;
@@ -53,7 +47,7 @@ public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
 
 
                         gameFieldAdapter.setEnableAllUnusedGameField(true);
-                        gameFieldAdapter.showOneMove(oneMove);
+                        gameFieldAdapter.showOneMove(oneMove, true);
                         List<OneMove> list = gameFieldWinLineHandler.oneMove(oneMove);
                         if (list != null) {
                             wonGame(list);
@@ -152,23 +146,6 @@ public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
     }
 
     @Override
-    protected void wonGame(List<OneMove> list) {
-        if (indicator == FIRST_PLAYER) {
-            player1ScoreNum++;
-            player.setNumOfAllWonGame(player.getNumOfAllWonGame() + 1);
-            tvPlayer1Score.setText(player1ScoreNum + " (" + player.getNumOfAllWonGame() + ")");
-        } else {
-            player2ScoreNum++;
-            opponent.setNumOfAllWonGame(opponent.getNumOfAllWonGame() + 1);
-            tvPlayer2Score.setText(player2ScoreNum + " (" + opponent.getNumOfAllWonGame() + ")");
-        }
-        gameFieldWinLineHandler.newGame();
-        gameFieldAdapter.drawWinLine(list);
-        activityAction.showWonPopup((indicator == FIRST_PLAYER) ? player.getName() : opponent.getName());
-    }
-
-
-    @Override
     public GameFieldItem.FieldType occurredMove(int i, int j) {
         GameFieldItem.FieldType type = null;
         OneMove oneMove = null;
@@ -184,6 +161,23 @@ public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
         changeIndicator();
         gameFieldAdapter.setEnableAllUnusedGameField(false);
         return type;
+    }
+
+
+    @Override
+    protected void wonGame(List<OneMove> list) {
+        if (indicator == FIRST_PLAYER) {
+            player1ScoreNum++;
+            player.setNumOfAllWonGame(player.getNumOfAllWonGame() + 1);
+            tvPlayer1Score.setText(player1ScoreNum + " (" + player.getNumOfAllWonGame() + ")");
+        } else {
+            player2ScoreNum++;
+            opponent.setNumOfAllWonGame(opponent.getNumOfAllWonGame() + 1);
+            tvPlayer2Score.setText(player2ScoreNum + " (" + opponent.getNumOfAllWonGame() + ")");
+        }
+        gameFieldWinLineHandler.newGame();
+        gameFieldAdapter.drawWinLine(list);
+        activityAction.showWonPopup((indicator == FIRST_PLAYER) ? player.getName() : opponent.getName());
     }
 
 
@@ -209,14 +203,14 @@ public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
     }
 
     @Override
-    public void setPlayer1TexView(TextView player1TexView) {
+    public void setPlayer1TextView(TextView player1TexView) {
         this.tvPlayer1Name = player1TexView;
         this.tvPlayer1Name.setText(player.getName());
 
     }
 
     @Override
-    public void setPlayer2TexView(TextView player2TexView) {
+    public void setPlayer2TextView(TextView player2TexView) {
         this.tvPlayer2Name = player2TexView;
         this.tvPlayer2Name.setText(opponent.getName());
     }

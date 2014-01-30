@@ -146,6 +146,7 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
     }
 
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<OneMove> performedOneMove(OneMove oneMove) {
         bluetoothService.sentPacket(BluetoothProtocol.DidMove.newBuilder()
@@ -186,13 +187,13 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
     }
 
     @Override
-    public void setPlayer1TexView(TextView player1TexView) {
+    public void setPlayer1TextView(TextView player1TexView) {
         this.tvPlayer1Name = player1TexView;
         this.tvPlayer1Name.setText(player.getName());
     }
 
     @Override
-    public void setPlayer2TexView(TextView player2TexView) {
+    public void setPlayer2TextView(TextView player2TexView) {
         this.tvPlayer2Name = player2TexView;
         this.tvPlayer2Name.setText(opponent.getName());
     }
@@ -233,6 +234,7 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
         moveTimer.startNewTimer(isPlayerMoveFirst);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void startNewGame() {
         bluetoothService.sentPacket(BluetoothProtocol.ContinueGame
@@ -241,6 +243,7 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
         startCheckingForNewGame();
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void exitFromGame() {
         bluetoothService.sentPacket(

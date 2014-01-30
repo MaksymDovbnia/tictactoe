@@ -71,13 +71,13 @@
     <dimen name="main_activity_layout_center_container_one_item__margin_top">10dp</dimen>
     <dimen name="main_activity_layout_center_container__one_item_button_margin_left">5dp</dimen>
     <!--Chat fragment-->
-    <dimen name="chat_fragment_layout_padding_left">15dp</dimen>
+    <dimen name="chat_fragment_layout_padding_left">20dp</dimen>
     <dimen name="chat_fragment_layout_padding_right">15dp</dimen>
     <dimen name="chat_fragment_layout_padding_top">15dp</dimen>
     <dimen name="chat_fragment_layout_padding_bottom">15dp</dimen>
-    <dimen name="chat_fragment_layout_chat_container_padding_left">40dp</dimen>
+    <dimen name="chat_fragment_layout_chat_container_padding_left">50dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_right">45dp</dimen>
-    <dimen name="chat_fragment_layout_chat_container_padding_top">40dp</dimen>
+    <dimen name="chat_fragment_layout_chat_container_padding_top">50dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_bottom">50dp</dimen>
 
     <dimen name="chat_fragment_layout_text_view_padding_top">5dp</dimen>

@@ -39,13 +39,22 @@ public class OnlineOpenedRoomFragment extends Fragment implements IOnlineOpenedR
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.online_opened_room_fragment, null);
-
-//        for (int i = 1; i <= 50; i++) {
-//            Player player = new Player();
-//            player.setName("player " + i);
-//            mListWantToPlayPlayer.add(player);
-//        }
+        //  generateTestData();
         // create adapter for all list
+        initAdapters(view);
+        Intent intent = getActivity().getIntent();
+        mMyGroupId = intent.getIntExtra(OnlineRoomsActivity.NUMBER_OF_GROUP, -10);
+        mMyPlayer = Controller.getInstance().getPlayer();
+        mWorkerOnlineConnection = Controller.getInstance().getOnlineWorker();
+        if (mWorkerOnlineConnection != null) {
+            mWorkerOnlineConnection.sendPacket(Protocol.SEnterToGroup.newBuilder()
+                    .setGroupId(mMyGroupId).build());
+
+        }
+        return view;
+    }
+
+    private void initAdapters(View view) {
         mAdapterForActivityList = new OnlinePlayersAdapter(getActivity(), mListActivityPlayer);
         mAdapterForWantPlayList = new WantedToPlayAdapter(getActivity(), R.layout.wanted_buttle_list_item,
                 mListWantToPlayPlayer);
@@ -64,16 +73,14 @@ public class OnlineOpenedRoomFragment extends Fragment implements IOnlineOpenedR
                             .build());
             }
         });
-        Intent intent = getActivity().getIntent();
-        mMyGroupId = intent.getIntExtra(OnlineRoomsActivity.NUMBER_OF_GROUP, -10);
-        mMyPlayer = Controller.getInstance().getPlayer();
-        mWorkerOnlineConnection = Controller.getInstance().getOnlineWorker();
-        if (mWorkerOnlineConnection != null) {
-            mWorkerOnlineConnection.sendPacket(Protocol.SEnterToGroup.newBuilder()
-                    .setGroupId(mMyGroupId).build());
+    }
 
+    private void generateTestData() {
+        for (int i = 1; i <= 50; i++) {
+            Player player = new Player();
+            player.setName("player " + i);
+            mListWantToPlayPlayer.add(player);
         }
-        return view;
     }
 
     private void startOnlineGame(Protocol.CStartGame cStartGame) {

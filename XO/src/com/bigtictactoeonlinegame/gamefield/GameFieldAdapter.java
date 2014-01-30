@@ -22,15 +22,19 @@ public class GameFieldAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private boolean isEnableGameField;
     private GameFieldItem lastGameFieldItem;
+    private HorizontalScrollView mHorizontalScrollView;
+    private ScrollView mScrollView;
 
 
-
-    public GameFieldAdapter(Context context, IGameHandler gameFiledSource) {
+    public GameFieldAdapter(Context context, IGameHandler gameFiledSource,
+                            HorizontalScrollView horizontalScrollView, ScrollView scrollView) {
         layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mHorizontalScrollView = horizontalScrollView;
+        mScrollView = scrollView;
         if (context instanceof GameFieldActivityAction)
 
-        this.gameHandler = gameFiledSource;
+            this.gameHandler = gameFiledSource;
     }
 
     @Override
@@ -48,15 +52,15 @@ public class GameFieldAdapter extends BaseAdapter {
         // TODO Auto-generated method stub
         return position;
     }
-    boolean isTouchPresent = false;
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        GameFieldItem  gameFieldItem = (GameFieldItem)convertView;
+        GameFieldItem gameFieldItem = (GameFieldItem) convertView;
         if (gameFieldItem == null) {
-            gameFieldItem = (GameFieldItem)layoutInflater.inflate(R.layout.game_field_item, parent,
-                   false);
+            gameFieldItem = (GameFieldItem) layoutInflater.inflate(R.layout.game_field_item, parent,
+                    false);
 
-            if (fields[position] == null){
+            if (fields[position] == null) {
                 fields[position] = gameFieldItem;
                 int x = 0, y = 0;
                 double d = position / 15.0;
@@ -90,8 +94,8 @@ public class GameFieldAdapter extends BaseAdapter {
                 GameFieldItem field = (GameFieldItem) view;
                 List<GameFieldItem> itemList = new ArrayList<GameFieldItem>();
                 int i = field.getI();
-                int j= field.getJ();
-                for (int z = 0; z <15;z++ ){
+                int j = field.getJ();
+                for (int z = 0; z < 15; z++) {
                     GameFieldItem oneGameFieldItem = fieldsGrid[i][z];
                     if (oneGameFieldItem != null) itemList.add(oneGameFieldItem);
                     GameFieldItem xGameFieldItem = fieldsGrid[z][j];
@@ -102,14 +106,11 @@ public class GameFieldAdapter extends BaseAdapter {
                     for (GameFieldItem item : itemList) {
                         item.setMarkAboutInSight(true);
                     }
-                }
-
-                else if (motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {
+                } else if (motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {
                     for (GameFieldItem item : itemList) {
                         item.setMarkAboutInSight(false);
                     }
-                }
-                else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                } else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
                     for (GameFieldItem item : itemList) {
                         item.setMarkAboutInSight(false);
                     }
@@ -132,6 +133,31 @@ public class GameFieldAdapter extends BaseAdapter {
         lastGameFieldItem = fieldItem;
         fieldItem.setEnabled(false);
     }
+
+    public void showOneMove(OneMove oneMove, boolean isNeedScroll) {
+        showOneMove(oneMove);
+        if (isNeedScroll) {
+            scrollingIfItNecassery(oneMove);
+        }
+    }
+
+    private void scrollingIfItNecassery(OneMove oneMove) {
+        if (oneMove.j < 5) {
+            mHorizontalScrollView.fullScroll(HorizontalScrollView.FOCUS_LEFT);
+        }
+        if (oneMove.j > 10) {
+            mHorizontalScrollView.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+        }
+
+        if (oneMove.i < 5) {
+            mScrollView.fullScroll(ScrollView.FOCUS_UP);
+        }
+        if (oneMove.i > 10) {
+            mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
+        }
+
+    }
+
 
     public void drawWinLine(List<OneMove> listWinField) {
         for (OneMove oneMove : listWinField) {
@@ -158,7 +184,8 @@ public class GameFieldAdapter extends BaseAdapter {
     public void setEnableAllUnusedGameField(boolean isEnable) {
         isEnableGameField = isEnable;
         for (int i = 0; i < fields.length; i++) {
-           if (fields[i] != null && fields[i].getFieldType() == null) fields[i].setEnabled(isEnable);
+            if (fields[i] != null && fields[i].getFieldType() == null)
+                fields[i].setEnabled(isEnable);
         }
 
     }
@@ -179,7 +206,7 @@ public class GameFieldAdapter extends BaseAdapter {
         isEnableGameField = enableGameField;
     }
 
-    private class GameFieldClickListener implements  OnClickListener{
+    private class GameFieldClickListener implements OnClickListener {
         @Override
         public void onClick(View view) {
 

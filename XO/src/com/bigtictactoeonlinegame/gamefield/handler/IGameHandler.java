@@ -1,14 +1,12 @@
 package com.bigtictactoeonlinegame.gamefield.handler;
 
-import java.util.List;
+import android.widget.*;
 
-import android.widget.TextView;
+import com.bigtictactoeonlinegame.*;
+import com.bigtictactoeonlinegame.gamefield.*;
+import com.entity.*;
 
-import com.entity.OneMove;
-import com.bigtictactoeonlinegame.GameType;
-import com.bigtictactoeonlinegame.gamefield.GameFieldActivityAction;
-import com.bigtictactoeonlinegame.gamefield.GameFieldAdapter;
-import com.bigtictactoeonlinegame.gamefield.GameFieldItem;
+import java.util.*;
 
 public interface IGameHandler {
     // public List<Integer> performedOneMove(OneMove performedOneMove);
@@ -24,9 +22,9 @@ public interface IGameHandler {
 
     public void setAdapter(GameFieldAdapter adapter);
 
-    public void setPlayer1TexView(TextView player1TexView);
+    public void setPlayer1TextView(TextView player1TexView);
 
-    public void setPlayer2TexView(TextView player2TexView);
+    public void setPlayer2TextView(TextView player2TexView);
 
     public void setPlayer1ScoreTextView(TextView score1TexView);
 
