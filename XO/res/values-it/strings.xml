@@ -109,4 +109,7 @@
     <string name="player_2">Giocatore 2</string>
     <string name="no_internet_connection">Senza connessione a internet</string>
 
+    <string name="app_need_update_text">Per giocare online è necessario aggiornare il software alla versione più recente</string>
+    <string name="update">Aggiornare</string>
+
 </resources>

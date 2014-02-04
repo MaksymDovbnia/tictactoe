@@ -1,10 +1,8 @@
 package com.net.online.protobuf;
 
-import com.bluetooth.protocol.BluetoothProtocol;
+import net.protocol.*;
 
-import java.util.HashMap;
-
-import net.protocol.Protocol;
+import java.util.*;
 
 public enum ProtoType {
 
@@ -25,9 +23,10 @@ public enum ProtoType {
     TIME_FOR_MOVE_FULL_UP((byte) 0x9B, Protocol.TimeForMoveFullUp.class),
 //    TIME_FOR_MOVE_FULL_UP((byte) 0x9B, 19),
 
+
     //OTHER
     CONNECTION_TO_SERVER_LOST((byte) 0x40, 400),
-
+    APP_NEED_UPDATE_TO_LAST_VERSION((byte) 0x9E, 90),
 
     // TO SERVER
     SGETUPDATE((byte) 0x02, Protocol.SGetUpdate.class), SLOGINTOGAME(

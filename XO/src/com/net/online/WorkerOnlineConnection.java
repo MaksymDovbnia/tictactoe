@@ -1,31 +1,20 @@
 package com.net.online;
 
-import java.io.BufferedInputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-
-import net.protocol.Protocol;
-
-import android.app.ProgressDialog;
-import android.os.Handler;
+import android.app.*;
+import android.os.*;
 import android.os.Message;
 
-import com.config.Config;
-import com.entity.Player;
-import com.google.protobuf.AbstractMessageLite;
-import com.net.online.protobuf.ProtoFactory;
-import com.net.online.protobuf.ProtoType;
-import com.utils.Loger;
+import com.config.*;
+import com.entity.*;
+import com.google.protobuf.*;
+import com.net.online.protobuf.*;
+import com.utils.*;
+
+import net.protocol.*;
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
 
 public class WorkerOnlineConnection extends Thread {
     private Handler handler;
@@ -99,8 +88,11 @@ public class WorkerOnlineConnection extends Thread {
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
             in = new BufferedInputStream(socket.getInputStream());
             dataInputStream = new DataInputStream(in);
-            Protocol.SLoginToGame sLoginToGame = Protocol.SLoginToGame
-                    .newBuilder().setName(player.getName()).setRegistarionType(player.getRegistrationType()).setUuid(player.getUuid()).build();
+            Protocol.SLoginToGame sLoginToGame = Protocol.SLoginToGame.newBuilder()
+                    .setName(player.getName())
+                    .setRegistarionType(player.getRegistrationType())
+                    .setUuid(player.getUuid())
+                    .setAppVersion(Config.APP_VERSION).build();
             sendPacket(sLoginToGame);
             while (isConnecting) {
                 byte b = dataInputStream.readByte();

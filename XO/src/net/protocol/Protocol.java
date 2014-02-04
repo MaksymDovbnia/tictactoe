@@ -449,6 +449,10 @@ public final class Protocol {
     // optional bool isBot = 4;
     boolean hasIsBot();
     boolean getIsBot();
+    
+    // optional float appVersion = 5;
+    boolean hasAppVersion();
+    float getAppVersion();
   }
   public static final class SLoginToGame extends
       com.google.protobuf.GeneratedMessage
@@ -563,11 +567,22 @@ public final class Protocol {
       return isBot_;
     }
     
+    // optional float appVersion = 5;
+    public static final int APPVERSION_FIELD_NUMBER = 5;
+    private float appVersion_;
+    public boolean hasAppVersion() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    public float getAppVersion() {
+      return appVersion_;
+    }
+    
     private void initFields() {
       name_ = "";
       registarionType_ = net.protocol.Protocol.RegistrationType.annonymous;
       uuid_ = "";
       isBot_ = false;
+      appVersion_ = 0F;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -601,6 +616,9 @@ public final class Protocol {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBool(4, isBot_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeFloat(5, appVersion_);
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -625,6 +643,10 @@ public final class Protocol {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(4, isBot_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(5, appVersion_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -758,6 +780,8 @@ public final class Protocol {
         bitField0_ = (bitField0_ & ~0x00000004);
         isBot_ = false;
         bitField0_ = (bitField0_ & ~0x00000008);
+        appVersion_ = 0F;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
       
@@ -812,6 +836,10 @@ public final class Protocol {
           to_bitField0_ |= 0x00000008;
         }
         result.isBot_ = isBot_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.appVersion_ = appVersion_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -839,6 +867,9 @@ public final class Protocol {
         }
         if (other.hasIsBot()) {
           setIsBot(other.getIsBot());
+        }
+        if (other.hasAppVersion()) {
+          setAppVersion(other.getAppVersion());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -903,6 +934,11 @@ public final class Protocol {
             case 32: {
               bitField0_ |= 0x00000008;
               isBot_ = input.readBool();
+              break;
+            }
+            case 45: {
+              bitField0_ |= 0x00000010;
+              appVersion_ = input.readFloat();
               break;
             }
           }
@@ -1024,6 +1060,27 @@ public final class Protocol {
       public Builder clearIsBot() {
         bitField0_ = (bitField0_ & ~0x00000008);
         isBot_ = false;
+        onChanged();
+        return this;
+      }
+      
+      // optional float appVersion = 5;
+      private float appVersion_ ;
+      public boolean hasAppVersion() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      public float getAppVersion() {
+        return appVersion_;
+      }
+      public Builder setAppVersion(float value) {
+        bitField0_ |= 0x00000010;
+        appVersion_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearAppVersion() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        appVersion_ = 0F;
         onChanged();
         return this;
       }
@@ -17147,6 +17204,389 @@ public final class Protocol {
     // @@protoc_insertion_point(class_scope:net.protocol.TimeForMoveFullUp)
   }
   
+  public interface AppNeedUpdateToLastVersionOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required string urlForUpdate = 1;
+    boolean hasUrlForUpdate();
+    String getUrlForUpdate();
+  }
+  public static final class AppNeedUpdateToLastVersion extends
+      com.google.protobuf.GeneratedMessage
+      implements AppNeedUpdateToLastVersionOrBuilder {
+    // Use AppNeedUpdateToLastVersion.newBuilder() to construct.
+    private AppNeedUpdateToLastVersion(Builder builder) {
+      super(builder);
+    }
+    private AppNeedUpdateToLastVersion(boolean noInit) {}
+    
+    private static final AppNeedUpdateToLastVersion defaultInstance;
+    public static AppNeedUpdateToLastVersion getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public AppNeedUpdateToLastVersion getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return net.protocol.Protocol.internal_static_net_protocol_AppNeedUpdateToLastVersion_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return net.protocol.Protocol.internal_static_net_protocol_AppNeedUpdateToLastVersion_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required string urlForUpdate = 1;
+    public static final int URLFORUPDATE_FIELD_NUMBER = 1;
+    private java.lang.Object urlForUpdate_;
+    public boolean hasUrlForUpdate() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public String getUrlForUpdate() {
+      java.lang.Object ref = urlForUpdate_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          urlForUpdate_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getUrlForUpdateBytes() {
+      java.lang.Object ref = urlForUpdate_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        urlForUpdate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    private void initFields() {
+      urlForUpdate_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasUrlForUpdate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getUrlForUpdateBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getUrlForUpdateBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static net.protocol.Protocol.AppNeedUpdateToLastVersion parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static net.protocol.Protocol.AppNeedUpdateToLastVersion parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static net.protocol.Protocol.AppNeedUpdateToLastVersion parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static net.protocol.Protocol.AppNeedUpdateToLastVersion parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static net.protocol.Protocol.AppNeedUpdateToLastVersion parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static net.protocol.Protocol.AppNeedUpdateToLastVersion parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static net.protocol.Protocol.AppNeedUpdateToLastVersion parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static net.protocol.Protocol.AppNeedUpdateToLastVersion parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static net.protocol.Protocol.AppNeedUpdateToLastVersion parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static net.protocol.Protocol.AppNeedUpdateToLastVersion parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(net.protocol.Protocol.AppNeedUpdateToLastVersion prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements net.protocol.Protocol.AppNeedUpdateToLastVersionOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return net.protocol.Protocol.internal_static_net_protocol_AppNeedUpdateToLastVersion_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return net.protocol.Protocol.internal_static_net_protocol_AppNeedUpdateToLastVersion_fieldAccessorTable;
+      }
+      
+      // Construct using net.protocol.Protocol.AppNeedUpdateToLastVersion.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        urlForUpdate_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return net.protocol.Protocol.AppNeedUpdateToLastVersion.getDescriptor();
+      }
+      
+      public net.protocol.Protocol.AppNeedUpdateToLastVersion getDefaultInstanceForType() {
+        return net.protocol.Protocol.AppNeedUpdateToLastVersion.getDefaultInstance();
+      }
+      
+      public net.protocol.Protocol.AppNeedUpdateToLastVersion build() {
+        net.protocol.Protocol.AppNeedUpdateToLastVersion result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private net.protocol.Protocol.AppNeedUpdateToLastVersion buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        net.protocol.Protocol.AppNeedUpdateToLastVersion result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public net.protocol.Protocol.AppNeedUpdateToLastVersion buildPartial() {
+        net.protocol.Protocol.AppNeedUpdateToLastVersion result = new net.protocol.Protocol.AppNeedUpdateToLastVersion(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.urlForUpdate_ = urlForUpdate_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof net.protocol.Protocol.AppNeedUpdateToLastVersion) {
+          return mergeFrom((net.protocol.Protocol.AppNeedUpdateToLastVersion)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(net.protocol.Protocol.AppNeedUpdateToLastVersion other) {
+        if (other == net.protocol.Protocol.AppNeedUpdateToLastVersion.getDefaultInstance()) return this;
+        if (other.hasUrlForUpdate()) {
+          setUrlForUpdate(other.getUrlForUpdate());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasUrlForUpdate()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              urlForUpdate_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required string urlForUpdate = 1;
+      private java.lang.Object urlForUpdate_ = "";
+      public boolean hasUrlForUpdate() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public String getUrlForUpdate() {
+        java.lang.Object ref = urlForUpdate_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          urlForUpdate_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setUrlForUpdate(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        urlForUpdate_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearUrlForUpdate() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        urlForUpdate_ = getDefaultInstance().getUrlForUpdate();
+        onChanged();
+        return this;
+      }
+      void setUrlForUpdate(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
+        urlForUpdate_ = value;
+        onChanged();
+      }
+      
+      // @@protoc_insertion_point(builder_scope:net.protocol.AppNeedUpdateToLastVersion)
+    }
+    
+    static {
+      defaultInstance = new AppNeedUpdateToLastVersion(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:net.protocol.AppNeedUpdateToLastVersion)
+  }
+  
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_net_protocol_SLoginToGame_descriptor;
   private static
@@ -17332,6 +17772,11 @@ public final class Protocol {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_net_protocol_TimeForMoveFullUp_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_net_protocol_AppNeedUpdateToLastVersion_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_net_protocol_AppNeedUpdateToLastVersion_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -17341,76 +17786,78 @@ public final class Protocol {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016Protocol.proto\022\014net.protocol\"r\n\014SLogin" +
-      "ToGame\022\014\n\004name\030\001 \002(\t\0227\n\017registarionType\030" +
-      "\002 \002(\0162\036.net.protocol.RegistrationType\022\014\n" +
-      "\004uuid\030\003 \001(\t\022\r\n\005isBot\030\004 \001(\010\"]\n\014CLoginToGa" +
-      "me\022\017\n\007isLogin\030\002 \002(\010\022\n\n\002id\030\001 \001(\005\0220\n\014login" +
-      "Problem\030\003 \001(\0162\032.net.protocol.LoginProble" +
-      "m\"{\n\031SRegistrationNewXOAccount\022\014\n\004name\030\001" +
-      " \002(\t\022\020\n\010password\030\002 \002(\t\022\r\n\005email\030\003 \002(\t\022\036\n" +
-      "\003sex\030\004 \002(\0162\021.net.protocol.Sex\022\017\n\007country" +
-      "\030\005 \001(\t\"d\n\031CRegistrationNewXOAccount\022\023\n\013i",
-      "sRegistred\030\001 \002(\010\0222\n\007problem\030\002 \001(\0162!.net." +
-      "protocol.RegistrationProblem\")\n\030SForgotX" +
-      "OAccountPassword\022\r\n\005email\030\001 \002(\t\"V\n\030CForg" +
-      "otXOAccountPassword\022:\n\010pesponse\030\001 \002(\0162(." +
-      "net.protocol.ResponseForRestorePassword\"" +
-      "\210\001\n\032CUpdateAboutActivityPlayer\022\'\n\tnewPla" +
-      "yer\030\001 \003(\0132\024.net.protocol.Player\0220\n\nexitP" +
-      "layer\030\002 \003(\0132\034.net.protocol.CExitFromGrou" +
-      "p\022\017\n\007groupId\030\003 \002(\005\")\n\nSGetUpdate\022\n\n\002id\030\001" +
-      " \002(\005\022\017\n\007groupId\030\002 \002(\005\"2\n\006Player\022\014\n\004name\030",
-      "\001 \002(\t\022\n\n\002id\030\002 \002(\005\022\016\n\006rating\030\003 \001(\005\"\033\n\rSGe" +
-      "tGroupList\022\n\n\002id\030\001 \002(\005\"P\n\rCGetGroupList\022" +
-      "\"\n\005group\030\001 \003(\0132\023.net.protocol.Group\022\033\n\023n" +
-      "umAllOnlinePlayers\030\002 \001(\005\"I\n\005Group\022\017\n\007gro" +
-      "upId\030\003 \002(\005\022\030\n\020numOnlinePlayers\030\001 \002(\005\022\025\n\r" +
-      "numOnlineBots\030\002 \001(\005\" \n\rSEnterToGroup\022\017\n\007" +
-      "groupId\030\001 \002(\005\"\'\n\rCEnterToGroup\022\026\n\016isEnte" +
-      "redGroup\030\001 \002(\010\"3\n\013SWantToPlay\022\020\n\010playerI" +
-      "d\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"!\n\013CWantToPl" +
-      "ay\022\022\n\nopponentId\030\001 \002(\005\"9\n\021SCancelDesireP",
-      "lay\022\020\n\010playerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(" +
-      "\005\"\'\n\021CCancelDesirePlay\022\022\n\nopponentId\030\001 \002" +
-      "(\005\"2\n\nSStartGame\022\020\n\010playerId\030\001 \002(\005\022\022\n\nop" +
-      "ponentId\030\002 \002(\005\"}\n\nCStartGame\022\022\n\nopponent" +
-      "Id\030\001 \002(\005\022(\n\010typeMove\030\002 \002(\0162\026.net.protoco" +
-      "l.TypeMove\022\027\n\017numberOfWonGame\030\003 \001(\005\022\030\n\020n" +
-      "umberOfLostGame\030\004 \001(\005\"l\n\010SDidMove\022\020\n\010pla" +
-      "yerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\022\t\n\001i\030\003 \002" +
-      "(\005\022\t\n\001j\030\004 \002(\005\022$\n\004type\030\005 \002(\0162\026.net.protoc" +
-      "ol.TypeMove\"F\n\010CDidMove\022\t\n\001i\030\001 \002(\005\022\t\n\001j\030",
-      "\002 \002(\005\022$\n\004type\030\003 \002(\0162\026.net.protocol.TypeM" +
-      "ove\"5\n\010SWonGame\022\023\n\013idWonPlayer\030\001 \002(\005\022\024\n\014" +
-      "idLostPlayer\030\002 \002(\005\"5\n\rSContinueGame\022\020\n\010p" +
-      "layerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"K\n\rCCo" +
-      "ntinueGame\022\024\n\014continueGame\030\001 \002(\010\022$\n\004type" +
-      "\030\003 \002(\0162\026.net.protocol.TypeMove\"E\n\014SChatM" +
-      "essage\022\020\n\010playerId\030\001 \002(\005\022\022\n\nopponentId\030\002" +
-      " \002(\005\022\017\n\007message\030\003 \002(\t\"\037\n\014CChatMessage\022\017\n" +
-      "\007message\030\001 \002(\t\"G\n\021SGroupChatMessage\022\020\n\010p" +
-      "layerId\030\001 \002(\005\022\017\n\007message\030\002 \002(\t\022\017\n\007groupI",
-      "d\030\003 \002(\005\"6\n\021CGroupChatMessage\022\020\n\010playerId" +
-      "\030\001 \002(\005\022\017\n\007message\030\002 \002(\t\"5\n\rSExitFromGame" +
-      "\022\020\n\010playerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"#" +
-      "\n\rCExitFromGame\022\022\n\nopponentId\030\001 \002(\005\"3\n\016S" +
-      "ExitFromGroup\022\020\n\010playerId\030\001 \002(\005\022\017\n\007group" +
-      "Id\030\002 \002(\005\"\"\n\016CExitFromGroup\022\020\n\010playerId\030\001" +
-      " \002(\005\"\'\n\023SExitFromGlobalGame\022\020\n\010playerId\030" +
-      "\001 \002(\005\"!\n\rSTop100Player\022\020\n\010playerId\030\001 \002(\005" +
-      "\"5\n\rCTop100Player\022$\n\006player\030\001 \003(\0132\024.net." +
-      "protocol.Player\"\'\n\021TimeForMoveFullUp\022\022\n\n",
-      "timeFullUp\030\001 \002(\010*L\n\020RegistrationType\022\016\n\n" +
-      "annonymous\020\001\022\006\n\002xo\020\002\022\n\n\006google\020\003\022\014\n\010face" +
-      "book\020\004\022\006\n\002vk\020\005*@\n\014LoginProblem\022\033\n\027nickOr" +
-      "PasswordUnCorrect\020\001\022\023\n\017accountUnlocked\020\002" +
-      "*<\n\023RegistrationProblem\022\022\n\016emailUnCorrec" +
-      "t\020\001\022\021\n\rnickUnCorrect\020\002*\033\n\003Sex\022\010\n\004male\020\001\022" +
-      "\n\n\006female\020\002*C\n\032ResponseForRestorePasswor" +
-      "d\022\017\n\013sendToEmail\020\001\022\024\n\020emailUnCorrected\020\002" +
-      "*\030\n\010TypeMove\022\005\n\001X\020\001\022\005\n\001O\020\002B\030\n\014net.protoc" +
-      "olB\010Protocol"
+      "\n\016Protocol.proto\022\014net.protocol\"\206\001\n\014SLogi" +
+      "nToGame\022\014\n\004name\030\001 \002(\t\0227\n\017registarionType" +
+      "\030\002 \002(\0162\036.net.protocol.RegistrationType\022\014" +
+      "\n\004uuid\030\003 \001(\t\022\r\n\005isBot\030\004 \001(\010\022\022\n\nappVersio" +
+      "n\030\005 \001(\002\"]\n\014CLoginToGame\022\017\n\007isLogin\030\002 \002(\010" +
+      "\022\n\n\002id\030\001 \001(\005\0220\n\014loginProblem\030\003 \001(\0162\032.net" +
+      ".protocol.LoginProblem\"{\n\031SRegistrationN" +
+      "ewXOAccount\022\014\n\004name\030\001 \002(\t\022\020\n\010password\030\002 " +
+      "\002(\t\022\r\n\005email\030\003 \002(\t\022\036\n\003sex\030\004 \002(\0162\021.net.pr" +
+      "otocol.Sex\022\017\n\007country\030\005 \001(\t\"d\n\031CRegistra",
+      "tionNewXOAccount\022\023\n\013isRegistred\030\001 \002(\010\0222\n" +
+      "\007problem\030\002 \001(\0162!.net.protocol.Registrati" +
+      "onProblem\")\n\030SForgotXOAccountPassword\022\r\n" +
+      "\005email\030\001 \002(\t\"V\n\030CForgotXOAccountPassword" +
+      "\022:\n\010pesponse\030\001 \002(\0162(.net.protocol.Respon" +
+      "seForRestorePassword\"\210\001\n\032CUpdateAboutAct" +
+      "ivityPlayer\022\'\n\tnewPlayer\030\001 \003(\0132\024.net.pro" +
+      "tocol.Player\0220\n\nexitPlayer\030\002 \003(\0132\034.net.p" +
+      "rotocol.CExitFromGroup\022\017\n\007groupId\030\003 \002(\005\"" +
+      ")\n\nSGetUpdate\022\n\n\002id\030\001 \002(\005\022\017\n\007groupId\030\002 \002",
+      "(\005\"2\n\006Player\022\014\n\004name\030\001 \002(\t\022\n\n\002id\030\002 \002(\005\022\016" +
+      "\n\006rating\030\003 \001(\005\"\033\n\rSGetGroupList\022\n\n\002id\030\001 " +
+      "\002(\005\"P\n\rCGetGroupList\022\"\n\005group\030\001 \003(\0132\023.ne" +
+      "t.protocol.Group\022\033\n\023numAllOnlinePlayers\030" +
+      "\002 \001(\005\"I\n\005Group\022\017\n\007groupId\030\003 \002(\005\022\030\n\020numOn" +
+      "linePlayers\030\001 \002(\005\022\025\n\rnumOnlineBots\030\002 \001(\005" +
+      "\" \n\rSEnterToGroup\022\017\n\007groupId\030\001 \002(\005\"\'\n\rCE" +
+      "nterToGroup\022\026\n\016isEnteredGroup\030\001 \002(\010\"3\n\013S" +
+      "WantToPlay\022\020\n\010playerId\030\001 \002(\005\022\022\n\nopponent" +
+      "Id\030\002 \002(\005\"!\n\013CWantToPlay\022\022\n\nopponentId\030\001 ",
+      "\002(\005\"9\n\021SCancelDesirePlay\022\020\n\010playerId\030\001 \002" +
+      "(\005\022\022\n\nopponentId\030\002 \002(\005\"\'\n\021CCancelDesireP" +
+      "lay\022\022\n\nopponentId\030\001 \002(\005\"2\n\nSStartGame\022\020\n" +
+      "\010playerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"}\n\nC" +
+      "StartGame\022\022\n\nopponentId\030\001 \002(\005\022(\n\010typeMov" +
+      "e\030\002 \002(\0162\026.net.protocol.TypeMove\022\027\n\017numbe" +
+      "rOfWonGame\030\003 \001(\005\022\030\n\020numberOfLostGame\030\004 \001" +
+      "(\005\"l\n\010SDidMove\022\020\n\010playerId\030\001 \002(\005\022\022\n\noppo" +
+      "nentId\030\002 \002(\005\022\t\n\001i\030\003 \002(\005\022\t\n\001j\030\004 \002(\005\022$\n\004ty" +
+      "pe\030\005 \002(\0162\026.net.protocol.TypeMove\"F\n\010CDid",
+      "Move\022\t\n\001i\030\001 \002(\005\022\t\n\001j\030\002 \002(\005\022$\n\004type\030\003 \002(\016" +
+      "2\026.net.protocol.TypeMove\"5\n\010SWonGame\022\023\n\013" +
+      "idWonPlayer\030\001 \002(\005\022\024\n\014idLostPlayer\030\002 \002(\005\"" +
+      "5\n\rSContinueGame\022\020\n\010playerId\030\001 \002(\005\022\022\n\nop" +
+      "ponentId\030\002 \002(\005\"K\n\rCContinueGame\022\024\n\014conti" +
+      "nueGame\030\001 \002(\010\022$\n\004type\030\003 \002(\0162\026.net.protoc" +
+      "ol.TypeMove\"E\n\014SChatMessage\022\020\n\010playerId\030" +
+      "\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\022\017\n\007message\030\003 \002" +
+      "(\t\"\037\n\014CChatMessage\022\017\n\007message\030\001 \002(\t\"G\n\021S" +
+      "GroupChatMessage\022\020\n\010playerId\030\001 \002(\005\022\017\n\007me",
+      "ssage\030\002 \002(\t\022\017\n\007groupId\030\003 \002(\005\"6\n\021CGroupCh" +
+      "atMessage\022\020\n\010playerId\030\001 \002(\005\022\017\n\007message\030\002" +
+      " \002(\t\"5\n\rSExitFromGame\022\020\n\010playerId\030\001 \002(\005\022" +
+      "\022\n\nopponentId\030\002 \002(\005\"#\n\rCExitFromGame\022\022\n\n" +
+      "opponentId\030\001 \002(\005\"3\n\016SExitFromGroup\022\020\n\010pl" +
+      "ayerId\030\001 \002(\005\022\017\n\007groupId\030\002 \002(\005\"\"\n\016CExitFr" +
+      "omGroup\022\020\n\010playerId\030\001 \002(\005\"\'\n\023SExitFromGl" +
+      "obalGame\022\020\n\010playerId\030\001 \002(\005\"!\n\rSTop100Pla" +
+      "yer\022\020\n\010playerId\030\001 \002(\005\"5\n\rCTop100Player\022$" +
+      "\n\006player\030\001 \003(\0132\024.net.protocol.Player\"\'\n\021",
+      "TimeForMoveFullUp\022\022\n\ntimeFullUp\030\001 \002(\010\"2\n" +
+      "\032AppNeedUpdateToLastVersion\022\024\n\014urlForUpd" +
+      "ate\030\001 \002(\t*L\n\020RegistrationType\022\016\n\nannonym" +
+      "ous\020\001\022\006\n\002xo\020\002\022\n\n\006google\020\003\022\014\n\010facebook\020\004\022" +
+      "\006\n\002vk\020\005*@\n\014LoginProblem\022\033\n\027nickOrPasswor" +
+      "dUnCorrect\020\001\022\023\n\017accountUnlocked\020\002*<\n\023Reg" +
+      "istrationProblem\022\022\n\016emailUnCorrect\020\001\022\021\n\r" +
+      "nickUnCorrect\020\002*\033\n\003Sex\022\010\n\004male\020\001\022\n\n\006fema" +
+      "le\020\002*C\n\032ResponseForRestorePassword\022\017\n\013se" +
+      "ndToEmail\020\001\022\024\n\020emailUnCorrected\020\002*\030\n\010Typ",
+      "eMove\022\005\n\001X\020\001\022\005\n\001O\020\002B\030\n\014net.protocolB\010Pro" +
+      "tocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -17422,7 +17869,7 @@ public final class Protocol {
           internal_static_net_protocol_SLoginToGame_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_protocol_SLoginToGame_descriptor,
-              new java.lang.String[] { "Name", "RegistarionType", "Uuid", "IsBot", },
+              new java.lang.String[] { "Name", "RegistarionType", "Uuid", "IsBot", "AppVersion", },
               net.protocol.Protocol.SLoginToGame.class,
               net.protocol.Protocol.SLoginToGame.Builder.class);
           internal_static_net_protocol_CLoginToGame_descriptor =
@@ -17713,6 +18160,14 @@ public final class Protocol {
               new java.lang.String[] { "TimeFullUp", },
               net.protocol.Protocol.TimeForMoveFullUp.class,
               net.protocol.Protocol.TimeForMoveFullUp.Builder.class);
+          internal_static_net_protocol_AppNeedUpdateToLastVersion_descriptor =
+            getDescriptor().getMessageTypes().get(37);
+          internal_static_net_protocol_AppNeedUpdateToLastVersion_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_net_protocol_AppNeedUpdateToLastVersion_descriptor,
+              new java.lang.String[] { "UrlForUpdate", },
+              net.protocol.Protocol.AppNeedUpdateToLastVersion.class,
+              net.protocol.Protocol.AppNeedUpdateToLastVersion.Builder.class);
           return null;
         }
       };

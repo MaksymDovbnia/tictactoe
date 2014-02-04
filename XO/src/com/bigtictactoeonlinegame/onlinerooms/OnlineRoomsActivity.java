@@ -5,6 +5,7 @@ import android.os.*;
 import android.support.v4.app.*;
 import android.util.*;
 import android.view.*;
+import android.widget.*;
 
 import com.bigtictactoeonlinegame.*;
 import com.bigtictactoeonlinegame.activity.*;
@@ -35,6 +36,9 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
     private Top100Action mTop100Action;
     private final Player mPlayer = Controller.getInstance().getPlayer();
     private OnlineRoomsFragmentAction mOnlineRoomsFragmentAction;
+    private Button mButtonGroups;
+    private Button mButtonTop100;
+
 
     @Override
     public void getListOfGroup() {
@@ -68,18 +72,21 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
         mOnlineRoomsFragmentAction = (OnlineRoomsFragmentAction) mOnlineGroupsFragment;
         mFragmentTransaction.commit();
         mCurrentTab = TAB.GROUP_LIST;
-        findViewById(R.id.btn_top_100).setOnClickListener(new View.OnClickListener() {
+        mButtonTop100 = (Button) findViewById(R.id.btn_top_100);
+        mButtonTop100.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switchToTab(TAB.TOP_100);
             }
         });
-        findViewById(R.id.btn_online_groups).setOnClickListener(new View.OnClickListener() {
+        mButtonGroups = (Button) findViewById(R.id.btn_online_groups);
+        mButtonGroups.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 switchToTab(TAB.GROUP_LIST);
             }
         });
+        mButtonGroups.setSelected(true);
     }
 
     private void initHandler() {
@@ -121,10 +128,14 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
         mCurrentTab = tab;
         switch (tab) {
             case GROUP_LIST:
+                mButtonGroups.setSelected(true);
+                mButtonTop100.setSelected(false);
                 mFragmentTransaction.hide(mTop100Fragment);
                 mFragmentTransaction.show(mOnlineGroupsFragment);
                 break;
             case TOP_100:
+                mButtonGroups.setSelected(false);
+                mButtonTop100.setSelected(true);
                 mFragmentTransaction.hide(mOnlineGroupsFragment);
                 mFragmentTransaction.show(mTop100Fragment);
                 sendPacketGetTop100List();

@@ -26,6 +26,7 @@ public class GameFieldAdapter extends BaseAdapter {
     private ScrollView mScrollView;
 
 
+
     public GameFieldAdapter(Context context, IGameHandler gameFiledSource,
                             HorizontalScrollView horizontalScrollView, ScrollView scrollView) {
         layoutInflater = (LayoutInflater) context
@@ -35,6 +36,7 @@ public class GameFieldAdapter extends BaseAdapter {
         if (context instanceof GameFieldActivityAction)
 
             this.gameHandler = gameFiledSource;
+
     }
 
     @Override
@@ -45,6 +47,7 @@ public class GameFieldAdapter extends BaseAdapter {
     @Override
     public Object getItem(int position) {
         return fields[position];
+
     }
 
     @Override

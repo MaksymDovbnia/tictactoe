@@ -70,7 +70,7 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
         @Override
         public void receivedNewOneMove(OneMove oneMove) {
             gameFieldAdapter.setEnableAllUnusedGameField(true);
-            gameFieldAdapter.showOneMove(oneMove);
+            gameFieldAdapter.showOneMove(oneMove, true);
             List<OneMove> list = gameFieldWinLineHandler.oneMove(oneMove);
             if (list != null) {
                 wonGame(list);

@@ -1,41 +1,31 @@
 package com.bigtictactoeonlinegame.mainactivity;
 
-import android.app.ProgressDialog;
-import android.bluetooth.BluetoothAdapter;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.telephony.TelephonyManager;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.app.*;
+import android.bluetooth.*;
+import android.content.*;
+import android.content.pm.*;
+import android.net.*;
+import android.os.*;
+import android.telephony.*;
+import android.util.*;
+import android.view.*;
+import android.view.View.*;
+import android.widget.*;
 
-import com.bigtictactoeonlinegame.GameType;
-import com.bigtictactoeonlinegame.bluetoothgame.BluetoothGameActivity;
-import com.bigtictactoeonlinegame.gamefield.GameFieldActivity;
-import com.bigtictactoeonlinegame.onlinerooms.OnlineRoomsActivity;
-import com.bigtictactoeonlinegame.popup.XOAlertDialog;
-import com.config.BundleKeys;
-import com.entity.Player;
-import com.bigtictactoeonlinegame.Controller;
-import com.bigtictactoeonlinegame.activity.R;
-import com.google.android.gms.ads.AdView;
-import com.net.online.WorkerOnlineConnection;
-import com.net.online.protobuf.ProtoType;
-import com.utils.Loger;
-import com.utils.MemoTextWatcher;
+import com.bigtictactoeonlinegame.*;
+import com.bigtictactoeonlinegame.activity.*;
+import com.bigtictactoeonlinegame.bluetoothgame.*;
+import com.bigtictactoeonlinegame.gamefield.*;
+import com.bigtictactoeonlinegame.onlinerooms.*;
+import com.bigtictactoeonlinegame.popup.*;
+import com.config.*;
+import com.entity.*;
+import com.google.android.gms.ads.*;
+import com.net.online.*;
+import com.net.online.protobuf.*;
+import com.utils.*;
 
-import net.protocol.Protocol;
+import net.protocol.*;
 
 public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnClickListener {
 
@@ -59,6 +49,7 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
     private String playerNameFromSharedPrefencesForLoginToGame;
     private String playerNameFromSharedPrefencesForBluetoohToGame;
     private String playerUUID;
+    private String mUrlForUpdate;
 
 
     private Handler handler;
@@ -114,6 +105,13 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
                         if (anonymousLoginPopup != null) anonymousLoginPopup.dismiss();
                         loginToGame();
                         break;
+                    case APP_NEED_UPDATE_TO_LAST_VERSION:
+                        Protocol.AppNeedUpdateToLastVersion appNeedUpdate = (Protocol.AppNeedUpdateToLastVersion) msg.obj;
+                        mUrlForUpdate = appNeedUpdate.getUrlForUpdate();
+                        pd.cancel();
+                        showNeedAppUpdatePopup();
+                        break;
+
                 }
             }
         };
@@ -135,10 +133,41 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
         startActivity(intent);
     }
 
+    private void showNeedAppUpdatePopup() {
+        final XOAlertDialog xoAlertDialog = new XOAlertDialog();
+        anonymousLoginPopup = xoAlertDialog;
+        xoAlertDialog.setContent(R.layout.app_need_update_popup_layout);
+        xoAlertDialog.setContentInitialization(new XOAlertDialog.IContentInitialization() {
+            @Override
+            public void onContentItialization(View view) {
+                Button updateButton = (Button) view.findViewById(R.id.btn_update_game);
+                updateButton.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mUrlForUpdate));
+                        startActivity(browserIntent);
+                    }
+                });
+            }
+        });
+        xoAlertDialog.show(getSupportFragmentManager(), "");
+    }
+
     private void showToastWithText(String s) {
         Toast toast = Toast.makeText(this, s, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
         toast.show();
+    }
+
+    private String getAppVersion() {
+        PackageInfo pInfo = null;
+        try {
+
+            pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return pInfo.versionName;
     }
 
 

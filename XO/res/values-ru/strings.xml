@@ -114,5 +114,9 @@
     <string name="player_1">Игрок 1</string>
     <string name="player_2">Игрок 2</string>
     <string name="no_internet_connection">Нету интернет подключение</string>
+    <string name="app_need_update_text">Для игры онлайн вам нужно обновить вашу програму до
+        последнёй версии
+    </string>
+    <string name="update">Обновить</string>
 
 </resources>

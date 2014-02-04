@@ -118,6 +118,8 @@
     <string name="updating_room_list">Updating room list…</string>
     <string name="updating_rooms_list">Updating rooms list…</string>
     <string name="updating_top_100_list">Updating top 100 list…</string>
+    <string name="app_need_update_text">For online game you need update your app to last version</string>
+    <string name="update">Update</string>
 
 
 

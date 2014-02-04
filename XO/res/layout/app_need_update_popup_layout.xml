@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/anonlogin"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@drawable/dialog_view">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            >
+
+        <com.componentwithfont.TextViewWirhComicsFont
+                android:id="@+id/tv_easy_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_need_update_text"
+                android:background="@drawable/selector_for_text_view"
+                android:textColor="@color/blue"
+                android:layout_gravity="center"
+                android:textSize="@dimen/default_text_size"/>
+
+        <com.componentwithfont.ButtonWithComicsFont
+                android:id="@+id/btn_update_game"
+                android:layout_width="@dimen/popup_button_width"
+                android:layout_height="@dimen/popup_button_height"
+                android:textSize="@dimen/default_text_size"
+                android:layout_gravity="center"
+                android:background="@drawable/selector_default_yelow_button"
+                android:text="@string/update"
+                android:textColor="@color/red"/>
+
+    </LinearLayout>
+
+</FrameLayout>

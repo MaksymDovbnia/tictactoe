@@ -35,21 +35,76 @@
                 android:paddingTop="@dimen/about_activity_padding_top"
                 android:paddingLeft="@dimen/about_activity_padding_left"
                 android:paddingRight="@dimen/about_activity_padding_right"
-
                 >
 
-
-            <TextView
+            <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/blue"
-                    android:textSize="@dimen/about_activity_text_size"
-                    android:text="@string/about_text"
-                    />
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
+                <TextView
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/blue"
+                        android:textSize="@dimen/about_activity_text_size"
+                        android:text="@string/about_text"
+                        />
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                        <ImageView
+                                android:layout_width="@dimen/about_activity_image_size"
+                                android:layout_height="@dimen/about_activity_image_size"
+                                android:src="@drawable/won_line_r"
+                                />
+
+                        <ImageView
+                                android:layout_width="@dimen/about_activity_image_size"
+                                android:layout_height="@dimen/about_activity_image_size"
+                                android:src="@drawable/won_line_l"
+                                android:layout_marginLeft="5dp"
+                                />
+                    </LinearLayout>
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                        <ImageView
+                                android:layout_width="@dimen/about_activity_image_size"
+                                android:layout_height="@dimen/about_activity_image_size"
+                                android:src="@drawable/won_line_h"
+                                />
+
+                        <ImageView
+                                android:layout_width="@dimen/about_activity_image_size"
+                                android:layout_height="@dimen/about_activity_image_size"
+                                android:src="@drawable/won_line_v"
+                                android:layout_marginLeft="5dp"
+                                />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
 
         </ScrollView>
-
 
 
     </LinearLayout>

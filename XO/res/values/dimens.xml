@@ -121,6 +121,7 @@
     <dimen name="about_activity_padding_top">20dp</dimen>
     <dimen name="about_activity_padding_left">30dp</dimen>
     <dimen name="about_activity_padding_right">10dp</dimen>
+    <dimen name="about_activity_image_size">130dp</dimen>
     <dimen name="ad_view_height">50dp</dimen>
     <dimen name="ad_view_width">320dp</dimen>
 

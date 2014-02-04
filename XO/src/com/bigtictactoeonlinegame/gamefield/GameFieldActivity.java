@@ -29,9 +29,9 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
 
     private enum TAB {GAME, CHAT}
 
-    private Button openGroup;
+    private Button mButtonOpenGameField;
     private BlickingButton openChatButton;
-    private Button newGame;
+    private Button mButtonnewGame;
     private TAB cureentTab;
     private GameType gameType;
 
@@ -41,13 +41,14 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
         Intent intent = getIntent();
         gameType = (GameType) intent.getSerializableExtra(BundleKeys.TYPE_OF_GAME);
         setContentView(R.layout.game_fileld_activity_layout);
-        newGame = (Button) findViewById(R.id.btn_game_field_new_game);
-        newGame.setOnClickListener(this);
+        mButtonnewGame = (Button) findViewById(R.id.btn_game_field_new_game);
+        mButtonnewGame.setOnClickListener(this);
         findViewById(R.id.btn_game_field_back).setOnClickListener(this);
-        openGroup = (Button) findViewById(R.id.btn_opened_online_group);
+        mButtonOpenGameField = (Button) findViewById(R.id.btn_opened_online_group);
         openChatButton = (BlickingButton) findViewById(R.id.btn_group_chat);
         openChatButton.setOnClickListener(this);
-        openGroup.setOnClickListener(this);
+        mButtonOpenGameField.setOnClickListener(this);
+        mButtonOpenGameField.setSelected(true);
         String playerName = getString(R.string.player);
         String opponentName = "";
         Player player = new Player();
@@ -63,8 +64,8 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
                             Controller.getInstance().getPlayer(), opponent, this, (typeOfMove == TypeOfMove.X));
                     Controller.getInstance().setGameHandler(onlineGameHandler);
                     onlineGameHandler.setActivityAction(this);
-                    newGame.setEnabled(false);
-                    newGame.setText("");
+                    mButtonnewGame.setEnabled(false);
+                    mButtonnewGame.setText("");
                     break;
                 case FRIEND:
                     if (intent.getStringExtra(FIRST_PLAYER_NAME) != null) {
@@ -221,10 +222,14 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
         cureentTab = tab;
         switch (tab) {
             case GAME:
+                mButtonOpenGameField.setSelected(true);
+                openChatButton.setSelected(false);
                 fragmentTransaction.show(gameFieldFragment);
                 fragmentTransaction.hide(chatFragment);
                 break;
             case CHAT:
+                mButtonOpenGameField.setSelected(false);
+                openChatButton.setSelected(true);
                 fragmentTransaction.show(chatFragment);
                 fragmentTransaction.hide(gameFieldFragment);
                 break;

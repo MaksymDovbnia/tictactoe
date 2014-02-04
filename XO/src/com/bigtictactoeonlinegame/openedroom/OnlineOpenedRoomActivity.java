@@ -117,6 +117,7 @@ public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.
         fragmentTransaction.show(openedGroupFragment);
         fragmentTransaction.commit();
         currentTab = TAB.OPENED_GROUP;
+        openGroup.setSelected(true);
     }
 
     private void switchToFragment(TAB tab) {
@@ -124,10 +125,14 @@ public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         switch (tab) {
             case OPENED_GROUP:
+                openGroup.setSelected(true);
+                openChat.setSelected(false);
                 fragmentTransaction.hide(chatFragment);
                 fragmentTransaction.show(openedGroupFragment);
                 break;
             case CHAT:
+                openGroup.setSelected(false);
+                openChat.setSelected(true);
                 fragmentTransaction.hide(openedGroupFragment);
                 fragmentTransaction.show(chatFragment);
                 break;

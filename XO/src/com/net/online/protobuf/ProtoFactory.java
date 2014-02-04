@@ -1,10 +1,9 @@
 package com.net.online.protobuf;
 
-import net.protocol.Protocol;
+import com.google.protobuf.*;
+import com.utils.*;
 
-import com.google.protobuf.AbstractMessageLite;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.utils.Loger;
+import net.protocol.*;
 
 public class ProtoFactory {
 
@@ -64,6 +63,9 @@ public class ProtoFactory {
             case TIME_FOR_MOVE_FULL_UP:
                 Protocol.TimeForMoveFullUp timeForMoveFullUp = Protocol.TimeForMoveFullUp.parseFrom(data);
                 return timeForMoveFullUp;
+            case APP_NEED_UPDATE_TO_LAST_VERSION:
+                Protocol.AppNeedUpdateToLastVersion appNeedUpdateToLastVersion = Protocol.AppNeedUpdateToLastVersion.parseFrom(data);
+                return appNeedUpdateToLastVersion;
 
             default:
                 Loger.printLog(" Wrong packet BLIADY");

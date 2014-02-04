@@ -108,4 +108,6 @@
     <string name="player_1">Гравець 1</string>
     <string name="player_2">Гравець 2</string>
     <string name="no_internet_connection">Немає інтернет зєднання</string>
+    <string name="app_need_update_text">Для гри онлайн вам потрібно оновити вашу програму до останньої версії</string>
+    <string name="update">Оновити</string>
 </resources>

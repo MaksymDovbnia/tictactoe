@@ -116,6 +116,7 @@
     <dimen name="about_activity_padding_top">40dp</dimen>
     <dimen name="about_activity_padding_left">60dp</dimen>
     <dimen name="about_activity_padding_right">20dp</dimen>
+    <dimen name="about_activity_image_size">300dp</dimen>
 
 
     <dimen name="popup_button_width">200dp</dimen>
