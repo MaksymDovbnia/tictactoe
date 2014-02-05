@@ -55,7 +55,8 @@
     <string name="server_not_available">На жаль, зараз сервер не доступний, спробуйте пізніше
     </string>
     <string name="exit_from_room">Вийти з кімнати</string>
-    <string name="left_the_game">Залишити гру</string>
+    <string name="left_the_game">залишив гру</string>
+    <string name="opponent_exit_from_this_game">Противкик вийшов із гри</string>
     <string name="exit_from_room_question">Вийти з цієї кімнати?</string>
     <string name="exit_from_game_question">Залишити гру?</string>
     <string name="exit_from_this_game_question">Залишити цю гру?</string>

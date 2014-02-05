@@ -3,6 +3,7 @@ package com.bigtictactoeonlinegame;
 import android.content.Context;
 import android.util.AttributeSet;
 
+import com.bigtictactoeonlinegame.activity.*;
 import com.componentwithfont.ButtonWithComicsFont;
 
 
@@ -13,6 +14,9 @@ public class BlickingButton extends ButtonWithComicsFont {
     private boolean isNeedBlick;
     private BlickingTimer blickingTimer;
     private boolean indicator = true;
+    private static final int RES_FOR_BLICK_BUTTON = R.drawable.button_big_for_blicking;
+    private static final int RES_FOR_NORM_BUTTON = R.drawable.general_top_button_selector;
+
 
     public BlickingButton(Context context) {
         super(context);
@@ -44,11 +48,11 @@ public class BlickingButton extends ButtonWithComicsFont {
                 public void run() {
                     if (isNeedBlick) {
                         if (indicator) {
-                            setPressed(true);
+                            setBackgroundResource(RES_FOR_BLICK_BUTTON);
                             indicator = false;
                         } else {
                             indicator = true;
-                            setPressed(false);
+                            setBackgroundResource(RES_FOR_NORM_BUTTON);
                         }
 
                     }
@@ -59,6 +63,7 @@ public class BlickingButton extends ButtonWithComicsFont {
 
 
     public void setNeedingToBlick(boolean isNeed) {
+        setBackgroundResource(RES_FOR_NORM_BUTTON);
         isNeedBlick = isNeed;
 
     }

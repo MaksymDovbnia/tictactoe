@@ -1,23 +1,17 @@
 package com.bigtictactoeonlinegame.openedroom;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import android.content.*;
+import android.view.*;
+import android.view.View.*;
+import android.widget.*;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.TextView;
+import com.bigtictactoeonlinegame.*;
+import com.bigtictactoeonlinegame.activity.*;
+import com.entity.*;
 
-import com.entity.Player;
-import com.bigtictactoeonlinegame.Controller;
-import com.bigtictactoeonlinegame.activity.R;
+import net.protocol.*;
 
-import net.protocol.Protocol;
+import java.util.*;
 
 public class OnlinePlayersAdapter extends BaseAdapter {
     private static final String LOG_TAG = OnlinePlayersAdapter.class.getName();
@@ -120,6 +114,9 @@ public class OnlinePlayersAdapter extends BaseAdapter {
             // Log.d(LOG_TAG,"position "  + position);
             booleanMap.put(position, checkBox.isChecked());
             if (checkBox.isChecked()) {
+                Toast.makeText(context, context.getString(R.string.player)
+                        + " " + player.getName() + " " +
+                        context.getString(R.string.want_to_battle_with_you), Toast.LENGTH_SHORT).show();
                 Controller.getInstance().getOnlineWorker()
                         .sendPacket(Protocol.SWantToPlay.newBuilder()
                                 .setOpponentId(player.getId())

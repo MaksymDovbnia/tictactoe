@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Big Tic Tac Toe online</string>
+    <string name="app_name">Big Tic Tac Toe Online</string>
 
-    <string name="title_activity_second">Big Tic Tac Toe online</string>
+    <string name="title_activity_second">Big Tic Tac Toe Online</string>
 
     <string name="with_android">With android</string>
     <string name="button_gametypes_online">Online</string>
@@ -47,6 +47,8 @@
 
     <string name="exit_from_game">Exit from game</string>
     <string name="exit_from_this_game">Exit from this game</string>
+    <string name="opponent_exit_from_this_game">Opponent exit from game</string>
+
 
     <string name="connection_to_server_lost">Connection to server lost</string>
     <string name="please_try_to_connect_once_more">Please try to connect once more</string>

@@ -6,7 +6,8 @@
           android:state_pressed="true"/>
     <item android:drawable="@drawable/button_big_selected"
           android:state_selected="true"/>
-
+    <item android:drawable="@drawable/button_big_for_blicking"
+          android:state_active="true"/>
     <item android:drawable="@drawable/button_big"
             />
 

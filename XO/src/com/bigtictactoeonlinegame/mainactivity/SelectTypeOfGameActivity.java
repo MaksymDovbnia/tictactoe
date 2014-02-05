@@ -29,7 +29,7 @@ import net.protocol.*;
 
 public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnClickListener {
 
-    private static final String TAG = SelectTypeOfGameActivity.class.getCanonicalName();
+    private static final String LOG_TAG = SelectTypeOfGameActivity.class.getName();
     private static final String KEY_FOR_SHARED_PREFERENCES = SelectTypeOfGameActivity.class.getCanonicalName();
     private static final String FIRST_PLAYER_NAME = "first_player_name";
     private static final String SECOND_PLAYER_NAME = "second_player_name";
@@ -37,12 +37,6 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
     private static final String PLAYER_NAME_FOR_BLUETOOTH_GAME = "player_name_for_bluetooth_game";
     private static final String PLAYER_UUID_FOR_ONLINE_GAME = "player_uuid_for_online_game";
 
-
-    private View friend;
-    private View online;
-    private View android;
-    private View bluetooth;
-    private static final int OFFLINE_GAME_POPUP = 1;
     private SharedPreferences sharedPreferences;
     private String player1NameFromSharedPrefences;
     private String player2NameFromSharedPrefences;
@@ -51,12 +45,10 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
     private String playerUUID;
     private String mUrlForUpdate;
 
-
     private Handler handler;
     private ProgressDialog pd;
     private Player player;
 
-    private EditText loginAnon;
     private WorkerOnlineConnection onlineGameWorker;
     private XOAlertDialog anonymousLoginPopup;
 
@@ -65,13 +57,13 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.type_of_game_activity_layout);
         sharedPreferences = getSharedPreferences(KEY_FOR_SHARED_PREFERENCES, MODE_PRIVATE);
-        friend = findViewById(R.id.btn_two_players);
+        View friend = findViewById(R.id.btn_two_players);
         friend.setOnClickListener(this);
-        online = findViewById(R.id.btn_online);
+        View online = findViewById(R.id.btn_online);
         online.setOnClickListener(this);
-        android = findViewById(R.id.btn_android);
+        View android = findViewById(R.id.btn_android);
         android.setOnClickListener(this);
-        bluetooth = findViewById(R.id.btn_bluetooth);
+        View bluetooth = findViewById(R.id.btn_bluetooth);
         bluetooth.setOnClickListener(this);
         player = new Player();
         createHandler();
@@ -85,6 +77,7 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
 
     private void createHandler() {
         handler = new Handler() {
+            @SuppressWarnings("ConstantConditions")
             @Override
             public void handleMessage(Message msg) {
                 ProtoType protoType = ProtoType.fromInt(msg.what);
@@ -93,7 +86,7 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
                     showToastWithText(getString(R.string.server_not_available));
                     return;
                 }
-                Log.d(TAG, "handler received message" + protoType);
+                Log.d(LOG_TAG, "handler received message" + protoType);
                 switch (protoType) {
                     case CLOGINTOGAME:
                         Protocol.CLoginToGame cLoginToGame = (Protocol.CLoginToGame) msg.obj;
@@ -102,7 +95,9 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
                         Controller.getInstance().setPlayer(player);
                         Loger.printLog("Conected to server with id " + id);
                         pd.cancel();
-                        if (anonymousLoginPopup != null) anonymousLoginPopup.dismiss();
+                        if (anonymousLoginPopup != null) {
+                            anonymousLoginPopup.dismiss();
+                        }
                         loginToGame();
                         break;
                     case APP_NEED_UPDATE_TO_LAST_VERSION:

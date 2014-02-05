@@ -117,6 +117,8 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
                     this.opponent = opponent1;
                     Controller.getInstance().setPlayer(player);
                     Controller.getInstance().setGameHandler(bluetoothGameHandler);
+                    mButtonnewGame.setEnabled(false);
+                    mButtonnewGame.setText("");
                     break;
             }
         }
@@ -167,7 +169,7 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
         if (popup == null || !popup.isAdded()) {
             XOAlertDialog xoAlertDialog = new XOAlertDialog();
             xoAlertDialog.setAlert_type(XOAlertDialog.ALERT_TYPE.ONE_BUTTON);
-            xoAlertDialog.setTile(getResources().getString(R.string.exit_from_this_game));
+            xoAlertDialog.setTile(getResources().getString(R.string.opponent_exit_from_this_game));
             String mainText = opponent.getName() + " " + getString(R.string.left_the_game);
             xoAlertDialog.setMainText(mainText);
             xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.ok));
