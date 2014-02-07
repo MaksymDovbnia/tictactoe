@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="apk" name="BigTicTacToeOnline">
+    <output-path>$PROJECT_DIR$/out/artifacts/BigTicTacToeOnline</output-path>
+    <properties id="android-properties">
+      <options>
+        <option name="keyAlias" value="bigtictactoeonline" />
+        <option name="keyPassword" value="MTk5MTA0MDltYXg=&#13;&#10;" />
+        <option name="keyStorePassword" value="MTk5MTA0MDltYXg=&#13;&#10;" />
+        <option name="keyStoreUrl" value="file://$PROJECT_DIR$/keystore/BigTicTacToeOnline.jks" />
+        <option name="proGuardCfgFileUrl" value="file://$PROJECT_DIR$/XO/proguard-project.txt" />
+        <option name="signingMode" value="RELEASE_SIGNED" />
+      </options>
+    </properties>
+    <root id="archive" name="BigTicTacToeOnline.apk">
+      <element id="android-final-package" facet="BigTicTacToeOnline/android/Android" />
+    </root>
+  </artifact>
+</component>

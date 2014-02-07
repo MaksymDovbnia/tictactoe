@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/XO/libs/android-support-v4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/XO/libs/com.google.protobuf-2.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/XO/libs/xologic.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../adt-bundle-windows-x86_64-20130219/sdk/sources/android-14" />
+      <root url="jar://$PROJECT_DIR$/XO/libs/xologic.jar!/RES" />
+    </SOURCES>
+  </library>
+</component>
