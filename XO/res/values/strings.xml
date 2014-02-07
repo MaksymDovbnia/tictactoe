@@ -52,7 +52,7 @@
 
     <string name="connection_to_server_lost">Connection to server lost</string>
     <string name="please_try_to_connect_once_more">Please try to connect once more</string>
-    <string name="is_won">is won</string>
+    <string name="won">won</string>
     <string name="are_you_want_continue_game">Play more?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>

@@ -6,7 +6,6 @@ import android.content.*;
 import android.content.pm.*;
 import android.net.*;
 import android.os.*;
-import android.telephony.*;
 import android.util.*;
 import android.view.*;
 import android.view.View.*;
@@ -26,6 +25,8 @@ import com.net.online.protobuf.*;
 import com.utils.*;
 
 import net.protocol.*;
+
+import java.util.*;
 
 public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnClickListener {
 
@@ -390,8 +391,7 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
 
 
     private String generateUUID() {
-        TelephonyManager tManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-        String uuid = tManager.getDeviceId();
+        String uuid = UUID.randomUUID().toString();
         return uuid + System.currentTimeMillis();
     }
 }

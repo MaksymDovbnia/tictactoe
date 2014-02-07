@@ -46,7 +46,7 @@
     <string name="exit_from_this_game">Uscire da questo gioco</string>
     <string name="connection_to_server_lost">Connessione al server di perso</string>
     <string name="please_try_to_connect_once_more">Prova a connettersi di nuovo</string>
-    <string name="is_won">è vinto</string>
+    <string name="won">è vinto</string>
     <string name="are_you_want_continue_game">Giocare ancora?</string>
     <string name="yes">Si</string>
     <string name="no">No</string>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="app_name">Xрестики-нулики онлайн</string>
-    <string name="title_activity_second">Xрестики-нулики онлайн</string>
+    <string name="app_name">Xрестики Нулики Онлайн</string>
+    <string name="title_activity_second">Xрестики Нулики Онлайн</string>
     <string name="with_android">З андроїдом</string>
     <string name="button_gametypes_online">Онлайн</string>
     <string name="two_players">2 гравця</string>
@@ -43,7 +43,7 @@
     <string name="connection_to_server_lost">З\'єднання з сервером втрачено</string>
     <string name="please_try_to_connect_once_more">Будь ласка, спробуйте підключитися ще раз
     </string>
-    <string name="is_won">виграв/-ла</string>
+    <string name="won">виграв</string>
     <string name="are_you_want_continue_game">Зіграти ще?</string>
     <string name="yes">Так</string>
     <string name="no">Ні</string>

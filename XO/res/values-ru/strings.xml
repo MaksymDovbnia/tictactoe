@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
-    <string name="app_name">Крестики-нолики онлайн</string>
-    <string name="title_activity_second">Крестики-нолики онлайн</string>
+    <string name="app_name">Крестики Нолики Онлайн</string>
+    <string name="title_activity_second">Крестики Нолики Онлайн</string>
     <string name="with_android">С андроидом</string>
     <string name="button_gametypes_online">Онлайн</string>
     <string name="two_players">2 игрока</string>
@@ -44,7 +44,7 @@
     <string name="connection_to_server_lost">Соединения с сервером утеряно</string>
     <string name="please_try_to_connect_once_more">Пожалуйста, попробуйте подключиться еще раз
     </string>
-    <string name="is_won">выиграл/-ла</string>
+    <string name="won">выиграл</string>
     <string name="are_you_want_continue_game">Сыграть еще?</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>

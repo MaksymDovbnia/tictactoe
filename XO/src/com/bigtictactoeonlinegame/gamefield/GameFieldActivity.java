@@ -136,7 +136,7 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
     @Override
     public void showWonPopup(String wonPlayerName) {
         final XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        xoAlertDialog.setTile(wonPlayerName + " " + getResources().getString(R.string.is_won));
+        xoAlertDialog.setTile(wonPlayerName + " " + getResources().getString(R.string.won));
         xoAlertDialog.setMainText(getResources().getString(R.string.are_you_want_continue_game));
         xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.yes));
         xoAlertDialog.setNegativeButtonText(getResources().getString(R.string.no));
