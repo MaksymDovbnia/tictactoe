@@ -1,33 +1,28 @@
 package com.bigtictactoeonlinegame.bluetoothgame;
 
-import android.app.ProgressDialog;
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
+import android.app.*;
+import android.bluetooth.*;
+import android.content.*;
+import android.os.*;
+import android.util.*;
+import android.view.*;
+import android.widget.*;
 
-import com.bigtictactoeonlinegame.popup.XOAlertDialog;
-import com.bluetooth.IBluetoothGameListener;
-import com.config.BundleKeys;
-import com.bluetooth.BluetoothService;
-import com.bluetooth.BluetoothServiceViaProtobuf;
-import com.entity.OneMove;
-import com.bigtictactoeonlinegame.Controller;
-import com.bigtictactoeonlinegame.GameType;
-import com.bigtictactoeonlinegame.activity.R;
-import com.bigtictactoeonlinegame.gamefield.GameFieldActivity;
+import com.bigtictactoeonlinegame.*;
+import com.bigtictactoeonlinegame.activity.*;
+import com.bigtictactoeonlinegame.gamefield.*;
+import com.bigtictactoeonlinegame.mainactivity.*;
+import com.bigtictactoeonlinegame.popup.*;
+import com.bluetooth.*;
+import com.config.*;
+import com.entity.*;
 
 /**
  * Created by Maksym on 6/20/13.
  *
  * @author Maksym Dovbnia (maksym.dovbnia@gmail.com)
  */
-public class BluetoothGameActivity extends FragmentActivity implements View.OnClickListener {
+public class BluetoothGameActivity extends GoogleAnalyticsActivity implements View.OnClickListener {
     private static final int DISCOVERY_DEVICE = 150;
     private static final int ENABLE_DISCOVERABLE = 4;
     private static final int ENABLE_BT_FOR_CONNECT = 320;

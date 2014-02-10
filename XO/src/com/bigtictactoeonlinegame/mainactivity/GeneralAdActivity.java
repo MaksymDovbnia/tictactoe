@@ -1,19 +1,17 @@
 package com.bigtictactoeonlinegame.mainactivity;
 
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.os.*;
 
-import com.config.Config;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
+import com.config.*;
+import com.google.android.gms.ads.*;
 
 /**
  * Created by Maksym on 12.01.14.
  */
-public abstract class GeneralAdActivity extends FragmentActivity {
+public abstract class GeneralAdActivity extends GoogleAnalyticsActivity{
 
-    private AdView adView;
     public static final String MY_AD_UNIT_ID = "ca-app-pub-8596819956320879/9908452347";
+    private AdView adView;
 
 
     public void onCreate(Bundle savedInstanceState) {

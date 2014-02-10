@@ -11,6 +11,7 @@ import com.bigtictactoeonlinegame.*;
 import com.bigtictactoeonlinegame.activity.*;
 import com.bigtictactoeonlinegame.chat.*;
 import com.bigtictactoeonlinegame.gamefield.handler.*;
+import com.bigtictactoeonlinegame.mainactivity.*;
 import com.bigtictactoeonlinegame.popup.*;
 import com.bluetooth.protocol.*;
 import com.config.*;
@@ -18,7 +19,7 @@ import com.entity.*;
 
 import net.protocol.*;
 
-public class GameFieldActivity extends FragmentActivity implements OnClickListener, GameFieldActivityAction, IChatActionNotification {
+public class GameFieldActivity extends GoogleAnalyticsActivity implements OnClickListener, GameFieldActivityAction, IChatActionNotification {
     public static final String FIRST_PLAYER_NAME = "first_player_name";
     public static final String SECOND_PLAYER_NAME = "second_player_name";
     private static final String OPPONENT_EXIT_FROM_GAME_POPUP_TAG = "opponent_exit_from_game";
@@ -36,7 +37,7 @@ public class GameFieldActivity extends FragmentActivity implements OnClickListen
     private GameType gameType;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         gameType = (GameType) intent.getSerializableExtra(BundleKeys.TYPE_OF_GAME);

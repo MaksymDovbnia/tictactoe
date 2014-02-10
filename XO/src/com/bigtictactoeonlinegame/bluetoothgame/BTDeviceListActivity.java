@@ -27,6 +27,7 @@ import android.widget.*;
 import android.widget.AdapterView.*;
 
 import com.bigtictactoeonlinegame.activity.*;
+import com.bigtictactoeonlinegame.mainactivity.*;
 
 import java.util.*;
 
@@ -36,7 +37,7 @@ import java.util.*;
  * by the user, the MAC address of the device is sent back to the parent
  * Activity in the result Intent.
  */
-public class BTDeviceListActivity extends Activity {
+public class BTDeviceListActivity extends GoogleAnalyticsActivity {
     // Debugging
     private static final String TAG = "BTDeviceListActivity";
     private static final boolean D = true;
@@ -52,7 +53,7 @@ public class BTDeviceListActivity extends Activity {
     private ProgressBar progressBarSearch;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Setup the window
