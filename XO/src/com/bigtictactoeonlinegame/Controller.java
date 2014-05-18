@@ -3,11 +3,11 @@ package com.bigtictactoeonlinegame;
 import com.bigtictactoeonlinegame.gamefield.handler.IGameHandler;
 import com.entity.Player;
 import com.bluetooth.BluetoothService;
-import com.net.online.WorkerOnlineConnection;
+import com.net.online.OnlineConnectionManager;
 
 public class Controller {
 
-	private WorkerOnlineConnection onl;
+	private OnlineConnectionManager onl;
     private BluetoothService bluetoothService;
     private static Controller controller;
 
@@ -37,11 +37,11 @@ public class Controller {
 		gameFiledSource = handler;
 	}
 
-	public  WorkerOnlineConnection getOnlineWorker() {
+	public OnlineConnectionManager getOnlineWorker() {
 		return onl;
 	}
 
-	public  void setOnlineWorker(WorkerOnlineConnection onl) {
+	public  void setOnlineWorker(OnlineConnectionManager onl) {
 		this.onl = onl;
 	}
 

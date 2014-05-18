@@ -9,28 +9,23 @@ public class ProtoFactory {
 
     public static AbstractMessageLite createProtoObject(byte data[],
                                                         ProtoType type) throws InvalidProtocolBufferException {
-        // System.out.println("createHandler for " + type);
+
 
         switch (type) {
             case CUPDATEAOBOUTACTIVITYPLAYER:
                 Protocol.CUpdateAboutActivityPlayer cAboutActivityPlayer = Protocol.CUpdateAboutActivityPlayer
                         .parseFrom(data);
                 return cAboutActivityPlayer;
-
             case CSTARTGAME:
-
                 Protocol.CStartGame cStartGame = Protocol.CStartGame
                         .parseFrom(data);
                 return cStartGame;
-
             case CWANTTOPLAY:
-
                 Protocol.CWantToPlay CWantToPlay = Protocol.CWantToPlay
                         .parseFrom(data);
                 return CWantToPlay;
 
             case CLOGINTOGAME:
-
                 Protocol.CLoginToGame CLoginToGame = Protocol.CLoginToGame
                         .parseFrom(data);
                 return CLoginToGame;
@@ -66,9 +61,8 @@ public class ProtoFactory {
             case APP_NEED_UPDATE_TO_LAST_VERSION:
                 Protocol.AppNeedUpdateToLastVersion appNeedUpdateToLastVersion = Protocol.AppNeedUpdateToLastVersion.parseFrom(data);
                 return appNeedUpdateToLastVersion;
-
             default:
-                Loger.printLog(" Wrong packet BLIADY");
+                Logger.printLog("Wrong packet BLIADY");
                 return null;
 
         }

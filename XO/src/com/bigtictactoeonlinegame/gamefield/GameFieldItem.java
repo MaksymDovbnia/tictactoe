@@ -1,13 +1,13 @@
 package com.bigtictactoeonlinegame.gamefield;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.util.AttributeSet;
-import android.widget.ImageView;
+import android.content.*;
+import android.graphics.*;
+import android.util.*;
+import android.widget.*;
 
-import com.bigtictactoeonlinegame.activity.R;
+import com.bigtictactoeonlinegame.activity.*;
+
+import java.util.*;
 
 /**
  * Created by Maksym on 10/6/13.
@@ -22,7 +22,7 @@ public class GameFieldItem extends ImageView {
     static Bitmap scaledBitmapX;
     static Bitmap scaledBitmapO;
     static Bitmap bitmapSight;
-
+    private static List<Bitmap> bitmapsForXAnimation;
 
     private boolean isLastMove = false;
     private boolean isInSight = false;
@@ -117,6 +117,8 @@ public class GameFieldItem extends ImageView {
     protected void onDraw(Canvas canvas) {
 
         //i am svetlana garkusha and i am happy to pass my free time with maksym dovbnia because he is my little and bad boy
+        int width = getLayoutParams().width;
+        int height = getLayoutParams().height;
 
         if (bitmapMainBackGround == null)
             bitmapMainBackGround = Bitmap.createScaledBitmap(bitmap_main_backgroud,
@@ -126,6 +128,10 @@ public class GameFieldItem extends ImageView {
 
 
         if (fieldType != null) {
+            if (fieldType == FieldType.X && drawXWithAnimation(height, width, canvas)) {
+                return;
+
+            }
             if (scaledBitmapX == null)
                 scaledBitmapX = Bitmap.createScaledBitmap(bitmap_x, getLayoutParams().width,
                         getLayoutParams().height, true);
@@ -136,6 +142,7 @@ public class GameFieldItem extends ImageView {
 
             canvas.drawBitmap(fieldType == FieldType.X ? scaledBitmapX : scaledBitmapO, 0, 0, null);
         }
+
 
         if (isLastMove && !isInSight) {
             if (bitmapLastMove == null) bitmapLastMove = Bitmap.createScaledBitmap(
@@ -182,6 +189,31 @@ public class GameFieldItem extends ImageView {
         }
 
 
+    }
+
+    private boolean drawXWithAnimation(int heiht, int width, Canvas canvas) {
+        if (bitmapsForXAnimation == null) {
+            bitmapsForXAnimation = new ArrayList<Bitmap>();
+            Bitmap x4 = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
+                    R.drawable.x_4), getLayoutParams().width,
+                    getLayoutParams().height, true);
+            bitmapsForXAnimation.add(x4);
+            Bitmap x3 = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
+                    R.drawable.x_3), getLayoutParams().width,
+                    getLayoutParams().height, true);
+            bitmapsForXAnimation.add(x3);
+            Bitmap x2 = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
+                    R.drawable.x_2), getLayoutParams().width,
+                    getLayoutParams().height, true);
+            bitmapsForXAnimation.add(x2);
+            Bitmap x1 = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
+                    R.drawable.x_1), getLayoutParams().width,
+                    getLayoutParams().height, true);
+            bitmapsForXAnimation.add(x2);
+        }
+
+
+        return false;
     }
 
 

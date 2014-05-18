@@ -114,9 +114,7 @@ public class OnlinePlayersAdapter extends BaseAdapter {
             // Log.d(LOG_TAG,"position "  + position);
             booleanMap.put(position, checkBox.isChecked());
             if (checkBox.isChecked()) {
-                Toast.makeText(context, context.getString(R.string.player)
-                        + " " + player.getName() + " " +
-                        context.getString(R.string.want_to_battle_with_you), Toast.LENGTH_SHORT).show();
+
                 Controller.getInstance().getOnlineWorker()
                         .sendPacket(Protocol.SWantToPlay.newBuilder()
                                 .setOpponentId(player.getId())

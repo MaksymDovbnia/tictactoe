@@ -30,7 +30,7 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
     public static final String NUMBER_OF_GROUP = "NUMBER_OF_GROUP";
     private static final String LOG_TAG = OnlineRoomsActivity.class.getCanonicalName();
     private Handler mHandler;
-    private WorkerOnlineConnection mConnectionGameWorker;
+    private OnlineConnectionManager mOnlineConnectionManager;
     private Fragment mOnlineGroupsFragment, mTop100Fragment;
     private FragmentTransaction mFragmentTransaction;
     private Top100Action mTop100Action;
@@ -43,7 +43,7 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
     @Override
     public void getListOfGroup() {
         Protocol.SGetGroupList sGetGroupList = Protocol.SGetGroupList.newBuilder().setId(mPlayer.getId()).build();
-        mConnectionGameWorker.sendPacket(sGetGroupList);
+        mOnlineConnectionManager.sendPacket(sGetGroupList);
         Log.d(LOG_TAG, "sent packet " + sGetGroupList);
     }
 
@@ -58,7 +58,7 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
         setContentView(R.layout.online_rooms_activity_layout);
         initViews();
         initHandler();
-        mConnectionGameWorker = Controller.getInstance().getOnlineWorker();
+        mOnlineConnectionManager = Controller.getInstance().getOnlineWorker();
     }
 
     private void initViews() {
@@ -145,7 +145,7 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
     }
 
     private void sendPacketGetTop100List() {
-        mConnectionGameWorker
+        mOnlineConnectionManager
                 .sendPacket(Protocol
                         .STop100Player
                         .newBuilder()
@@ -176,11 +176,11 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
     @Override
     public void onResume() {
         super.onResume();
-        if (!mConnectionGameWorker.isSockedInLive()) {
+        if (!mOnlineConnectionManager.isSockedInLive()) {
             finish();
         }
-        mConnectionGameWorker.registerHandler(mHandler);
-        if (mConnectionGameWorker != null) {
+        mOnlineConnectionManager.registerHandler(mHandler);
+        if (mOnlineConnectionManager != null) {
             getListOfGroup();
         }
     }
@@ -188,8 +188,8 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
     @Override
     protected void onPause() {
         super.onPause();
-        if (mConnectionGameWorker != null) {
-            mConnectionGameWorker.unRegisterHandler(mHandler);
+        if (mOnlineConnectionManager != null) {
+            mOnlineConnectionManager.unRegisterHandler(mHandler);
         }
     }
 
@@ -211,10 +211,10 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
 
     @Override
     protected void onDestroy() {
-        if (mConnectionGameWorker == null) return;
-        mConnectionGameWorker.sendPacket(Protocol.SExitFromGlobalGame.newBuilder().setPlayerId(mPlayer.getId()).build());
-        mConnectionGameWorker.unRegisterHandler(mHandler);
-        mConnectionGameWorker.disconnect();
+        if (mOnlineConnectionManager == null) return;
+        mOnlineConnectionManager.sendPacket(Protocol.SExitFromGlobalGame.newBuilder().setPlayerId(mPlayer.getId()).build());
+        mOnlineConnectionManager.unRegisterHandler(mHandler);
+        mOnlineConnectionManager.stopManager();
         super.onDestroy();
     }
 }

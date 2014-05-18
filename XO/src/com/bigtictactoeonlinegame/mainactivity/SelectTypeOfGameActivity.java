@@ -50,7 +50,7 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
     private ProgressDialog pd;
     private Player player;
 
-    private WorkerOnlineConnection onlineGameWorker;
+    private OnlineConnectionManager onlineGameWorker;
     private XOAlertDialog anonymousLoginPopup;
 
     @Override
@@ -94,7 +94,7 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
                         int id = cLoginToGame.getId();
                         player.setId(id);
                         Controller.getInstance().setPlayer(player);
-                        Loger.printLog("Conected to server with id " + id);
+                        Logger.printLog("Conected to server with id " + id);
                         pd.cancel();
                         if (anonymousLoginPopup != null) {
                             anonymousLoginPopup.dismiss();
@@ -271,7 +271,7 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
                         if (activeNetwork != null && activeNetwork.isConnected()) {
                             player.setName(playerName);
                             player.setRegistrationType(Protocol.RegistrationType.xo);
-                            onlineGameWorker = new WorkerOnlineConnection(handler,
+                            onlineGameWorker = new OnlineConnectionManager(handler,
                                     player, pd);
                             Controller.getInstance().setOnlineWorker(onlineGameWorker);
                             onlineGameWorker.start();

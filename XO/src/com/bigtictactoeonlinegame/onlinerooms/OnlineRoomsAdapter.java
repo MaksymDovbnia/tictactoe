@@ -68,7 +68,7 @@ public class OnlineRoomsAdapter extends BaseAdapter {
                 Intent intent = new Intent(mContext, OnlineOpenedRoomActivity.class);
                 intent.putExtra(OnlineRoomsFragment.NUMBER_OF_GROUP, mIdLast);
                 mContext.startActivity(intent);
-                Loger.printLog("CLICK " + mIdLast);
+                Logger.printLog("CLICK " + mIdLast);
 
 
             }

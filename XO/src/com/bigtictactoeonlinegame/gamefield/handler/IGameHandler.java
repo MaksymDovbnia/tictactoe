@@ -9,7 +9,7 @@ import com.entity.*;
 import java.util.*;
 
 public interface IGameHandler {
-    // public List<Integer> performedOneMove(OneMove performedOneMove);
+
     public void sendMessage(String message);
 
     public GameType getGameType();

@@ -52,6 +52,7 @@ public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.
         setGroupFragment();
         initFragment();
         initHandler();
+        getLastCustomNonConfigurationInstance();
     }
 
     @Override
@@ -178,20 +179,9 @@ public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.
         if (currentTab == TAB.CHAT) {
             switchToFragment(TAB.OPENED_GROUP);
         } else {
-            XOAlertDialog xoAlertDialog = new XOAlertDialog();
-            xoAlertDialog.setTile(getResources().getString(R.string.exit_from_room));
-            xoAlertDialog.setMainText(getResources().getString(R.string.exit_from_room_question));
-            xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.yes));
-            xoAlertDialog.setNegativeButtonText((getResources().getString(R.string.no)));
-            xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    Controller.getInstance().getOnlineWorker().
-                            sendPacket(Protocol.SExitFromGroup.newBuilder().setPlayerId(Controller.getInstance().getPlayer().getId()).setGroupId(Controller.getInstance().getPlayer().getGroupId()).build());
-                    finish();
-                }
-            });
-            xoAlertDialog.show(getSupportFragmentManager(), "");
+            Controller.getInstance().getOnlineWorker().
+                    sendPacket(Protocol.SExitFromGroup.newBuilder().setPlayerId(Controller.getInstance().getPlayer().getId()).setGroupId(Controller.getInstance().getPlayer().getGroupId()).build());
+            finish();
         }
     }
 

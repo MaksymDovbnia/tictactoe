@@ -19,11 +19,11 @@ import java.util.*;
 public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
     private static final int TIME_FOR_MOVE_IN_SEC = 60;
     private Handler handler;
-    private WorkerOnlineConnection onlineGameWorker;
+    private OnlineConnectionManager onlineGameWorker;
     private boolean isPlayerMoveFirst;
     private OneMoveTimer moveTimer;
 
-    public OnlineGameHandler(final WorkerOnlineConnection onlineGameWorker,
+    public OnlineGameHandler(final OnlineConnectionManager onlineGameWorker,
                              Player player, final Player opponent,
                              GameFieldActivityAction fieldActivityAction, final boolean isPlayerMoveFirst) {
         super(player, opponent, fieldActivityAction);
@@ -38,7 +38,7 @@ public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
                 switch (protoType) {
                     case CDIDMOVE:
                         Protocol.CDidMove cDidMove = (Protocol.CDidMove) msg.obj;
-                        Loger.printLog(cDidMove.toString());
+                        Logger.printLog(cDidMove.toString());
                         TypeOfMove typeFieldElement = (cDidMove.getType()
                                 .equals(Protocol.TypeMove.X) ? TypeOfMove.X
                                 : TypeOfMove.O);
@@ -88,7 +88,7 @@ public class OnlineGameHandler extends GlobalHandler implements IGameHandler {
                         activityAction.connectionToServerLost();
                         break;
                     case TIME_FOR_MOVE_FULL_UP:
-                        Loger.printEror("received TIME_FOR_MOVE_FULL_UP");
+                        Logger.printError("received TIME_FOR_MOVE_FULL_UP");
                         gameFieldAdapter.setEnableAllUnusedGameField(true);
                         changeIndicator();
                         moveTimer.startNewTimer(true);

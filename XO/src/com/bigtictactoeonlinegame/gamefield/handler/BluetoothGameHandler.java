@@ -23,20 +23,20 @@ import java.util.List;
  */
 public class BluetoothGameHandler extends GlobalHandler implements IGameHandler {
     private static final int TIME_FOR_MOVE_IN_SEC = 60;
-    private BluetoothService bluetoothService;
-    private boolean isPlayerMoveFirst;
-    private boolean isPlayerWantToContinue = false;
-    private boolean isOpponentWantToContinue = false;
-    private OneMoveTimer moveTimer;
+    private BluetoothService mBluetoothService;
+    private boolean mIsPlayerMoveFirst;
+    private boolean mIsPlayerWantToContinue = false;
+    private boolean mIsOpponentWantToContinue = false;
+    private OneMoveTimer mMoveTimer;
 
 
     public BluetoothGameHandler(Player player, Player opponent, GameFieldActivityAction activityAction,
                                 BluetoothService bluetoothService1, final boolean isPlayerMoveFirst) {
         super(player, opponent, activityAction);
-        bluetoothService = bluetoothService1;
-        bluetoothService.registerListener(iBluetoothGameListener);
-        this.isPlayerMoveFirst = isPlayerMoveFirst;
-        moveTimer = new OneMoveTimer(TIME_FOR_MOVE_IN_SEC, timerListener);
+        mBluetoothService = bluetoothService1;
+        mBluetoothService.registerListener(iBluetoothGameListener);
+        mIsPlayerMoveFirst = isPlayerMoveFirst;
+        mMoveTimer = new OneMoveTimer(TIME_FOR_MOVE_IN_SEC, timerListener);
 
 
     }
@@ -50,14 +50,14 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
 
         @Override
         public void timeFinished() {
-            if (bluetoothService != null) {
-                bluetoothService.sentPacket(BluetoothProtocol.TimeForMoveFullUp.
+            if (mBluetoothService != null) {
+                mBluetoothService.sentPacket(BluetoothProtocol.TimeForMoveFullUp.
                         newBuilder().setTimeFullUp(true).build());
             }
             gameFieldAdapter.setEnableAllUnusedGameField(false);
             changeIndicator();
 
-            moveTimer.startNewTimer(false);
+            mMoveTimer.startNewTimer(false);
         }
     };
 
@@ -75,7 +75,7 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
             if (list != null) {
                 wonGame(list);
             } else {
-                moveTimer.startNewTimer(true);
+                mMoveTimer.startNewTimer(true);
             }
             changeIndicator();
         }
@@ -92,7 +92,7 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
 
         @Override
         public void continueGame() {
-            isOpponentWantToContinue = true;
+            mIsOpponentWantToContinue = true;
             startCheckingForNewGame();
 
         }
@@ -106,18 +106,19 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
         public void opponentsTimeFinished() {
             gameFieldAdapter.setEnableAllUnusedGameField(true);
             changeIndicator();
-            moveTimer.startNewTimer(true);
+            mMoveTimer.startNewTimer(true);
         }
     };
 
     private void startCheckingForNewGame() {
-        if (isOpponentWantToContinue && isPlayerWantToContinue) {
-            isOpponentWantToContinue = false;
-            isPlayerWantToContinue = false;
+        if (mIsOpponentWantToContinue && mIsPlayerWantToContinue) {
+            mIsOpponentWantToContinue = false;
+            mIsPlayerWantToContinue = false;
             gameFieldAdapter.startNewGame();
             gameFieldWinLineHandler.newGame();
             if (player.getMoveType() == TypeOfMove.X) {
-                moveTimer.startNewTimer(false);
+                gameFieldAdapter.setEnableAllUnusedGameField(false);
+                mMoveTimer.startNewTimer(false);
                 player.setMoveType(TypeOfMove.O);
                 opponent.setMoveType(TypeOfMove.X);
                 indicator = SECOND_PLAYER;
@@ -125,7 +126,7 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
                 tvPlayer1Name.setBackgroundResource(R.drawable.button_white);
             } else {
                 gameFieldAdapter.setEnableAllUnusedGameField(true);
-                moveTimer.startNewTimer(true);
+                mMoveTimer.startNewTimer(true);
                 player.setMoveType(TypeOfMove.X);
                 opponent.setMoveType(TypeOfMove.O);
                 indicator = FIRST_PLAYER;
@@ -137,7 +138,7 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
 
     @Override
     public void sendMessage(String message) {
-        bluetoothService.sentPacket(BluetoothProtocol.ChatMessage.newBuilder().setMessage(message).build());
+        mBluetoothService.sentPacket(BluetoothProtocol.ChatMessage.newBuilder().setMessage(message).build());
     }
 
     @Override
@@ -149,7 +150,7 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
     @SuppressWarnings("unchecked")
     @Override
     public List<OneMove> performedOneMove(OneMove oneMove) {
-        bluetoothService.sentPacket(BluetoothProtocol.DidMove.newBuilder()
+        mBluetoothService.sentPacket(BluetoothProtocol.DidMove.newBuilder()
                 .setI(oneMove.i)
                 .setJ(oneMove.j)
                 .setType((oneMove.type.equals(TypeOfMove.X)) ?
@@ -158,7 +159,7 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
         if (list != null) {
             wonGame(list);
         } else {
-            moveTimer.startNewTimer(false);
+            mMoveTimer.startNewTimer(false);
         }
         return list;
     }
@@ -217,8 +218,8 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
 
     @Override
     public void initIndicator() {
-        if (!isPlayerMoveFirst) {
-            gameFieldAdapter.setEnableAllUnusedGameField(isPlayerMoveFirst);
+        if (!mIsPlayerMoveFirst) {
+            gameFieldAdapter.setEnableAllUnusedGameField(mIsPlayerMoveFirst);
             player.setMoveType(TypeOfMove.O);
             opponent.setMoveType(TypeOfMove.X);
             indicator = SECOND_PLAYER;
@@ -231,22 +232,22 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
             player.setMoveType(TypeOfMove.X);
             opponent.setMoveType(TypeOfMove.O);
         }
-        moveTimer.startNewTimer(isPlayerMoveFirst);
+        mMoveTimer.startNewTimer(mIsPlayerMoveFirst);
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public void startNewGame() {
-        bluetoothService.sentPacket(BluetoothProtocol.ContinueGame
+        mBluetoothService.sentPacket(BluetoothProtocol.ContinueGame
                 .newBuilder().setContinueGame(true).build());
-        isPlayerWantToContinue = true;
+        mIsPlayerWantToContinue = true;
         startCheckingForNewGame();
     }
 
     @SuppressWarnings("unchecked")
     @Override
     public void exitFromGame() {
-        bluetoothService.sentPacket(
+        mBluetoothService.sentPacket(
                 BluetoothProtocol.ExitFromGame.newBuilder().setOpponentId(1).build());
     }
 
@@ -256,7 +257,7 @@ public class BluetoothGameHandler extends GlobalHandler implements IGameHandler 
 
     @Override
     public void unregisterHandler() {
-        bluetoothService.unRegisterListener();
-        moveTimer.unRegisterListenerAndFinish();
+        mBluetoothService.unRegisterListener();
+        mMoveTimer.unRegisterListenerAndFinish();
     }
 }

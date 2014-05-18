@@ -3,7 +3,7 @@ package com.bluetooth.protobuf;
 import com.google.protobuf.AbstractMessageLite;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.bluetooth.protocol.BluetoothProtocol;
-import com.utils.Loger;
+import com.utils.Logger;
 
 
 public class BluetoothProtoFactory {
@@ -20,7 +20,7 @@ public class BluetoothProtoFactory {
                 BluetoothProtocol.ChatMessage chatMessage = BluetoothProtocol.ChatMessage.parseFrom(data);
                 return chatMessage;
             default:
-                Loger.printLog(" Wrong packet in bluetooth");
+                Logger.printLog(" Wrong packet in bluetooth");
                 return null;
 
         }

@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.entity.OneMove;
 import com.entity.TypeOfMove;
-import com.utils.Loger;
+import com.utils.Logger;
 
 public class GameFieldWinLineHandler {
     int[][] array = new int[15][15];
@@ -25,7 +25,7 @@ public class GameFieldWinLineHandler {
         if (i > array.length - 1 || j > array.length - 1 || i < 0 || j < 0)
             return 100;
         else {
-            // Loger.printLog("get VAlue " +" " +i + " " +j+ " " +array[i][j]);
+            // Logger.printLog("get VAlue " +" " +i + " " +j+ " " +array[i][j]);
             return array[i][j];
 
         }
@@ -33,7 +33,7 @@ public class GameFieldWinLineHandler {
 
     public List<OneMove> oneMove(OneMove oneMove) {
         setValue(oneMove);
-        Loger.printLog("one move" + oneMove.i + " " + oneMove.j + " "
+        Logger.printLog("one move" + oneMove.i + " " + oneMove.j + " "
                 + oneMove.type);
         return searchWinLine(oneMove);
     }
@@ -64,7 +64,7 @@ public class GameFieldWinLineHandler {
             }
             oneMove.typeLine = LineType.LEFT;
             outList.add(oneMove);
-            Loger.printLog("size /| " + outList.size());
+            Logger.printLog("size /| " + outList.size());
             if (outList.size() >= 5) {
                 return outList;
             } else
@@ -85,7 +85,7 @@ public class GameFieldWinLineHandler {
             }
             oneMove.typeLine = LineType.VERTICAL;
             outList.add(oneMove);
-            Loger.printLog("size | " + outList.size());
+            Logger.printLog("size | " + outList.size());
             if (outList.size() >= 5) {
                 return outList;
             } else
@@ -106,7 +106,7 @@ public class GameFieldWinLineHandler {
             }
             oneMove.typeLine = LineType.RIGHT;
             outList.add(oneMove);
-            Loger.printLog("size /" + outList.size());
+            Logger.printLog("size /" + outList.size());
             if (outList.size() >= 5) {
                 return outList;
             } else
@@ -127,7 +127,7 @@ public class GameFieldWinLineHandler {
             }
             oneMove.typeLine = LineType.HORIZONTAL;
             outList.add(oneMove);
-            Loger.printLog("size  - " + outList.size());
+            Logger.printLog("size  - " + outList.size());
             if (outList.size() >= 5) {
                 return outList;
             } else

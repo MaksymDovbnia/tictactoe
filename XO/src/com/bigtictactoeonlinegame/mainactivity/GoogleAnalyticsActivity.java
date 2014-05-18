@@ -8,7 +8,7 @@ import com.google.analytics.tracking.android.*;
 /**
  * Created by Maksym on 10.02.14.
  */
-public class GoogleAnalyticsActivity extends FragmentActivity {
+public abstract class GoogleAnalyticsActivity extends FragmentActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }

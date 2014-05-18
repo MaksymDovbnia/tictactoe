@@ -30,7 +30,7 @@ public class OnlineOpenedRoomFragment extends Fragment implements IOnlineOpenedR
     private List<Player> mListWantToPlayPlayer = new ArrayList<Player>();
     private OnlinePlayersAdapter mAdapterForActivityList;
     private ArrayAdapter mAdapterForWantPlayList;
-    private WorkerOnlineConnection mWorkerOnlineConnection;
+    private OnlineConnectionManager mOnlineConnectionManager;
     private Player mMyPlayer;
     private int mMyGroupId;
 
@@ -45,9 +45,9 @@ public class OnlineOpenedRoomFragment extends Fragment implements IOnlineOpenedR
         Intent intent = getActivity().getIntent();
         mMyGroupId = intent.getIntExtra(OnlineRoomsActivity.NUMBER_OF_GROUP, -10);
         mMyPlayer = Controller.getInstance().getPlayer();
-        mWorkerOnlineConnection = Controller.getInstance().getOnlineWorker();
-        if (mWorkerOnlineConnection != null) {
-            mWorkerOnlineConnection.sendPacket(Protocol.SEnterToGroup.newBuilder()
+        mOnlineConnectionManager = Controller.getInstance().getOnlineWorker();
+        if (mOnlineConnectionManager != null) {
+            mOnlineConnectionManager.sendPacket(Protocol.SEnterToGroup.newBuilder()
                     .setGroupId(mMyGroupId).build());
 
         }
@@ -68,7 +68,7 @@ public class OnlineOpenedRoomFragment extends Fragment implements IOnlineOpenedR
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Player p = mListWantToPlayPlayer.get(i);
                 if (p != null)
-                    mWorkerOnlineConnection.sendPacket(Protocol.SWantToPlay.newBuilder()
+                    mOnlineConnectionManager.sendPacket(Protocol.SWantToPlay.newBuilder()
                             .setOpponentId(p.getId()).setPlayerId(mMyPlayer.getId())
                             .build());
             }
@@ -111,8 +111,8 @@ public class OnlineOpenedRoomFragment extends Fragment implements IOnlineOpenedR
     @Override
     public void onResume() {
         super.onResume();
-        if (mWorkerOnlineConnection != null) {
-            mWorkerOnlineConnection.sendPacket(Protocol.SGetUpdate.newBuilder()
+        if (mOnlineConnectionManager != null) {
+            mOnlineConnectionManager.sendPacket(Protocol.SGetUpdate.newBuilder()
                     .setId(Controller.getInstance().getPlayer().getId()).setGroupId(mMyGroupId).build());
         }
     }
@@ -131,14 +131,14 @@ public class OnlineOpenedRoomFragment extends Fragment implements IOnlineOpenedR
                 (Protocol.CUpdateAboutActivityPlayer) msg.obj;
         for (Protocol.Player player : cActivityPlayer
                 .getNewPlayerList()) {
-            Loger.printLog("updateAboutActivityPlayer NewPlayerList()+ " + player.getName());
+            Logger.printLog("updateAboutActivityPlayer NewPlayerList()+ " + player.getName());
             if (player.getId() != -1)
                 mListActivityPlayer.add(new Player(player.getId(),
                         player.getName(), player.getRating()));
         }
         for (Protocol.CExitFromGroup exitFromGroup : cActivityPlayer
                 .getExitPlayerList()) {
-            Loger.printLog("updateAboutActivityPlayer exitFromGroup  " + exitFromGroup.getPlayerId());
+            Logger.printLog("updateAboutActivityPlayer exitFromGroup  " + exitFromGroup.getPlayerId());
             int id = exitFromGroup.getPlayerId();
             for (Player player : mListActivityPlayer)
                 if (player.getId() == id) {

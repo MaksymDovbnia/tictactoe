@@ -68,7 +68,7 @@ public class GameFieldAdapter extends BaseAdapter {
                 int x = 0, y = 0;
                 double d = position / 15.0;
                 int i = position / 15;
-                Loger.printLog(" i " + i + " d " + d);
+                Logger.printLog(" i " + i + " d " + d);
                 if (d - i == 0) {
                     x = 0;
                     y = i;

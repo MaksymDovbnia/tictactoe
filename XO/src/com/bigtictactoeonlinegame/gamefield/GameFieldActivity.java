@@ -145,6 +145,7 @@ public class GameFieldActivity extends GoogleAnalyticsActivity implements OnClic
         xoAlertDialog.setNegativeListener(new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                Controller.getInstance().getGameHandler().exitFromGame();
                 finish();
             }
         });
@@ -154,6 +155,7 @@ public class GameFieldActivity extends GoogleAnalyticsActivity implements OnClic
                 newGame();
             }
         });
+
         xoAlertDialog.show(getSupportFragmentManager(), "");
     }
 
