@@ -40,6 +40,10 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
     private Button mButtonTop100;
 
 
+
+
+
+
     @Override
     public void getListOfGroup() {
         Protocol.SGetGroupList sGetGroupList = Protocol.SGetGroupList.newBuilder().setId(mPlayer.getId()).build();
