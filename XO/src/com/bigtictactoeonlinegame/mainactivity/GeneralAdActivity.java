@@ -10,7 +10,7 @@ import com.google.android.gms.ads.*;
  */
 public abstract class GeneralAdActivity extends GoogleAnalyticsActivity{
 
-    public static final String MY_AD_UNIT_ID = "ca-app-pub-8596819956320879/9908452347";
+    public static final String MY_AD_UNIT_ID = "ca-app-pub-9906237700912530/6780578200";///"ca-app-pub-8596819956320879/9908452347";
     private AdView adView;
 
 

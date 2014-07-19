@@ -122,5 +122,10 @@
     <dimen name="popup_button_width">200dp</dimen>
     <dimen name="popup_button_height">100dp</dimen>
     <dimen name="check_box_invite_to_play_size">50dp</dimen>
+    <dimen name="achievements_size">60dp</dimen>
+    <dimen name="leaderboards_size">@dimen/achievements_size</dimen>
+    <dimen name="play_service_layout_padding_right">100dp</dimen>
+
+
 
 </resources>

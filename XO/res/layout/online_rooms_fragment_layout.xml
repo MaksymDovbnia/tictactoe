@@ -98,7 +98,7 @@
             android:paddingRight="-4dp"
 
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-8596819956320879/9908452347"/>
+            ads:adUnitId="@string/ad_unit_id"/>
 
 
 

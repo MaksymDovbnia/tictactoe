@@ -127,16 +127,17 @@ public class OnlineOpenedRoomFragment extends Fragment implements IOnlineOpenedR
     @Override
     public void updateAboutActivityPlayer(Message msg) {
         getView().findViewById(R.id.ll_updating_group).setVisibility(View.GONE);
-        Protocol.CUpdateAboutActivityPlayer cActivityPlayer =
+        Protocol.CUpdateAboutActivityPlayer updateAboutActivityPlayers =
                 (Protocol.CUpdateAboutActivityPlayer) msg.obj;
-        for (Protocol.Player player : cActivityPlayer
+       Logger.printLog("Invoked updateAboutActivityPlayer");
+        for (Protocol.Player player : updateAboutActivityPlayers
                 .getNewPlayerList()) {
             Logger.printLog("updateAboutActivityPlayer NewPlayerList()+ " + player.getName());
             if (player.getId() != -1)
                 mListActivityPlayer.add(new Player(player.getId(),
                         player.getName(), player.getRating()));
         }
-        for (Protocol.CExitFromGroup exitFromGroup : cActivityPlayer
+        for (Protocol.CExitFromGroup exitFromGroup : updateAboutActivityPlayers
                 .getExitPlayerList()) {
             Logger.printLog("updateAboutActivityPlayer exitFromGroup  " + exitFromGroup.getPlayerId());
             int id = exitFromGroup.getPlayerId();

@@ -94,18 +94,18 @@ public class GameFieldAdapter extends BaseAdapter {
             public boolean onTouch(View view, MotionEvent motionEvent) {
 
 
-                GameFieldItem field = (GameFieldItem) view;
-                List<GameFieldItem> itemList = new ArrayList<GameFieldItem>();
-                int i = field.getI();
-                int j = field.getJ();
-                for (int z = 0; z < 15; z++) {
-                    GameFieldItem oneGameFieldItem = fieldsGrid[i][z];
-                    if (oneGameFieldItem != null) itemList.add(oneGameFieldItem);
-                    GameFieldItem xGameFieldItem = fieldsGrid[z][j];
-                    if (xGameFieldItem != null) itemList.add(xGameFieldItem);
+                    GameFieldItem field = (GameFieldItem) view;
+                    List<GameFieldItem> itemList = new ArrayList<GameFieldItem>();
+                    int i = field.getI();
+                    int j = field.getJ();
+                    for (int z = 0; z < 15; z++) {
+                        GameFieldItem oneGameFieldItem = fieldsGrid[i][z];
+                        if (oneGameFieldItem != null) itemList.add(oneGameFieldItem);
+                        GameFieldItem xGameFieldItem = fieldsGrid[z][j];
+                        if (xGameFieldItem != null) itemList.add(xGameFieldItem);
 
-                }
-                if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    }
+                    if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
                     for (GameFieldItem item : itemList) {
                         item.setMarkAboutInSight(true);
                     }

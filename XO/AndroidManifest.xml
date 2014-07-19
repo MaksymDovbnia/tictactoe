@@ -1,81 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.bigtictactoeonlinegame.activity"
-          android:versionCode="6"
-          android:versionName="0.1.5">
+    package="com.bigtictactoeonlinegame.activity"
+    android:versionCode="6"
+    android:versionName="0.1.5">
 
-    <uses-permission android:name="android.permission.INTERNET">
-    </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE">
-    </uses-permission>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
 
 
     <uses-sdk
-            android:minSdkVersion="8"
-            android:targetSdkVersion="17"/>
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
 
     <application
-            android:allowBackup="true"
-            android:icon="@drawable/ic_launcher"
-            android:label="@string/app_name"
-            android:largeHeap="true"
-            android:debuggable="false"
-            android:theme="@style/AppTheme">
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
         <activity
-                android:name="com.google.android.gms.ads.AdActivity"
-                android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
 
         <meta-data
-                android:name="com.google.android.gms.version"
-                android:value="4242000"/>
+            android:name="com.google.android.gms.version"
+            android:value="4452000" />
+        <meta-data
+            android:name="com.google.android.gms.games.APP_ID"
+            android:value="@string/app_id" />
 
         <activity
-                android:name="com.bigtictactoeonlinegame.mainactivity.StartActivity"
-                android:screenOrientation="portrait"
-                android:label="@string/title_activity_second">
+            android:name="com.bigtictactoeonlinegame.mainactivity.StartActivity"
+            android:label="@string/title_activity_second"
+            android:screenOrientation="portrait">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-                android:screenOrientation="portrait"
-                android:windowSoftInputMode="adjustPan"
-                android:name="com.bigtictactoeonlinegame.gamefield.GameFieldActivity">
-        </activity>
+            android:name="com.bigtictactoeonlinegame.gamefield.GameFieldActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
-                android:screenOrientation="portrait"
-                android:name="com.bigtictactoeonlinegame.mainactivity.SelectTypeOfGameActivity"
-                >
-        </activity>
+            android:name="com.bigtictactoeonlinegame.mainactivity.SelectTypeOfGameActivity"
+            android:screenOrientation="portrait" />
 
         <activity
-                android:name="com.bigtictactoeonlinegame.bluetoothgame.BTDeviceListActivity"
+            android:name="com.bigtictactoeonlinegame.bluetoothgame.BTDeviceListActivity"
 
-                android:configChanges="orientation|keyboardHidden"
-                android:screenOrientation="portrait"
-                >
-        </activity>
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" />
         <activity
-                android:screenOrientation="portrait"
-                android:name="com.bigtictactoeonlinegame.onlinerooms.OnlineRoomsActivity">
-        </activity>
-
+            android:name="com.bigtictactoeonlinegame.onlinerooms.OnlineRoomsActivity"
+            android:screenOrientation="portrait" />
 
         <activity
-                android:screenOrientation="portrait"
-                android:name="com.bigtictactoeonlinegame.openedroom.OnlineOpenedRoomActivity"/>
+            android:name="com.bigtictactoeonlinegame.openedroom.OnlineOpenedRoomActivity"
+            android:screenOrientation="portrait" />
         <activity
-                android:screenOrientation="portrait"
-                android:name="com.bigtictactoeonlinegame.bluetoothgame.BluetoothGameActivity"/>
+            android:name="com.bigtictactoeonlinegame.bluetoothgame.BluetoothGameActivity"
+            android:screenOrientation="portrait" />
         <activity
-                android:name="com.bigtictactoeonlinegame.mainactivity.AboutActivity"
-                android:screenOrientation="portrait"/>
-        <activity android:name="com.bigtictactoeonlinegame.mainactivity.SettingsActivity"/>
-        <activity android:name="com.bigtictactoeonlinegame.mainactivity.GoogleAnalyticsActivity"/>
+            android:name="com.bigtictactoeonlinegame.mainactivity.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.bigtictactoeonlinegame.mainactivity.SettingsActivity" />
 
     </application>
 

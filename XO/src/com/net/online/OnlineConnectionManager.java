@@ -19,7 +19,7 @@ import java.util.*;
 public class OnlineConnectionManager extends Thread {
     private static final int SOCKET_TIMEOUT = 5000;
     private Handler mHandler;
-    private ArrayList<Handler> mHandlerList;
+    private Set<Handler> mHandlerList;
     private static final String TAG = OnlineConnectionManager.class.getCanonicalName();
 
     private Socket socket;
@@ -39,7 +39,7 @@ public class OnlineConnectionManager extends Thread {
         this.mHandler = handler;
         this.player = player;
         this.pd = pd;
-        mHandlerList = new ArrayList<Handler>();
+        mHandlerList = new HashSet<Handler>();
         if (handler != null) mHandlerList.add(handler);
 
     }

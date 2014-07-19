@@ -1,15 +1,14 @@
 package com.bigtictactoeonlinegame.mainactivity;
 
-import com.bigtictactoeonlinegame.popup.XOAlertDialog;
-import com.bigtictactoeonlinegame.activity.R;
-import com.google.android.gms.ads.AdView;
+import android.content.*;
+import android.os.*;
+import android.view.*;
+import android.view.View.*;
 
-
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.bigtictactoeonlinegame.activity.*;
+import com.bigtictactoeonlinegame.popup.*;
+import com.google.android.gms.ads.*;
+import com.google.android.gms.games.Games;
 
 public class StartActivity extends GeneralAdActivity implements OnClickListener {
     private View start;
@@ -41,7 +40,7 @@ public class StartActivity extends GeneralAdActivity implements OnClickListener 
 
     }
 
-    @Override
+     @Override
     public AdView getAdView() {
         return (AdView) StartActivity.this.findViewById(R.id.ad_view);
     }
@@ -70,6 +69,7 @@ public class StartActivity extends GeneralAdActivity implements OnClickListener 
                 Intent intent2 = new Intent(this, SettingsActivity.class);
                 startActivity(intent2);
                 break;
+
             default:
                 break;
         }
@@ -77,20 +77,20 @@ public class StartActivity extends GeneralAdActivity implements OnClickListener 
     }
 
 
-    @Override
-    public void onBackPressed() {
-        XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        xoAlertDialog.setTile(getResources().getString(R.string.exit_from_game));
-        xoAlertDialog.setMainText(getResources().getString(R.string.exit_from_game_question));
-        xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.yes));
-        xoAlertDialog.setNegativeButtonText(getResources().getString(R.string.no));
-        xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
-            }
-        });
-        xoAlertDialog.show(getSupportFragmentManager(), "");
-
-    }
+//    @Override
+//    public void onBackPressed() {
+//        XOAlertDialog xoAlertDialog = new XOAlertDialog();
+//        xoAlertDialog.setTile(getResources().getString(R.string.exit_from_game));
+//        xoAlertDialog.setMainText(getResources().getString(R.string.exit_from_game_question));
+//        xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.yes));
+//        xoAlertDialog.setNegativeButtonText(getResources().getString(R.string.no));
+//        xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                finish();
+//            }
+//        });
+//        xoAlertDialog.show(getSupportFragmentManager(), "");
+//
+//    }
 }

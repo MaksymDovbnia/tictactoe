@@ -18,8 +18,8 @@ import com.bigtictactoeonlinegame.gamefield.*;
 import com.bigtictactoeonlinegame.onlinerooms.*;
 import com.bigtictactoeonlinegame.popup.*;
 import com.config.*;
-import com.entity.*;
-import com.google.android.gms.ads.*;
+import com.entity.Player;
+import com.google.android.gms.games.*;
 import com.net.online.*;
 import com.net.online.protobuf.*;
 import com.utils.*;
@@ -28,7 +28,7 @@ import net.protocol.*;
 
 import java.util.*;
 
-public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnClickListener {
+public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickListener {
 
     private static final String LOG_TAG = SelectTypeOfGameActivity.class.getName();
     private static final String KEY_FOR_SHARED_PREFERENCES = SelectTypeOfGameActivity.class.getCanonicalName();
@@ -37,6 +37,8 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
     private static final String PLAYER_NAME_FOR_LOGIN_TO_ONLINE_GAME = "player_name_for_login_to_online_game";
     private static final String PLAYER_NAME_FOR_BLUETOOTH_GAME = "player_name_for_bluetooth_game";
     private static final String PLAYER_UUID_FOR_ONLINE_GAME = "player_uuid_for_online_game";
+    private static final int REQUEST_ACHIEVEMENTS = 1000;
+    private static final int REQUEST_LEADERBOARD = 1001;
 
     private SharedPreferences sharedPreferences;
     private String player1NameFromSharedPrefences;
@@ -58,6 +60,17 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.type_of_game_activity_layout);
         sharedPreferences = getSharedPreferences(KEY_FOR_SHARED_PREFERENCES, MODE_PRIVATE);
+        initViews();
+
+        player = new Player();
+        createHandler();
+    }
+
+    private void initViews() {
+        findViewById(R.id.sign_in_button).setOnClickListener(this);
+        findViewById(R.id.sign_out_button).setOnClickListener(this);
+        findViewById(R.id.btn_leaderboards).setOnClickListener(this);
+        findViewById(R.id.btn_achievments).setOnClickListener(this);
         View friend = findViewById(R.id.btn_two_players);
         friend.setOnClickListener(this);
         View online = findViewById(R.id.btn_online);
@@ -66,14 +79,12 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
         android.setOnClickListener(this);
         View bluetooth = findViewById(R.id.btn_bluetooth);
         bluetooth.setOnClickListener(this);
-        player = new Player();
-        createHandler();
     }
 
-    @Override
-    public AdView getAdView() {
-        return (AdView) findViewById(R.id.ad_view);
-    }
+//    @Override
+//    public AdView getAdView() {
+//        return (AdView) findViewById(R.id.ad_view);
+//    }
 
 
     private void createHandler() {
@@ -382,6 +393,21 @@ public class SelectTypeOfGameActivity extends GeneralAdActivity implements OnCli
                 } else {
                     showPopupForBluetoothGame();
                 }
+                break;
+            case R.id.sign_in_button:
+                beginUserInitiatedSignIn();
+                break;
+            case R.id.sign_out_button:
+                signOut();
+                findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+                findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+                break;
+            case R.id.btn_leaderboards:
+                startActivityForResult(Games.Leaderboards.getLeaderboardIntent(getApiClient(),
+                        getString(R.string.leaderboard_the_best_of_the_best)), REQUEST_LEADERBOARD);
+                break;
+            case R.id.btn_achievments:
+                startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()), REQUEST_ACHIEVEMENTS);
                 break;
             default:
                 break;

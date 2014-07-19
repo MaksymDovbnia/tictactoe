@@ -39,11 +39,6 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
     private Button mButtonGroups;
     private Button mButtonTop100;
 
-
-
-
-
-
     @Override
     public void getListOfGroup() {
         Protocol.SGetGroupList sGetGroupList = Protocol.SGetGroupList.newBuilder().setId(mPlayer.getId()).build();
@@ -60,6 +55,8 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.online_rooms_activity_layout);
+
+
         initViews();
         initHandler();
         mOnlineConnectionManager = Controller.getInstance().getOnlineWorker();
@@ -180,6 +177,9 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
     @Override
     public void onResume() {
         super.onResume();
+        if (mOnlineConnectionManager == null) {
+            return;
+        }
         if (!mOnlineConnectionManager.isSockedInLive()) {
             finish();
         }
