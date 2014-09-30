@@ -128,7 +128,7 @@ public class GameFieldItem extends ImageView {
 
 
         if (fieldType != null) {
-            if (fieldType == FieldType.X && drawXWithAnimation(height, width, canvas)) {
+            if (fieldType == FieldType.X) {
                 return;
 
             }
@@ -164,22 +164,22 @@ public class GameFieldItem extends ImageView {
             switch (winLineType) {
                 case HORIZONTAL:
                     bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
-                            R.drawable.horizontal_line), getLayoutParams().width,
+                                    R.drawable.horizontal_line), getLayoutParams().width,
                             getLayoutParams().height, true);
                     break;
                 case VERTICAl:
                     bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
-                            R.drawable.vertical_line), getLayoutParams().width,
+                                    R.drawable.vertical_line), getLayoutParams().width,
                             getLayoutParams().height, true);
                     break;
                 case LEFT:
                     bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
-                            R.drawable.left_line), getLayoutParams().width,
+                                    R.drawable.left_line), getLayoutParams().width,
                             getLayoutParams().height, true);
                     break;
                 case RIGHT:
                     bitmap = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
-                            R.drawable.right_line), getLayoutParams().width,
+                                    R.drawable.right_line), getLayoutParams().width,
                             getLayoutParams().height, true);
                     break;
             }
@@ -189,31 +189,6 @@ public class GameFieldItem extends ImageView {
         }
 
 
-    }
-
-    private boolean drawXWithAnimation(int heiht, int width, Canvas canvas) {
-        if (bitmapsForXAnimation == null) {
-            bitmapsForXAnimation = new ArrayList<Bitmap>();
-            Bitmap x4 = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
-                    R.drawable.x_4), getLayoutParams().width,
-                    getLayoutParams().height, true);
-            bitmapsForXAnimation.add(x4);
-            Bitmap x3 = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
-                    R.drawable.x_3), getLayoutParams().width,
-                    getLayoutParams().height, true);
-            bitmapsForXAnimation.add(x3);
-            Bitmap x2 = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
-                    R.drawable.x_2), getLayoutParams().width,
-                    getLayoutParams().height, true);
-            bitmapsForXAnimation.add(x2);
-            Bitmap x1 = Bitmap.createScaledBitmap(BitmapFactory.decodeResource(getResources(),
-                    R.drawable.x_1), getLayoutParams().width,
-                    getLayoutParams().height, true);
-            bitmapsForXAnimation.add(x2);
-        }
-
-
-        return false;
     }
 
 
