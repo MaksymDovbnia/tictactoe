@@ -13,7 +13,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<com.componentwithfont.TextViewWirhComicsFont xmlns:android="http://schemas.android.com/apk/res/android"
+<com.componentwithfont.TextViewWithComicsFont xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textSize="@dimen/bt_device_list_item_text_size"

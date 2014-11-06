@@ -10,7 +10,7 @@ import com.bigtictactoeonlinegame.popup.*;
 import com.google.android.gms.ads.*;
 import com.google.android.gms.games.Games;
 
-public class StartActivity extends GeneralAdActivity implements OnClickListener {
+public class StartActivity extends GeneralAdWithPlayServiceActivity implements OnClickListener {
     private View start;
     private View exit;
     private View settings;
@@ -21,22 +21,11 @@ public class StartActivity extends GeneralAdActivity implements OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_activity_layout);
 
-
         start = findViewById(R.id.btn_start_activity_start_game);
         start.setOnClickListener(this);
 
         exit = findViewById(R.id.btn_start_activity_exit);
         exit.setOnClickListener(this);
-
-        settings = findViewById(R.id.btn_start_activity_settings);
-        settings.setOnClickListener(this);
-        findViewById(R.id.btn_about_game).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(StartActivity.this, AboutActivity.class));
-            }
-        });
-
 
     }
 
@@ -65,14 +54,19 @@ public class StartActivity extends GeneralAdActivity implements OnClickListener 
                 finish();
                 break;
 
-            case R.id.btn_start_activity_settings:
-                Intent intent2 = new Intent(this, SettingsActivity.class);
-                startActivity(intent2);
-                break;
-
             default:
                 break;
         }
+
+    }
+
+    @Override
+    public void onSignInFailed() {
+
+    }
+
+    @Override
+    public void onSignInSucceeded() {
 
     }
 

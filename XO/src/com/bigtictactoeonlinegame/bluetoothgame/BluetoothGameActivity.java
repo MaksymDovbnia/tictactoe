@@ -30,8 +30,8 @@ public class BluetoothGameActivity extends GoogleAnalyticsActivity implements Vi
     private static final int START_GAME_ACTIVITY = 100;
     private static final String TAG = BluetoothGameActivity.class.getCanonicalName();
 
-    private TextView createGame;
-    private TextView connect;
+    private View createGame;
+    private View connect;
     private BluetoothService bluetoothService;
     private BluetoothAdapter bluetoothAdapter;
     private ProgressDialog progressDialogStartServer;
@@ -44,8 +44,9 @@ public class BluetoothGameActivity extends GoogleAnalyticsActivity implements Vi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.bluetooth_game_activity_layout);
-        createGame = (TextView) findViewById(R.id.tv_create_bt_game);
-        connect = (TextView) findViewById(R.id.tv_connect_bt_game);
+        findViewById(R.id.btn_back_from_select_type_game).setOnClickListener(this);
+        createGame =  findViewById(R.id.tv_create_bt_game);
+        connect =  findViewById(R.id.tv_connect_bt_game);
         createGame.setOnClickListener(this);
         connect.setOnClickListener(this);
         playerName = getIntent().getStringExtra(BundleKeys.PLAYER_NAME);
@@ -148,6 +149,9 @@ public class BluetoothGameActivity extends GoogleAnalyticsActivity implements Vi
                 Intent intent = new Intent(this, BTDeviceListActivity.class);
                 startActivityForResult(intent, DISCOVERY_DEVICE);
                 isNeedToConnect = true;
+                break;
+            case  R.id.btn_back_from_select_type_game:
+                finish();
                 break;
         }
     }

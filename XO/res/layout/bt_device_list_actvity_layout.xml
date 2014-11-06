@@ -41,7 +41,7 @@ limitations under the License.
 
             >
 
-        <com.componentwithfont.TextViewWirhComicsFont
+        <com.componentwithfont.TextViewWithComicsFont
                 android:id="@+id/title_paired_devices"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@ limitations under the License.
                     android:id="@+id/ll_search_new_devices"
                     >
 
-                <com.componentwithfont.TextViewWirhComicsFont
+                <com.componentwithfont.TextViewWithComicsFont
                         android:id="@+id/tv_scanning_for_devices"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -90,7 +90,7 @@ limitations under the License.
                         android:layout_gravity="right"/>
             </LinearLayout>
 
-            <com.componentwithfont.TextViewWirhComicsFont
+            <com.componentwithfont.TextViewWithComicsFont
                     android:id="@+id/title_new_devices"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

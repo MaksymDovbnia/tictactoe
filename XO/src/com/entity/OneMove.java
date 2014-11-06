@@ -2,7 +2,7 @@ package com.entity;
 
 import com.bigtictactoeonlinegame.LineType;
 
-public class OneMove {
+public class OneMove implements Comparable <OneMove> {
 	public int j;
 	public int i;
 	public TypeOfMove type;
@@ -21,4 +21,9 @@ public class OneMove {
 		this.j = j;
 		this.i = i;
 	}
+
+    @Override
+    public int compareTo(OneMove another) {
+        return 0;
+    }
 }

@@ -21,7 +21,7 @@
     </style>
 
     <style name="xo_popup">
-    <item name="android:background">@drawable/dialog_view</item>
+        <item name="android:background">@drawable/dialog_view</item>
     </style>
 
 
@@ -42,11 +42,14 @@
         <item name="android:textSize">@dimen/general_list_item_text_size</item>
         <item name="android:gravity">center</item>
     </style>
+    <style name="game_type_text_style">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/type_game_text_size</item>
+        <item name="android:layout_marginLeft">@dimen/type_game_text_margin_left</item>
+        <item name="android:textColor">@color/type_game_text_color</item>
+        <item name="android:duplicateParentState">true</item>
 
-
-
-
-
+    </style>
 
 
 </resources>

@@ -4,175 +4,48 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:paddingLeft="@dimen/game_field_fragment_padding_right"
-              android:paddingRight="5dp"
-              android:paddingBottom="5dp">
+              android:paddingLeft="@dimen/game_field_fragment_vertical_padding"
+              android:paddingRight="@dimen/game_field_fragment_vertical_padding"
+              android:paddingTop="@dimen/game_field_fragment_top_padding"
+              android:paddingBottom="@dimen/game_field_fragment_bottom_padding">
 
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="horizontal"           >
-
-        <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal">
-
-            <com.componentwithfont.TextViewWirhComicsFont
-                    android:id="@+id/tv_field_item"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/game_field_fragment_player_name_padding_left_right"
-                    android:paddingRight="@dimen/game_field_fragment_player_name_padding_left_right"
-                    android:paddingTop="@dimen/game_field_fragment_player_name_padding_top_bottom"
-                    android:paddingBottom="@dimen/game_field_fragment_player_name_padding_top_bottom"
-                    android:singleLine="true"
-                    android:ellipsize="marquee"
-                    android:text="@string/player_1"
-                    android:gravity="center_horizontal"
-                    android:textSize="@dimen/default_text_size"
-                    android:textColor="@color/blue"/>
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal">
-
-            <com.componentwithfont.TextViewWirhComicsFont
-                    android:id="@+id/tv_second_player_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:paddingLeft="@dimen/game_field_fragment_player_name_padding_left_right"
-                    android:paddingRight="@dimen/game_field_fragment_player_name_padding_left_right"
-                    android:paddingTop="@dimen/game_field_fragment_player_name_padding_top_bottom"
-                    android:paddingBottom="@dimen/game_field_fragment_player_name_padding_top_bottom"
-                    android:singleLine="true"
-                    android:ellipsize="marquee"
-                    android:gravity="center_horizontal"
-                    android:text="@string/player_2"
-                    android:textSize="@dimen/default_text_size"
-                    android:textColor="@color/blue"/>
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            >
-
-        <com.componentwithfont.TextViewWirhComicsFont
-                android:id="@+id/tv_score_player_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0"
-                android:textSize="@dimen/default_text_size"
-                android:textColor="@color/red"/>
-
-        <com.componentwithfont.TextViewWirhComicsFont
-                android:id="@+id/tv_score_player_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="0"
-                android:textSize="@dimen/default_text_size"
-                android:textColor="@color/red"/>
-
-    </LinearLayout>
 
     <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            >
+            android:layout_height="wrap_content">
 
-        <com.componentwithfont.TextViewWirhComicsFont
-                android:id="@+id/tv_timer"
+        <com.componentwithfont.TextViewWithComicsFont
+                android:id="@+id/time"
+                android:textSize="@dimen/game_field_fragment_time_text_size"
+                android:textColor="@color/time_text_color"
+                android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:paddingRight="4dp"
-                android:layout_toLeftOf="@+id/tv_sec"
-                android:textSize="@dimen/small_text_size"
-                android:textColor="@color/dark_blue"/>
+                android:layout_height="wrap_content"/>
 
-        <com.componentwithfont.TextViewWirhComicsFont
-                android:id="@+id/tv_sec"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+        <ImageView
+                android:id="@+id/left_value"
+                android:layout_width="@dimen/game_field_fragment_value_size"
+                android:layout_height="@dimen/game_field_fragment_value_size"
+                android:layout_marginLeft="@dimen/game_field_fragment_value_margin"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/x"
+               />
+
+        <ImageView
+                android:id="@+id/right_value"
+                android:layout_width="@dimen/game_field_fragment_value_size"
+                android:layout_height="@dimen/game_field_fragment_value_size"
+                android:layout_marginRight="@dimen/game_field_fragment_value_margin"
                 android:layout_alignParentRight="true"
-                android:gravity="right"
-                android:paddingRight="@dimen/game_field_fragment_timer_padding_right"
-                android:text="@string/sec"
-                android:textSize="@dimen/small_text_size"
-                android:textColor="@color/dark_blue"/>
+                android:src="@drawable/o"/>
 
 
     </RelativeLayout>
 
-    <!-- Game field block  -->
-    <LinearLayout
-            android:id="@+id/game_field_container"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/frame_for_fame_field">
-
-        <ScrollView
-                android:id="@+id/vertical_scroll_game_field"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:paddingLeft="2dp"
-                android:paddingRight="2dp"
-                android:paddingTop="2dp"
-                android:paddingBottom="2dp">
-
-            <FrameLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                <HorizontalScrollView
-                        android:id="@+id/horizontal_scroll_game_field"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center">
-
-                    <FrameLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content">
-
-                        <GridView
-                                android:id="@+id/grid_view_game_field"
-                                android:layout_width="@dimen/game_field_fragment_game_field_grid_view_size"
-                                android:layout_height="@dimen/game_field_fragment_game_field_grid_view_size"
-                                android:numColumns="15"
-                                android:splitMotionEvents="false">
-                        </GridView>
-
-                    </FrameLayout>
-                </HorizontalScrollView>
-            </FrameLayout>
-        </ScrollView>
-    </LinearLayout>
+    <com.bigtictactoeonlinegame.gamefield.GameFieldView
+            android:id="@+id/btn_game_field_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
 
 </LinearLayout>

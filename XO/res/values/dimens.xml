@@ -127,9 +127,43 @@
 
     <dimen name="popup_button_width">120dp</dimen>
     <dimen name="popup_button_height">70dp</dimen>
-
     <dimen name="check_box_invite_to_play_size">30dp</dimen>
 
+
+    <dimen name="achievements_height">35dp</dimen>
+    <dimen name="achievements_width">30dp</dimen>
+
+    <dimen name="leaderboards_width">35dp</dimen>
+    <dimen name="leaderboards_height">30dp</dimen>
+
+    <dimen name="play_service_layout_padding_right">40dp</dimen>
+    <dimen name="top_google_login_view_height">60dp</dimen>
+    <dimen name="game_type_logo_size">40dp</dimen>
+    <dimen name="start_game_btn_size">130dp</dimen>
+    <dimen name="about_game_btn_size">80dp</dimen>
+    <dimen name="exit_from_game_btn_size">80dp</dimen>
+    <dimen name="start_game_main_image_margin_top">10dp</dimen>
+    <dimen name="top_google_view_padding_left_right">5dp</dimen>
+    <dimen name="top_google_view_photo_size">35dp</dimen>
+    <dimen name="top_google_view_tex_size">15dp</dimen>
+    <dimen name="type_game_text_size">25dp</dimen>
+    <dimen name="type_game_text_margin_left">10dp</dimen>
+    <dimen name="type_game_image_item_margin_left">10dp</dimen>
+    <dimen name="type_game_back_btn_size">80dp</dimen>
+
+    <dimen name="type_game_main_container_margin_bottom">-20dp</dimen>
+    <dimen name="game_layout_bottom_btn_size">60dp</dimen>
+    <dimen name="game_field_layout_bottom_btn_space">30dp</dimen>
+    <dimen name="game_layout_bottom_container_margin_top">-30dp</dimen>
+    <dimen name="game_layout_bottom_container_margin_height">80dp</dimen>
+    <dimen name="game_field_container_margin_left_right">5dp</dimen>
+    <dimen name="game_field_container_margin_top">10dp</dimen>
+    <dimen name="game_field_fragment_value_size">30dp</dimen>
+    <dimen name="game_field_fragment_value_margin">50dp</dimen>
+    <dimen name="game_field_fragment_time_text_size">25dp</dimen>
+    <dimen name="game_field_fragment_vertical_padding">15dp</dimen>
+    <dimen name="game_field_fragment_top_padding">20dp</dimen>
+    <dimen name="game_field_fragment_bottom_padding">25dp</dimen>
 
 
 </resources>

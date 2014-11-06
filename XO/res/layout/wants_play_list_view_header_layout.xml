@@ -6,7 +6,7 @@
               android:background="@color/wanted_play_player_list_header_background"
               android:orientation="horizontal">
 
-    <com.componentwithfont.TextViewWirhComicsFont
+    <com.componentwithfont.TextViewWithComicsFont
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"

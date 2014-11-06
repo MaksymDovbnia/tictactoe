@@ -6,7 +6,7 @@
               android:gravity="center"
               android:background="@drawable/list_item_selector">
 
-    <com.componentwithfont.TextViewWirhComicsFont
+    <com.componentwithfont.TextViewWithComicsFont
             android:id="@+id/tv_online_group_item_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
             style="@style/list_view_item"
             />
 
-    <com.componentwithfont.TextViewWirhComicsFont
+    <com.componentwithfont.TextViewWithComicsFont
             android:id="@+id/tv_count_of_online_players_in_group"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

@@ -453,6 +453,10 @@ public final class Protocol {
     // optional float appVersion = 5;
     boolean hasAppVersion();
     float getAppVersion();
+    
+    // optional int64 googlePlayRating = 6;
+    boolean hasGooglePlayRating();
+    long getGooglePlayRating();
   }
   public static final class SLoginToGame extends
       com.google.protobuf.GeneratedMessage
@@ -577,12 +581,23 @@ public final class Protocol {
       return appVersion_;
     }
     
+    // optional int64 googlePlayRating = 6;
+    public static final int GOOGLEPLAYRATING_FIELD_NUMBER = 6;
+    private long googlePlayRating_;
+    public boolean hasGooglePlayRating() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    public long getGooglePlayRating() {
+      return googlePlayRating_;
+    }
+    
     private void initFields() {
       name_ = "";
       registarionType_ = net.protocol.Protocol.RegistrationType.annonymous;
       uuid_ = "";
       isBot_ = false;
       appVersion_ = 0F;
+      googlePlayRating_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -619,6 +634,9 @@ public final class Protocol {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeFloat(5, appVersion_);
       }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt64(6, googlePlayRating_);
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -647,6 +665,10 @@ public final class Protocol {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(5, appVersion_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(6, googlePlayRating_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -782,6 +804,8 @@ public final class Protocol {
         bitField0_ = (bitField0_ & ~0x00000008);
         appVersion_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000010);
+        googlePlayRating_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
       
@@ -840,6 +864,10 @@ public final class Protocol {
           to_bitField0_ |= 0x00000010;
         }
         result.appVersion_ = appVersion_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.googlePlayRating_ = googlePlayRating_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -870,6 +898,9 @@ public final class Protocol {
         }
         if (other.hasAppVersion()) {
           setAppVersion(other.getAppVersion());
+        }
+        if (other.hasGooglePlayRating()) {
+          setGooglePlayRating(other.getGooglePlayRating());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -939,6 +970,11 @@ public final class Protocol {
             case 45: {
               bitField0_ |= 0x00000010;
               appVersion_ = input.readFloat();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              googlePlayRating_ = input.readInt64();
               break;
             }
           }
@@ -1081,6 +1117,27 @@ public final class Protocol {
       public Builder clearAppVersion() {
         bitField0_ = (bitField0_ & ~0x00000010);
         appVersion_ = 0F;
+        onChanged();
+        return this;
+      }
+      
+      // optional int64 googlePlayRating = 6;
+      private long googlePlayRating_ ;
+      public boolean hasGooglePlayRating() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      public long getGooglePlayRating() {
+        return googlePlayRating_;
+      }
+      public Builder setGooglePlayRating(long value) {
+        bitField0_ |= 0x00000020;
+        googlePlayRating_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearGooglePlayRating() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        googlePlayRating_ = 0L;
         onChanged();
         return this;
       }
@@ -4811,6 +4868,10 @@ public final class Protocol {
     // optional int32 rating = 3;
     boolean hasRating();
     int getRating();
+    
+    // optional int64 googlePlayRating = 4;
+    boolean hasGooglePlayRating();
+    long getGooglePlayRating();
   }
   public static final class Player extends
       com.google.protobuf.GeneratedMessage
@@ -4893,10 +4954,21 @@ public final class Protocol {
       return rating_;
     }
     
+    // optional int64 googlePlayRating = 4;
+    public static final int GOOGLEPLAYRATING_FIELD_NUMBER = 4;
+    private long googlePlayRating_;
+    public boolean hasGooglePlayRating() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public long getGooglePlayRating() {
+      return googlePlayRating_;
+    }
+    
     private void initFields() {
       name_ = "";
       id_ = 0;
       rating_ = 0;
+      googlePlayRating_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4927,6 +4999,9 @@ public final class Protocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, rating_);
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt64(4, googlePlayRating_);
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -4947,6 +5022,10 @@ public final class Protocol {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, rating_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, googlePlayRating_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5078,6 +5157,8 @@ public final class Protocol {
         bitField0_ = (bitField0_ & ~0x00000002);
         rating_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
+        googlePlayRating_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       
@@ -5128,6 +5209,10 @@ public final class Protocol {
           to_bitField0_ |= 0x00000004;
         }
         result.rating_ = rating_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.googlePlayRating_ = googlePlayRating_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5152,6 +5237,9 @@ public final class Protocol {
         }
         if (other.hasRating()) {
           setRating(other.getRating());
+        }
+        if (other.hasGooglePlayRating()) {
+          setGooglePlayRating(other.getGooglePlayRating());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -5205,6 +5293,11 @@ public final class Protocol {
             case 24: {
               bitField0_ |= 0x00000004;
               rating_ = input.readInt32();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              googlePlayRating_ = input.readInt64();
               break;
             }
           }
@@ -5287,6 +5380,27 @@ public final class Protocol {
       public Builder clearRating() {
         bitField0_ = (bitField0_ & ~0x00000004);
         rating_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // optional int64 googlePlayRating = 4;
+      private long googlePlayRating_ ;
+      public boolean hasGooglePlayRating() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      public long getGooglePlayRating() {
+        return googlePlayRating_;
+      }
+      public Builder setGooglePlayRating(long value) {
+        bitField0_ |= 0x00000008;
+        googlePlayRating_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearGooglePlayRating() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        googlePlayRating_ = 0L;
         onChanged();
         return this;
       }
@@ -17786,78 +17900,79 @@ public final class Protocol {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\016Protocol.proto\022\014net.protocol\"\206\001\n\014SLogi" +
+      "\n\016Protocol.proto\022\014net.protocol\"\240\001\n\014SLogi" +
       "nToGame\022\014\n\004name\030\001 \002(\t\0227\n\017registarionType" +
       "\030\002 \002(\0162\036.net.protocol.RegistrationType\022\014" +
       "\n\004uuid\030\003 \001(\t\022\r\n\005isBot\030\004 \001(\010\022\022\n\nappVersio" +
-      "n\030\005 \001(\002\"]\n\014CLoginToGame\022\017\n\007isLogin\030\002 \002(\010" +
-      "\022\n\n\002id\030\001 \001(\005\0220\n\014loginProblem\030\003 \001(\0162\032.net" +
-      ".protocol.LoginProblem\"{\n\031SRegistrationN" +
-      "ewXOAccount\022\014\n\004name\030\001 \002(\t\022\020\n\010password\030\002 " +
-      "\002(\t\022\r\n\005email\030\003 \002(\t\022\036\n\003sex\030\004 \002(\0162\021.net.pr" +
-      "otocol.Sex\022\017\n\007country\030\005 \001(\t\"d\n\031CRegistra",
-      "tionNewXOAccount\022\023\n\013isRegistred\030\001 \002(\010\0222\n" +
-      "\007problem\030\002 \001(\0162!.net.protocol.Registrati" +
-      "onProblem\")\n\030SForgotXOAccountPassword\022\r\n" +
-      "\005email\030\001 \002(\t\"V\n\030CForgotXOAccountPassword" +
-      "\022:\n\010pesponse\030\001 \002(\0162(.net.protocol.Respon" +
-      "seForRestorePassword\"\210\001\n\032CUpdateAboutAct" +
-      "ivityPlayer\022\'\n\tnewPlayer\030\001 \003(\0132\024.net.pro" +
-      "tocol.Player\0220\n\nexitPlayer\030\002 \003(\0132\034.net.p" +
-      "rotocol.CExitFromGroup\022\017\n\007groupId\030\003 \002(\005\"" +
-      ")\n\nSGetUpdate\022\n\n\002id\030\001 \002(\005\022\017\n\007groupId\030\002 \002",
-      "(\005\"2\n\006Player\022\014\n\004name\030\001 \002(\t\022\n\n\002id\030\002 \002(\005\022\016" +
-      "\n\006rating\030\003 \001(\005\"\033\n\rSGetGroupList\022\n\n\002id\030\001 " +
-      "\002(\005\"P\n\rCGetGroupList\022\"\n\005group\030\001 \003(\0132\023.ne" +
-      "t.protocol.Group\022\033\n\023numAllOnlinePlayers\030" +
-      "\002 \001(\005\"I\n\005Group\022\017\n\007groupId\030\003 \002(\005\022\030\n\020numOn" +
-      "linePlayers\030\001 \002(\005\022\025\n\rnumOnlineBots\030\002 \001(\005" +
-      "\" \n\rSEnterToGroup\022\017\n\007groupId\030\001 \002(\005\"\'\n\rCE" +
-      "nterToGroup\022\026\n\016isEnteredGroup\030\001 \002(\010\"3\n\013S" +
-      "WantToPlay\022\020\n\010playerId\030\001 \002(\005\022\022\n\nopponent" +
-      "Id\030\002 \002(\005\"!\n\013CWantToPlay\022\022\n\nopponentId\030\001 ",
-      "\002(\005\"9\n\021SCancelDesirePlay\022\020\n\010playerId\030\001 \002" +
-      "(\005\022\022\n\nopponentId\030\002 \002(\005\"\'\n\021CCancelDesireP" +
-      "lay\022\022\n\nopponentId\030\001 \002(\005\"2\n\nSStartGame\022\020\n" +
-      "\010playerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"}\n\nC" +
-      "StartGame\022\022\n\nopponentId\030\001 \002(\005\022(\n\010typeMov" +
-      "e\030\002 \002(\0162\026.net.protocol.TypeMove\022\027\n\017numbe" +
-      "rOfWonGame\030\003 \001(\005\022\030\n\020numberOfLostGame\030\004 \001" +
-      "(\005\"l\n\010SDidMove\022\020\n\010playerId\030\001 \002(\005\022\022\n\noppo" +
-      "nentId\030\002 \002(\005\022\t\n\001i\030\003 \002(\005\022\t\n\001j\030\004 \002(\005\022$\n\004ty" +
-      "pe\030\005 \002(\0162\026.net.protocol.TypeMove\"F\n\010CDid",
-      "Move\022\t\n\001i\030\001 \002(\005\022\t\n\001j\030\002 \002(\005\022$\n\004type\030\003 \002(\016" +
-      "2\026.net.protocol.TypeMove\"5\n\010SWonGame\022\023\n\013" +
-      "idWonPlayer\030\001 \002(\005\022\024\n\014idLostPlayer\030\002 \002(\005\"" +
-      "5\n\rSContinueGame\022\020\n\010playerId\030\001 \002(\005\022\022\n\nop" +
-      "ponentId\030\002 \002(\005\"K\n\rCContinueGame\022\024\n\014conti" +
-      "nueGame\030\001 \002(\010\022$\n\004type\030\003 \002(\0162\026.net.protoc" +
-      "ol.TypeMove\"E\n\014SChatMessage\022\020\n\010playerId\030" +
-      "\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\022\017\n\007message\030\003 \002" +
-      "(\t\"\037\n\014CChatMessage\022\017\n\007message\030\001 \002(\t\"G\n\021S" +
-      "GroupChatMessage\022\020\n\010playerId\030\001 \002(\005\022\017\n\007me",
-      "ssage\030\002 \002(\t\022\017\n\007groupId\030\003 \002(\005\"6\n\021CGroupCh" +
-      "atMessage\022\020\n\010playerId\030\001 \002(\005\022\017\n\007message\030\002" +
-      " \002(\t\"5\n\rSExitFromGame\022\020\n\010playerId\030\001 \002(\005\022" +
-      "\022\n\nopponentId\030\002 \002(\005\"#\n\rCExitFromGame\022\022\n\n" +
-      "opponentId\030\001 \002(\005\"3\n\016SExitFromGroup\022\020\n\010pl" +
-      "ayerId\030\001 \002(\005\022\017\n\007groupId\030\002 \002(\005\"\"\n\016CExitFr" +
-      "omGroup\022\020\n\010playerId\030\001 \002(\005\"\'\n\023SExitFromGl" +
-      "obalGame\022\020\n\010playerId\030\001 \002(\005\"!\n\rSTop100Pla" +
-      "yer\022\020\n\010playerId\030\001 \002(\005\"5\n\rCTop100Player\022$" +
-      "\n\006player\030\001 \003(\0132\024.net.protocol.Player\"\'\n\021",
-      "TimeForMoveFullUp\022\022\n\ntimeFullUp\030\001 \002(\010\"2\n" +
-      "\032AppNeedUpdateToLastVersion\022\024\n\014urlForUpd" +
-      "ate\030\001 \002(\t*L\n\020RegistrationType\022\016\n\nannonym" +
-      "ous\020\001\022\006\n\002xo\020\002\022\n\n\006google\020\003\022\014\n\010facebook\020\004\022" +
-      "\006\n\002vk\020\005*@\n\014LoginProblem\022\033\n\027nickOrPasswor" +
-      "dUnCorrect\020\001\022\023\n\017accountUnlocked\020\002*<\n\023Reg" +
-      "istrationProblem\022\022\n\016emailUnCorrect\020\001\022\021\n\r" +
-      "nickUnCorrect\020\002*\033\n\003Sex\022\010\n\004male\020\001\022\n\n\006fema" +
-      "le\020\002*C\n\032ResponseForRestorePassword\022\017\n\013se" +
-      "ndToEmail\020\001\022\024\n\020emailUnCorrected\020\002*\030\n\010Typ",
-      "eMove\022\005\n\001X\020\001\022\005\n\001O\020\002B\030\n\014net.protocolB\010Pro" +
-      "tocol"
+      "n\030\005 \001(\002\022\030\n\020googlePlayRating\030\006 \001(\003\"]\n\014CLo" +
+      "ginToGame\022\017\n\007isLogin\030\002 \002(\010\022\n\n\002id\030\001 \001(\005\0220" +
+      "\n\014loginProblem\030\003 \001(\0162\032.net.protocol.Logi" +
+      "nProblem\"{\n\031SRegistrationNewXOAccount\022\014\n" +
+      "\004name\030\001 \002(\t\022\020\n\010password\030\002 \002(\t\022\r\n\005email\030\003" +
+      " \002(\t\022\036\n\003sex\030\004 \002(\0162\021.net.protocol.Sex\022\017\n\007",
+      "country\030\005 \001(\t\"d\n\031CRegistrationNewXOAccou" +
+      "nt\022\023\n\013isRegistred\030\001 \002(\010\0222\n\007problem\030\002 \001(\016" +
+      "2!.net.protocol.RegistrationProblem\")\n\030S" +
+      "ForgotXOAccountPassword\022\r\n\005email\030\001 \002(\t\"V" +
+      "\n\030CForgotXOAccountPassword\022:\n\010pesponse\030\001" +
+      " \002(\0162(.net.protocol.ResponseForRestorePa" +
+      "ssword\"\210\001\n\032CUpdateAboutActivityPlayer\022\'\n" +
+      "\tnewPlayer\030\001 \003(\0132\024.net.protocol.Player\0220" +
+      "\n\nexitPlayer\030\002 \003(\0132\034.net.protocol.CExitF" +
+      "romGroup\022\017\n\007groupId\030\003 \002(\005\")\n\nSGetUpdate\022",
+      "\n\n\002id\030\001 \002(\005\022\017\n\007groupId\030\002 \002(\005\"L\n\006Player\022\014" +
+      "\n\004name\030\001 \002(\t\022\n\n\002id\030\002 \002(\005\022\016\n\006rating\030\003 \001(\005" +
+      "\022\030\n\020googlePlayRating\030\004 \001(\003\"\033\n\rSGetGroupL" +
+      "ist\022\n\n\002id\030\001 \002(\005\"P\n\rCGetGroupList\022\"\n\005grou" +
+      "p\030\001 \003(\0132\023.net.protocol.Group\022\033\n\023numAllOn" +
+      "linePlayers\030\002 \001(\005\"I\n\005Group\022\017\n\007groupId\030\003 " +
+      "\002(\005\022\030\n\020numOnlinePlayers\030\001 \002(\005\022\025\n\rnumOnli" +
+      "neBots\030\002 \001(\005\" \n\rSEnterToGroup\022\017\n\007groupId" +
+      "\030\001 \002(\005\"\'\n\rCEnterToGroup\022\026\n\016isEnteredGrou" +
+      "p\030\001 \002(\010\"3\n\013SWantToPlay\022\020\n\010playerId\030\001 \002(\005",
+      "\022\022\n\nopponentId\030\002 \002(\005\"!\n\013CWantToPlay\022\022\n\no" +
+      "pponentId\030\001 \002(\005\"9\n\021SCancelDesirePlay\022\020\n\010" +
+      "playerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"\'\n\021CC" +
+      "ancelDesirePlay\022\022\n\nopponentId\030\001 \002(\005\"2\n\nS" +
+      "StartGame\022\020\n\010playerId\030\001 \002(\005\022\022\n\nopponentI" +
+      "d\030\002 \002(\005\"}\n\nCStartGame\022\022\n\nopponentId\030\001 \002(" +
+      "\005\022(\n\010typeMove\030\002 \002(\0162\026.net.protocol.TypeM" +
+      "ove\022\027\n\017numberOfWonGame\030\003 \001(\005\022\030\n\020numberOf" +
+      "LostGame\030\004 \001(\005\"l\n\010SDidMove\022\020\n\010playerId\030\001" +
+      " \002(\005\022\022\n\nopponentId\030\002 \002(\005\022\t\n\001i\030\003 \002(\005\022\t\n\001j",
+      "\030\004 \002(\005\022$\n\004type\030\005 \002(\0162\026.net.protocol.Type" +
+      "Move\"F\n\010CDidMove\022\t\n\001i\030\001 \002(\005\022\t\n\001j\030\002 \002(\005\022$" +
+      "\n\004type\030\003 \002(\0162\026.net.protocol.TypeMove\"5\n\010" +
+      "SWonGame\022\023\n\013idWonPlayer\030\001 \002(\005\022\024\n\014idLostP" +
+      "layer\030\002 \002(\005\"5\n\rSContinueGame\022\020\n\010playerId" +
+      "\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"K\n\rCContinueG" +
+      "ame\022\024\n\014continueGame\030\001 \002(\010\022$\n\004type\030\003 \002(\0162" +
+      "\026.net.protocol.TypeMove\"E\n\014SChatMessage\022" +
+      "\020\n\010playerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\022\017\n" +
+      "\007message\030\003 \002(\t\"\037\n\014CChatMessage\022\017\n\007messag",
+      "e\030\001 \002(\t\"G\n\021SGroupChatMessage\022\020\n\010playerId" +
+      "\030\001 \002(\005\022\017\n\007message\030\002 \002(\t\022\017\n\007groupId\030\003 \002(\005" +
+      "\"6\n\021CGroupChatMessage\022\020\n\010playerId\030\001 \002(\005\022" +
+      "\017\n\007message\030\002 \002(\t\"5\n\rSExitFromGame\022\020\n\010pla" +
+      "yerId\030\001 \002(\005\022\022\n\nopponentId\030\002 \002(\005\"#\n\rCExit" +
+      "FromGame\022\022\n\nopponentId\030\001 \002(\005\"3\n\016SExitFro" +
+      "mGroup\022\020\n\010playerId\030\001 \002(\005\022\017\n\007groupId\030\002 \002(" +
+      "\005\"\"\n\016CExitFromGroup\022\020\n\010playerId\030\001 \002(\005\"\'\n" +
+      "\023SExitFromGlobalGame\022\020\n\010playerId\030\001 \002(\005\"!" +
+      "\n\rSTop100Player\022\020\n\010playerId\030\001 \002(\005\"5\n\rCTo",
+      "p100Player\022$\n\006player\030\001 \003(\0132\024.net.protoco" +
+      "l.Player\"\'\n\021TimeForMoveFullUp\022\022\n\ntimeFul" +
+      "lUp\030\001 \002(\010\"2\n\032AppNeedUpdateToLastVersion\022" +
+      "\024\n\014urlForUpdate\030\001 \002(\t*L\n\020RegistrationTyp" +
+      "e\022\016\n\nannonymous\020\001\022\006\n\002xo\020\002\022\n\n\006google\020\003\022\014\n" +
+      "\010facebook\020\004\022\006\n\002vk\020\005*@\n\014LoginProblem\022\033\n\027n" +
+      "ickOrPasswordUnCorrect\020\001\022\023\n\017accountUnloc" +
+      "ked\020\002*<\n\023RegistrationProblem\022\022\n\016emailUnC" +
+      "orrect\020\001\022\021\n\rnickUnCorrect\020\002*\033\n\003Sex\022\010\n\004ma" +
+      "le\020\001\022\n\n\006female\020\002*C\n\032ResponseForRestorePa",
+      "ssword\022\017\n\013sendToEmail\020\001\022\024\n\020emailUnCorrec" +
+      "ted\020\002*\030\n\010TypeMove\022\005\n\001X\020\001\022\005\n\001O\020\002B\030\n\014net.p" +
+      "rotocolB\010Protocol"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -17869,7 +17984,7 @@ public final class Protocol {
           internal_static_net_protocol_SLoginToGame_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_protocol_SLoginToGame_descriptor,
-              new java.lang.String[] { "Name", "RegistarionType", "Uuid", "IsBot", "AppVersion", },
+              new java.lang.String[] { "Name", "RegistarionType", "Uuid", "IsBot", "AppVersion", "GooglePlayRating", },
               net.protocol.Protocol.SLoginToGame.class,
               net.protocol.Protocol.SLoginToGame.Builder.class);
           internal_static_net_protocol_CLoginToGame_descriptor =
@@ -17933,7 +18048,7 @@ public final class Protocol {
           internal_static_net_protocol_Player_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_net_protocol_Player_descriptor,
-              new java.lang.String[] { "Name", "Id", "Rating", },
+              new java.lang.String[] { "Name", "Id", "Rating", "GooglePlayRating", },
               net.protocol.Protocol.Player.class,
               net.protocol.Protocol.Player.Builder.class);
           internal_static_net_protocol_SGetGroupList_descriptor =

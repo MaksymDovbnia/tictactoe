@@ -129,13 +129,13 @@ public class OnlineOpenedRoomFragment extends Fragment implements IOnlineOpenedR
         getView().findViewById(R.id.ll_updating_group).setVisibility(View.GONE);
         Protocol.CUpdateAboutActivityPlayer updateAboutActivityPlayers =
                 (Protocol.CUpdateAboutActivityPlayer) msg.obj;
-       Logger.printLog("Invoked updateAboutActivityPlayer");
-        for (Protocol.Player player : updateAboutActivityPlayers
+        Logger.printLog("Invoked updateAboutActivityPlayer");
+        for (Protocol.Player protocolPlayer : updateAboutActivityPlayers
                 .getNewPlayerList()) {
-            Logger.printLog("updateAboutActivityPlayer NewPlayerList()+ " + player.getName());
-            if (player.getId() != -1)
-                mListActivityPlayer.add(new Player(player.getId(),
-                        player.getName(), player.getRating()));
+            Logger.printLog("updateAboutActivityPlayer NewPlayerList()+ " + protocolPlayer.getName());
+            if (protocolPlayer.getId() != -1)
+                mListActivityPlayer.add(new Player(protocolPlayer.getId(),
+                        protocolPlayer.getName(), protocolPlayer.getRating(), protocolPlayer.getGooglePlayRating()));
         }
         for (Protocol.CExitFromGroup exitFromGroup : updateAboutActivityPlayers
                 .getExitPlayerList()) {

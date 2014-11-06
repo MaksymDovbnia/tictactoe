@@ -148,6 +148,14 @@
       </layout>
     </layouts>
   </component>
+<<<<<<< Updated upstream
+=======
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="fat" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.bigtictactoeonlinegame.activity" />
+  </component>
+>>>>>>> Stashed changes
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="BigTicTacToeOnline" />
@@ -158,7 +166,153 @@
     <bookmark url="file://$PROJECT_DIR$/../googleplayservicesamples/android-samples/BasicSamples/libraries/BaseGameUtils/src/main/java/com/google/example/games/basegameutils/GameHelper.java" line="518" mnemonic="1" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="46cd3620-7cc5-4755-98cf-c97fc9fc96c8" name="Default" comment="" />
+=======
+    <list default="true" id="46cd3620-7cc5-4755-98cf-c97fc9fc96c8" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/libs/GoogleAdMobAdsSdk-6.4.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/achievement.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/android1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/android2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/bluetooth1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/bluetooth2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/button_about_game.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/button_about_pressed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/button_back.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/button_back1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/button_chat.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/button_chat1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/button_play.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/button_play_pessed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/button_restar.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/button_restar1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/field1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/fild2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/assets/fonts/foo_regular.ttf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/foto.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/g_plus.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/game_name.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/games_achievements.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/games_achievements_presed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/games_leaderboards_presed.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/leaderboards.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/o.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/rating.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/top.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/two_player1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/two_player2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/wifi1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/wifi2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/x_1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/x_2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/x_3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/x_4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/AndroidGameModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/BluetoothGameModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/FriendGameModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldView.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/GeneralAdWithPlayServiceActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/GeneralGameModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/GoogleAnalyticsWithPlayServiceActivity.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IGameModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/IGooglePlayServiceProvider.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IOpponentActionListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IOpponentPerformMove.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IWonGameListener.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/utils/Mathematics.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/OnlineGameModel.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/XOGameActivityWithAds.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/about_button_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/achievements_button_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/android_button_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/bluetooth_button_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/chat_button_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/exit_button_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/innet_button_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/leaderboard_button_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/restart_button_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/start_button_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/layout/top_google_login_view.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/drawable/two_players_button_selector.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/XO/res/color/type_game_text_color.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="J:\Programing\java_android\android_projects\tictactoe_new\.idea\libraries\google_play_services1.xml" afterPath="" />
+      <change type="DELETED" beforePath="J:\Programing\java_android\android_projects\tictactoe_new\XO\src\com\bigtictactoeonlinegame\gamefield\handler\AndroidGameHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="J:\Programing\java_android\android_projects\tictactoe_new\XO\src\com\bigtictactoeonlinegame\gamefield\handler\BluetoothGameHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="J:\Programing\java_android\android_projects\tictactoe_new\XO\src\com\bigtictactoeonlinegame\gamefield\handler\FriendGameHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="J:\Programing\java_android\android_projects\tictactoe_new\XO\src\com\bigtictactoeonlinegame\gamefield\handler\GlobalHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="J:\Programing\java_android\android_projects\tictactoe_new\XO\src\com\bigtictactoeonlinegame\gamefield\handler\IGameHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="J:\Programing\java_android\android_projects\tictactoe_new\XO\src\com\bigtictactoeonlinegame\gamefield\handler\OnlineGameHandler.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/drawable/general_background.jpg" afterPath="$PROJECT_DIR$/XO/res/drawable/general_background.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/drawable-hdpi/general_background.jpg" afterPath="$PROJECT_DIR$/XO/res/drawable-hdpi/general_background.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/drawable-xhdpi/general_background.jpg" afterPath="$PROJECT_DIR$/XO/res/drawable-xhdpi/general_background.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/drawable-xxhdpi/general_background.jpg" afterPath="$PROJECT_DIR$/XO/res/drawable-xxhdpi/general_background.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/drawable/ic_launcher.png" afterPath="$PROJECT_DIR$/XO/res/drawable/ic_launcher.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/AndroidManifest.xml" afterPath="$PROJECT_DIR$/XO/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/BigTicTacToeOnline.iml" afterPath="$PROJECT_DIR$/XO/BigTicTacToeOnline.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/BlickingButton.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/BlickingButton.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/bluetoothgame/BluetoothGameActivity.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/bluetoothgame/BluetoothGameActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/config/Config.java" afterPath="$PROJECT_DIR$/XO/src/com/config/Config.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/Controller.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/Controller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivity.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivityAction.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivityAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldAdapter.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldFragment.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldItem.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldItem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/utils/Logger.java" afterPath="$PROJECT_DIR$/XO/src/com/utils/Logger.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/entity/OneMove.java" afterPath="$PROJECT_DIR$/XO/src/com/entity/OneMove.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/net/online/OnlineConnectionManager.java" afterPath="$PROJECT_DIR$/XO/src/com/net/online/OnlineConnectionManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/openedroom/OnlineOpenedRoomActivity.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/openedroom/OnlineOpenedRoomActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/openedroom/OnlineOpenedRoomFragment.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/openedroom/OnlineOpenedRoomFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/entity/Player.java" afterPath="$PROJECT_DIR$/XO/src/com/entity/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/net/protocol/Protocol.java" afterPath="$PROJECT_DIR$/XO/src/net/protocol/Protocol.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/SelectTypeOfGameActivity.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/SelectTypeOfGameActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/SettingsActivity.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/SettingsActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/StartActivity.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/StartActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/onlinerooms/Top100Fragment.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/onlinerooms/Top100Fragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/XOGameActivity.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/XOGameActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ant.xml" afterPath="$PROJECT_DIR$/.idea/ant.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/app_need_update_popup_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/app_need_update_popup_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/bluetooth_game_activity_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/bluetooth_game_activity_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/bt_device_list_actvity_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/bt_device_list_actvity_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/bt_device_list_item.xml" afterPath="$PROJECT_DIR$/XO/res/layout/bt_device_list_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/chat_fragment_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/chat_fragment_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/chat_list_item.xml" afterPath="$PROJECT_DIR$/XO/res/layout/chat_list_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/values/colors.xml" afterPath="$PROJECT_DIR$/XO/res/values/colors.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/values/dimens.xml" afterPath="$PROJECT_DIR$/XO/res/values/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/values-xlarge/dimens.xml" afterPath="$PROJECT_DIR$/XO/res/values-xlarge/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/game_field_fragment_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/game_field_fragment_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/game_fileld_activity_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/game_fileld_activity_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/values/games_ids.xml" afterPath="$PROJECT_DIR$/XO/res/values/games_ids.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/input_player_name_popup_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/input_player_name_popup_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/my_list_item.xml" afterPath="$PROJECT_DIR$/XO/res/layout/my_list_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/online_group_list_item.xml" afterPath="$PROJECT_DIR$/XO/res/layout/online_group_list_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/online_list_view_header_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/online_list_view_header_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/online_opened_room_fragment.xml" afterPath="$PROJECT_DIR$/XO/res/layout/online_opened_room_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/online_players_list_item.xml" afterPath="$PROJECT_DIR$/XO/res/layout/online_players_list_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/online_rooms_fragment_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/online_rooms_fragment_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/opened_activity_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/opened_activity_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/popup_offline_players_name.xml" afterPath="$PROJECT_DIR$/XO/res/layout/popup_offline_players_name.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/select_bot_level_popup_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/select_bot_level_popup_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/start_activity_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/start_activity_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/values/strings.xml" afterPath="$PROJECT_DIR$/XO/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/values-uk/strings.xml" afterPath="$PROJECT_DIR$/XO/res/values-uk/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/values/styles.xml" afterPath="$PROJECT_DIR$/XO/res/values/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/top_100_fragment_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/top_100_fragment_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/top_100_list_item_view.xml" afterPath="$PROJECT_DIR$/XO/res/layout/top_100_list_item_view.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/type_of_game_activity_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/type_of_game_activity_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/wanted_buttle_list_item.xml" afterPath="$PROJECT_DIR$/XO/res/layout/wanted_buttle_list_item.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/XO/res/layout/wants_play_list_view_header_layout.xml" afterPath="$PROJECT_DIR$/XO/res/layout/wants_play_list_view_header_layout.xml" />
+      <change type="MOVED" beforePath="J:\Programing\java_android\android_projects\tictactoe_new\XO\src\com\bigtictactoeonlinegame\GameFieldWinLineHandler.java" afterPath="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/GameFieldModel.java" />
+      <change type="MOVED" beforePath="J:\Programing\java_android\android_projects\tictactoe_new\XO\src\com\componentwithfont\TextViewWirhComicsFont.java" afterPath="$PROJECT_DIR$/XO/src/com/componentwithfont/TextViewWithComicsFont.java" />
+    </list>
+>>>>>>> Stashed changes
     <ignored path="tictactoe.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -324,8 +478,13 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+<<<<<<< Updated upstream
     <ui_properties converted="true" />
     <breakpoint_rules converted="true" />
+=======
+    <breakpoint_rules converted="true" />
+    <ui_properties converted="true" />
+>>>>>>> Stashed changes
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -333,6 +492,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+<<<<<<< Updated upstream
       <file leaf-file-name="GameFieldActivity.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivity.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -372,6 +532,96 @@
               </folding>
             </state>
           </provider>
+=======
+      <file leaf-file-name="GameFieldController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1989" max-vertical-offset="3179">
+              <caret line="117" column="93" selection-start-line="117" selection-start-column="62" selection-end-line="117" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="type_game_text_color.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/XO/res/color/type_game_text_color.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="221">
+              <caret line="7" column="82" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="type_of_game_activity_layout.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/XO/res/layout/type_of_game_activity_layout.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1545" max-vertical-offset="2414">
+              <caret line="115" column="62" selection-start-line="115" selection-start-column="42" selection-end-line="115" selection-end-column="62" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/XO/res/values/styles.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="1020">
+              <caret line="14" column="176" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="online_opened_room_fragment.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/XO/res/layout/online_opened_room_fragment.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.4074073" vertical-offset="0" max-vertical-offset="2295">
+              <caret line="7" column="152" selection-start-line="7" selection-start-column="75" selection-end-line="7" selection-end-column="75" />
+              <folding>
+                <element signature="e#5375#5397#0" expanded="true" />
+                <element signature="e#5432#5455#0" expanded="true" />
+                <element signature="e#5568#5588#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameHelper.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../googleplayservicesamples/android-samples/BasicSamples/libraries/BaseGameUtils/src/main/java/com/google/example/games/basegameutils/GameHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.19412725" vertical-offset="153" max-vertical-offset="17068">
+              <caret line="30" column="92" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidGameModel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/AndroidGameModel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="2040">
+              <caret line="33" column="112" selection-start-line="33" selection-start-column="61" selection-end-line="33" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameFieldFragment.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1853" max-vertical-offset="2108">
+              <caret line="109" column="35" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+>>>>>>> Stashed changes
         </entry>
       </file>
     </leaf>
@@ -388,7 +638,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
+<<<<<<< Updated upstream
         <entry key="$PROJECT_DIR$" value="918fd74" />
+=======
+        <entry key="$PROJECT_DIR$" value="master" />
+>>>>>>> Stashed changes
       </map>
     </option>
   </component>
@@ -401,6 +655,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+<<<<<<< Updated upstream
         <option value="$PROJECT_DIR$/XO/res/layout/online_opened_room_fragment.xml" />
         <option value="$PROJECT_DIR$/XO/res/layout/online_rooms_fragment_layout.xml" />
         <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/StartActivity.java" />
@@ -441,6 +696,59 @@
         <option value="$PROJECT_DIR$/XO/res/layout/start_activity_layout.xml" />
         <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldItem.java" />
         <option value="$PROJECT_DIR$/XO/AndroidManifest.xml" />
+=======
+        <option value="$PROJECT_DIR$/XO/res/drawable/chat_buton_selector.xml" />
+        <option value="$PROJECT_DIR$/XO/res/drawable/restart_button_selector.xml" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldItem.java" />
+        <option value="$PROJECT_DIR$/XO/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/XO/res/layout/start_activity_layout.xml" />
+        <option value="$PROJECT_DIR$/XO/res/layout/top_google_login_view.xml" />
+        <option value="$PROJECT_DIR$/XO/res/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/XO/res/layout/game_fileld_activity_layout.xml" />
+        <option value="$PROJECT_DIR$/XO/res/values-xlarge/dimens.xml" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/SelectTypeOfGameActivity.java" />
+        <option value="$PROJECT_DIR$/XO/res/color/color.xml" />
+        <option value="$PROJECT_DIR$/XO/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/XO/res/drawable/android_button_selector.xml" />
+        <option value="$PROJECT_DIR$/XO/res/drawable/innet_button_selector.xml" />
+        <option value="$PROJECT_DIR$/XO/res/drawable/bluetooth_button_selector.xml" />
+        <option value="$USER_HOME$/.IdeaIC13/system/compile-server/bigtictactoeonline_4a927e72/targets/java-production/BigTicTacToeOnline/android/generated_sources/aapt/com/bigtictactoeonlinegame/activity/R.java" />
+        <option value="$PROJECT_DIR$/XO/res/drawable/two_players_button_selector.xml" />
+        <option value="$PROJECT_DIR$/XO/res/layout/type_of_game_activity_layout.xml" />
+        <option value="$PROJECT_DIR$/XO/res/layout/chat_fragment_layout.xml" />
+        <option value="$PROJECT_DIR$/XO/res/layout/chat_list_item.xml" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/BlickingButton.java" />
+        <option value="$PROJECT_DIR$/XO/res/color/type_game_text_color.xml" />
+        <option value="$PROJECT_DIR$/XO/res/layout/bluetooth_game_activity_layout.xml" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/bluetoothgame/BluetoothGameActivity.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/GameFieldWinLineHandler.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/GameFieldModel.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/SettingsActivity.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IOpponentPerformMove.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/FriendGameHandler.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/GlobalHandler.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/GeneralGameHandler.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/BluetoothGameHandler.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldAdapter.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/AndroidGameHandler.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/OnlineGameHandler.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IGameHandler.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/FriendGameModel.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivity.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/entity/OneMove.java" />
+        <option value="$PROJECT_DIR$/XO/res/layout/game_field_fragment_layout.xml" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IOpponentTimeEndListener.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IGameModel.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldView.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivityAction.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/GeneralGameModel.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IOpponentActionListener.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/AndroidGameModel.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IWonGameListener.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldFragment.java" />
+        <option value="$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldController.java" />
+        <option value="$PROJECT_DIR$/../googleplayservicesamples/android-samples/BasicSamples/libraries/BaseGameUtils/src/main/java/com/google/example/games/basegameutils/BaseGameActivity.java" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
@@ -504,7 +812,11 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
+<<<<<<< Updated upstream
     <option name="STATE" value="2" />
+=======
+    <option name="STATE" value="0" />
+>>>>>>> Stashed changes
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -519,6 +831,10 @@
       <sortByType />
     </navigator>
     <panes>
+<<<<<<< Updated upstream
+=======
+      <pane id="Scope" />
+>>>>>>> Stashed changes
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -527,6 +843,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+<<<<<<< Updated upstream
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="BigTicTacToeOnline" />
@@ -541,11 +858,17 @@
       </pane>
       <pane id="PackagesPane" />
       <pane id="Scope" />
+=======
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+>>>>>>> Stashed changes
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
+<<<<<<< Updated upstream
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="107" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="project.structure.proportion" value="0.15" />
@@ -553,18 +876,36 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="LayoutCode.rearrangeEntriesXML" value="true" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="149" />
+=======
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="275" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="292" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="LayoutCode.rearrangeEntriesXML" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="296" />
+>>>>>>> Stashed changes
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="D:/adt-bundle-windows-x86_64-20130219/sdk/extras/google/google_play_services/libproject/google-play-services_lib" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteToolWindowManager.WIDTH" value="194" />
+<<<<<<< Updated upstream
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="104" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="570" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="468" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="147" />
     <property name="DEBUGGABLE_DEVICE" value="samsung-gt_p7300-C4F12F1152B269E" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="143" />
+=======
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="267" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="1008" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="969" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="292" />
+    <property name="DEBUGGABLE_DEVICE" value="samsung-gt_p7300-C4F12F1152B269E" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="285" />
+>>>>>>> Stashed changes
     <property name="DEBUGGABLE_PROCESS" value="com.bigtictactoeonlinegame.activity" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
@@ -598,6 +939,7 @@
       <recent name="com.game.fragments" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+<<<<<<< Updated upstream
       <recent name="J:\Programing\java_android\android_projects\tictactoe2\XO\res\drawable" />
       <recent name="J:\Programing\java_android\android_projects\tictactoe\XO\src\com\utils" />
       <recent name="J:\Programing\java_android\android_projects\tictactoe\XO\res\drawable" />
@@ -605,6 +947,20 @@
       <recent name="J:\Programing\java_android\android_projects\tictactoe\XO\res\layout" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+=======
+      <recent name="J:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable" />
+      <recent name="J:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-xxhdpi" />
+      <recent name="J:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-xhdpi" />
+      <recent name="J:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-hdpi" />
+      <recent name="J:\Programing\java_android\android_projects\tictactoe\XO\src\com\utils" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.bigtictactoeonlinegame.gamefield.handler" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="J:\Programing\java_android\android_projects\tictactoe_new\XO\assets\fonts" />
+      <recent name="J:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable" />
+>>>>>>> Stashed changes
       <recent name="J:\Programing\java_android\android_projects\tictactoe\XO\res\drawable-mdpi" />
       <recent name="J:\Programing\java_android\android_projects\tictactoe\XO\res\color" />
       <recent name="J:\Programing\java_android\android_projects\tictactoe\XO\res" />
@@ -646,6 +1002,7 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+<<<<<<< Updated upstream
     <configuration default="true" type="Applet" factoryName="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />
@@ -659,6 +1016,8 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
+=======
+>>>>>>> Stashed changes
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -686,6 +1045,22 @@
       <listeners />
       <method />
     </configuration>
+<<<<<<< Updated upstream
+=======
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+>>>>>>> Stashed changes
     <configuration default="true" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
@@ -747,7 +1122,11 @@
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+<<<<<<< Updated upstream
       <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+=======
+      <option name="USE_LAST_SELECTED_DEVICE" value="true" />
+>>>>>>> Stashed changes
       <option name="PREFERRED_AVD" value="" />
       <option name="USE_COMMAND_LINE" value="true" />
       <option name="COMMAND_LINE" value="" />
@@ -984,6 +1363,7 @@
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+<<<<<<< Updated upstream
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20670995" sideWeight="0.5261194" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -995,11 +1375,27 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38419914" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18763326" sideWeight="0.5608974" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32467532" sideWeight="0.81556505" order="10" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15522876" sideWeight="0.5554371" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.24412394" sideWeight="0.9157428" order="7" side_tool="true" content_ui="tabs" x="1367" y="181" width="550" height="607" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32703003" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3267974" sideWeight="0.81130064" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30627707" sideWeight="0.38006395" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19637139" sideWeight="0.78444445" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38530067" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16394307" sideWeight="0.8592018" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.18614718" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30627707" sideWeight="0.619403" order="10" side_tool="false" content_ui="tabs" />
+>>>>>>> Stashed changes
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.040089086" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24924472" sideWeight="0.8788889" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924226" sideWeight="0.77" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+<<<<<<< Updated upstream
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18763326" sideWeight="0.4375" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23051947" sideWeight="0.695629" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.3297414" sideWeight="0.37868482" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="849" height="333" />
@@ -1022,6 +1418,28 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38530067" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739422" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16394307" sideWeight="0.8592018" order="3" side_tool="true" content_ui="tabs" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19402985" sideWeight="0.6726058" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23593074" sideWeight="0.695629" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.3297414" sideWeight="0.37868482" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="849" height="333" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739422" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25816995" sideWeight="0.6934968" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.3297414" sideWeight="0.37868482" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="849" height="333" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23804227" sideWeight="0.5554963" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38444445" sideWeight="0.44450372" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16394307" sideWeight="0.8592018" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32739422" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38530067" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+>>>>>>> Stashed changes
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.04120267" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2260128" sideWeight="0.6726058" order="0" side_tool="false" content_ui="combo" />
@@ -1040,8 +1458,13 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14460512" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14905451" sideWeight="0.8159018" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24924472" sideWeight="0.8788889" order="1" side_tool="false" content_ui="tabs" />
+<<<<<<< Updated upstream
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924226" sideWeight="0.77" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32924226" sideWeight="0.77" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> Stashed changes
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1100,11 +1523,16 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/XO/src/com/net/online/OnlineConnectionManager.java</url>
+<<<<<<< Updated upstream
           <line>163</line>
+=======
+          <line>164</line>
+>>>>>>> Stashed changes
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+<<<<<<< Updated upstream
           <url>file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/AndroidGameHandler.java</url>
           <line>83</line>
           <properties />
@@ -1113,6 +1541,16 @@
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivity.java</url>
           <line>203</line>
+=======
+          <url>file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/XOGameActivity.java</url>
+          <line>29</line>
+          <properties />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivity.java</url>
+          <line>266</line>
+>>>>>>> Stashed changes
           <properties />
           <option name="timeStamp" value="27" />
         </line-breakpoint>
@@ -1129,13 +1567,19 @@
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+<<<<<<< Updated upstream
           <url>file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/OnlineGameHandler.java</url>
           <line>146</line>
+=======
+          <url>file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/OnlineGameModel.java</url>
+          <line>134</line>
+>>>>>>> Stashed changes
           <properties />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/onlinerooms/Top100Fragment.java</url>
+<<<<<<< Updated upstream
           <line>79</line>
           <properties />
           <option name="timeStamp" value="33" />
@@ -1148,6 +1592,32 @@
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="34" />
+=======
+          <line>74</line>
+          <properties />
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldView.java</url>
+          <line>87</line>
+          <properties />
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldView.java</url>
+          <line>231</line>
+          <properties />
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldView.java</url>
+          <line>167</line>
+          <properties />
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="47" />
+>>>>>>> Stashed changes
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1155,6 +1625,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/XO/res/layout/start_activity_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="2754">
@@ -1319,10 +1790,165 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2951389" vertical-offset="0" max-vertical-offset="576">
           <caret line="10" column="71" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+=======
+    <entry file="file://$PROJECT_DIR$/XO/res/drawable/bluetooth_button_selector.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.IdeaIC13/system/compile-server/bigtictactoeonline_4a927e72/targets/java-production/BigTicTacToeOnline/android/generated_sources/aapt/com/bigtictactoeonlinegame/activity/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="9495" max-vertical-offset="30311">
+          <caret line="585" column="52" selection-start-line="585" selection-start-column="52" selection-end-line="585" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/res/drawable/two_player1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/res/drawable/android_button_selector.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <caret line="6" column="46" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/res/drawable/two_players_button_selector.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1629393" vertical-offset="0" max-vertical-offset="626">
+          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/res/drawable/button_chat.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/res/layout/bluetooth_game_activity_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.73067915" vertical-offset="470" max-vertical-offset="1734">
+          <caret line="46" column="79" selection-start-line="46" selection-start-column="79" selection-end-line="46" selection-end-column="79" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/chat/ChatFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1683">
+          <caret line="49" column="49" selection-start-line="49" selection-start-column="49" selection-end-line="49" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/BlickingButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1785">
+          <caret line="17" column="68" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/res/layout/chat_fragment_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1105">
+          <caret line="24" column="77" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/res/layout/chat_list_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6666665" vertical-offset="146" max-vertical-offset="527">
+          <caret line="16" column="64" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/bluetoothgame/BluetoothGameActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="3247">
+          <caret line="36" column="53" selection-start-line="36" selection-start-column="53" selection-end-line="36" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/res/layout/start_activity_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.4814816" vertical-offset="8" max-vertical-offset="918">
+          <caret line="6" column="81" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/XO/libs/xologic.jar!/RES/com/sec/xologic/impl/StartNewGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33182845" vertical-offset="40" max-vertical-offset="1003">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/SettingsActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34537247" vertical-offset="0" max-vertical-offset="714">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/BluetoothGameModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1910" max-vertical-offset="2856">
+          <caret line="125" column="20" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3161" max-vertical-offset="3604">
+          <caret line="223" column="12" selection-start-line="223" selection-start-column="12" selection-end-line="223" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/XO/libs/xologic.jar!/RES/com/sec/xologic/impl/ResultMoveListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42212188" vertical-offset="0" max-vertical-offset="443">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/XO/libs/xologic.jar!/RES/com/sec/xologic/impl/TypeMove.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34537247" vertical-offset="0" max-vertical-offset="443">
+          <caret line="9" column="12" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/entity/TypeOfMove.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07674944" vertical-offset="0" max-vertical-offset="443">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/OnlineGameModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2958">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/GoogleAnalyticsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39600664" vertical-offset="0" max-vertical-offset="601">
@@ -1342,12 +1968,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="3162">
           <caret line="61" column="51" selection-start-line="61" selection-start-column="51" selection-end-line="61" selection-end-column="51" />
+=======
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/FriendGameModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42212188" vertical-offset="0" max-vertical-offset="1326">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/adt-bundle-windows-x86_64-20130219/sdk/sources/android-19/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5925926" vertical-offset="99807" max-vertical-offset="322830">
+          <caret line="6064" column="26" selection-start-line="6064" selection-start-column="26" selection-end-line="6064" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/res/layout/game_fileld_activity_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="425" max-vertical-offset="2057">
+          <caret line="25" column="60" selection-start-line="25" selection-start-column="57" selection-end-line="25" selection-end-column="57" />
+>>>>>>> Stashed changes
         </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/GlobalHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="403" max-vertical-offset="1207">
@@ -1455,42 +2102,180 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3243243" vertical-offset="15028" max-vertical-offset="16813">
           <caret line="954" column="118" selection-start-line="954" selection-start-column="51" selection-end-line="955" selection-end-column="37" />
+=======
+    <entry file="file://$PROJECT_DIR$/XO/src/com/entity/OneMove.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="175" max-vertical-offset="595">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/GameFieldModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="410" max-vertical-offset="2397">
+          <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/res/layout/game_field_fragment_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.555555" vertical-offset="263" max-vertical-offset="952">
+          <caret line="37" column="44" selection-start-line="37" selection-start-column="44" selection-end-line="37" selection-end-column="44" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IOpponentPerformMove.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/OneMoveTimer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="558" max-vertical-offset="1394">
+          <caret line="55" column="114" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/res/drawable/two_player2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/IGameFieldFragmentAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17634855" vertical-offset="0" max-vertical-offset="482">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/GeneralGameModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="419" max-vertical-offset="884">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.84842104" vertical-offset="777" max-vertical-offset="6579">
+          <caret line="39" column="35" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/mainactivity/GoogleAnalyticsWithPlayServiceActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="157" max-vertical-offset="493">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/IGooglePlayServiceProvider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IGameModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="164" max-vertical-offset="646">
+          <caret line="21" column="99" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivityAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29238328" vertical-offset="0" max-vertical-offset="442">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IOpponentActionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <caret line="13" column="69" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3417" max-vertical-offset="6069">
+          <caret line="241" column="48" selection-start-line="241" selection-start-column="48" selection-end-line="241" selection-end-column="48" />
+>>>>>>> Stashed changes
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldItem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1615" max-vertical-offset="3451">
           <caret line="130" column="41" selection-start-line="130" selection-start-column="41" selection-end-line="130" selection-end-column="41" />
+=======
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/IWonGameListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <caret line="13" column="44" selection-start-line="13" selection-start-column="44" selection-end-line="13" selection-end-column="44" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/XO/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="1462">
           <caret line="28" column="18" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="18" />
+=======
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/handler/AndroidGameModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="121" max-vertical-offset="1700">
+          <caret line="33" column="112" selection-start-line="33" selection-start-column="61" selection-end-line="33" selection-end-column="61" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/onlinerooms/Top100Fragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="1496">
           <caret line="33" column="35" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+=======
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1465" max-vertical-offset="1955">
+          <caret line="109" column="35" selection-start-line="109" selection-start-column="35" selection-end-line="109" selection-end-column="35" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/XO/src/com/net/online/OnlineConnectionManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09970675" vertical-offset="0" max-vertical-offset="3094">
           <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+=======
+    <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1394" max-vertical-offset="2856">
+          <caret line="117" column="93" selection-start-line="117" selection-start-column="62" selection-end-line="117" selection-end-column="62" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivityAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.398827" vertical-offset="0" max-vertical-offset="682">
@@ -1517,14 +2302,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27659574" vertical-offset="264" max-vertical-offset="969">
           <caret line="27" column="103" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+=======
+    <entry file="file://$PROJECT_DIR$/XO/res/color/type_game_text_color.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
+          <caret line="7" column="82" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/XO/res/layout/type_of_game_activity_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1545" max-vertical-offset="2414">
+          <caret line="115" column="62" selection-start-line="115" selection-start-column="42" selection-end-line="115" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/XO/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="147" max-vertical-offset="1020">
+          <caret line="14" column="176" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/adt-bundle-windows-x86_64-20130219/sdk/extras/google/google_play_services/libproject/google-play-services_lib/libs/google-play-services.jar!/com/google/android/gms/ads/AdView.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12573965" vertical-offset="0" max-vertical-offset="867">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+>>>>>>> Stashed changes
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/XO/res/layout/start_activity_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17551622" vertical-offset="782" max-vertical-offset="2754">
           <caret line="53" column="68" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/XO/res/layout/online_rooms_fragment_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.37037" vertical-offset="1024" max-vertical-offset="1870">
+          <caret line="91" column="35" selection-start-line="91" selection-start-column="35" selection-end-line="91" selection-end-column="35" />
+          <folding />
+>>>>>>> Stashed changes
         </state>
       </provider>
       <provider editor-type-id="android-designer">
@@ -1533,15 +2359,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/XO/res/layout/online_opened_room_fragment.xml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state vertical-scroll-proportion="0.49852508" vertical-offset="1617" max-vertical-offset="2295">
           <caret line="115" column="38" selection-start-line="115" selection-start-column="38" selection-end-line="115" selection-end-column="38" />
           <folding />
+=======
+        <state vertical-scroll-proportion="-4.4074073" vertical-offset="0" max-vertical-offset="2295">
+          <caret line="7" column="152" selection-start-line="7" selection-start-column="75" selection-end-line="7" selection-end-column="75" />
+          <folding>
+            <element signature="e#5375#5397#0" expanded="true" />
+            <element signature="e#5432#5455#0" expanded="true" />
+            <element signature="e#5568#5588#0" expanded="true" />
+          </folding>
+>>>>>>> Stashed changes
         </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/XO/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4822695" vertical-offset="102" max-vertical-offset="5304">
@@ -1577,10 +2414,29 @@
             <element signature="e#12688#12725#0" expanded="true" />
             <element signature="e#12770#13029#0" expanded="true" />
             <element signature="e#13018#13019#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/../googleplayservicesamples/android-samples/BasicSamples/libraries/BaseGameUtils/src/main/java/com/google/example/games/basegameutils/BaseGameActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26676178" vertical-offset="0" max-vertical-offset="2771">
+          <caret line="25" column="135" selection-start-line="24" selection-start-column="0" selection-end-line="25" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> Stashed changes
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
+=======
+    <entry file="file://$PROJECT_DIR$/../googleplayservicesamples/android-samples/BasicSamples/libraries/BaseGameUtils/src/main/java/com/google/example/games/basegameutils/GameHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19412725" vertical-offset="153" max-vertical-offset="17068">
+          <caret line="30" column="92" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> Stashed changes
   </component>
   <component name="masterDetails">
     <states>
@@ -1641,7 +2497,11 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
+<<<<<<< Updated upstream
           <last-edited>BigTicTacToeOnline</last-edited>
+=======
+          <last-edited>BaseGameUtils</last-edited>
+>>>>>>> Stashed changes
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1665,7 +2525,11 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+<<<<<<< Updated upstream
           <last-edited>libs</last-edited>
+=======
+          <last-edited>google-play-services</last-edited>
+>>>>>>> Stashed changes
           <splitter-proportions>
             <option name="proportions">
               <list>

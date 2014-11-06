@@ -23,21 +23,21 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-            <com.componentwithfont.TextViewWirhComicsFont
+            <com.componentwithfont.TextViewWithComicsFont
                     android:layout_width="0dp"
                     android:layout_weight="2"
                     android:layout_height="wrap_content"
                     android:text="@string/online_players"
                     style="@style/list_view_header_item"/>
 
-            <com.componentwithfont.TextViewWirhComicsFont
+            <com.componentwithfont.TextViewWithComicsFont
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="@string/rating"
                     style="@style/list_view_header_item"/>
 
-            <com.componentwithfont.TextViewWirhComicsFont
+            <com.componentwithfont.TextViewWithComicsFont
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
                 android:id="@+id/ll_updating_group"
                 >
 
-            <com.componentwithfont.TextViewWirhComicsFont
+            <com.componentwithfont.TextViewWithComicsFont
                     android:id="@+id/tv_scanning_for_devices"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
                 android:paddingLeft="@dimen/online_opened_room_fragment_wanted_header_padding_left"
                 android:orientation="horizontal">
 
-            <com.componentwithfont.TextViewWirhComicsFont
+            <com.componentwithfont.TextViewWithComicsFont
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"

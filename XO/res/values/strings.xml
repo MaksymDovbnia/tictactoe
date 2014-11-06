@@ -124,7 +124,8 @@
     <string name="update">Update</string>
 
     <string name="ad_unit_id">ca-app-pub-9906237700912530/6780578200</string>
-
-
+    <string name="sign_out">Sign out</string>
+    <string name="sign_in">Sign in</string>
+    <string name="online">Online</string>
 
 </resources>

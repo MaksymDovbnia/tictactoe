@@ -5,16 +5,18 @@
     <color name="blue">#0099CC</color>
     <color name="dark_blue">#3B4190</color>
 
-    <color name="red">#FF4444</color>
+    <color name="red">#fe0000</color>
     <color name="white">#FFF</color>
 
     <color name="gray_list_item_divider">#f1f1f1</color>
     <color name="dark_gray">#181B1B</color>
+    <color name="game_field_line">#e5943c</color>
+    <color name="game_field">#f8e5ac</color>
+    <color name="time_text_color">#58c241</color>
 
 
     <color name="online_player_list_header_background">#DC4123</color>
     <color name="wanted_play_player_list_header_background">#D4E2EF</color>
-
 
 
 </resources>

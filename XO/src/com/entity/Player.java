@@ -6,42 +6,58 @@ import java.util.Map;
 
 import net.protocol.Protocol;
 
-public class Player implements Serializable{
+/**
+ * @author Maksym Dovbnia (maksym.dovbnia@gmail.com)
+ */
 
-	private int id = 0;
-	private String name;
-	private Map<Integer, Player> playerMapWichWantedPlay;
-	private Map<Integer, Player> mapActivityPlayer;
-	private Protocol.RegistrationType registrationType;
+public class Player implements Serializable {
+
+    private int id = 0;
+    private String name;
+    private Map<Integer, Player> playerMapWichWantedPlay;
+    private Map<Integer, Player> mapActivityPlayer;
+    private Protocol.RegistrationType registrationType;
     private int groupId;
     private String uuid;
     private TypeOfMove moveType;
     private int rating;
     private int numOfAllWonGame;
-    public Player() {
-		playerMapWichWantedPlay = new HashMap<Integer, Player>();
-	}
+    private long playServiceScore;
 
-	public Player(int id, String name) {
-		this.id = id;
-		this.name = name;
-		playerMapWichWantedPlay = new HashMap<Integer, Player>();
-		mapActivityPlayer = new HashMap<Integer, Player>();
-	}
-    public Player(int id, String name, int rating) {
-        this.id = id;
-        this.name = name;
-        this.rating = rating;
+    public long getPlayServiceScore() {
+        return playServiceScore;
+    }
+
+    public void setPlayServiceScore(long playServiceScore) {
+        this.playServiceScore = playServiceScore;
+    }
+
+
+    public Player() {
         playerMapWichWantedPlay = new HashMap<Integer, Player>();
         mapActivityPlayer = new HashMap<Integer, Player>();
     }
-	public Player(int id, String name, Protocol.RegistrationType registrationType) {
-		this.registrationType = registrationType;
-		this.id = id;
-		this.name = name;
-		playerMapWichWantedPlay = new HashMap<Integer, Player>();
-		mapActivityPlayer = new HashMap<Integer, Player>();
-	}
+
+    public Player(int id, String name) {
+        this();
+        this.id = id;
+        this.name = name;
+    }
+
+    public Player(int id, String name, int rating) {
+        this(id, name);
+        this.rating = rating;
+    }
+
+    public Player(int id, String name, int rating, long playServiceScore) {
+        this(id, name, rating);
+        this.playServiceScore = playServiceScore;
+    }
+
+    public Player(int id, String name, Protocol.RegistrationType registrationType) {
+        this(id, name);
+        this.registrationType = registrationType;
+    }
 
 
     public TypeOfMove getMoveType() {
@@ -77,8 +93,8 @@ public class Player implements Serializable{
     }
 
     public int getId() {
-		return id;
-	}
+        return id;
+    }
 
     public int getGroupId() {
         return groupId;
@@ -89,44 +105,45 @@ public class Player implements Serializable{
     }
 
     public Protocol.RegistrationType getRegistrationType() {
-		return registrationType;
-	}
-	public void setRegistrationType(Protocol.RegistrationType registrationType) {
-		this.registrationType = registrationType;
-	}
+        return registrationType;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setRegistrationType(Protocol.RegistrationType registrationType) {
+        this.registrationType = registrationType;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Map<Integer, Player> getPlayerMapWichWantedPlay() {
-		return playerMapWichWantedPlay;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setPlayerMapWichWantedPlay(
-			Map<Integer, Player> playerMapWichWantedPlay) {
-		this.playerMapWichWantedPlay = playerMapWichWantedPlay;
-	}
+    public Map<Integer, Player> getPlayerMapWichWantedPlay() {
+        return playerMapWichWantedPlay;
+    }
 
-	public void addPlayerWichWanPlay(Player player) {
-		playerMapWichWantedPlay.put(player.getId(), player);
+    public void setPlayerMapWichWantedPlay(
+            Map<Integer, Player> playerMapWichWantedPlay) {
+        this.playerMapWichWantedPlay = playerMapWichWantedPlay;
+    }
 
-	}
+    public void addPlayerWichWanPlay(Player player) {
+        playerMapWichWantedPlay.put(player.getId(), player);
 
-	public Map<Integer, Player> getMapActivityPlayer() {
-		return mapActivityPlayer;
-	}
+    }
 
-	public void setMapActivityPlayer(Map<Integer, Player> mapActivityPlayer) {
-		this.mapActivityPlayer = mapActivityPlayer;
-	}
+    public Map<Integer, Player> getMapActivityPlayer() {
+        return mapActivityPlayer;
+    }
+
+    public void setMapActivityPlayer(Map<Integer, Player> mapActivityPlayer) {
+        this.mapActivityPlayer = mapActivityPlayer;
+    }
 
 }

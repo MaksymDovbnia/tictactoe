@@ -19,7 +19,9 @@ import com.bigtictactoeonlinegame.onlinerooms.*;
 import com.bigtictactoeonlinegame.popup.*;
 import com.config.*;
 import com.entity.Player;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.games.*;
+import com.google.android.gms.games.leaderboard.Leaderboards;
 import com.net.online.*;
 import com.net.online.protobuf.*;
 import com.utils.*;
@@ -28,7 +30,7 @@ import net.protocol.*;
 
 import java.util.*;
 
-public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickListener {
+public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements OnClickListener {
 
     private static final String LOG_TAG = SelectTypeOfGameActivity.class.getName();
     private static final String KEY_FOR_SHARED_PREFERENCES = SelectTypeOfGameActivity.class.getCanonicalName();
@@ -50,10 +52,13 @@ public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickL
 
     private Handler handler;
     private ProgressDialog pd;
-    private Player player;
+    private Player mPlayer;
 
-    private OnlineConnectionManager onlineGameWorker;
-    private XOAlertDialog anonymousLoginPopup;
+    private OnlineConnectionManager mOnlineGameWorker;
+    private XOAlertDialog mAnonymousLoginPopup;
+    private boolean mWasPrevClickLeaderBoardButton = false;
+    private boolean mWasPrevClickAchievemntsButton = false;
+    private long mGooglePlayScore;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,13 +67,13 @@ public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickL
         sharedPreferences = getSharedPreferences(KEY_FOR_SHARED_PREFERENCES, MODE_PRIVATE);
         initViews();
 
-        player = new Player();
+        mPlayer = new Player();
         createHandler();
     }
 
     private void initViews() {
         findViewById(R.id.sign_in_button).setOnClickListener(this);
-        findViewById(R.id.sign_out_button).setOnClickListener(this);
+        // findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.btn_leaderboards).setOnClickListener(this);
         findViewById(R.id.btn_achievments).setOnClickListener(this);
         View friend = findViewById(R.id.btn_two_players);
@@ -79,12 +84,13 @@ public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickL
         android.setOnClickListener(this);
         View bluetooth = findViewById(R.id.btn_bluetooth);
         bluetooth.setOnClickListener(this);
+        findViewById(R.id.btn_back_from_select_type_game).setOnClickListener(this);
     }
 
-//    @Override
-//    public AdView getAdView() {
-//        return (AdView) findViewById(R.id.ad_view);
-//    }
+    @Override
+    public AdView getAdView() {
+        return (AdView) findViewById(R.id.ad_view);
+    }
 
 
     private void createHandler() {
@@ -103,12 +109,12 @@ public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickL
                     case CLOGINTOGAME:
                         Protocol.CLoginToGame cLoginToGame = (Protocol.CLoginToGame) msg.obj;
                         int id = cLoginToGame.getId();
-                        player.setId(id);
-                        Controller.getInstance().setPlayer(player);
+                        mPlayer.setId(id);
+                        Controller.getInstance().setPlayer(mPlayer);
                         Logger.printLog("Conected to server with id " + id);
                         pd.cancel();
-                        if (anonymousLoginPopup != null) {
-                            anonymousLoginPopup.dismiss();
+                        if (mAnonymousLoginPopup != null) {
+                            mAnonymousLoginPopup.dismiss();
                         }
                         loginToGame();
                         break;
@@ -127,12 +133,15 @@ public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickL
     @Override
     protected void onResume() {
         super.onResume();
+
         player1NameFromSharedPrefences = sharedPreferences.getString(FIRST_PLAYER_NAME, null);
         player2NameFromSharedPrefences = sharedPreferences.getString(SECOND_PLAYER_NAME, null);
         playerNameFromSharedPrefencesForLoginToGame = sharedPreferences.getString(PLAYER_NAME_FOR_LOGIN_TO_ONLINE_GAME, null);
         playerNameFromSharedPrefencesForBluetoohToGame = sharedPreferences.getString(PLAYER_NAME_FOR_BLUETOOTH_GAME, null);
         playerUUID = sharedPreferences.getString(PLAYER_UUID_FOR_ONLINE_GAME, null);
-        if (playerUUID != null) player.setUuid(playerUUID);
+        if (playerUUID != null) {
+            mPlayer.setUuid(playerUUID);
+        }
     }
 
     private void loginToGame() {
@@ -140,9 +149,29 @@ public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickL
         startActivity(intent);
     }
 
+
+    private long getGoogleLeaderBoardScore() {
+
+        return mGooglePlayScore;
+    }
+
+    private void loadPlayServiceScore() {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Leaderboards.LoadPlayerScoreResult loadPlayerScoreResult = Games.Leaderboards.loadCurrentPlayerLeaderboardScore(getApiClient(),
+                        getString(R.string.leaderboard_the_best_online_players), 1, 1).await();
+                if (loadPlayerScoreResult != null && loadPlayerScoreResult.getScore() != null) {
+                    mGooglePlayScore = loadPlayerScoreResult.getScore().getRawScore();
+                }
+            }
+        };
+        new Thread(runnable).start();
+    }
+
     private void showNeedAppUpdatePopup() {
         final XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        anonymousLoginPopup = xoAlertDialog;
+        mAnonymousLoginPopup = xoAlertDialog;
         xoAlertDialog.setContent(R.layout.app_need_update_popup_layout);
         xoAlertDialog.setContentInitialization(new XOAlertDialog.IContentInitialization() {
             @Override
@@ -246,7 +275,7 @@ public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickL
 
     private void showAnonymousPopup() {
         final XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        anonymousLoginPopup = xoAlertDialog;
+        mAnonymousLoginPopup = xoAlertDialog;
         xoAlertDialog.setContent(R.layout.input_player_name_popup_layout);
         xoAlertDialog.setContentInitialization(new XOAlertDialog.IContentInitialization() {
             @Override
@@ -262,7 +291,7 @@ public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickL
                 if (playerUUID == null) {
                     playerUUID = generateUUID();
                     sharedPreferences.edit().putString(PLAYER_UUID_FOR_ONLINE_GAME, playerUUID).commit();
-                    player.setUuid(playerUUID);
+                    mPlayer.setUuid(playerUUID);
                 }
                 if (playerNameFromSharedPrefencesForLoginToGame != null)
                     playerNameEditText.setText(playerNameFromSharedPrefencesForLoginToGame);
@@ -280,12 +309,13 @@ public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickL
                         ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                         NetworkInfo activeNetwork = conMgr.getActiveNetworkInfo();
                         if (activeNetwork != null && activeNetwork.isConnected()) {
-                            player.setName(playerName);
-                            player.setRegistrationType(Protocol.RegistrationType.xo);
-                            onlineGameWorker = new OnlineConnectionManager(handler,
-                                    player, pd);
-                            Controller.getInstance().setOnlineWorker(onlineGameWorker);
-                            onlineGameWorker.start();
+                            mPlayer.setName(playerName);
+                            mPlayer.setPlayServiceScore(getGoogleLeaderBoardScore());
+                            mPlayer.setRegistrationType(Protocol.RegistrationType.xo);
+                            mOnlineGameWorker = new OnlineConnectionManager(handler,
+                                    mPlayer, pd);
+                            Controller.getInstance().setOnlineWorker(mOnlineGameWorker);
+                            mOnlineGameWorker.start();
                             pd.setTitle(getString(R.string.connection));
                             pd.setMessage(getString(R.string.connecting_server));
                             pd.show();
@@ -302,7 +332,7 @@ public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickL
 
     private void showPopupForBluetoothGame() {
         final XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        anonymousLoginPopup = xoAlertDialog;
+        mAnonymousLoginPopup = xoAlertDialog;
         xoAlertDialog.setContent(R.layout.input_player_name_popup_layout);
         xoAlertDialog.setContentInitialization(new XOAlertDialog.IContentInitialization() {
             @Override
@@ -349,7 +379,7 @@ public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickL
 
     private void showPopupSelectBotLevel() {
         final XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        anonymousLoginPopup = xoAlertDialog;
+        mAnonymousLoginPopup = xoAlertDialog;
         xoAlertDialog.setContent(R.layout.select_bot_level_popup_layout);
         xoAlertDialog.setContentInitialization(new XOAlertDialog.IContentInitialization() {
             @Override
@@ -397,17 +427,29 @@ public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickL
             case R.id.sign_in_button:
                 beginUserInitiatedSignIn();
                 break;
-            case R.id.sign_out_button:
-                signOut();
-                findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-                findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-                break;
+//            case R.id.sign_out_button:
+//                signOut();
+//                findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+//                findViewById(R.id.sign_out_button).setVisibility(View.GONE);
+//                break;
             case R.id.btn_leaderboards:
-                startActivityForResult(Games.Leaderboards.getLeaderboardIntent(getApiClient(),
-                        getString(R.string.leaderboard_the_best_of_the_best)), REQUEST_LEADERBOARD);
+                if (!isSignedIn()) {
+                    mWasPrevClickLeaderBoardButton = true;
+                    beginUserInitiatedSignIn();
+                } else {
+                    startLeaderBoardActivity();
+                }
                 break;
             case R.id.btn_achievments:
-                startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()), REQUEST_ACHIEVEMENTS);
+                if (!isSignedIn()) {
+                    beginUserInitiatedSignIn();
+                    mWasPrevClickAchievemntsButton = true;
+                } else {
+                    startAchievementsActivity();
+                }
+                break;
+            case R.id.btn_back_from_select_type_game:
+                finish();
                 break;
             default:
                 break;
@@ -415,9 +457,41 @@ public class SelectTypeOfGameActivity extends XOGameActivity implements OnClickL
         if (intent != null) startActivity(intent);
     }
 
+    private void startLeaderBoardActivity() {
+        startActivityForResult(Games.Leaderboards.getLeaderboardIntent(getApiClient(),
+                getString(R.string.leaderboard_the_best_online_players)), REQUEST_LEADERBOARD);
+    }
+
+    private void startAchievementsActivity() {
+        startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()), REQUEST_ACHIEVEMENTS);
+    }
+
 
     private String generateUUID() {
         String uuid = UUID.randomUUID().toString();
         return uuid + System.currentTimeMillis();
     }
+
+    @Override
+    public void onSignInFailed() {
+        super.onSignInFailed();
+        mWasPrevClickLeaderBoardButton = false;
+        mWasPrevClickAchievemntsButton = false;
+    }
+
+    @Override
+    public void onSignInSucceeded() {
+        super.onSignInSucceeded();
+        loadPlayServiceScore();
+
+        if (mWasPrevClickAchievemntsButton) {
+            startAchievementsActivity();
+            mWasPrevClickAchievemntsButton = false;
+        }
+        if (mWasPrevClickLeaderBoardButton) {
+            startLeaderBoardActivity();
+            mWasPrevClickLeaderBoardButton = false;
+        }
+    }
+
 }

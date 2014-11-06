@@ -15,7 +15,7 @@ public class BlickingButton extends ButtonWithComicsFont {
     private BlickingTimer blickingTimer;
     private boolean indicator = true;
     private static final int RES_FOR_BLICK_BUTTON = R.drawable.button_big_for_blicking;
-    private static final int RES_FOR_NORM_BUTTON = R.drawable.general_top_button_selector;
+    private static final int RES_FOR_NORM_BUTTON = R.drawable.button_chat;
 
 
     public BlickingButton(Context context) {

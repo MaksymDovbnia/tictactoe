@@ -11,7 +11,7 @@
             android:layout_gravity="center"
             android:orientation="vertical">
 
-        <com.componentwithfont.TextViewWirhComicsFont
+        <com.componentwithfont.TextViewWithComicsFont
                 android:id="@+id/textView_anondailog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

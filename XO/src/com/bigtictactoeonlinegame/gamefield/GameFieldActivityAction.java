@@ -8,9 +8,13 @@ import com.bigtictactoeonlinegame.chat.ChatMessage;
 public interface GameFieldActivityAction {
 
     public void showWonPopup(String wonPlayerName);
+
     public void opponentExitFromGame();
+
     public void connectionToServerLost();
+
     public void receivedChatMessage(ChatMessage chatMessage);
 
+    public IGooglePlayServiceProvider getPlayServiceProvider();
 
 }

@@ -16,10 +16,13 @@ import com.bigtictactoeonlinegame.popup.*;
 import com.bluetooth.protocol.*;
 import com.config.*;
 import com.entity.*;
+import com.google.android.gms.games.Games;
+import com.utils.Mathematics;
 
 import net.protocol.*;
 
-public class GameFieldActivity extends GoogleAnalyticsActivity implements OnClickListener, GameFieldActivityAction, IChatActionNotification {
+public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity implements OnClickListener,
+        GameFieldActivityAction, IChatActionNotification {
     public static final String FIRST_PLAYER_NAME = "first_player_name";
     public static final String SECOND_PLAYER_NAME = "second_player_name";
     private static final String OPPONENT_EXIT_FROM_GAME_POPUP_TAG = "opponent_exit_from_game";
@@ -27,10 +30,21 @@ public class GameFieldActivity extends GoogleAnalyticsActivity implements OnClic
     private Fragment gameFieldFragment, chatFragment;
     private ChatAction chatAction;
     private Player opponent;
+    private TextView firstNameTextView;
+    private TextView secondNameTextView;
+
+
+    @Override
+    public void onSignInFailed() {
+    }
+
+    @Override
+    public void onSignInSucceeded() {
+    }
 
     private enum TAB {GAME, CHAT}
 
-    private Button mButtonOpenGameField;
+
     private BlickingButton openChatButton;
     private Button mButtonnewGame;
     private TAB cureentTab;
@@ -43,13 +57,15 @@ public class GameFieldActivity extends GoogleAnalyticsActivity implements OnClic
         gameType = (GameType) intent.getSerializableExtra(BundleKeys.TYPE_OF_GAME);
         setContentView(R.layout.game_fileld_activity_layout);
         mButtonnewGame = (Button) findViewById(R.id.btn_game_field_new_game);
+        firstNameTextView = (TextView) findViewById(R.id.first_user_name);
+        secondNameTextView = (TextView) findViewById(R.id.second_user_name);
+
         mButtonnewGame.setOnClickListener(this);
         findViewById(R.id.btn_game_field_back).setOnClickListener(this);
-        mButtonOpenGameField = (Button) findViewById(R.id.btn_opened_online_group);
-        openChatButton = (BlickingButton) findViewById(R.id.btn_group_chat);
+
+        openChatButton = (BlickingButton) findViewById(R.id.btn_chat);
         openChatButton.setOnClickListener(this);
-        mButtonOpenGameField.setOnClickListener(this);
-        mButtonOpenGameField.setSelected(true);
+
         String playerName = getString(R.string.player);
         String opponentName = "";
         Player player = new Player();
@@ -60,11 +76,11 @@ public class GameFieldActivity extends GoogleAnalyticsActivity implements OnClic
                     Player opponent = (Player) intent.getSerializableExtra(BundleKeys.OPPONENT);
                     this.opponent = opponent;
                     TypeOfMove typeOfMove = (TypeOfMove) intent.getSerializableExtra(BundleKeys.TYPE_OF_MOVE);
-                    OnlineGameHandler onlineGameHandler = new OnlineGameHandler(
+                    OnlineGameModel onlineGameHandler = new OnlineGameModel(
                             Controller.getInstance().getOnlineWorker(),
                             Controller.getInstance().getPlayer(), opponent, this, (typeOfMove == TypeOfMove.X));
                     Controller.getInstance().setGameHandler(onlineGameHandler);
-                    onlineGameHandler.setActivityAction(this);
+//                    onlineGameHandler.setActivityAction(this);
                     mButtonnewGame.setEnabled(false);
                     mButtonnewGame.setText("");
                     break;
@@ -77,7 +93,7 @@ public class GameFieldActivity extends GoogleAnalyticsActivity implements OnClic
                     }
                     player.setName(playerName);
                     opponent1.setName(opponentName);
-                    FriendGameHandler friendGameHandler = new FriendGameHandler(player, opponent1, this);
+                    FriendGameModel friendGameHandler = new FriendGameModel(player, opponent1, this);
                     Controller.getInstance().setGameHandler(friendGameHandler);
                     Controller.getInstance().setPlayer(player);
                     openChatButton.setEnabled(false);
@@ -96,16 +112,17 @@ public class GameFieldActivity extends GoogleAnalyticsActivity implements OnClic
                     }
                     player.setName(playerName);
                     opponent1.setName(opponentName);
-                    AndroidGameHandler androidGameHandler = new AndroidGameHandler(player, opponent1, this,
+                    AndroidGameModel androidGameHandler = new AndroidGameModel(player, opponent1, this,
                             this);
                     Controller.getInstance().setGameHandler(androidGameHandler);
                     Controller.getInstance().setPlayer(player);
+                    secondNameTextView.setText(opponentName);
+                    firstNameTextView.setText("User");
                     openChatButton.setEnabled(false);
-                    openChatButton.setText("");
                     break;
                 case BLUETOOTH:
                     boolean isFirst = getIntent().getBooleanExtra(BundleKeys.IS_PLAYER_MOVE_FIRST, false);
-                    BluetoothGameHandler bluetoothGameHandler = new BluetoothGameHandler(player, opponent1,
+                    BluetoothGameModel bluetoothGameHandler = new BluetoothGameModel(player, opponent1,
                             this, Controller.getInstance().getBluetoothService(), isFirst);
                     if (intent.getStringExtra(BundleKeys.PLAYER_NAME) != null) {
                         playerName = intent.getStringExtra(BundleKeys.PLAYER_NAME);
@@ -221,19 +238,67 @@ public class GameFieldActivity extends GoogleAnalyticsActivity implements OnClic
         }
     }
 
+    @Override
+    public IGooglePlayServiceProvider getPlayServiceProvider() {
+        return new IGooglePlayServiceProvider() {
+            @Override
+            public void wonOneGameVsAndroid() {
+                if (isSignedIn()) {
+                    Games.Achievements.unlock(getApiClient(), getString(R.string.achievement_winner_android_easy));
+                    Games.Achievements.increment(getApiClient(), getString(R.string.achievement_young_player), 1);
+                    Games.Achievements.increment(getApiClient(), getString(R.string.achievement_good_player), 1);
+                    Games.Achievements.increment(getApiClient(), getString(R.string.achievement_very_good_player), 1);
+                }
+            }
+
+            @Override
+            public void winOneGameViaBluetooth() {
+                if (isSignedIn()) {
+                    Games.Achievements.unlock(getApiClient(), getString(R.string.achievement_winner_bluetooth_game));
+                    Games.Achievements.increment(getApiClient(), getString(R.string.achievement_young_bluetooth_player), 1);
+                    Games.Achievements.increment(getApiClient(), getString(R.string.achievement_good_online_player), 1);
+                    Games.Achievements.increment(getApiClient(), getString(R.string.achievement_very_good_bluetooth_player), 1);
+                }
+            }
+
+            @Override
+            public void winOneGameViaOnline(long playerScoreInPS, long opponentScorePS) {
+                if (isSignedIn()) {
+                    long newRating = Mathematics.calculateWinPoints(playerScoreInPS, opponentScorePS) + playerScoreInPS;
+                    Games.Achievements.unlock(getApiClient(), getString(R.string.achievement_winner_online_game));
+                    Games.Achievements.increment(getApiClient(), getString(R.string.achievement_young_online_player), 1);
+                    Games.Achievements.increment(getApiClient(), getString(R.string.achievement_good_online_player), 1);
+                    Games.Achievements.increment(getApiClient(), getString(R.string.achievement_very_good_online_player), 1);
+                    Games.Leaderboards.submitScore(getApiClient(), getString(R.string.leaderboard_the_best_online_players), newRating);
+                }
+            }
+
+            @Override
+            public void lostOneGameViaOnline(long playerScoreInPS, long opponentScorePS) {
+                if (isSignedIn()) {
+                    long newRating = Mathematics.calculateLostPoints(opponentScorePS, playerScoreInPS) + playerScoreInPS;
+                    if (newRating > 0) {
+                        Games.Leaderboards.submitScore(getApiClient(), getString(R.string.leaderboard_the_best_online_players), newRating);
+                    } else {
+                        Games.Leaderboards.submitScore(getApiClient(), getString(R.string.leaderboard_the_best_online_players), 0);
+                    }
+                }
+            }
+        };
+    }
 
     private void switchToTab(TAB tab) {
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         cureentTab = tab;
         switch (tab) {
             case GAME:
-                mButtonOpenGameField.setSelected(true);
+
                 openChatButton.setSelected(false);
                 fragmentTransaction.show(gameFieldFragment);
                 fragmentTransaction.hide(chatFragment);
                 break;
             case CHAT:
-                mButtonOpenGameField.setSelected(false);
+
                 openChatButton.setSelected(true);
                 fragmentTransaction.show(chatFragment);
                 fragmentTransaction.hide(gameFieldFragment);
@@ -248,7 +313,7 @@ public class GameFieldActivity extends GoogleAnalyticsActivity implements OnClic
             case R.id.btn_opened_online_group:
                 switchToTab(TAB.GAME);
                 break;
-            case R.id.btn_group_chat:
+            case R.id.btn_chat:
                 openChatButton.setText(R.string.chat);
                 openChatButton.setTextColor(getResources().getColor(R.color.black));
                 openChatButton.setNeedingToBlick(false);
@@ -281,7 +346,7 @@ public class GameFieldActivity extends GoogleAnalyticsActivity implements OnClic
 
     @Override
     public void actionSendChatMessage(ChatMessage chatMessage) {
-        IGameHandler gameHandler = Controller.getInstance().getGameHandler();
+        IGameModel gameHandler = Controller.getInstance().getGameHandler();
         if (gameHandler.getGameType() == GameType.BLUETOOTH) {
             Controller.getInstance().getBluetoothService().sentPacket(BluetoothProtocol.ChatMessage
                     .newBuilder()
@@ -313,7 +378,7 @@ public class GameFieldActivity extends GoogleAnalyticsActivity implements OnClic
     @Override
     protected void onDestroy() {
         openChatButton.stopTaskForBleak();
-        GameFieldItem.destroyAllBitmaps();
+//        GameFieldItem.destroyAllBitmaps();
         Controller.getInstance().setGameHandler(null);
         if (gameType != GameType.ONLINE) {
             Controller.getInstance().setPlayer(null);

@@ -29,7 +29,6 @@ public class Top100Fragment extends Fragment implements Top100Action {
         mListViewAdapter = new ListViewAdapter(mPlayersList, getActivity());
         ListView listView = (ListView) view.findViewById(R.id.list_view_top_100);
         listView.setAdapter(mListViewAdapter);
-
         return view;
     }
 
@@ -48,50 +47,46 @@ public class Top100Fragment extends Fragment implements Top100Action {
         mListViewAdapter.notifyDataSetChanged();
     }
 
-    private static class ListViewAdapter extends BaseAdapter {
+    private static class ListViewAdapter extends ArrayAdapter<Player> {
         private List<Player> players;
         private LayoutInflater layoutInflater;
 
         private ListViewAdapter(List<Player> players, Context context) {
+            super(context, R.layout.top_100_list_item_view, players);
             this.players = players;
             layoutInflater = (LayoutInflater) context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
-        @Override
-        public int getCount() {
-            return players.size();
-        }
 
-        @Override
-        public Object getItem(int position) {
-            return players.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @SuppressWarnings("ConstantConditions")
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = convertView;
+            ViewHolder viewHolder;
             if (view == null) {
                 view = layoutInflater.inflate(R.layout.top_100_list_item_view, parent, false);
+                viewHolder = new ViewHolder();
+                viewHolder.playerName = (TextView) view.findViewById(R.id.tv_player_name);
+                viewHolder.playerPosition = (TextView) view.findViewById(R.id.tv_position);
+                viewHolder.playerRating = (TextView) view.findViewById(R.id.tv_player_rating);
+                view.setTag(viewHolder);
+
+            } else {
+                viewHolder = (ViewHolder) view.getTag();
             }
-            TextView playerPosition, name, rating;
-            playerPosition = (TextView) view.findViewById(R.id.tv_position);
-            name = (TextView) view.findViewById(R.id.tv_player_name);
-            rating = (TextView) view.findViewById(R.id.tv_player_rating);
             if (players.get(position) != null) {
                 Player player = players.get(position);
-                name.setText(String.valueOf(player.getName()));
-                rating.setText(String.valueOf(player.getRating()));
-                playerPosition.setText(String.valueOf(position + 1));
-
+                viewHolder.playerName.setText(player.getName());
+                viewHolder.playerRating.setText("" + player.getRating());
+                viewHolder.playerPosition.setText("" + (position + 1));
             }
             return view;
         }
+    }
+
+    private static class ViewHolder {
+        TextView playerPosition;
+        TextView playerName;
+        TextView playerRating;
     }
 }

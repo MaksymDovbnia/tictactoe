@@ -4,12 +4,18 @@ Google Play game services IDs.
 Save this file as res/values/games-ids.xml in your project.
 -->
 <resources>
-    <string name="app_id">962792790894</string>
-    <string name="achievement_prime">CgkI7raw14IcEAIQAQ</string>
-    <string name="achievement_win_10_bluetooth_game">CgkI7raw14IcEAIQAg</string>
-    <string name="achievement_win_10_game_via_online">CgkI7raw14IcEAIQAw</string>
-    <string name="achievement_win_100_game_via_online">CgkI7raw14IcEAIQBA</string>
-    <string name="achievement_win_50_game_vs_android">CgkI7raw14IcEAIQBQ</string>
-    <string name="achievement_play_10_game">CgkI7raw14IcEAIQBg</string>
-    <string name="leaderboard_the_best_of_the_best">CgkI7raw14IcEAIQBw</string>
+    <string name="app_id">3532471157</string>
+    <string name="achievement_winner_android_easy">CggI9fa0lA0QAhAA</string>
+    <string name="achievement_young_player">CggI9fa0lA0QAhAB</string>
+    <string name="achievement_good_player">CggI9fa0lA0QAhAC</string>
+    <string name="achievement_very_good_player">CggI9fa0lA0QAhAD</string>
+    <string name="achievement_winner_online_game">CggI9fa0lA0QAhAF</string>
+    <string name="achievement_winner_bluetooth_game">CggI9fa0lA0QAhAE</string>
+    <string name="achievement_young_online_player">CggI9fa0lA0QAhAG</string>
+    <string name="achievement_good_online_player">CggI9fa0lA0QAhAH</string>
+    <string name="achievement_very_good_online_player">CggI9fa0lA0QAhAI</string>
+    <string name="achievement_young_bluetooth_player">CggI9fa0lA0QAhAL</string>
+    <string name="achievement_good_bluetooth_player">CggI9fa0lA0QAhAM</string>
+    <string name="achievement_very_good_bluetooth_player">CggI9fa0lA0QAhAN</string>
+    <string name="leaderboard_the_best_online_players">CggI9fa0lA0QAhAK</string>
 </resources>

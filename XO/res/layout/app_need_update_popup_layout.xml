@@ -14,7 +14,7 @@
             android:paddingRight="10dp"
             >
 
-        <com.componentwithfont.TextViewWirhComicsFont
+        <com.componentwithfont.TextViewWithComicsFont
                 android:id="@+id/tv_easy_level"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

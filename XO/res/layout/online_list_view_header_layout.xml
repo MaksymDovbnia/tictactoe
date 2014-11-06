@@ -6,7 +6,7 @@
               android:background="@color/online_player_list_header_background"
               android:orientation="horizontal">
 
-    <com.componentwithfont.TextViewWirhComicsFont
+    <com.componentwithfont.TextViewWithComicsFont
 
             android:layout_width="0dp"
             android:layout_weight="2"
@@ -19,7 +19,7 @@
 
             android:textSize="@dimen/header_list_item_text_size"/>
 
-    <com.componentwithfont.TextViewWirhComicsFont
+    <com.componentwithfont.TextViewWithComicsFont
 
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -31,7 +31,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/header_list_item_text_size"/>
 
-    <com.componentwithfont.TextViewWirhComicsFont
+    <com.componentwithfont.TextViewWithComicsFont
 
             android:layout_width="0dp"
             android:layout_weight="1"

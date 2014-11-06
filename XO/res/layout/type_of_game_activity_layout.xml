@@ -1,171 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/general_background"
-    android:orientation="vertical">
+              xmlns:ads="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/general_background"
+              android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.9" />
+    <include layout="@layout/top_google_login_view"
+             android:layout_height="@dimen/top_google_login_view_height"
+
+             android:layout_width="match_parent"/>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="0dp"
+                      android:layout_weight="1"/>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="0dp"
+                      android:layout_weight="12"
+                      android:clickable="true"
+                      android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="0dp"
+                          android:layout_weight="1"
+                          android:background="@drawable/field1"
+                          android:layout_marginBottom="@dimen/type_game_main_container_margin_bottom"
+                          android:layout_marginLeft="10dp"
+                          android:layout_marginRight="10dp"
+                          android:paddingTop="50dp"
+                          android:paddingLeft="15dp"
+                          android:paddingBottom="20dp"
+                          android:clickable="true"
+                          android:orientation="vertical">
+
+                <LinearLayout android:layout_width="match_parent"
+                              android:id="@+id/btn_two_players"
+                              android:layout_height="0dp"
+                              android:layout_weight="1"
+                              android:clickable="true"
+                              android:gravity="center_vertical"
+                              android:orientation="horizontal">
+                    <ImageView android:layout_width="@dimen/game_type_logo_size"
+                               android:layout_height="@dimen/game_type_logo_size"
+                               android:layout_marginLeft="@dimen/type_game_image_item_margin_left"
+                               android:duplicateParentState="true"
+                               android:src="@drawable/two_players_button_selector"/>
+                    <com.componentwithfont.TextViewWithComicsFont
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/game_type_text_style"
+                            android:text="@string/two_players"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent"
+                              android:id="@+id/btn_android"
+                              android:layout_height="0dp"
+                              android:layout_weight="1"
+                              android:clickable="true"
+                              android:gravity="center_vertical"
+                              android:orientation="horizontal">
+                    <ImageView android:layout_width="@dimen/game_type_logo_size"
+                               android:layout_height="@dimen/game_type_logo_size"
+                               android:layout_marginLeft="@dimen/type_game_image_item_margin_left"
+                               android:duplicateParentState="true"
+                               android:src="@drawable/android_button_selector"/>
+                    <com.componentwithfont.TextViewWithComicsFont
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            style="@style/game_type_text_style"
+
+                            android:text="@string/with_android"/>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent"
+                              android:id="@+id/btn_online"
+                              android:layout_height="0dp"
+                              android:layout_weight="1"
+                              android:gravity="center_vertical"
+                              android:orientation="horizontal">
+                    <ImageView android:layout_width="@dimen/game_type_logo_size"
+                               android:layout_height="@dimen/game_type_logo_size"
+                               android:layout_marginLeft="@dimen/type_game_image_item_margin_left"
+                               android:duplicateParentState="true"
+                               android:src="@drawable/innet_button_selector"/>
+                    <com.componentwithfont.TextViewWithComicsFont
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/game_type_text_style"
+                            android:text="@string/online"/>
+                </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9"
+                <LinearLayout android:layout_width="match_parent"
+                              android:id="@+id/btn_bluetooth"
+                              android:layout_height="0dp"
+                              android:layout_weight="1"
+                              android:gravity="center_vertical"
+                              android:clickable="true"
+                              android:orientation="horizontal">
 
-        android:background="@drawable/notebook1"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
+                    <ImageView android:layout_width="@dimen/game_type_logo_size"
+                               android:layout_height="@dimen/game_type_logo_size"
+                               android:layout_marginLeft="@dimen/type_game_image_item_margin_left"
+                               android:duplicateParentState="true"
+                               android:src="@drawable/bluetooth_button_selector"/>
 
-        >
+                    <com.componentwithfont.TextViewWithComicsFont
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/game_type_text_style"
 
-        <ImageView
-            android:id="@+id/imv_start_activity_xo_image"
-            android:layout_width="@dimen/start_activity_layout_center_container_xo_image_width"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
-            android:src="@drawable/tic_tac_toe" />
+                            android:text="@string/bluetooth"/>
+                </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal"
-            android:paddingRight="@dimen/play_service_layout_padding_right">
-
-            <com.google.android.gms.common.SignInButton
-                android:id="@+id/sign_in_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <!-- sign-out button -->
+            </LinearLayout>
             <Button
-                android:id="@+id/sign_out_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sign Out"
-                android:visibility="gone" />
-
-            <Button
-                android:id="@+id/btn_achievments"
-                android:layout_width="@dimen/achievements_size"
-                android:layout_height="@dimen/achievements_size"
-                android:background="@drawable/games_achievements" />
-
-            <Button
-                android:id="@+id/btn_leaderboards"
-                android:layout_width="@dimen/leaderboards_size"
-                android:layout_height="@dimen/leaderboards_size"
-                android:background="@drawable/leaderboards" />
-
+                    android:id="@+id/btn_back_from_select_type_game"
+                    android:layout_width="@dimen/type_game_back_btn_size"
+                    android:layout_height="@dimen/type_game_back_btn_size"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginTop="-10dp"
+                    android:background="@drawable/exit_button_selector"/>
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_start_game_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/start_activity_layout_center_container_margin_top"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <View
-                android:layout_width="@dimen/default_red_split_line_width"
-                android:layout_height="@dimen/default_red_split_line_height"
-                android:background="@drawable/split_line" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <com.componentwithfont.TextViewWithFontMainActivity
-                    android:id="@+id/btn_two_players"
-                    style="@style/text_view_main_activity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/two_players" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <com.componentwithfont.TextViewWithFontMainActivity
-                    android:id="@+id/btn_android"
-                    style="@style/text_view_main_activity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/with_android" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <com.componentwithfont.TextViewWithFontMainActivity
-                    android:id="@+id/btn_online"
-                    style="@style/text_view_main_activity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/button_gametypes_online" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center">
-
-                <com.componentwithfont.TextViewWithFontMainActivity
-                    android:id="@+id/btn_bluetooth"
-                    style="@style/text_view_main_activity"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/bluetooth" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="@dimen/default_red_split_line_width"
-                android:layout_height="@dimen/default_red_split_line_height"
-                android:layout_marginTop="@dimen/main_activity_layout_center_container_one_item__margin_top"
-                android:background="@drawable/split_line" />
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="0.6" />
-
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/ad_view"
-            android:layout_width="@dimen/ad_view_width"
-            android:layout_height="@dimen/ad_view_height"
-            android:layout_gravity="center_horizontal"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/ad_unit_id" />
-
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="0dp"
+                      android:layout_weight="1"/>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.9">
 
-
-    </LinearLayout>
 </LinearLayout>

@@ -93,24 +93,24 @@ public class GameFieldItem extends ImageView {
 
 
     public static void destroyAllBitmaps() {
-        bitmap_x.recycle();
-        bitmap_x = null;
-        bitmap_o.recycle();
-        bitmap_o = null;
-        bitmap_main_backgroud.recycle();
-        bitmap_main_backgroud = null;
-        bitmapLastMove.recycle();
-        bitmapLastMove = null;
-        bitmapInSight.recycle();
-        bitmapInSight = null;
-        bitmapMainBackGround.recycle();
-        bitmapMainBackGround = null;
-        if (scaledBitmapX != null) scaledBitmapX.recycle();
-        scaledBitmapX = null;
-        if (scaledBitmapO != null) scaledBitmapO.recycle();
-        scaledBitmapO = null;
-        if (bitmapSight != null) bitmapSight.recycle();
-        bitmapSight = null;
+//        bitmap_x.recycle();
+//        bitmap_x = null;
+//        bitmap_o.recycle();
+//        bitmap_o = null;
+//        bitmap_main_backgroud.recycle();
+//        bitmap_main_backgroud = null;
+//        bitmapLastMove.recycle();
+//        bitmapLastMove = null;
+//        bitmapInSight.recycle();
+//        bitmapInSight = null;
+//        bitmapMainBackGround.recycle();
+//        bitmapMainBackGround = null;
+//        if (scaledBitmapX != null) scaledBitmapX.recycle();
+//        scaledBitmapX = null;
+//        if (scaledBitmapO != null) scaledBitmapO.recycle();
+//        scaledBitmapO = null;
+//        if (bitmapSight != null) bitmapSight.recycle();
+//        bitmapSight = null;
     }
 
     @Override

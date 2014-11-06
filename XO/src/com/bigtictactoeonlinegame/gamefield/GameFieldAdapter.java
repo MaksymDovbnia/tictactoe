@@ -18,7 +18,7 @@ import java.util.*;
 public class GameFieldAdapter extends BaseAdapter {
     private GameFieldItem[] fields = new GameFieldItem[225];
     private GameFieldItem[][] fieldsGrid = new GameFieldItem[15][15];
-    private IGameHandler gameHandler;
+    private IGameModel gameHandler;
     private LayoutInflater layoutInflater;
     private boolean isEnableGameField;
     private GameFieldItem lastGameFieldItem;
@@ -27,7 +27,7 @@ public class GameFieldAdapter extends BaseAdapter {
 
 
 
-    public GameFieldAdapter(Context context, IGameHandler gameFiledSource,
+    public GameFieldAdapter(Context context, IGameModel gameFiledSource,
                             HorizontalScrollView horizontalScrollView, ScrollView scrollView) {
         layoutInflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -221,7 +221,7 @@ public class GameFieldAdapter extends BaseAdapter {
 
             int j = field.getJ(), i = field.getI();
             //field.setFieldTypeAndDraw();
-            gameHandler.occurredMove(i, j);
+          //  gameHandler.userMadeMove(i);
 
         }
     }

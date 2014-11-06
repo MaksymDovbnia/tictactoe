@@ -42,7 +42,7 @@ public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.opened_activity_layout);
-        openChat = (Button) findViewById(R.id.btn_group_chat);
+        openChat = (Button) findViewById(R.id.btn_chat);
         openGroup = (Button) findViewById(R.id.btn_opened_online_group);
         openChat.setOnClickListener(this);
         openGroup.setOnClickListener(this);
@@ -192,7 +192,7 @@ public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.
             case R.id.btn_opened_online_group:
                 switchToFragment(TAB.OPENED_GROUP);
                 break;
-            case R.id.btn_group_chat:
+            case R.id.btn_chat:
                 switchToFragment(TAB.CHAT);
                 openChat.setText(R.string.chat);
                 openChat.setTextColor(getResources().getColor(R.color.black));

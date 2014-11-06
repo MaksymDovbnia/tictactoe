@@ -1,6 +1,6 @@
 package com.bigtictactoeonlinegame;
 
-import com.bigtictactoeonlinegame.gamefield.handler.IGameHandler;
+import com.bigtictactoeonlinegame.gamefield.handler.IGameModel;
 import com.entity.Player;
 import com.bluetooth.BluetoothService;
 import com.net.online.OnlineConnectionManager;
@@ -12,9 +12,9 @@ public class Controller {
     private static Controller controller;
 
 	private  Player player;
-	private IGameHandler gameFiledSource;
+	private IGameModel gameFiledSource;
 
-	public IGameHandler getGameHandler() {
+	public IGameModel getGameHandler() {
 		return gameFiledSource;
 	}
 
@@ -33,7 +33,7 @@ public class Controller {
         this.bluetoothService = bluetoothService;
     }
 
-    public  void setGameHandler(IGameHandler handler) {
+    public  void setGameHandler(IGameModel handler) {
 		gameFiledSource = handler;
 	}
 

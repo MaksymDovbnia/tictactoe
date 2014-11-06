@@ -93,6 +93,7 @@ public class OnlineConnectionManager extends Thread {
                     .setName(player.getName())
                     .setRegistarionType(player.getRegistrationType())
                     .setUuid(player.getUuid())
+                    .setGooglePlayRating(player.getPlayServiceScore())
                     .setAppVersion(Config.APP_VERSION).build();
             sendPacket(sLoginToGame);
 
