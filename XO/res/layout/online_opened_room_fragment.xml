@@ -118,13 +118,13 @@
                 />
     </LinearLayout>
 
-    <com.google.android.gms.ads.AdView
-            android:id="@+id/ad_view"
-            android:layout_width="@dimen/ad_view_width"
-            android:layout_height="@dimen/ad_view_height"
-            android:layout_gravity="center_horizontal"
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/ad_unit_id"/>
+    <!--<com.google.android.gms.ads.AdView-->
+            <!--android:id="@+id/ad_view"-->
+            <!--android:layout_width="@dimen/ad_view_width"-->
+            <!--android:layout_height="@dimen/ad_view_height"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--ads:adSize="BANNER"-->
+            <!--ads:adUnitId="@string/ad_unit_id"/>-->
 
 
 </LinearLayout>

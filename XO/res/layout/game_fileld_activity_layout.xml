@@ -34,14 +34,35 @@
                     android:id="@+id/first_user_name"/>
         </LinearLayout>
 
-        <com.componentwithfont.TextViewWithComicsFont
-                android:id="@+id/game_score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/red"
-                android:text="7/6"
-                android:textSize="@dimen/top_google_view_photo_size"/>
+
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_centerHorizontal="true"
+                      android:orientation="horizontal"
+
+                      android:layout_height="wrap_content">
+            <com.componentwithfont.TextViewWithComicsFont
+                    android:id="@+id/first_player_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="0"
+                    android:textSize="@dimen/top_google_view_photo_size"/>
+
+            <com.componentwithfont.TextViewWithComicsFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="/"
+                    android:textSize="@dimen/top_google_view_photo_size"/>
+
+            <com.componentwithfont.TextViewWithComicsFont
+                    android:id="@+id/second_player_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="0"
+                    android:textSize="@dimen/top_google_view_photo_size"/>
+        </LinearLayout>
 
 
         <LinearLayout android:layout_width="wrap_content"

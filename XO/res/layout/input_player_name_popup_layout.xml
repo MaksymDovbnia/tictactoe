@@ -3,12 +3,15 @@
              android:id="@+id/anonlogin"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             android:background="@drawable/dialog_view">
+             android:paddingTop="@dimen/general_margin"
+        >
 
     <LinearLayout
-            android:layout_width="279dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:paddingLeft="@dimen/general_margin"
+            android:paddingRight="@dimen/general_margin"
             android:orientation="vertical">
 
         <com.componentwithfont.TextViewWithComicsFont
@@ -17,32 +20,18 @@
                 android:layout_height="wrap_content"
                 android:text="@string/your_nick"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/blue"
+                android:textColor="@color/red_dialog"
                 android:textSize="@dimen/default_text_size"/>
 
         <com.componentwithfont.EditTextWithComicsFont
                 android:id="@+id/edt_player_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
+                android:layout_marginTop="@dimen/general_margin"
+                android:layout_height="match_parent"
                 android:inputType="text"
-
-                android:shadowColor="@color/red"
-                android:textColor="@color/blue"
-                android:textColorHint="@color/black"
-                android:textColorLink="@color/red"
+                android:textColor="@color/green_dialog"
                 android:textSize="@dimen/default_text_size"/>
 
-
-        <com.componentwithfont.ButtonWithComicsFont
-                android:id="@+id/btn_anonymous_login"
-                android:layout_width="@dimen/popup_button_width"
-                android:layout_height="@dimen/popup_button_height"
-                android:textSize="@dimen/default_text_size"
-                android:layout_gravity="center"
-                android:background="@drawable/selector_default_yelow_button"
-                android:text="@string/login"
-                android:textColor="@color/red"/>
 
     </LinearLayout>
 

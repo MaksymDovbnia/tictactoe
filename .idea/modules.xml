@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../googleplayservicesamples/android-samples/BasicSamples/libraries/BaseGameUtils/src/main/BaseGameUtils.iml" filepath="$PROJECT_DIR$/../googleplayservicesamples/android-samples/BasicSamples/libraries/BaseGameUtils/src/main/BaseGameUtils.iml" />
-      <module fileurl="file://$PROJECT_DIR$/XO/BigTicTacToeOnline.iml" filepath="$PROJECT_DIR$/XO/BigTicTacToeOnline.iml" />
-      <module fileurl="file://D:/adt-bundle-windows-x86_64-20130219/sdk/extras/google/google_play_services/samples/admob/admob.iml" filepath="D:/adt-bundle-windows-x86_64-20130219/sdk/extras/google/google_play_services/samples/admob/admob.iml" />
-      <module fileurl="file://D:/adt-bundle-windows-x86_64-20130219/sdk/extras/google/google_play_services/libproject/google-play-services_lib/google-play-services_lib.iml" filepath="D:/adt-bundle-windows-x86_64-20130219/sdk/extras/google/google_play_services/libproject/google-play-services_lib/google-play-services_lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XO/XO.iml" filepath="$PROJECT_DIR$/XO/XO.iml" />
     </modules>
   </component>
 </project>

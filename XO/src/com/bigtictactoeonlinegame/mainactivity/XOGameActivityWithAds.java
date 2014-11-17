@@ -26,7 +26,7 @@ public abstract class XOGameActivityWithAds extends GeneralAdWithPlayServiceActi
 
     @Override
     public void onSignInSucceeded() {
-        mIsDeveiceHasGoogleAccount = true;
+      //  mIsDeveiceHasGoogleAccount = true;
         findViewById(R.id.sign_in_button).setVisibility(View.GONE);
        // findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
     }

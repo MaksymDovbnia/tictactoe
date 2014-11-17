@@ -15,12 +15,17 @@ package com.bigtictactoeonlinegame.gamefield;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.*;
+import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import com.bigtictactoeonlinegame.activity.R;
+import com.utils.Logger;
+
+import java.util.Arrays;
 
 /**
  * My first custom view
@@ -28,6 +33,7 @@ import com.bigtictactoeonlinegame.activity.R;
  * @author Maksim Dovbnya(m.dovbnya@samsung.com).
  */
 public class GameFieldView extends View {
+    private static String LOG_TAG = GameFieldView.class.getName();
     private static final int PADDING_IN_FIELD_ITEM = 3;
     private static final float MAX_SCALE = 2.5f;
     private static final float MIN_SCALE = 1f;
@@ -64,43 +70,19 @@ public class GameFieldView extends View {
     private final FieldItem mFieldItems[][] = new FieldItem[GAME_FIELD_SIZE][GAME_FIELD_SIZE];
     private static final int BORDER_PADDING = 10;
     RectF rectF;
-    private boolean isDrawingLineWithAnimation = false;
+    private boolean isDrawingLineWithAnimation;
     private Paint mLinePaint = new Paint();
+    private Paint mLastMovePaint = new Paint();
+
     private int mStartWidth;
     private int mStartHeight;
     private int mStartScaledWidth;
     private int mStartScaeldHeight;
     private Matrix mMatrix;
     private float[] mMatrixValue = new float[9];
+
+
     private GestureDetector.SimpleOnGestureListener mGestureListener = new GestureDetector.SimpleOnGestureListener() {
-        @Override
-        public boolean onSingleTapConfirmed(MotionEvent event) {
-
-            mMatrix.getValues(mMatrixValue);
-            float mx = mMatrixValue[Matrix.MTRANS_X];
-            float my = mMatrixValue[Matrix.MTRANS_Y];
-            float x = (event.getX() + (-mx + (BORDER_PADDING * mScaleFactor))) / mScaleFactor;
-            float y = (event.getY() + (-my + (BORDER_PADDING * mScaleFactor))) / mScaleFactor;
-            for (int i = 0; i < GAME_FIELD_SIZE; i++) {
-                for (int j = 0; j < GAME_FIELD_SIZE; j++) {
-                    FieldItem item = mFieldItems[i][j];
-                    if (!item.isUsed && item.isEnable && item.rect.contains(x, y)) {
-                        notifyClicklListener(i, j);
-                        return true;
-                    }
-
-                }
-            }
-
-            return true;
-        }
-
-        @Override
-        public boolean onDoubleTap(MotionEvent e) {
-
-            return true;
-        }
-
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             correctMatrixMeasure(-distanceX, -distanceY);
@@ -120,6 +102,7 @@ public class GameFieldView extends View {
     private FieldItem mFromItem;
     private FieldItem mToItem;
     private WinLineDrawer mDrawerWinLine;
+    private DrawWinLineCompletedListener drawWinLineCompletedListener;
 
     public GameFieldView(Context context) {
         super(context);
@@ -146,10 +129,12 @@ public class GameFieldView extends View {
         }
     }
 
-    public void showItem(int i, int j, FieldType fieldType) {
+    private FieldItem lastItemMove;
 
-            mFieldItems[i][j].fieldType = fieldType;
-                 invalidate();
+    public void showItem(int i, int j, FieldType fieldType) {
+        mFieldItems[i][j].fieldType = fieldType;
+        lastItemMove = mFieldItems[i][j];
+        invalidate();
 
     }
 
@@ -159,7 +144,7 @@ public class GameFieldView extends View {
         float mx = mMatrixValue[Matrix.MTRANS_X];
         float my = mMatrixValue[Matrix.MTRANS_Y];
         correctMatrixMeasure(-(mx + currentPosition.rect.top), -(my + currentPosition.rect.left));
-       invalidate();
+        invalidate();
     }
 
     public void setItemEnable(int i, int j, boolean isEnable) {
@@ -188,14 +173,20 @@ public class GameFieldView extends View {
 
     }
 
-    public void showWinLine(int fromI, int fromJ, int toI, int toJ) {
+    public void showWinLine(int fromI, int fromJ, int toI, int toJ, DrawWinLineCompletedListener listener) {
+        drawWinLineCompletedListener = listener;
         mIsNeedShowWinLine = true;
         isDrawingLineWithAnimation = true;
         mFromItem = mFieldItems[fromI][fromJ];
         mToItem = mFieldItems[toI][toJ];
-        mDrawerWinLine.init(mFromItem);
 
-        postInvalidate();
+        if (mToItem.rect.centerX() <= mFromItem.rect.centerX() || mToItem.rect.centerY() <= mFromItem.rect.centerY()) {
+            mFromItem = mToItem;
+            mFromItem = mFieldItems[fromI][fromJ];
+        }
+        mDrawerWinLine.init();
+
+        invalidate();
     }
 
     private void init() {
@@ -203,6 +194,10 @@ public class GameFieldView extends View {
         mLinePaint.setStrokeWidth(3);
         mLinePaint.setStyle(Paint.Style.STROKE);
         mLinePaint.setColor(getResources().getColor(R.color.game_field_line));
+
+        mLastMovePaint.setStrokeWidth(4);
+        mLastMovePaint.setStyle(Paint.Style.STROKE);
+        mLastMovePaint.setColor(getResources().getColor(R.color.green_dialog));
         mMatrix = new Matrix();
         mGestureDetector = new GestureDetector(getContext(), mGestureListener);
         mScaleGestureDetector = new ScaleGestureDetector(getContext(), mScaleGestureListener);
@@ -211,14 +206,78 @@ public class GameFieldView extends View {
 
 
         setOnTouchListener(new OnTouchListener() {
+            private float downX;
+            private float downY;
+            private FieldItem dowNfieldItem;
+            private static final float DELTA = 5;
+
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        downX = event.getX();
+                        downY = event.getY();
+                        dowNfieldItem = getFieldItemByCoordinate(event);
+                        Log.d(LOG_TAG, "ACTION_DOWN, X:" + event.getX() + " Y:" + event.getY() + " RawX " + event.getRawX() + " RawY" + event.getRawY());
+
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        Log.d(LOG_TAG, "ACTION_UP, X:" + event.getX() + " Y:" + event.getY() + " RawX " + event.getRawX() + " RawY" + event.getRawY());
+                        FieldItem fieldItem = getFieldItemByCoordinate(event);
+                        if (dowNfieldItem != null && fieldItem != null && fieldItem.i == dowNfieldItem.i && fieldItem.j == dowNfieldItem.j) {
+                            notifyClicklListener(fieldItem.i, fieldItem.j);
+                            return true;
+                        }
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        Log.d(LOG_TAG, "ACTION_MOVE, X:" + event.getX() + " Y:" + event.getY() + " RawX " + event.getRawX() + " RawY" + event.getRawY());
+
+                        if (Math.abs(downX - event.getX()) > DELTA || Math.abs(downY - event.getY()) > DELTA) {
+                            dowNfieldItem = null;
+                        } else {
+                            return true;
+                        }
+                        break;
+
+                }
+
                 mGestureDetector.onTouchEvent(event);
                 mScaleGestureDetector.onTouchEvent(event);
                 return true;
             }
+
+            private FieldItem getFieldItemByCoordinate(MotionEvent event) {
+                mMatrix.getValues(mMatrixValue);
+                float mx = mMatrixValue[Matrix.MTRANS_X];
+                float my = mMatrixValue[Matrix.MTRANS_Y];
+                float x = (event.getX() + (-mx + (BORDER_PADDING * mScaleFactor))) / mScaleFactor;
+                float y = (event.getY() + (-my + (BORDER_PADDING * mScaleFactor))) / mScaleFactor;
+                for (int i = 0; i < GAME_FIELD_SIZE; i++) {
+                    for (int j = 0; j < GAME_FIELD_SIZE; j++) {
+                        FieldItem item = mFieldItems[i][j];
+                        if (!item.isUsed && item.isEnable && item.rect.contains(x, y)) {
+
+                            return item;
+                        }
+
+                    }
+                }
+                return null;
+            }
+        });
+
+
+        setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
         });
     }
+
+    int oneItemSize;
 
     @SuppressLint("DrawAllocation")
     @Override
@@ -227,7 +286,7 @@ public class GameFieldView extends View {
         mStartHeight = getMeasuredHeight();
         mStartWidth = getMeasuredWidth();
         mFieldSizeInDimen = Math.min(mStartHeight, mStartWidth);
-        int oneItemSize = (mFieldSizeInDimen ) / GAME_FIELD_SIZE;
+        oneItemSize = (mFieldSizeInDimen) / GAME_FIELD_SIZE;
         int bitmapScaleDelta = PADDING_IN_FIELD_ITEM * 2;
         initItems(oneItemSize);
         mXScaledBitmap = Bitmap.createScaledBitmap(mXBitmap, oneItemSize - bitmapScaleDelta, oneItemSize - bitmapScaleDelta, false);
@@ -235,6 +294,7 @@ public class GameFieldView extends View {
     }
 
     private void initItems(int fieldItemSize) {
+
         Point startPoint = new Point();
         startPoint.x = BORDER_PADDING;
         startPoint.y = BORDER_PADDING + ((mStartHeight - mStartWidth) / 2);
@@ -246,6 +306,8 @@ public class GameFieldView extends View {
                 int rightDownX = (j + 1) * fieldItemSize + startPoint.x;
                 int rightDownY = (i + 1) * fieldItemSize + startPoint.y;
                 FieldItem fieldItem = new FieldItem();
+                fieldItem.i = i;
+                fieldItem.j = j;
                 fieldItem.size = fieldItemSize;
                 fieldItem.rect = new RectF(leftUpX, leftUpY, rightDownX, rightDownY);
                 mFieldItems[i][j] = fieldItem;
@@ -283,6 +345,7 @@ public class GameFieldView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        long s = System.currentTimeMillis();
         canvas.drawColor(getResources().getColor(R.color.game_field));
         if (rectF != null) {
             canvas.drawRect(rectF, mDrawerWinLine.mWinLinePaint);
@@ -291,6 +354,7 @@ public class GameFieldView extends View {
         canvas.concat(mMatrix);
         drawGameField(canvas);
         drawWinLine(canvas);
+        Logger.logD("Time", " draw time : " + (System.currentTimeMillis() - s));
     }
 
     private void drawWinLine(Canvas canvas) {
@@ -312,12 +376,16 @@ public class GameFieldView extends View {
                 if (item.fieldType != FieldType.EMPTY) {
                     if (item.fieldType == FieldType.X) {
                         canvas.drawBitmap(mXScaledBitmap, item.rect.left + PADDING_IN_FIELD_ITEM, item.rect.top + PADDING_IN_FIELD_ITEM, null);
+
                     } else {
                         canvas.drawBitmap(mOScaledBitmap, item.rect.left + PADDING_IN_FIELD_ITEM, item.rect.top + PADDING_IN_FIELD_ITEM, null);
                     }
                 }
             }
 
+        }
+        if (lastItemMove != null) {
+            canvas.drawRect(lastItemMove.rect, mLastMovePaint);
         }
     }
 
@@ -333,6 +401,16 @@ public class GameFieldView extends View {
         return currentPosition;
     }
 
+    public void startNewGame() {
+        initItems(oneItemSize);
+        lastItemMove = null;
+        mIsNeedShowWinLine = false;
+        isDrawingLineWithAnimation = false;
+        mFromItem = null;
+        mToItem = null;
+        postInvalidate();
+    }
+
     public static enum FieldType {
         X, O, EMPTY;
     }
@@ -346,16 +424,18 @@ public class GameFieldView extends View {
     }
 
     private static class FieldItem {
+        int i;
+        int j;
         float size;
         boolean isEnable = true;
-        boolean isUsed ;
+        boolean isUsed;
 
         FieldType fieldType = FieldType.EMPTY;
         RectF rect;
     }
 
     private class WinLineDrawer {
-        private static final int DRAW_WIN_LINE_ANIMATION_TIME = 500;
+        private static final int DRAW_WIN_LINE_ANIMATION_TIME = 1000;
         private static final int CADR_NUMBERS = 20;
         private float startWinLineX;
         private float startWinLineY;
@@ -367,15 +447,19 @@ public class GameFieldView extends View {
 
         private WinLineDrawer() {
             mWinLinePaint.setStyle(Paint.Style.STROKE);
-            mWinLinePaint.setStrokeWidth(4);
+            mWinLinePaint.setStrokeWidth(5);
             mWinLinePaint.setColor(getResources().getColor(android.R.color.background_dark));
         }
 
         void drawingWinLineWithAnim(Canvas canvas) {
-            if (endWinLineX < mToItem.rect.centerX()) {
+            if (endWinLineX < mToItem.rect.centerX() || endWinLineY > mToItem.rect.centerY()) {
+
                 endWinLineX += deltaX;
                 endWinLineY += deltaY;
             } else {
+                if (drawWinLineCompletedListener != null) {
+                    drawWinLineCompletedListener.onLineDraw();
+                }
                 isDrawingLineWithAnimation = false;
             }
             canvas.drawLine(startWinLineX, startWinLineY, endWinLineX, endWinLineY, mWinLinePaint);
@@ -383,7 +467,7 @@ public class GameFieldView extends View {
 
         }
 
-        void init(FieldItem mFromItem) {
+        void init() {
             startWinLineX = mFromItem.rect.centerX();
             startWinLineY = mFromItem.rect.centerY();
             endWinLineX = mFromItem.rect.centerX();
@@ -397,5 +481,10 @@ public class GameFieldView extends View {
             FieldItem to = mToItem;
             canvas.drawLine(from.rect.centerX(), from.rect.centerY(), to.rect.centerX(), to.rect.centerY(), mWinLinePaint);
         }
+    }
+
+
+    interface DrawWinLineCompletedListener {
+        void onLineDraw();
     }
 }

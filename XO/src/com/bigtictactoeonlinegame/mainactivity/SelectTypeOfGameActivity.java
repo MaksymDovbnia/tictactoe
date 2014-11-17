@@ -55,7 +55,7 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
     private Player mPlayer;
 
     private OnlineConnectionManager mOnlineGameWorker;
-    private XOAlertDialog mAnonymousLoginPopup;
+    private GeneralDialog mLoginPopup;
     private boolean mWasPrevClickLeaderBoardButton = false;
     private boolean mWasPrevClickAchievemntsButton = false;
     private long mGooglePlayScore;
@@ -89,7 +89,7 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
 
     @Override
     public AdView getAdView() {
-        return (AdView) findViewById(R.id.ad_view);
+        return null;
     }
 
 
@@ -113,8 +113,8 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
                         Controller.getInstance().setPlayer(mPlayer);
                         Logger.printLog("Conected to server with id " + id);
                         pd.cancel();
-                        if (mAnonymousLoginPopup != null) {
-                            mAnonymousLoginPopup.dismiss();
+                        if (mLoginPopup != null) {
+                            mLoginPopup.dismiss();
                         }
                         loginToGame();
                         break;
@@ -171,7 +171,7 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
 
     private void showNeedAppUpdatePopup() {
         final XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        mAnonymousLoginPopup = xoAlertDialog;
+        // mLoginPopup = xoAlertDialog;
         xoAlertDialog.setContent(R.layout.app_need_update_popup_layout);
         xoAlertDialog.setContentInitialization(new XOAlertDialog.IContentInitialization() {
             @Override
@@ -225,80 +225,97 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
         xoAlertDialog.show(getSupportFragmentManager(), "");
     }
 
+    private View dialogView;
+    private GeneralDialog generalDialog;
+
     public void showPopupForInputNameOfPlayers() {
-        final XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        xoAlertDialog.setContent(R.layout.popup_offline_players_name);
-        xoAlertDialog.setContentInitialization(new XOAlertDialog.IContentInitialization() {
-            @Override
-            public void onContentItialization(final View view) {
-                EditText playerName1;
-                EditText playerName2;
-                playerName1 = ((EditText) view.findViewById(R.id.edt_first_player_name));
-                playerName2 = ((EditText) view.findViewById(R.id.edt_second_player_name));
-                playerName1.addTextChangedListener(new MemoTextWatcher() {
+        generalDialog = new GeneralDialog.Builder(this)
+                .setContentId(R.layout.popup_two_players_game)
+                .setTitleTextId(R.string.input_players_name)
+                .setAutoDissmisDialog(false)
+                .setContentInitialization(new GeneralDialog.IContentInitialization() {
                     @Override
-                    protected void showMaxAlert() {
-                        String text = getString(R.string.maximum_chars_in_nick_is) + MemoTextWatcher.MAX_CHARACTER_COUNT;
-                        Toast.makeText(SelectTypeOfGameActivity.this, text, Toast.LENGTH_SHORT).show();
+                    public void onContentInitialization(View view) {
+                        dialogView = view;
+                        EditText playerName1;
+                        EditText playerName2;
+                        playerName1 = ((EditText) view.findViewById(R.id.edt_first_player_name));
+                        playerName2 = ((EditText) view.findViewById(R.id.edt_second_player_name));
+                        playerName1.addTextChangedListener(new MemoTextWatcher() {
+                            @Override
+                            protected void showMaxAlert() {
+                                String text = getString(R.string.maximum_chars_in_nick_is) + MemoTextWatcher.MAX_CHARACTER_COUNT;
+                                Toast.makeText(SelectTypeOfGameActivity.this, text, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        playerName2.addTextChangedListener(new MemoTextWatcher() {
+                            @Override
+                            protected void showMaxAlert() {
+                                String text = getString(R.string.maximum_chars_in_nick_is) + " " + MemoTextWatcher.MAX_CHARACTER_COUNT;
+                                Toast.makeText(SelectTypeOfGameActivity.this, text, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        if (player1NameFromSharedPrefences != null) {
+                            playerName1.setText(player1NameFromSharedPrefences);
+                            playerName2.setText(player2NameFromSharedPrefences);
+                        }
+
                     }
-                });
-                playerName2.addTextChangedListener(new MemoTextWatcher() {
-                    @Override
-                    protected void showMaxAlert() {
-                        String text = getString(R.string.maximum_chars_in_nick_is) + " " + MemoTextWatcher.MAX_CHARACTER_COUNT;
-                        Toast.makeText(SelectTypeOfGameActivity.this, text, Toast.LENGTH_SHORT).show();
-                    }
-                });
-                if (player1NameFromSharedPrefences != null) {
-                    playerName1.setText(player1NameFromSharedPrefences);
-                    playerName2.setText(player2NameFromSharedPrefences);
-                }
-                view.findViewById(R.id.btn_start_offline_game).setOnClickListener(new OnClickListener() {
+                })
+                .setPositiveButtonListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(SelectTypeOfGameActivity.this, GameFieldActivity.class);
-                        String name1 = ((EditText) view.findViewById(R.id.edt_first_player_name)).getText().toString();
-                        String name2 = ((EditText) view.findViewById(R.id.edt_second_player_name)).getText().toString();
+                        String name1 = ((EditText) dialogView.findViewById(R.id.edt_first_player_name)).getText().toString();
+                        String name2 = ((EditText) dialogView.findViewById(R.id.edt_second_player_name)).getText().toString();
                         intent.putExtra(GameFieldActivity.FIRST_PLAYER_NAME, name1);
                         intent.putExtra(GameFieldActivity.SECOND_PLAYER_NAME, name2);
                         intent.putExtra(BundleKeys.TYPE_OF_GAME, GameType.FRIEND);
                         sharedPreferences.edit().putString(FIRST_PLAYER_NAME, name1).commit();
                         sharedPreferences.edit().putString(SECOND_PLAYER_NAME, name2).commit();
                         startActivity(intent);
-                        xoAlertDialog.dismiss();
+                        generalDialog.dismiss();
                     }
-                });
-            }
-        });
-        xoAlertDialog.show(getSupportFragmentManager(), "");
+                })
+
+                .build();
+
+        generalDialog.show();
+
+
     }
 
+    private EditText playerNameEditText;
+
     private void showAnonymousPopup() {
-        final XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        mAnonymousLoginPopup = xoAlertDialog;
-        xoAlertDialog.setContent(R.layout.input_player_name_popup_layout);
-        xoAlertDialog.setContentInitialization(new XOAlertDialog.IContentInitialization() {
-            @Override
-            public void onContentItialization(View view) {
-                final EditText playerNameEditText = (EditText) view.findViewById(R.id.edt_player_name);
-                playerNameEditText.addTextChangedListener(new MemoTextWatcher() {
+        mLoginPopup = new GeneralDialog.Builder(this)
+                .setContentId(R.layout.input_player_name_popup_layout)
+                .setAutoDissmisDialog(false)
+                .setTitleTextId(R.string.online_game)
+                .setContentInitialization(new GeneralDialog.IContentInitialization() {
                     @Override
-                    protected void showMaxAlert() {
-                        String text = getString(R.string.maximum_chars_in_nick_is) + MemoTextWatcher.MAX_CHARACTER_COUNT;
-                        Toast.makeText(SelectTypeOfGameActivity.this, text, Toast.LENGTH_SHORT).show();
+                    public void onContentInitialization(View view) {
+                        playerNameEditText = (EditText) view.findViewById(R.id.edt_player_name);
+                        playerNameEditText.addTextChangedListener(new MemoTextWatcher() {
+                            @Override
+                            protected void showMaxAlert() {
+                                String text = getString(R.string.maximum_chars_in_nick_is) + MemoTextWatcher.MAX_CHARACTER_COUNT;
+                                Toast.makeText(SelectTypeOfGameActivity.this, text, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        if (playerUUID == null) {
+                            playerUUID = generateUUID();
+                            sharedPreferences.edit().putString(PLAYER_UUID_FOR_ONLINE_GAME, playerUUID).commit();
+                            mPlayer.setUuid(playerUUID);
+                        }
+                        if (playerNameFromSharedPrefencesForLoginToGame != null)
+                            playerNameEditText.setText(playerNameFromSharedPrefencesForLoginToGame);
+                        else playerNameEditText.setText(getString(R.string.anonym_player));
                     }
-                });
-                if (playerUUID == null) {
-                    playerUUID = generateUUID();
-                    sharedPreferences.edit().putString(PLAYER_UUID_FOR_ONLINE_GAME, playerUUID).commit();
-                    mPlayer.setUuid(playerUUID);
-                }
-                if (playerNameFromSharedPrefencesForLoginToGame != null)
-                    playerNameEditText.setText(playerNameFromSharedPrefencesForLoginToGame);
-                else playerNameEditText.setText(getString(R.string.anonym_player));
-                view.findViewById(R.id.btn_anonymous_login).setOnClickListener(new OnClickListener() {
+                })
+                .setPositiveButtonListener(new OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(View v) {
                         String playerName = playerNameEditText.getText().toString();
                         if (playerName.length() == 0) {
                             showToastWithText(getString(R.string.please_enter_your_nick_name));
@@ -320,46 +337,48 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
                             pd.setMessage(getString(R.string.connecting_server));
                             pd.show();
                             // pd.cancel();
-                        } else
+                        } else {
                             showToastWithText(getString(R.string.no_internet_connection));
+                        }
                     }
-                });
-            }
-        });
-        xoAlertDialog.show(getSupportFragmentManager(), "");
+                })
+                .build();
+
+        mLoginPopup.show();
     }
 
 
     private void showPopupForBluetoothGame() {
-        final XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        mAnonymousLoginPopup = xoAlertDialog;
-        xoAlertDialog.setContent(R.layout.input_player_name_popup_layout);
-        xoAlertDialog.setContentInitialization(new XOAlertDialog.IContentInitialization() {
-            @Override
-            public void onContentItialization(View view) {
-                final EditText playerNameEditText = (EditText) view.findViewById(R.id.edt_player_name);
-                playerNameEditText.addTextChangedListener(new MemoTextWatcher() {
+        mLoginPopup = new GeneralDialog.Builder(this)
+                .setContentId(R.layout.input_player_name_popup_layout)
+                .setTitleTextId(R.string.bluetooth_game)
+                .setAutoDissmisDialog(false)
+                .setContentInitialization(new GeneralDialog.IContentInitialization() {
                     @Override
-                    protected void showMaxAlert() {
-                        String text = getString(R.string.maximum_chars_in_nick_is) + " " + MemoTextWatcher.MAX_CHARACTER_COUNT;
-                        Toast.makeText(SelectTypeOfGameActivity.this, text, Toast.LENGTH_SHORT).show();
-                    }
-                });
-                if (playerNameFromSharedPrefencesForBluetoohToGame != null) {
-                    playerNameEditText.setText(playerNameFromSharedPrefencesForBluetoohToGame);
-                } else {
-                    if (BluetoothAdapter.getDefaultAdapter().getName() == null) {
-                        playerNameEditText.setText(R.string.player);
-                    } else {
-                        playerNameEditText.setText(BluetoothAdapter.getDefaultAdapter().getName());
+                    public void onContentInitialization(View view) {
+                        playerNameEditText = (EditText) view.findViewById(R.id.edt_player_name);
+                        playerNameEditText.addTextChangedListener(new MemoTextWatcher() {
+                            @Override
+                            protected void showMaxAlert() {
+                                String text = getString(R.string.maximum_chars_in_nick_is) + MemoTextWatcher.MAX_CHARACTER_COUNT;
+                                Toast.makeText(SelectTypeOfGameActivity.this, text, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        if (playerNameFromSharedPrefencesForBluetoohToGame != null) {
+                            playerNameEditText.setText(playerNameFromSharedPrefencesForBluetoohToGame);
+                        } else {
+                            if (BluetoothAdapter.getDefaultAdapter().getName() == null) {
+                                playerNameEditText.setText(R.string.player);
+                            } else {
+                                playerNameEditText.setText(BluetoothAdapter.getDefaultAdapter().getName());
 
+                            }
+                        }
                     }
-                }
-                Button startBTGame = (Button) view.findViewById(R.id.btn_anonymous_login);
-                startBTGame.setText(R.string.start_game);
-                startBTGame.findViewById(R.id.btn_anonymous_login).setOnClickListener(new OnClickListener() {
+                })
+                .setPositiveButtonListener(new OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(View v) {
                         String playerName = playerNameEditText.getText().toString();
                         if (playerName.length() == 0) {
                             showToastWithText(getString(R.string.please_enter_your_nick_name));
@@ -369,17 +388,17 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
                         Intent intent = new Intent(SelectTypeOfGameActivity.this, BluetoothGameActivity.class);
                         intent.putExtra(BundleKeys.PLAYER_NAME, playerName);
                         startActivity(intent);
-                        xoAlertDialog.dismiss();
+                        mLoginPopup.dismiss();
                     }
-                });
-            }
-        });
-        xoAlertDialog.show(getSupportFragmentManager(), "");
+                })
+                .build();
+
+        mLoginPopup.show();
     }
 
     private void showPopupSelectBotLevel() {
         final XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        mAnonymousLoginPopup = xoAlertDialog;
+        // mLoginPopup = xoAlertDialog;
         xoAlertDialog.setContent(R.layout.select_bot_level_popup_layout);
         xoAlertDialog.setContentInitialization(new XOAlertDialog.IContentInitialization() {
             @Override
@@ -388,7 +407,7 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
                 textViewEasyLevel.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startGameWithBot();
+                        startGameWithAndroid();
                         xoAlertDialog.dismiss();
                     }
                 });
@@ -397,7 +416,7 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
         xoAlertDialog.show(getSupportFragmentManager(), "");
     }
 
-    private void startGameWithBot() {
+    private void startGameWithAndroid() {
         Intent intent = new Intent(SelectTypeOfGameActivity.this, GameFieldActivity.class);
         intent.putExtra(BundleKeys.TYPE_OF_GAME, GameType.ANDROID);
         startActivity(intent);
@@ -408,7 +427,8 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
         Intent intent = null;
         switch (v.getId()) {
             case R.id.btn_android:
-                showPopupSelectBotLevel();
+                startGameWithAndroid();
+                // showPopupSelectBotLevel();
                 break;
             case R.id.btn_two_players:
                 showPopupForInputNameOfPlayers();

@@ -1,10 +1,13 @@
 <component name="libraryTable">
   <library name="libs">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/libs/android-support-v4.jar!/" />
       <root url="jar://$PROJECT_DIR$/libs/com.google.protobuf-2.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/libGoogleAnalyticsServices.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/xologic.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/libs/xologic.jar!/RES" />
+    </SOURCES>
   </library>
 </component>

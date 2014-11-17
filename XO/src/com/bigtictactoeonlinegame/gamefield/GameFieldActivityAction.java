@@ -7,7 +7,7 @@ import com.bigtictactoeonlinegame.chat.ChatMessage;
  */
 public interface GameFieldActivityAction {
 
-    public void showWonPopup(String wonPlayerName);
+    public void showWonPopup(boolean IsPlayerWin);
 
     public void opponentExitFromGame();
 
@@ -16,5 +16,9 @@ public interface GameFieldActivityAction {
     public void receivedChatMessage(ChatMessage chatMessage);
 
     public IGooglePlayServiceProvider getPlayServiceProvider();
+
+    public GameScoreSettable getGameScoreSettable();
+
+
 
 }

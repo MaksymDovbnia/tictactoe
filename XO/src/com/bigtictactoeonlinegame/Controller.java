@@ -12,10 +12,10 @@ public class Controller {
     private static Controller controller;
 
 	private  Player player;
-	private IGameModel gameFiledSource;
+	private IGameModel gameModel;
 
-	public IGameModel getGameHandler() {
-		return gameFiledSource;
+	public IGameModel getGameModel() {
+		return gameModel;
 	}
 
     public static synchronized Controller getInstance(){
@@ -33,8 +33,8 @@ public class Controller {
         this.bluetoothService = bluetoothService;
     }
 
-    public  void setGameHandler(IGameModel handler) {
-		gameFiledSource = handler;
+    public  void setGameModel(IGameModel model) {
+		gameModel = model;
 	}
 
 	public OnlineConnectionManager getOnlineWorker() {

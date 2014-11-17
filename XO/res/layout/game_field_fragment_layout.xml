@@ -28,7 +28,7 @@
                 android:layout_height="@dimen/game_field_fragment_value_size"
                 android:layout_marginLeft="@dimen/game_field_fragment_value_margin"
                 android:layout_alignParentLeft="true"
-                android:src="@drawable/x"
+
                />
 
         <ImageView
@@ -37,7 +37,7 @@
                 android:layout_height="@dimen/game_field_fragment_value_size"
                 android:layout_marginRight="@dimen/game_field_fragment_value_margin"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/o"/>
+                />
 
 
     </RelativeLayout>

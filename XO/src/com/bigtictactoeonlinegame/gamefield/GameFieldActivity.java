@@ -30,8 +30,14 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
     private Fragment gameFieldFragment, chatFragment;
     private ChatAction chatAction;
     private Player opponent;
+    private Player player;
+    private String opponentName;
+
     private TextView firstNameTextView;
     private TextView secondNameTextView;
+    private TextView firstPlayeScoreTextView;
+    private TextView secondPlayserScoreTextView;
+    private String playerName;
 
 
     @Override
@@ -59,30 +65,31 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
         mButtonnewGame = (Button) findViewById(R.id.btn_game_field_new_game);
         firstNameTextView = (TextView) findViewById(R.id.first_user_name);
         secondNameTextView = (TextView) findViewById(R.id.second_user_name);
-
+        firstPlayeScoreTextView = (TextView) findViewById(R.id.first_player_score);
+        secondPlayserScoreTextView = (TextView) findViewById(R.id.second_player_score);
         mButtonnewGame.setOnClickListener(this);
         findViewById(R.id.btn_game_field_back).setOnClickListener(this);
 
         openChatButton = (BlickingButton) findViewById(R.id.btn_chat);
         openChatButton.setOnClickListener(this);
 
-        String playerName = getString(R.string.player);
-        String opponentName = "";
+        playerName = getString(R.string.player);
         Player player = new Player();
         Player opponent1 = new Player();
+        boolean isFirst = true;
         if (gameType != null) {
             switch (gameType) {
                 case ONLINE:
                     Player opponent = (Player) intent.getSerializableExtra(BundleKeys.OPPONENT);
                     this.opponent = opponent;
                     TypeOfMove typeOfMove = (TypeOfMove) intent.getSerializableExtra(BundleKeys.TYPE_OF_MOVE);
+                    isFirst = typeOfMove == TypeOfMove.X;
                     OnlineGameModel onlineGameHandler = new OnlineGameModel(
                             Controller.getInstance().getOnlineWorker(),
                             Controller.getInstance().getPlayer(), opponent, this, (typeOfMove == TypeOfMove.X));
-                    Controller.getInstance().setGameHandler(onlineGameHandler);
-//                    onlineGameHandler.setActivityAction(this);
+                    Controller.getInstance().setGameModel(onlineGameHandler);
                     mButtonnewGame.setEnabled(false);
-                    mButtonnewGame.setText("");
+                    mButtonnewGame.setBackgroundResource(R.drawable.button_empty);
                     break;
                 case FRIEND:
                     if (intent.getStringExtra(FIRST_PLAYER_NAME) != null) {
@@ -91,13 +98,15 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
                     if (intent.getStringExtra(SECOND_PLAYER_NAME) != null) {
                         opponentName = intent.getStringExtra(SECOND_PLAYER_NAME);
                     }
+                    firstNameTextView.setText(playerName);
+                    secondNameTextView.setText(opponentName);
                     player.setName(playerName);
                     opponent1.setName(opponentName);
                     FriendGameModel friendGameHandler = new FriendGameModel(player, opponent1, this);
-                    Controller.getInstance().setGameHandler(friendGameHandler);
+                    Controller.getInstance().setGameModel(friendGameHandler);
                     Controller.getInstance().setPlayer(player);
                     openChatButton.setEnabled(false);
-                    openChatButton.setText("");
+                    openChatButton.setBackgroundResource(R.drawable.button_empty);
                     break;
                 case ANDROID:
                     if (intent.getStringExtra(FIRST_PLAYER_NAME) != null) {
@@ -114,14 +123,15 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
                     opponent1.setName(opponentName);
                     AndroidGameModel androidGameHandler = new AndroidGameModel(player, opponent1, this,
                             this);
-                    Controller.getInstance().setGameHandler(androidGameHandler);
+                    Controller.getInstance().setGameModel(androidGameHandler);
                     Controller.getInstance().setPlayer(player);
                     secondNameTextView.setText(opponentName);
                     firstNameTextView.setText("User");
                     openChatButton.setEnabled(false);
+                    openChatButton.setBackgroundResource(R.drawable.button_empty);
                     break;
                 case BLUETOOTH:
-                    boolean isFirst = getIntent().getBooleanExtra(BundleKeys.IS_PLAYER_MOVE_FIRST, false);
+                    isFirst = getIntent().getBooleanExtra(BundleKeys.IS_PLAYER_MOVE_FIRST, false);
                     BluetoothGameModel bluetoothGameHandler = new BluetoothGameModel(player, opponent1,
                             this, Controller.getInstance().getBluetoothService(), isFirst);
                     if (intent.getStringExtra(BundleKeys.PLAYER_NAME) != null) {
@@ -134,14 +144,16 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
                     opponent1.setName(opponentName);
                     this.opponent = opponent1;
                     Controller.getInstance().setPlayer(player);
-                    Controller.getInstance().setGameHandler(bluetoothGameHandler);
+                    Controller.getInstance().setGameModel(bluetoothGameHandler);
                     mButtonnewGame.setEnabled(false);
-                    mButtonnewGame.setText("");
+                    mButtonnewGame.setBackgroundResource(R.drawable.button_empty);
                     break;
             }
         }
+        this.player = Controller.getInstance().getPlayer();
+
         cureentTab = TAB.GAME;
-        gameFieldFragment = new GameFieldFragment();
+        gameFieldFragment = GameFieldFragment.newInstance(isFirst);
         chatFragment = new ChatFragment();
         chatAction = (ChatAction) chatFragment;
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -152,28 +164,27 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
     }
 
     @Override
-    public void showWonPopup(String wonPlayerName) {
-        final XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        xoAlertDialog.setTile(wonPlayerName + " " + getResources().getString(R.string.won));
-        xoAlertDialog.setMainText(getResources().getString(R.string.are_you_want_continue_game));
-        xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.yes));
-        xoAlertDialog.setNegativeButtonText(getResources().getString(R.string.no));
-        xoAlertDialog.setSleepTimeBeforeShowPopup(500);
-        xoAlertDialog.setNegativeListener(new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Controller.getInstance().getGameHandler().exitFromGame();
-                finish();
-            }
-        });
-        xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                newGame();
-            }
-        });
+    public void showWonPopup(boolean isPlayerWin) {
+        String title = isPlayerWin ? playerName : opponentName + " " + getString(R.string.won);
+        GeneralDialog generalDialog = new GeneralDialog.Builder(this)
+                .setTitleText(title)
+                .setContentText(getString(R.string.are_you_want_continue_game))
+                .setPositiveButtonListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        newGame();
+                    }
+                })
+                .setNegativeButtonListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Controller.getInstance().getGameModel().exitFromGame();
+                        finish();
+                    }
+                })
+                .build();
+        generalDialog.show();
 
-        xoAlertDialog.show(getSupportFragmentManager(), "");
     }
 
     private void newGame() {
@@ -287,6 +298,21 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
         };
     }
 
+    @Override
+    public GameScoreSettable getGameScoreSettable() {
+        return new GameScoreSettable() {
+            @Override
+            public void setFirstPlayerScore(int score) {
+                firstPlayeScoreTextView.setText(String.valueOf(score));
+            }
+
+            @Override
+            public void setSecondPlayerScore(int score) {
+                secondPlayserScoreTextView.setText(String.valueOf(score));
+            }
+        };
+    }
+
     private void switchToTab(TAB tab) {
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         cureentTab = tab;
@@ -329,30 +355,30 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
     }
 
     private void showExitFromThisGamePopup() {
-        XOAlertDialog xoAlertDialog = new XOAlertDialog();
-        xoAlertDialog.setTile(getResources().getString(R.string.exit_from_this_game));
-        xoAlertDialog.setMainText(getResources().getString(R.string.exit_from_this_game_question));
-        xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.yes));
-        xoAlertDialog.setNegativeButtonText(getResources().getString(R.string.no));
-        xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                Controller.getInstance().getGameHandler().exitFromGame();
-                finish();
-            }
-        });
-        xoAlertDialog.show(getSupportFragmentManager(), "");
+        GeneralDialog generalDialog = new GeneralDialog.Builder(this)
+                .setTitleTextId(R.string.exit_from_this_game)
+                .setContentText(getResources().getString(R.string.exit_from_this_game_question))
+                .setPositiveButtonListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Controller.getInstance().getGameModel().exitFromGame();
+                        finish();
+                    }
+                })
+                .build();
+        generalDialog.show();
+
     }
 
     @Override
     public void actionSendChatMessage(ChatMessage chatMessage) {
-        IGameModel gameHandler = Controller.getInstance().getGameHandler();
-        if (gameHandler.getGameType() == GameType.BLUETOOTH) {
+        IGameModel gameModel = Controller.getInstance().getGameModel();
+        if (gameModel.getGameType() == GameType.BLUETOOTH) {
             Controller.getInstance().getBluetoothService().sentPacket(BluetoothProtocol.ChatMessage
                     .newBuilder()
                     .setMessage(chatMessage.getMessage())
                     .build());
-        } else if (gameHandler.getGameType() == GameType.ONLINE) {
+        } else if (gameModel.getGameType() == GameType.ONLINE) {
             Controller.getInstance().getOnlineWorker().sendPacket(Protocol.SChatMessage
                     .newBuilder().setMessage(chatMessage.getMessage())
                     .setOpponentId(opponent.getId())
@@ -379,11 +405,10 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
     protected void onDestroy() {
         openChatButton.stopTaskForBleak();
 //        GameFieldItem.destroyAllBitmaps();
-        Controller.getInstance().setGameHandler(null);
+        Controller.getInstance().setGameModel(null);
         if (gameType != GameType.ONLINE) {
             Controller.getInstance().setPlayer(null);
         }
-        System.gc();
         super.onDestroy();
 
     }

@@ -62,6 +62,7 @@ public class OnlineRoomsFragment extends Fragment implements OnlineRoomsFragment
 
     @Override
     public AdView getAdView() {
-        return (AdView) getView().findViewById(R.id.ad_view);
+    return  null;
+// return (AdView) getView().findViewById(R.id.ad_view);
     }
 }

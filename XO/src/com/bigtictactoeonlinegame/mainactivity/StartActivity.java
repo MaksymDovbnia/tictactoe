@@ -21,6 +21,8 @@ public class StartActivity extends GeneralAdWithPlayServiceActivity implements O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_activity_layout);
 
+
+
         start = findViewById(R.id.btn_start_activity_start_game);
         start.setOnClickListener(this);
 
@@ -31,7 +33,7 @@ public class StartActivity extends GeneralAdWithPlayServiceActivity implements O
 
      @Override
     public AdView getAdView() {
-        return (AdView) StartActivity.this.findViewById(R.id.ad_view);
+        return null;
     }
 
     @Override
@@ -71,20 +73,9 @@ public class StartActivity extends GeneralAdWithPlayServiceActivity implements O
     }
 
 
-//    @Override
-//    public void onBackPressed() {
-//        XOAlertDialog xoAlertDialog = new XOAlertDialog();
-//        xoAlertDialog.setTile(getResources().getString(R.string.exit_from_game));
-//        xoAlertDialog.setMainText(getResources().getString(R.string.exit_from_game_question));
-//        xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.yes));
-//        xoAlertDialog.setNegativeButtonText(getResources().getString(R.string.no));
-//        xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                finish();
-//            }
-//        });
-//        xoAlertDialog.show(getSupportFragmentManager(), "");
-//
-//    }
+    @Override
+    public void onBackPressed() {
+     new GeneralDialog.Builder(this).setContentText("EXit").build().show();
+
+    }
 }

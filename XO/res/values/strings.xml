@@ -128,4 +128,6 @@
     <string name="sign_in">Sign in</string>
     <string name="online">Online</string>
 
+    <string name="input_players_name">Input players names</string>
+    <string name="online_game">Online game</string>
 </resources>

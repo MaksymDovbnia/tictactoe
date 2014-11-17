@@ -96,12 +96,12 @@ public class GameFieldModel {
                 || getValue(oneMove.i + 1, oneMove.j - 1) == value) {
             int j = oneMove.j;
             int i = oneMove.i;
-                while (getValue(--i, ++j) == value) {
+                while (getValue(++i, --j) == value) {
                 outList.add(new OneMove(i, j, oneMove.type, LineType.RIGHT));
             }
             j = oneMove.j;
             i = oneMove.i;
-            while (getValue(++i, --j) == value) {
+            while (getValue(--i, ++j) == value) {
                 outList.add(new OneMove(i, j, oneMove.type, LineType.RIGHT));
             }
             oneMove.typeLine = LineType.RIGHT;

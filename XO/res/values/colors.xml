@@ -4,8 +4,14 @@
 
     <color name="blue">#0099CC</color>
     <color name="dark_blue">#3B4190</color>
+    <color name="green_dialog">#60C446</color>
+    <color name="red_dialog">#D93529</color>
+
+
+
 
     <color name="red">#fe0000</color>
+
     <color name="white">#FFF</color>
 
     <color name="gray_list_item_divider">#f1f1f1</color>
@@ -17,6 +23,7 @@
 
     <color name="online_player_list_header_background">#DC4123</color>
     <color name="wanted_play_player_list_header_background">#D4E2EF</color>
+
 
 
 </resources>

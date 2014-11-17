@@ -89,16 +89,16 @@
             >
     </ListView>
 
-    <com.google.android.gms.ads.AdView
-            android:id="@+id/ad_view"
-            android:layout_width="@dimen/ad_view_width"
-            android:layout_height="@dimen/ad_view_height"
-            android:layout_gravity="center_horizontal"
-            android:paddingLeft="-4dp"
-            android:paddingRight="-4dp"
+    <!--<com.google.android.gms.ads.AdView-->
+            <!--android:id="@+id/ad_view"-->
+            <!--android:layout_width="@dimen/ad_view_width"-->
+            <!--android:layout_height="@dimen/ad_view_height"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:paddingLeft="-4dp"-->
+            <!--android:paddingRight="-4dp"-->
 
-            ads:adSize="BANNER"
-            ads:adUnitId="@string/ad_unit_id"/>
+            <!--ads:adSize="BANNER"-->
+            <!--ads:adUnitId="@string/ad_unit_id"/>-->
 
 
 

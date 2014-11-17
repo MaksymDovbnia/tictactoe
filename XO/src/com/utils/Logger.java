@@ -3,7 +3,7 @@ package com.utils;
 import android.util.*;
 
 public class Logger {
-    private static final boolean LOG_ENABLE = false;
+    private static final boolean LOG_ENABLE = true;
     private static final String TAG = "XOGameLogs";
     private static final String TAG_ERROR = "MyLogsError";
     private static final String LOG_UNICK = "X-O";

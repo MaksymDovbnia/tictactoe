@@ -11,6 +11,7 @@
 
 package com.bigtictactoeonlinegame.gamefield;
 
+import android.os.Handler;
 import android.widget.TextView;
 import com.bigtictactoeonlinegame.GameType;
 import com.bigtictactoeonlinegame.gamefield.handler.IGameModel;
@@ -19,7 +20,9 @@ import com.bigtictactoeonlinegame.gamefield.handler.IWonGameListener;
 import com.entity.OneMove;
 import com.entity.TypeOfMove;
 
+import java.util.Collections;
 import java.util.List;
+
 
 /**
  * @author Maksim Dovbnya(m.dovbnya@samsung.com).
@@ -35,15 +38,22 @@ public class GameFieldController implements IWonGameListener, IOpponentActionLis
     private GameType gameType;
     private IGooglePlayServiceProvider playServiceProvider;
     private GameFieldActivityAction gameFieldActivityAction;
+    private int firstPlayerScore;
+    private int secondPlayerScore;
+    private GameFieldFragment.IMoveMarker moveMarker;
+    private Handler handler;
+
 
     public GameFieldController(final GameFieldView gameFieldView, final IGameModel gameModel, boolean isPlayerMoveFirst,
-                               TextView timeTextView, GameFieldActivityAction gameFieldActivityAction) {
+                               TextView timeTextView, GameFieldActivityAction gameFieldActivityAction, GameFieldFragment.IMoveMarker moveMarker) {
         this.gameFieldView = gameFieldView;
         this.gameModel = gameModel;
         this.isPlayerMoveFirst = isPlayerMoveFirst;
         this.timeTextView = timeTextView;
         this.gameFieldActivityAction = gameFieldActivityAction;
         this.playServiceProvider = gameFieldActivityAction.getPlayServiceProvider();
+        this.moveMarker = moveMarker;
+        handler = new Handler();
         init();
 
 
@@ -69,6 +79,17 @@ public class GameFieldController implements IWonGameListener, IOpponentActionLis
         });
 
         initGameFieldAndTimer();
+        initMoveMarker();
+
+    }
+
+    private void initMoveMarker() {
+        moveMarker.initMaker(isPlayerMoveFirst);
+        if (isPlayerMoveFirst) {
+            moveMarker.selectFirst();
+        } else {
+            moveMarker.selectSecond();
+        }
     }
 
     private void initGameFieldAndTimer() {
@@ -81,22 +102,38 @@ public class GameFieldController implements IWonGameListener, IOpponentActionLis
 
 
     public GameFieldController(final GameFieldView gameFieldView, final IGameModel gameModel, TextView timeTextView,
-                               GameFieldActivityAction gameFieldActivityAction) {
-        this(gameFieldView, gameModel, true, timeTextView, gameFieldActivityAction);
+                               GameFieldActivityAction gameFieldActivityAction, GameFieldFragment.IMoveMarker marker) {
+        this(gameFieldView, gameModel, true, timeTextView, gameFieldActivityAction, marker);
     }
 
     public void startNewGame() {
+        if (gameModel.getGameType() == GameType.FRIEND) {
+            gameFieldView.setEnableAllGameField(true);
+        }
         isPlayerMoveFirst = !isPlayerMoveFirst;
+        gameFieldView.startNewGame();
         gameModel.startNewGame();
+        initMoveMarker();
         initGameFieldAndTimer();
     }
 
     private void changeFieldType() {
         if (currentFieldType == GameFieldView.FieldType.X) {
+            if (isPlayerMoveFirst) {
+                moveMarker.selectFirst();
+            } else {
+                moveMarker.selectSecond();
+            }
             currentFieldType = GameFieldView.FieldType.O;
         } else {
+            if (!isPlayerMoveFirst) {
+                moveMarker.selectFirst();
+            } else {
+                moveMarker.selectSecond();
+            }
             currentFieldType = GameFieldView.FieldType.X;
         }
+
     }
 
     public boolean isPlayerWin() {
@@ -105,19 +142,47 @@ public class GameFieldController implements IWonGameListener, IOpponentActionLis
 
     @Override
     public void onGameWin(List<OneMove> line) {
+        Collections.sort(line, OneMove.firstOneMoveComparator);
+        if (Math.abs(line.get(0).j - line.get(line.size() - 1).j) != 5) {
+            Collections.sort(line, OneMove.secondOneMoveComparator);
+        }
+
         OneMove first = line.get(0);
         OneMove last = line.get(line.size() - 1);
-        gameFieldView.showWinLine(first.i, first.j, last.i, last.j);
+
+
+        gameFieldView.showWinLine(first.i, first.j, last.i, last.j, new GameFieldView.DrawWinLineCompletedListener() {
+            @Override
+            public void onLineDraw() {
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        gameFieldActivityAction.showWonPopup(isPlayerWin());
+                    }
+                }, 3000);
+
+            }
+        });
         gameFieldView.setEnableAllGameField(false);
         moveTimer.unRegisterListenerAndFinish();
+        increaseScoreAndNotify();
         sendDataToPlayService();
-        showWinPopup();
+
+
+        //showWinPopup();
     }
 
-    private void showWinPopup() {
-        String name = isPlayerWin() ? "You" : "Your opponent";
-        gameFieldActivityAction.showWonPopup(name);
+
+    private void increaseScoreAndNotify() {
+        if (isPlayerWin()) {
+            firstPlayerScore++;
+        } else {
+            secondPlayerScore++;
+        }
+        gameFieldActivityAction.getGameScoreSettable().setFirstPlayerScore(firstPlayerScore);
+        gameFieldActivityAction.getGameScoreSettable().setSecondPlayerScore(secondPlayerScore);
     }
+
 
     private void sendDataToPlayService() {
         if (isPlayerWin()) {
@@ -147,12 +212,16 @@ public class GameFieldController implements IWonGameListener, IOpponentActionLis
 
     @Override
     public void onOpponentPerformMove(OneMove oneMove, boolean isLast) {
-        gameFieldView.showItem(oneMove.i, oneMove.j, currentFieldType);
-        gameFieldView.setItemEnable(oneMove.i, oneMove.j, false);
+        if (oneMove != null) {
+            gameFieldView.showItem(oneMove.i, oneMove.j, currentFieldType);
+            gameFieldView.setItemEnable(oneMove.i, oneMove.j, false);
+        }
         if (!isLast) {
             gameFieldView.setEnableAllGameField(true);
             moveTimer.startNewTimer(true);
-            changeFieldType();
+            if (oneMove != null) {
+                changeFieldType();
+            }
         }
     }
 

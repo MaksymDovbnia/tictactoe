@@ -2,18 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <option name="DEFAULT_COMPILER" value="Javac" />
-    <excludeFromCompile>
-      <directory url="file://$PROJECT_DIR$/XO/gen" includeSubdirectories="true" />
-      <directory url="file://D:/adt-bundle-windows-x86_64-20130219/sdk/extras/google/google_play_services/samples/wallet/gen" includeSubdirectories="true" />
-      <directory url="file://D:/adt-bundle-windows-x86_64-20130219/sdk/extras/google/google_play_services/samples/plus/gen" includeSubdirectories="true" />
-      <directory url="file://D:/adt-bundle-windows-x86_64-20130219/sdk/extras/google/google_play_services/samples/admob/gen" includeSubdirectories="true" />
-      <directory url="file://D:/adt-bundle-windows-x86_64-20130219/sdk/extras/google/google_play_services/samples/panorama/gen" includeSubdirectories="true" />
-      <directory url="file://D:/adt-bundle-windows-x86_64-20130219/sdk/extras/google/google_play_services/libproject/google-play-services_lib/gen" includeSubdirectories="true" />
-      <directory url="file://D:/adt-bundle-windows-x86_64-20130219/sdk/extras/google/google_play_services/samples/auth/gen" includeSubdirectories="true" />
-      <directory url="file://D:/adt-bundle-windows-x86_64-20130219/sdk/extras/google/google_play_services/samples/maps/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/../googleplayservicesamples/android-samples/BasicSamples/libraries/BaseGameUtils/src/main/gen" includeSubdirectories="true" />
-      <directory url="file://$PROJECT_DIR$/../googleplayservicesamples/android-samples/BasicSamples/TypeANumber/src/main/gen" includeSubdirectories="true" />
-    </excludeFromCompile>
     <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="!?*.java" />

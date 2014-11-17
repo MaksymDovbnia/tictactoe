@@ -39,7 +39,7 @@
     <string name="ok">Добре</string>
     <string name="cancel">Відмінити</string>
     <string name="exit_from_game">Вийти з гри</string>
-    <string name="exit_from_this_game">Вийти з цієї гри</string>
+    <string name="exit_from_this_game">Вихід з цієї гри</string>
     <string name="connection_to_server_lost">З\'єднання з сервером втрачено</string>
     <string name="please_try_to_connect_once_more">Будь ласка, спробуйте підключитися ще раз
     </string>
@@ -49,6 +49,7 @@
     <string name="no">Ні</string>
     <string name="the_first_player_name">Ім’я першого гравця:</string>
     <string name="the_second_player_name">Ім’я другого гравця:</string>
+
     <string name="login_by">Login by:</string>
     <string name="connection">З’єднання</string>
     <string name="connecting_server">Триває з’єднання до онлайн сервера...</string>
@@ -113,4 +114,9 @@
     <string name="update">Оновити</string>
     <string name="sign_out">Вийти</string>
     <string name="sign_in">Увійти</string>
+
+    <string name="input_players_name">Введіть імена гравців</string>
+    <string name="online_game">Гра онлайн</string>
+
+
 </resources>

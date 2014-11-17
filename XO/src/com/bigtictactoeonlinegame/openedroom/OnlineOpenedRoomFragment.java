@@ -208,7 +208,8 @@ public class OnlineOpenedRoomFragment extends Fragment implements IOnlineOpenedR
 
     @Override
     public AdView getAdView() {
-        return (AdView) getView().findViewById(R.id.ad_view);
+        return null;
+
     }
 
     private static class WantedToPlayAdapter extends ArrayAdapter<Player> {
