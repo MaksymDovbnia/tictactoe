@@ -44,6 +44,11 @@ public class GameFieldController implements IWonGameListener, IOpponentActionLis
     private Handler handler;
 
 
+    public GameFieldController(final GameFieldView gameFieldView, final IGameModel gameModel, TextView timeTextView,
+                               GameFieldActivityAction gameFieldActivityAction, GameFieldFragment.IMoveMarker marker) {
+        this(gameFieldView, gameModel, true, timeTextView, gameFieldActivityAction, marker);
+    }
+
     public GameFieldController(final GameFieldView gameFieldView, final IGameModel gameModel, boolean isPlayerMoveFirst,
                                TextView timeTextView, GameFieldActivityAction gameFieldActivityAction, GameFieldFragment.IMoveMarker moveMarker) {
         this.gameFieldView = gameFieldView;
@@ -92,29 +97,32 @@ public class GameFieldController implements IWonGameListener, IOpponentActionLis
         }
     }
 
+
+    public void startNewGame() {
+        if (gameModel.getGameType() == GameType.ANDROID) {
+            gameFieldView.startNewGame();
+        }
+        isPlayerMoveFirst = !isPlayerMoveFirst;
+        gameModel.startNewGame(!isPlayerMoveFirst);
+        initGameFieldAndTimer();
+        initMoveMarker();
+        currentFieldType = GameFieldView.FieldType.X;
+    }
+
     private void initGameFieldAndTimer() {
+        if (gameModel.getGameType() == GameType.FRIEND) {
+            gameFieldView.setEnableAllGameField(true);
+
+            gameFieldView.startNewGame();
+            return;
+        }
+
         if (!isPlayerMoveFirst) {
             gameFieldView.setEnableAllGameField(false);
         } else {
+            gameFieldView.setEnableAllGameField(true);
             moveTimer.startNewTimer(true);
         }
-    }
-
-
-    public GameFieldController(final GameFieldView gameFieldView, final IGameModel gameModel, TextView timeTextView,
-                               GameFieldActivityAction gameFieldActivityAction, GameFieldFragment.IMoveMarker marker) {
-        this(gameFieldView, gameModel, true, timeTextView, gameFieldActivityAction, marker);
-    }
-
-    public void startNewGame() {
-        if (gameModel.getGameType() == GameType.FRIEND) {
-            gameFieldView.setEnableAllGameField(true);
-        }
-        isPlayerMoveFirst = !isPlayerMoveFirst;
-        gameFieldView.startNewGame();
-        gameModel.startNewGame();
-        initMoveMarker();
-        initGameFieldAndTimer();
     }
 
     private void changeFieldType() {
@@ -167,9 +175,6 @@ public class GameFieldController implements IWonGameListener, IOpponentActionLis
         moveTimer.unRegisterListenerAndFinish();
         increaseScoreAndNotify();
         sendDataToPlayService();
-
-
-        //showWinPopup();
     }
 
 

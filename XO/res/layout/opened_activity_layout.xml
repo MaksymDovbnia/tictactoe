@@ -6,65 +6,54 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@drawable/general_background"
-              android:paddingRight="@dimen/opened_activity_layout_padding_right"
         >
-
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingLeft="@dimen/general_top_buttons_layout_margin_left"
-            >
-
-        <com.componentwithfont.ButtonWithComicsFont
-                android:id="@+id/btn_opened_online_group"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/general_top_button_selector"
-                android:text="@string/open_room"
-                android:textSize="@dimen/general_top_buttons_text_size"
-                android:textColor="@color/black"
-
-                />
-
-        <com.componentwithfont.ButtonWithComicsFont
-                android:id="@+id/btn_chat"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/general_top_button_selector"
-                android:layout_marginLeft="@dimen/general_buttons_separate_width"
-                android:text="@string/chat"
-                android:textSize="@dimen/general_top_buttons_text_size"
-                android:textColor="@color/black"
-                />
+    <include layout="@layout/top_google_login_view"
+             android:layout_height="@dimen/top_google_login_view_height"
+             android:layout_width="match_parent"/>
 
 
-    </LinearLayout>
-
+    <!--Fragment container-->
     <FrameLayout
             android:id="@+id/center_for_fragment"
-
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="15"
-            android:background="@drawable/notebook2"
-            android:paddingLeft="@dimen/opened_activity_layout_fragment_container_padding_left"
-            >
-
-
+            android:layout_weight="16"
+            android:layout_marginTop="@dimen/game_field_container_margin_top"
+            android:background="@drawable/fild2"
+            android:layout_marginLeft="@dimen/game_field_container_margin_left_right"
+            android:layout_marginRight="@dimen/game_field_container_margin_left_right">
     </FrameLayout>
 
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.2">
+
+    <!--Bottom container-->
+
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="@dimen/game_layout_bottom_container_margin_height"
+                    android:layout_marginTop="@dimen/type_game_main_container_margin_bottom">
+
+        <com.bigtictactoeonlinegame.BlickingButton
+                android:id="@+id/btn_chat"
+                android:layout_width="@dimen/game_layout_bottom_btn_size"
+                android:layout_height="@dimen/game_layout_bottom_btn_size"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/chat_button_selector"/>
 
 
-    </LinearLayout>
+        <Button android:id="@+id/btn_game_field_back"
+                android:layout_width="@dimen/game_layout_bottom_btn_size"
+                android:layout_height="@dimen/game_layout_bottom_btn_size"
+                android:layout_toLeftOf="@id/btn_chat"
+                android:layout_marginRight="@dimen/game_field_layout_bottom_btn_space"
+                android:background="@drawable/exit_button_selector"/>
 
 
+        <Button android:id="@+id/btn_game_field_new_game"
+                android:layout_width="@dimen/game_layout_bottom_btn_size"
+                android:layout_height="@dimen/game_layout_bottom_btn_size"
+                android:layout_toRightOf="@id/btn_chat"
+                android:layout_marginLeft="@dimen/game_field_layout_bottom_btn_space"
+                android:background="@drawable/restart_button_selector"/>
+
+
+    </RelativeLayout>
 </LinearLayout>

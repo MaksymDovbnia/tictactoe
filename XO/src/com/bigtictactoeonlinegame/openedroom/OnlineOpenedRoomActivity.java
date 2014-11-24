@@ -29,7 +29,7 @@ public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.
     private Fragment openedGroupFragment;
     private ChatFragment chatFragment;
     private FragmentTransaction fragmentTransaction;
-    private Button openGroup;
+
     private Button openChat;
     private Handler handler;
     private IOnlineOpenedRoomAction openedGroupAction;
@@ -43,12 +43,13 @@ public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.opened_activity_layout);
         openChat = (Button) findViewById(R.id.btn_chat);
-        openGroup = (Button) findViewById(R.id.btn_opened_online_group);
         openChat.setOnClickListener(this);
-        openGroup.setOnClickListener(this);
+        findViewById(R.id.btn_game_field_back).setOnClickListener(this);
+        findViewById(R.id.btn_game_field_new_game).setEnabled(false);
+        findViewById(R.id.btn_game_field_new_game).setBackgroundResource(R.drawable.button_empty);
         int groupId = getIntent().getIntExtra(OnlineRoomsFragment.NUMBER_OF_GROUP, 0);
         Controller.getInstance().getPlayer().setGroupId(groupId);
-        openGroup.setText(getString(R.string.room) + " " + groupId);
+
         setGroupFragment();
         initFragment();
         initHandler();
@@ -118,7 +119,7 @@ public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.
         fragmentTransaction.show(openedGroupFragment);
         fragmentTransaction.commit();
         currentTab = TAB.OPENED_GROUP;
-        openGroup.setSelected(true);
+
     }
 
     private void switchToFragment(TAB tab) {
@@ -126,14 +127,10 @@ public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         switch (tab) {
             case OPENED_GROUP:
-                openGroup.setSelected(true);
-                openChat.setSelected(false);
                 fragmentTransaction.hide(chatFragment);
                 fragmentTransaction.show(openedGroupFragment);
                 break;
             case CHAT:
-                openGroup.setSelected(false);
-                openChat.setSelected(true);
                 fragmentTransaction.hide(openedGroupFragment);
                 fragmentTransaction.show(chatFragment);
                 break;
@@ -179,23 +176,30 @@ public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.
         if (currentTab == TAB.CHAT) {
             switchToFragment(TAB.OPENED_GROUP);
         } else {
-            Controller.getInstance().getOnlineWorker().
-                    sendPacket(Protocol.SExitFromGroup.newBuilder().setPlayerId(Controller.getInstance().getPlayer().getId()).setGroupId(Controller.getInstance().getPlayer().getGroupId()).build());
-            finish();
+            finishAcivity();
         }
+    }
+
+    private void finishAcivity() {
+        Controller.getInstance().getOnlineWorker().
+                sendPacket(Protocol.SExitFromGroup.newBuilder().setPlayerId(Controller.getInstance().getPlayer().getId()).setGroupId(Controller.getInstance().getPlayer().getGroupId()).build());
+        finish();
     }
 
     @Override
     public void onClick(View view) {
         int id = view.getId();
         switch (id) {
-            case R.id.btn_opened_online_group:
-                switchToFragment(TAB.OPENED_GROUP);
-                break;
             case R.id.btn_chat:
                 switchToFragment(TAB.CHAT);
-                openChat.setText(R.string.chat);
                 openChat.setTextColor(getResources().getColor(R.color.black));
+                break;
+            case R.id.btn_game_field_back:
+                if (currentTab == TAB.CHAT) {
+                    switchToFragment(TAB.OPENED_GROUP);
+                } else {
+                    finishAcivity();
+                }
                 break;
         }
     }

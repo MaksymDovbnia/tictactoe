@@ -91,9 +91,13 @@ public class AndroidGameModel extends GeneralGameModel {
 
 
     @Override
-    public void startNewGame() {
+    public void startNewGame(boolean isOpponentMoveFirst) {
         gameFieldModel.newGame();
-
+        if (isOpponentMoveFirst == true) {
+            androidLogic.makeFirstMove();
+        } else {
+            androidLogic = new StartNewGame(LogicLevel.EASY, resultMoveListener, TypeMove.O);
+        }
     }
 
     @Override

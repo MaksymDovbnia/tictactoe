@@ -15,7 +15,7 @@
     <color name="white">#FFF</color>
 
     <color name="gray_list_item_divider">#f1f1f1</color>
-    <color name="dark_gray">#181B1B</color>
+    <color name="dark_gray">#505050</color>
     <color name="game_field_line">#e5943c</color>
     <color name="game_field">#f8e5ac</color>
     <color name="time_text_color">#58c241</color>

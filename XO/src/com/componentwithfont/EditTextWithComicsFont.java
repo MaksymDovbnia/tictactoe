@@ -29,7 +29,7 @@ public class EditTextWithComicsFont extends EditText {
     }
 
     private void initFont(Context context) {
-        Typeface mFont = Typeface.createFromAsset(context.getAssets(), "fonts/COMIC.TTF");
+        Typeface mFont = Typeface.createFromAsset(context.getAssets(), "fonts/foo_regular.ttf");
         setTypeface(mFont);
     }
 }

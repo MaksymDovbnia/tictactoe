@@ -97,8 +97,7 @@
             android:layout_marginTop="@dimen/game_field_container_margin_top"
             android:background="@drawable/fild2"
             android:layout_marginLeft="@dimen/game_field_container_margin_left_right"
-            android:layout_marginRight="@dimen/game_field_container_margin_left_right"
-            >
+            android:layout_marginRight="@dimen/game_field_container_margin_left_right">
     </FrameLayout>
 
     <!--Bottom container-->

@@ -204,6 +204,12 @@ public class GameFieldView extends View {
         mXBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.x);
         mOBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.o);
 
+        for (int i = 0; i < GAME_FIELD_SIZE; i++) {
+            for (int j = 0; j < GAME_FIELD_SIZE; j++) {
+                FieldItem fieldItem = new FieldItem();
+                mFieldItems[i][j] = fieldItem;
+            }
+        }
 
         setOnTouchListener(new OnTouchListener() {
             private float downX;
@@ -288,12 +294,12 @@ public class GameFieldView extends View {
         mFieldSizeInDimen = Math.min(mStartHeight, mStartWidth);
         oneItemSize = (mFieldSizeInDimen) / GAME_FIELD_SIZE;
         int bitmapScaleDelta = PADDING_IN_FIELD_ITEM * 2;
-        initItems(oneItemSize);
+        initItems(oneItemSize, false);
         mXScaledBitmap = Bitmap.createScaledBitmap(mXBitmap, oneItemSize - bitmapScaleDelta, oneItemSize - bitmapScaleDelta, false);
         mOScaledBitmap = Bitmap.createScaledBitmap(mOBitmap, oneItemSize - bitmapScaleDelta, oneItemSize - bitmapScaleDelta, false);
     }
 
-    private void initItems(int fieldItemSize) {
+    private void initItems(int fieldItemSize, boolean isResetData) {
 
         Point startPoint = new Point();
         startPoint.x = BORDER_PADDING;
@@ -305,12 +311,18 @@ public class GameFieldView extends View {
                 int leftUpY = i * fieldItemSize + startPoint.y;
                 int rightDownX = (j + 1) * fieldItemSize + startPoint.x;
                 int rightDownY = (i + 1) * fieldItemSize + startPoint.y;
-                FieldItem fieldItem = new FieldItem();
+                FieldItem fieldItem = mFieldItems[i][j];
                 fieldItem.i = i;
                 fieldItem.j = j;
                 fieldItem.size = fieldItemSize;
                 fieldItem.rect = new RectF(leftUpX, leftUpY, rightDownX, rightDownY);
                 mFieldItems[i][j] = fieldItem;
+                if (isResetData){
+                    fieldItem.isEnable = true;
+                    fieldItem.isUsed = false;
+                    fieldItem.fieldType = FieldType.EMPTY;
+                }
+
 
             }
 
@@ -402,7 +414,7 @@ public class GameFieldView extends View {
     }
 
     public void startNewGame() {
-        initItems(oneItemSize);
+        initItems(oneItemSize, true);
         lastItemMove = null;
         mIsNeedShowWinLine = false;
         isDrawingLineWithAnimation = false;

@@ -23,16 +23,13 @@
                     android:id="@+id/header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="@dimen/general_dialog_title_margin_left_right"
+                    android:layout_marginRight="@dimen/general_dialog_title_margin_left_right"
+
+                    android:layout_marginTop="@dimen/general_dialog_title_margin_top"
                     android:text="Dialog title"
                     android:textColor="@color/green_dialog"
-
-                    android:textSize="@dimen/dialog_title_text_size"
-                    />
-
-
-
+                    android:textSize="@dimen/dialog_title_text_size"/>
         </LinearLayout>
 
 
@@ -55,17 +52,13 @@
                     android:textColor="@color/red_dialog"
                     android:textSize="@dimen/dialog_main_text_size"
                     />
-
             <FrameLayout
                     android:id="@+id/content_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="@dimen/dialog_content_padding_bottom"
-
                     android:paddingLeft="@dimen/general_margin"
                     android:paddingRight="@dimen/general_margin"/>
-
-
 
         </LinearLayout>
 
@@ -76,19 +69,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/content"
-            android:layout_marginTop="-40dp"
+            android:layout_marginTop="@dimen/general_dialog_button_margin_top"
             >
 
         <ImageView android:layout_width="0dp"
                    android:id="@+id/dialog_cancel_btn"
-                   android:layout_height="match_parent"
+                   android:layout_height="@dimen/general_dialog_button_size"
                    android:layout_gravity="center"
                    android:src="@drawable/no_dialog_button_selector"
                    android:layout_weight="1"/>
 
         <ImageView android:layout_width="0dp"
                    android:id="@+id/dialog_ok_btn"
-                   android:layout_height="match_parent"
+                   android:layout_height="@dimen/general_dialog_button_size"
                    android:layout_gravity="center"
                    android:src="@drawable/yes_dialog_button_selector"
                    android:layout_weight="1"/>

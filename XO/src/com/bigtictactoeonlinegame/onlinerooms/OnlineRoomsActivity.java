@@ -36,8 +36,6 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
     private Top100Action mTop100Action;
     private final Player mPlayer = Controller.getInstance().getPlayer();
     private OnlineRoomsFragmentAction mOnlineRoomsFragmentAction;
-    private Button mButtonGroups;
-    private Button mButtonTop100;
 
     @Override
     public void getListOfGroup() {
@@ -73,21 +71,14 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
         mOnlineRoomsFragmentAction = (OnlineRoomsFragmentAction) mOnlineGroupsFragment;
         mFragmentTransaction.commit();
         mCurrentTab = TAB.GROUP_LIST;
-        mButtonTop100 = (Button) findViewById(R.id.btn_top_100);
-        mButtonTop100.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_back_from_select_type_game).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchToTab(TAB.TOP_100);
+                showBackFromOnlineGame();
             }
         });
-        mButtonGroups = (Button) findViewById(R.id.btn_online_groups);
-        mButtonGroups.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                switchToTab(TAB.GROUP_LIST);
-            }
-        });
-        mButtonGroups.setSelected(true);
+
+
     }
 
     private void initHandler() {
@@ -129,14 +120,12 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
         mCurrentTab = tab;
         switch (tab) {
             case GROUP_LIST:
-                mButtonGroups.setSelected(true);
-                mButtonTop100.setSelected(false);
+
                 mFragmentTransaction.hide(mTop100Fragment);
                 mFragmentTransaction.show(mOnlineGroupsFragment);
                 break;
             case TOP_100:
-                mButtonGroups.setSelected(false);
-                mButtonTop100.setSelected(true);
+
                 mFragmentTransaction.hide(mOnlineGroupsFragment);
                 mFragmentTransaction.show(mTop100Fragment);
                 sendPacketGetTop100List();
@@ -159,19 +148,22 @@ public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoo
         if (mCurrentTab == TAB.TOP_100) {
             switchToTab(TAB.GROUP_LIST);
         } else {
-            XOAlertDialog xoAlertDialog = new XOAlertDialog();
-            xoAlertDialog.setTile(getResources().getString(R.string.exit_from_online_game));
-            xoAlertDialog.setMainText(getResources().getString(R.string.exit_from_game_online_question));
-            xoAlertDialog.setPositiveButtonText(getResources().getString(R.string.yes));
-            xoAlertDialog.setNegativeButtonText(getResources().getString(R.string.no));
-            xoAlertDialog.setPositiveListener(new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    finish();
-                }
-            });
-            xoAlertDialog.show(getSupportFragmentManager(), "");
+            showBackFromOnlineGame();
         }
+    }
+
+    private void showBackFromOnlineGame() {
+        GeneralDialog generalDialog = new GeneralDialog.Builder(this)
+                .setTitleTextId(R.string.exit_from_this_game)
+                .setContentText(getString(R.string.exit_from_game_online_question))
+                .setPositiveButtonListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                })
+                .build();
+        generalDialog.show();
     }
 
     @Override

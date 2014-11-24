@@ -336,9 +336,7 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_opened_online_group:
-                switchToTab(TAB.GAME);
-                break;
+
             case R.id.btn_chat:
                 openChatButton.setText(R.string.chat);
                 openChatButton.setTextColor(getResources().getColor(R.color.black));

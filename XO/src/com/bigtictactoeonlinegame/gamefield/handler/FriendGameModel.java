@@ -5,7 +5,6 @@ import java.util.List;
 import com.bigtictactoeonlinegame.GameType;
 import com.bigtictactoeonlinegame.gamefield.GameFieldActivityAction;
 
-import com.bigtictactoeonlinegame.gamefield.GameFieldItem;
 import com.entity.OneMove;
 import com.entity.Player;
 
@@ -35,7 +34,7 @@ public class FriendGameModel extends GeneralGameModel {
 
 
     @Override
-    public void startNewGame() {
+    public void startNewGame(boolean isOpponentMoveFirst) {
         gameFieldModel.newGame();
 
     }

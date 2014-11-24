@@ -3,7 +3,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:orientation="horizontal"
-              android:background="@drawable/list_item_selector"
+              android:background="@android:color/transparent"
         >
 
     <com.componentwithfont.TextViewWithComicsFont
@@ -22,7 +22,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-
             android:text="100"
             style="@style/list_view_item"
             android:layout_gravity="center_vertical"/>
@@ -40,7 +39,6 @@
                 android:layout_height="@dimen/check_box_invite_to_play_size"
                 android:freezesText="true"
                 android:clickable="false"
-
                 android:button="@drawable/checkbox_selector"/>
 
 

@@ -6,8 +6,7 @@
               android:paddingLeft="@dimen/chat_fragment_layout_padding_left"
               android:paddingRight="@dimen/chat_fragment_layout_padding_right"
               android:paddingTop="@dimen/chat_fragment_layout_padding_top"
-              android:paddingBottom="@dimen/chat_fragment_layout_padding_bottom"
-        >
+              android:paddingBottom="@dimen/chat_fragment_layout_padding_bottom"        >
 
     <LinearLayout
             android:orientation="vertical"
@@ -17,18 +16,15 @@
             android:paddingLeft="@dimen/chat_fragment_layout_chat_container_padding_left"
             android:paddingRight="@dimen/chat_fragment_layout_chat_container_padding_right"
             android:paddingTop="@dimen/chat_fragment_layout_chat_container_padding_top"
-            android:paddingBottom="@dimen/chat_fragment_layout_chat_container_padding_bottom"
-            >
+            android:paddingBottom="@dimen/chat_fragment_layout_chat_container_padding_bottom"           >
 
         <ListView
                 android:id="@+id/chat_list_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:cacheColorHint="@android:color/transparent"
-                android:divider="@drawable/split_line"
-                android:dividerHeight="@dimen/list_view_divider_height"
+                android:divider="@android:color/transparent"
                 />
-
     </LinearLayout>
 
     <com.componentwithfont.TextViewWithComicsFont
@@ -43,8 +39,8 @@
             android:id="@+id/chat_input_edit_text"
             android:layout_width="match_parent"
             android:layout_height="@dimen/chat_fragment_layout_edit_text_height"
-
-
+            android:background="@drawable/chat_edit_text_background"
+            android:padding="10dp"
 
             />
 
@@ -53,6 +49,7 @@
             android:layout_width="@dimen/chat_fragment_layout_sent_button_width"
             android:layout_height="@dimen/chat_fragment_layout_sent_button_height"
             android:layout_gravity="right"
+            android:lines="2"
             android:text="@string/send"
             style="@style/default_yelow_button"
             />

@@ -33,12 +33,12 @@
     </style>
 
     <style name="list_view_header_item">
-        <item name="android:textColor">@color/red</item>
+        <item name="android:textColor">@color/green_dialog</item>
         <item name="android:textSize">@dimen/header_list_item_text_size</item>
         <item name="android:gravity">center</item>
     </style>
     <style name="list_view_item">
-        <item name="android:textColor">@color/dark_blue</item>
+        <item name="android:textColor">@color/dark_gray</item>
         <item name="android:textSize">@dimen/general_list_item_text_size</item>
         <item name="android:gravity">center</item>
     </style>

@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.bigtictactoeonlinegame.*;
 import com.bigtictactoeonlinegame.activity.*;
 import com.bigtictactoeonlinegame.gamefield.handler.*;
-import com.google.android.gms.internal.bu;
 
 /**
  * Created by Maksym on 9/1/13.
@@ -86,12 +85,19 @@ public class GameFieldFragment extends Fragment implements IGameFieldFragmentAct
         firtMarker = (ImageView) view.findViewById(R.id.left_value);
         secondMarker = (ImageView) view.findViewById(R.id.right_value);
         gameModel = Controller.getInstance().getGameModel();
-        gameFieldController = new GameFieldController((GameFieldView) view.findViewById(R.id.btn_game_field_view), gameModel,
-                mIsPlayerMoveFirst, (TextView) view.findViewById(R.id.time), gameFieldActivityAction, moveMarker);
 
 
         return view;
 
+    }
+
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        gameFieldController = new GameFieldController((GameFieldView) view.findViewById(R.id.game_field_view), gameModel,
+                mIsPlayerMoveFirst, (TextView) view.findViewById(R.id.time), gameFieldActivityAction, moveMarker);
+
+        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override

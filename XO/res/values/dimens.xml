@@ -37,7 +37,7 @@
     <dimen name="online_open_group_fragment_start_cancel_game_button_height">30dp</dimen>
     <dimen name="online_open_group_fragment_divider_line_width">15dp</dimen>
     <dimen name="online_open_group_fragment_invite_update_button_height">40dp</dimen>
-    <dimen name="online_opened_room_fragment_general_padding_size">5dp</dimen>
+    <dimen name="online_opened_room_fragment_general_padding_size">10dp</dimen>
     <dimen name="online_opened_room_fragment_padding_for_small_list">10dp</dimen>
     <dimen name="online_opened_room_fragment_padding_for_large_list">30dp</dimen>
     <dimen name="online_opened_room_fragment_text_size_inscription">15dp</dimen>
@@ -60,7 +60,7 @@
     <!--Online group list item-->
     <dimen name="general_list_item_text_size">17dp</dimen>
     <dimen name="rating_list_item_text_size">15dp</dimen>
-    <dimen name="header_list_item_text_size">14dp</dimen>
+    <dimen name="header_list_item_text_size">20dp</dimen>
     <!--Online group fragment layout-->
     <dimen name="online_group_fragment_layout_button_height">40dp</dimen>
 
@@ -82,10 +82,10 @@
     <dimen name="main_activity_layout_center_container_one_item__margin_top">10dp</dimen>
     <dimen name="main_activity_layout_center_container__one_item_button_margin_left">5dp</dimen>
     <!--Chat fragment-->
-    <dimen name="chat_fragment_layout_padding_left">5dp</dimen>
-    <dimen name="chat_fragment_layout_padding_right">5dp</dimen>
+    <dimen name="chat_fragment_layout_padding_left">15dp</dimen>
+    <dimen name="chat_fragment_layout_padding_right">15dp</dimen>
     <dimen name="chat_fragment_layout_padding_top">10dp</dimen>
-    <dimen name="chat_fragment_layout_padding_bottom">10dp</dimen>
+    <dimen name="chat_fragment_layout_padding_bottom">35dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_left">30dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_right">25dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_top">30dp</dimen>
@@ -96,8 +96,8 @@
     <dimen name="chat_fragment_layout_sent_button_height">40dp</dimen>
     <dimen name="chat_fragment_layout_sent_button_width">130dp</dimen>
     <dimen name="chat_list_item_message_text_view_margin_left">10dp</dimen>
-    <dimen name="chat_list_item_message_text_size">13dp</dimen>
-    <dimen name="chat_list_item_sender_text_size">12dp</dimen>
+    <dimen name="chat_list_item_message_text_size">20dp</dimen>
+    <dimen name="chat_list_item_sender_text_size">19dp</dimen>
     <!--Top 100 fragment-->
     <dimen name="top_100_fragment_layout_padding_left_right">10dp</dimen>
     <dimen name="top_100_fragment_list_item_text_size">20dp</dimen>
@@ -127,7 +127,7 @@
 
     <dimen name="popup_button_width">120dp</dimen>
     <dimen name="popup_button_height">70dp</dimen>
-    <dimen name="check_box_invite_to_play_size">30dp</dimen>
+    <dimen name="check_box_invite_to_play_size">40dp</dimen>
 
 
     <dimen name="achievements_height">35dp</dimen>
@@ -151,11 +151,11 @@
     <dimen name="type_game_image_item_margin_left">10dp</dimen>
     <dimen name="type_game_back_btn_size">80dp</dimen>
 
-    <dimen name="type_game_main_container_margin_bottom">-20dp</dimen>
     <dimen name="game_layout_bottom_btn_size">60dp</dimen>
     <dimen name="game_field_layout_bottom_btn_space">30dp</dimen>
     <dimen name="game_layout_bottom_container_margin_top">-30dp</dimen>
     <dimen name="game_layout_bottom_container_margin_height">80dp</dimen>
+    <dimen name="type_game_main_container_margin_bottom">-40dp</dimen>
     <dimen name="game_field_container_margin_left_right">5dp</dimen>
     <dimen name="game_field_container_margin_top">10dp</dimen>
     <dimen name="game_field_fragment_value_size">30dp</dimen>
@@ -165,9 +165,13 @@
     <dimen name="game_field_fragment_top_padding">20dp</dimen>
     <dimen name="game_field_fragment_bottom_padding">25dp</dimen>
     <dimen name="general_margin">16dp</dimen>
-    <dimen name="dialog_title_text_size">30sp</dimen>
-    <dimen name="dialog_main_text_size">30sp</dimen>
+    <dimen name="dialog_title_text_size">25sp</dimen>
+    <dimen name="dialog_main_text_size">25sp</dimen>
     <dimen name="dialog_content_padding_bottom">20dp</dimen>
+    <dimen name="general_dialog_button_size">60dp</dimen>
+    <dimen name="general_dialog_button_margin_top">-30dp</dimen>
+    <dimen name="general_dialog_title_margin_top">25dp</dimen>
+    <dimen name="general_dialog_title_margin_left_right">20dp</dimen>
 
 
 </resources>

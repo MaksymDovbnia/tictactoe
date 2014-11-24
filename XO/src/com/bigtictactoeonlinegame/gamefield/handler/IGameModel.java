@@ -20,7 +20,7 @@ public interface IGameModel {
     public void userMadeMove(OneMove oneMove);
 
 
-    public void startNewGame();
+    public void startNewGame(boolean isOpponentMoveFirst);
 
     public void exitFromGame();
 
