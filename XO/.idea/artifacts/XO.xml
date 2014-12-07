@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="apk" name="XO">
+    <output-path>$PROJECT_DIR$/out/artifacts/XO</output-path>
+    <properties id="android-properties">
+      <options>
+        <option name="keyAlias" value="max" />
+        <option name="keyPassword" value="MTk5MTA0MDltYXg=" />
+        <option name="keyStorePassword" value="MTk5MTA0MDltYXg=" />
+        <option name="keyStoreUrl" value="file://$PROJECT_DIR$/../keystore/BigTicTacToeOnline.jks" />
+        <option name="proGuardCfgFiles">
+          <list>
+            <option value="file://D:/adt-bundle-windows-x86_64-20130219/sdk/tools/proguard/proguard-android.txt" />
+          </list>
+        </option>
+        <option name="signingMode" value="RELEASE_SIGNED" />
+      </options>
+    </properties>
+    <root id="archive" name="XO.apk">
+      <element id="android-final-package" facet="XO/android/Android" />
+    </root>
+  </artifact>
+</component>
