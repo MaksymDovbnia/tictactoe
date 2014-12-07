@@ -36,114 +36,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0961cc9b-bf1e-496d-a554-c59c1dca15eb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable/button_chat_message.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/fild2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-xxhdpi/fild2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/fild3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-xxhdpi/fild3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-hdpi/top.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/top.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/res/drawable-xxhdpi/top.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/utils/FileUtil.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/utils/ImageUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/LoadImageTask.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/XO.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/XOApplication.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/XOSharedPreferenceHelper.java" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-hdpi\chat_background.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-hdpi\notebook1.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-hdpi\notebook2.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-hdpi\notebook5.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-xhdpi\chat_background.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-xhdpi\notebook1.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-xhdpi\notebook2.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-xhdpi\notebook5.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-xxhdpi\chat_background.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-xxhdpi\field.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-xxhdpi\notebook1.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-xxhdpi\notebook2.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable-xxhdpi\notebook5.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\alotment.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\bluetooth_image.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\button_big.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\button_big_for_blicking.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\button_big_pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\button_big_selected.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\button_crinkle.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\button_yelow_background.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\chat_background.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\checked_check_box.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\field.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\frame_for_fame_field.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\general_down_left_button_selector.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\general_down_right_button_selector.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\general_left_button_presed.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\general_right_button_presed.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\general_top_button_selector.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\horizontal_line.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\left_line.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\notebook1.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\o_without_back.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\ovalbound_blue.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\ovalbound_blue1.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\ovalbound_blue3.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\ovalbound_red.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\red_centerbutton.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\red_leftbutton.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\red_rightbutton.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\right_line.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\selector_default_yelow_button.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\selector_for_text_view.xml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\vertical_line.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\won_line_h.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\won_line_l.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\won_line_r.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\won_line_v.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\x_1.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\x_2.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\x_3.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\x_4.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\res\drawable\x_without_bac.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\src\com\bigtictactoeonlinegame\gamefield\GameFieldAdapter.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\Programing\java_android\android_projects\tictactoe_new\XO\src\com\bigtictactoeonlinegame\gamefield\GameFieldItem.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/handler/AndroidGameModel.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/handler/AndroidGameModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/bluetoothgame/BTDeviceListActivity.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/bluetoothgame/BTDeviceListActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/BlickingButton.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/BlickingButton.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/handler/BluetoothGameModel.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/handler/BluetoothGameModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/chat/ChatFragment.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/chat/ChatFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivity.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/GameFieldActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/GameFieldController.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/GameFieldController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/GameFieldFragment.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/GameFieldFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/GameFieldView.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/GameFieldView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/mainactivity/GoogleAnalyticsWithPlayServiceActivity.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/mainactivity/GoogleAnalyticsWithPlayServiceActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/handler/IWonGameListener.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/handler/IWonGameListener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/handler/OnlineGameModel.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/gamefield/handler/OnlineGameModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/openedroom/OnlineOpenedRoomActivity.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/openedroom/OnlineOpenedRoomActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/onlinerooms/OnlineRoomsActivity.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/onlinerooms/OnlineRoomsActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/net/protocol/Protocol.java" afterPath="$PROJECT_DIR$/src/net/protocol/Protocol.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/mainactivity/SelectTypeOfGameActivity.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/mainactivity/SelectTypeOfGameActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/mainactivity/StartActivity.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/mainactivity/StartActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/mainactivity/XOGameActivityWithAds.java" afterPath="$PROJECT_DIR$/src/com/bigtictactoeonlinegame/mainactivity/XOGameActivityWithAds.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/about_activity_layout.xml" afterPath="$PROJECT_DIR$/res/layout/about_activity_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/app_need_update_popup_layout.xml" afterPath="$PROJECT_DIR$/res/layout/app_need_update_popup_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/bt_device_list_actvity_layout.xml" afterPath="$PROJECT_DIR$/res/layout/bt_device_list_actvity_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/chat_fragment_layout.xml" afterPath="$PROJECT_DIR$/res/layout/chat_fragment_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/chat_list_item.xml" afterPath="$PROJECT_DIR$/res/layout/chat_list_item.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/dimens.xml" afterPath="$PROJECT_DIR$/res/values/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-large/dimens.xml" afterPath="$PROJECT_DIR$/res/values-large/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values-xlarge/dimens.xml" afterPath="$PROJECT_DIR$/res/values-xlarge/dimens.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/game_fileld_activity_layout.xml" afterPath="$PROJECT_DIR$/res/layout/game_fileld_activity_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/input_player_name_popup_layout.xml" afterPath="$PROJECT_DIR$/res/layout/input_player_name_popup_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/login_to_game_popup.xml" afterPath="$PROJECT_DIR$/res/layout/login_to_game_popup.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/online_opened_room_fragment.xml" afterPath="$PROJECT_DIR$/res/layout/online_opened_room_fragment.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/online_rooms_activity_layout.xml" afterPath="$PROJECT_DIR$/res/layout/online_rooms_activity_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/online_rooms_fragment_layout.xml" afterPath="$PROJECT_DIR$/res/layout/online_rooms_fragment_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/select_bot_level_popup_layout.xml" afterPath="$PROJECT_DIR$/res/layout/select_bot_level_popup_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/start_activity_layout.xml" afterPath="$PROJECT_DIR$/res/layout/start_activity_layout.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/styles.xml" afterPath="$PROJECT_DIR$/res/values/styles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/top_google_login_view.xml" afterPath="$PROJECT_DIR$/res/layout/top_google_login_view.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="XO.iws" />
@@ -228,7 +120,7 @@
           <file leaf-file-name="LoadImageTask.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/bigtictactoeonlinegame/LoadImageTask.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.9156327" vertical-offset="447" max-vertical-offset="1054">
+                <state vertical-scroll-proportion="1.7242991" vertical-offset="447" max-vertical-offset="1054">
                   <caret line="60" column="33" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="33" />
                   <folding />
                 </state>
@@ -661,7 +553,7 @@
     <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22058824" sideWeight="0.4992" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5294118" sideWeight="0.4992" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -1206,7 +1098,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/bigtictactoeonlinegame/LoadImageTask.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9156327" vertical-offset="447" max-vertical-offset="1054">
+        <state vertical-scroll-proportion="1.7242991" vertical-offset="447" max-vertical-offset="1054">
           <caret line="60" column="33" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="33" />
           <folding />
         </state>
