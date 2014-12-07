@@ -13,33 +13,14 @@
                     android:paddingLeft="@dimen/top_google_view_padding_left_right"
                     android:paddingRight="@dimen/top_google_view_padding_left_right"
                     android:background="@drawable/top">
-        <LinearLayout android:layout_width="wrap_content"
-                      android:layout_height="match_parent"
-                      android:layout_alignParentLeft="true"
-                      android:orientation="horizontal">
-
-            <ImageView android:layout_width="@dimen/top_google_view_photo_size"
-                       android:layout_height="@dimen/top_google_view_photo_size"
-                       android:layout_centerVertical="true"
-                       android:src="@drawable/foto"/>
-
-            <com.componentwithfont.TextViewWithComicsFont
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:text="Svetlana"
-                    android:textSize="@dimen/top_google_view_tex_size"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center_vertical"
-                    android:id="@+id/first_user_name"/>
-        </LinearLayout>
 
 
         <LinearLayout android:layout_width="wrap_content"
                       android:layout_centerHorizontal="true"
                       android:orientation="horizontal"
-
+                      android:id="@+id/score_layout"
                       android:layout_height="wrap_content">
+
             <com.componentwithfont.TextViewWithComicsFont
                     android:id="@+id/first_player_score"
                     android:layout_width="wrap_content"
@@ -64,28 +45,59 @@
                     android:textSize="@dimen/top_google_view_photo_size"/>
         </LinearLayout>
 
-
         <LinearLayout android:layout_width="wrap_content"
                       android:layout_height="match_parent"
+                      android:layout_alignParentLeft="true"
+                      android:layout_toLeftOf="@id/score_layout"
+                      android:orientation="horizontal">
+
+            <ImageView android:layout_width="@dimen/top_google_view_photo_size"
+                       android:layout_height="@dimen/top_google_view_photo_size"
+                       android:id="@+id/first_user_image"
+                       android:src="@drawable/foto"/>
+
+            <com.componentwithfont.TextViewWithComicsFont
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Svetlana"
+                    android:textSize="@dimen/top_google_view_tex_size"
+                    android:singleLine="true"
+                    android:ellipsize="none"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/first_user_name"/>
+        </LinearLayout>
+
+
+        <RelativeLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:layout_toRightOf="@id/score_layout"
                       android:layout_alignParentRight="true"
                       android:orientation="horizontal">
 
+            <ImageView android:layout_width="@dimen/top_google_view_photo_size"
+                       android:layout_height="@dimen/top_google_view_photo_size"
+                       android:id="@+id/second_player_image"
+                       android:layout_marginLeft="5dp"
+                       android:layout_alignParentRight="true"
+                       android:src="@drawable/foto"/>
 
             <com.componentwithfont.TextViewWithComicsFont
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/top_google_view_tex_size"
                     android:text="Max"
+                    android:singleLine="true"
                     android:layout_gravity="center_vertical"
                     android:textColor="@color/white"
+                    android:ellipsize="none"
+                    android:layout_centerVertical="true"
+
+                    android:layout_toLeftOf="@id/second_player_image"
                     android:id="@+id/second_user_name"/>
 
-            <ImageView android:layout_width="@dimen/top_google_view_photo_size"
-                       android:layout_height="@dimen/top_google_view_photo_size"
-                       android:layout_marginLeft="5dp"
-                       android:layout_centerVertical="true"
-                       android:src="@drawable/foto"/>
-        </LinearLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
     <!--Fragment container-->

@@ -29,7 +29,7 @@
             android:layout_width="@dimen/type_game_back_btn_size"
             android:layout_height="@dimen/type_game_back_btn_size"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginTop="-40dp"
+            android:layout_marginTop="@dimen/type_game_main_container_margin_bottom"
             android:background=
                     "@drawable/exit_button_selector"/>
 

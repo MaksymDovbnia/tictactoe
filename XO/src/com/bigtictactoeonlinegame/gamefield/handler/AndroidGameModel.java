@@ -37,11 +37,8 @@ public class AndroidGameModel extends GeneralGameModel {
                 public void run() {
                     TypeOfMove typeOfMove = oneMove.typeMove == TypeMove.O ? TypeOfMove.O : TypeOfMove.X;
                     OneMove oneMove1 = new OneMove(oneMove.getI(), oneMove.getJ(), typeOfMove);
-                    Log.d(Logger.TAG, "resultMove" + oneMove);
-
                     List<OneMove> list = gameFieldModel.oneMove(oneMove1);
-
-                    opponentActionListener.onOpponentPerformMove(oneMove1, list != null);
+                    opponentActionListener.onOpponentPerformMove(oneMove1, false);
                     if (list != null) {
                         wonGameListener.onGameWin(list);
                     }
@@ -93,7 +90,7 @@ public class AndroidGameModel extends GeneralGameModel {
     @Override
     public void startNewGame(boolean isOpponentMoveFirst) {
         gameFieldModel.newGame();
-        if (isOpponentMoveFirst == true) {
+        if (isOpponentMoveFirst) {
             androidLogic.makeFirstMove();
         } else {
             androidLogic = new StartNewGame(LogicLevel.EASY, resultMoveListener, TypeMove.O);

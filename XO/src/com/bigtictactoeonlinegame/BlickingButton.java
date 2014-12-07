@@ -14,8 +14,8 @@ public class BlickingButton extends ButtonWithComicsFont {
     private boolean isNeedBlick;
     private BlickingTimer blickingTimer;
     private boolean indicator = true;
-    private static final int RES_FOR_BLICK_BUTTON = R.drawable.button_big_for_blicking;
-    private static final int RES_FOR_NORM_BUTTON = R.drawable.button_chat;
+    private static final int RES_FOR_BLICK_BUTTON = R.drawable.button_chat_message;
+    private static final int RES_FOR_NORM_BUTTON = R.drawable.chat_button_selector;
 
 
     public BlickingButton(Context context) {
@@ -65,7 +65,6 @@ public class BlickingButton extends ButtonWithComicsFont {
     public void setNeedingToBlick(boolean isNeed) {
         setBackgroundResource(RES_FOR_NORM_BUTTON);
         isNeedBlick = isNeed;
-
     }
 
 

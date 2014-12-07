@@ -7,5 +7,17 @@ import android.app.Application;
  */
 public class XOApplication extends Application {
 
-    private static MFamilyApplication application;
+    private static XOApplication application;
+
+    public static XOApplication getInstance() {
+        return application;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        application = this;
+        XOSharedPreferenceHelper.initialize(this);
+    }
+
 }

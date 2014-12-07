@@ -6,6 +6,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingBottom="30dp"
+                android:clickable="true"
                 android:background="@drawable/general_background">
 
     <include layout="@layout/top_google_login_view"

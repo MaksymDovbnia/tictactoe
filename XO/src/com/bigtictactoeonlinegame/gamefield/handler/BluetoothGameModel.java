@@ -19,19 +19,18 @@ import java.util.List;
 public class BluetoothGameModel extends GeneralGameModel {
 
     private BluetoothService mBluetoothService;
-
-    private boolean mIsPlayerWantToContinue = false;
-    private boolean mIsOpponentWantToContinue = false;
+    private boolean opponentWantContinue;
+    private boolean playerWantContinue;
 
     public BluetoothGameModel(Player player, Player opponent, GameFieldActivityAction activityAction,
                               BluetoothService bluetoothService, final boolean isPlayerMoveFirst) {
         super(player, opponent, activityAction);
         mBluetoothService = bluetoothService;
-        mBluetoothService.registerListener(bluetoothGameListener);
+        mBluetoothService.registerListener(bluetoothCallbackGameListener);
     }
 
 
-    private IBluetoothGameListener bluetoothGameListener = new IBluetoothGameListener() {
+    private IBluetoothGameListener bluetoothCallbackGameListener = new IBluetoothGameListener() {
         @Override
         public void receivedNewChatMessage(String message) {
             mActivityAction.receivedChatMessage(new ChatMessage(message, opponent.getName()));
@@ -41,11 +40,9 @@ public class BluetoothGameModel extends GeneralGameModel {
         public void receivedNewOneMove(OneMove oneMove) {
 
             List<OneMove> list = gameFieldModel.oneMove(oneMove);
+            opponentActionListener.onOpponentPerformMove(oneMove, false);
             if (list != null) {
-                opponentActionListener.onOpponentPerformMove(oneMove, true);
                 wonGameListener.onGameWin(list);
-            } else {
-                opponentActionListener.onOpponentPerformMove(oneMove, false);
             }
 
         }
@@ -63,9 +60,8 @@ public class BluetoothGameModel extends GeneralGameModel {
 
         @Override
         public void continueGame() {
-            mIsOpponentWantToContinue = true;
-            startCheckingForNewGame();
-
+            opponentWantContinue = true;
+            checkForBothWantContinue();
         }
 
         @Override
@@ -80,32 +76,11 @@ public class BluetoothGameModel extends GeneralGameModel {
         }
     };
 
-    private void startCheckingForNewGame() {
-        if (mIsOpponentWantToContinue && mIsPlayerWantToContinue) {
-            mIsOpponentWantToContinue = false;
-            mIsPlayerWantToContinue = false;
-//            gameFieldAdapter.startNewGame();
-//            gameFieldModel.newGame();
-//            if (player.getMoveType() == TypeOfMove.X) {
-//                gameFieldAdapter.setEnableAllUnusedGameField(false);
-//                mMoveTimer.startNewTimer(false);
-//                player.setMoveType(TypeOfMove.O);
-//                opponent.setMoveType(TypeOfMove.X);
-//                indicator = SECOND_PLAYER;
-//                tvPlayer2Name.setBackgroundResource(SELECT_PLAYER_BACKGROUND);
-//                tvPlayer1Name.setBackgroundResource(R.drawable.button_white);
-//            } else {
-//                gameFieldAdapter.setEnableAllUnusedGameField(true);
-//                mMoveTimer.startNewTimer(true);
-//                player.setMoveType(TypeOfMove.X);
-//                opponent.setMoveType(TypeOfMove.O);
-//                indicator = FIRST_PLAYER;
-//                tvPlayer1Name.setBackgroundResource(SELECT_PLAYER_BACKGROUND);
-//                tvPlayer2Name.setBackgroundResource(R.drawable.button_white);
-//            }
+    private void checkForBothWantContinue() {
+        if (opponentWantContinue && playerWantContinue) {
+            wonGameListener.onBothPlayerWantContinue();
         }
     }
-
 
     public void sendMessage(String message) {
         mBluetoothService.sentPacket(BluetoothProtocol.ChatMessage.newBuilder().setMessage(message).build());
@@ -118,8 +93,6 @@ public class BluetoothGameModel extends GeneralGameModel {
 
 
     @SuppressWarnings("unchecked")
-
-
     @Override
     public void userMadeMove(OneMove oneMove) {
         BluetoothProtocol.DidMove didMove = BluetoothProtocol.DidMove.newBuilder()
@@ -133,17 +106,18 @@ public class BluetoothGameModel extends GeneralGameModel {
             wonGameListener.onGameWin(list);
         }
 
-
     }
 
 
     @SuppressWarnings("unchecked")
     @Override
     public void startNewGame(boolean isOpponentMoveFirst) {
+        gameFieldModel.newGame();
         mBluetoothService.sentPacket(BluetoothProtocol.ContinueGame
                 .newBuilder().setContinueGame(true).build());
-        mIsPlayerWantToContinue = true;
-        startCheckingForNewGame();
+        playerWantContinue = true;
+        checkForBothWantContinue();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -157,5 +131,11 @@ public class BluetoothGameModel extends GeneralGameModel {
     @Override
     public void unregisterHandler() {
         mBluetoothService.unRegisterListener();
+    }
+
+    @Override
+    public void userTimeForMoveEnd() {
+        mBluetoothService.sentPacket(BluetoothProtocol
+                .TimeForMoveFullUp.newBuilder().setTimeFullUp(true).build());
     }
 }

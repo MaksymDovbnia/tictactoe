@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.bigtictactoeonlinegame.chat.*;
 import com.bigtictactoeonlinegame.chat.IChatActionNotification;
+import com.bigtictactoeonlinegame.mainactivity.XOGameActivityWithAds;
 import com.bigtictactoeonlinegame.onlinerooms.OnlineRoomsFragment;
 import com.bigtictactoeonlinegame.popup.XOAlertDialog;
 import com.entity.Player;
@@ -25,7 +26,7 @@ import net.protocol.Protocol;
 /**
  * @author Maksym Dovbnia on 6/19/13.
  */
-public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.OnClickListener, IChatActionNotification {
+public class OnlineOpenedRoomActivity extends XOGameActivityWithAds implements View.OnClickListener, IChatActionNotification {
     private Fragment openedGroupFragment;
     private ChatFragment chatFragment;
     private FragmentTransaction fragmentTransaction;
@@ -93,7 +94,6 @@ public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.
                             chatAction.receivedMessage(new ChatMessage(cGroupChatMessage.getMessage(), senderName));
                         }
                         if (currentTab == TAB.OPENED_GROUP) {
-                            openChat.setText(R.string.message);
                             openChat.setTextColor(getResources().getColor(R.color.blue));
                         }
                         break;
@@ -201,6 +201,8 @@ public class OnlineOpenedRoomActivity extends GeneralAdActivity implements View.
                     finishAcivity();
                 }
                 break;
+            default:
+                super.onClick(view);
         }
     }
 

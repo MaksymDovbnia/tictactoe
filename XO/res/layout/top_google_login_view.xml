@@ -7,11 +7,13 @@
                 android:background="@drawable/top"
                 android:paddingRight="@dimen/top_google_view_padding_left_right"
                 android:paddingLeft="@dimen/top_google_view_padding_left_right"
+                android:clickable="true"
                 android:paddingTop="10dp">
 
     <LinearLayout android:layout_width="wrap_content"
                   android:layout_height="match_parent"
                   android:orientation="horizontal"
+                  android:clickable="true"
                   android:layout_alignParentLeft="true">
 
 
@@ -35,16 +37,18 @@
                   android:gravity="center"
                   android:orientation="horizontal">
 
-        <ImageView android:layout_width="@dimen/top_google_view_photo_size"
-                   android:layout_height="@dimen/top_google_view_photo_size"
-                   android:src="@drawable/foto"/>
+        <ImageView
+                android:id="@+id/user_image"
+                android:layout_width="@dimen/top_google_view_photo_size"
+                android:layout_height="@dimen/top_google_view_photo_size"
+                android:src="@drawable/foto"/>
 
         <com.componentwithfont.TextViewWithComicsFont
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:textSize="@dimen/top_google_view_tex_size"
-                android:text="Svetlana"
+                android:text="@string/player"
                 android:textColor="@color/white"
                 android:id="@+id/user_name"/>
     </LinearLayout>
@@ -54,11 +58,13 @@
                   android:layout_width="wrap_content"
                   android:layout_height="match_parent"
                   android:orientation="horizontal"
+                  android:clickable="true"
                   android:layout_alignParentRight="true">
         <Button
                 android:id="@+id/sign_in_button"
                 android:layout_width="@dimen/top_google_view_photo_size"
                 android:layout_height="@dimen/top_google_view_photo_size"
+                android:duplicateParentState="true"
                 android:background="@drawable/g_plus"/>
 
         <com.componentwithfont.TextViewWithComicsFont
@@ -66,19 +72,21 @@
                 android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/sign_in_text_color"
                 android:textSize="@dimen/top_google_view_tex_size"
-                android:text="Sign in"/>
+                android:duplicateParentState="true"
+                android:text="@string/sign_in"/>
 
         <com.componentwithfont.TextViewWithComicsFont
                 android:id="@+id/sign_out_text"
                 android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/sign_in_text_color"
+                android:duplicateParentState="true"
                 android:textSize="@dimen/top_google_view_tex_size"
                 android:visibility="gone"
-                android:text="Sign out"/>
+                android:text="@string/sign_out"/>
 
 
     </LinearLayout>

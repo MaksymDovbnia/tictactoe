@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/easy_level"
-            android:background="@drawable/selector_for_text_view"
+
             android:textColor="@color/blue"
             android:layout_gravity="center"
 

@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/XO</output-path>
     <properties id="android-properties">
       <options>
-        <option name="keyAlias" value="max" />
+        <option name="keyAlias" value="BigTicTacToeOnline" />
         <option name="keyPassword" value="MTk5MTA0MDltYXg=" />
         <option name="keyStorePassword" value="MTk5MTA0MDltYXg=" />
         <option name="keyStoreUrl" value="file://$PROJECT_DIR$/../keystore/BigTicTacToeOnline.jks" />

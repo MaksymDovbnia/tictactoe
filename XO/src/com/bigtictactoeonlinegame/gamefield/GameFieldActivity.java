@@ -3,6 +3,7 @@ package com.bigtictactoeonlinegame.gamefield;
 import android.content.*;
 import android.os.*;
 import android.support.v4.app.*;
+import android.text.TextUtils;
 import android.view.*;
 import android.view.View.*;
 import android.widget.*;
@@ -70,6 +71,8 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
         mButtonnewGame.setOnClickListener(this);
         findViewById(R.id.btn_game_field_back).setOnClickListener(this);
 
+        new LoadImageTask((ImageView) findViewById(R.id.first_user_image)).execute(XOSharedPreferenceHelper.getInstance().getUserImageName());
+
         openChatButton = (BlickingButton) findViewById(R.id.btn_chat);
         openChatButton.setOnClickListener(this);
 
@@ -82,6 +85,8 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
                 case ONLINE:
                     Player opponent = (Player) intent.getSerializableExtra(BundleKeys.OPPONENT);
                     this.opponent = opponent;
+                    opponentName = opponent.getName();
+                    playerName = Controller.getInstance().getPlayer().getName();
                     TypeOfMove typeOfMove = (TypeOfMove) intent.getSerializableExtra(BundleKeys.TYPE_OF_MOVE);
                     isFirst = typeOfMove == TypeOfMove.X;
                     OnlineGameModel onlineGameHandler = new OnlineGameModel(
@@ -98,8 +103,7 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
                     if (intent.getStringExtra(SECOND_PLAYER_NAME) != null) {
                         opponentName = intent.getStringExtra(SECOND_PLAYER_NAME);
                     }
-                    firstNameTextView.setText(playerName);
-                    secondNameTextView.setText(opponentName);
+
                     player.setName(playerName);
                     opponent1.setName(opponentName);
                     FriendGameModel friendGameHandler = new FriendGameModel(player, opponent1, this);
@@ -113,20 +117,15 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
                         playerName = intent.getStringExtra(FIRST_PLAYER_NAME);
                     }
                     opponentName = getString(R.string.android);
-                    if (intent.getStringExtra(FIRST_PLAYER_NAME) != null) {
-                        playerName = intent.getStringExtra(FIRST_PLAYER_NAME);
-                    }
-                    if (intent.getStringExtra(SECOND_PLAYER_NAME) != null) {
-                        opponentName = intent.getStringExtra(SECOND_PLAYER_NAME);
-                    }
+                    String name = XOSharedPreferenceHelper.getInstance().getUserName();
+                    playerName = TextUtils.isEmpty(name) ? getString(R.string.player) : name;
                     player.setName(playerName);
                     opponent1.setName(opponentName);
                     AndroidGameModel androidGameHandler = new AndroidGameModel(player, opponent1, this,
                             this);
                     Controller.getInstance().setGameModel(androidGameHandler);
                     Controller.getInstance().setPlayer(player);
-                    secondNameTextView.setText(opponentName);
-                    firstNameTextView.setText("User");
+
                     openChatButton.setEnabled(false);
                     openChatButton.setBackgroundResource(R.drawable.button_empty);
                     break;
@@ -150,6 +149,8 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
                     break;
             }
         }
+        firstNameTextView.setText(playerName);
+        secondNameTextView.setText(opponentName);
         this.player = Controller.getInstance().getPlayer();
 
         cureentTab = TAB.GAME;
@@ -183,6 +184,14 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
                     }
                 })
                 .build();
+        generalDialog.setCanceledOnTouchOutside(false);
+        generalDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                Controller.getInstance().getGameModel().exitFromGame();
+                finish();
+            }
+        });
         generalDialog.show();
 
     }
@@ -240,7 +249,6 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
     @Override
     public void receivedChatMessage(ChatMessage chatMessage) {
         if (cureentTab == TAB.GAME) {
-            openChatButton.setText(R.string.message);
             openChatButton.setTextColor(getResources().getColor(R.color.blue));
             openChatButton.setNeedingToBlick(true);
         }
@@ -338,13 +346,13 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
         switch (view.getId()) {
 
             case R.id.btn_chat:
-                openChatButton.setText(R.string.chat);
+
                 openChatButton.setTextColor(getResources().getColor(R.color.black));
                 openChatButton.setNeedingToBlick(false);
                 switchToTab(TAB.CHAT);
                 break;
             case R.id.btn_game_field_back:
-                showExitFromThisGamePopup();
+                performBackAction();
                 break;
             case R.id.btn_game_field_new_game:
                 newGame();
@@ -366,6 +374,14 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
                 .build();
         generalDialog.show();
 
+    }
+
+    private void performBackAction() {
+        if (cureentTab == TAB.CHAT) {
+            switchToTab(TAB.GAME);
+        } else {
+            showExitFromThisGamePopup();
+        }
     }
 
     @Override
@@ -392,11 +408,7 @@ public class GameFieldActivity extends GoogleAnalyticsWithPlayServiceActivity im
 
     @Override
     public void onBackPressed() {
-        if (cureentTab == TAB.CHAT) {
-            switchToTab(TAB.GAME);
-        } else {
-            showExitFromThisGamePopup();
-        }
+        performBackAction();
     }
 
     @Override

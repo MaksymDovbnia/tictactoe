@@ -5,7 +5,8 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:paddingTop="@dimen/chat_fragment_layout_padding_top">
+              android:paddingLeft="@dimen/opened_room_layout_padding_left"
+              android:paddingTop="@dimen/opened_room_layout_padding_top">
 
 
     <LinearLayout

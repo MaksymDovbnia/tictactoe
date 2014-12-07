@@ -64,7 +64,7 @@ public class BTDeviceListActivity extends GoogleAnalyticsActivity {
         setResult(Activity.RESULT_CANCELED);
 
         // Initialize the button to perform device discovery
-        Button scanButton = (Button) findViewById(R.id.button_scan);
+        TextView scanButton = (TextView) findViewById(R.id.button_scan);
         scanButton.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 doDiscovery();
@@ -74,6 +74,13 @@ public class BTDeviceListActivity extends GoogleAnalyticsActivity {
         });
         progressBarSearch = (ProgressBar) findViewById(R.id.progress_bar_search_bt_devices);
 
+
+        findViewById(R.id.btn_back_from_select_type_game).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         // Initialize array adapters. One for already paired devices and
         // one for newly discovered devices

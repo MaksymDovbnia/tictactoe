@@ -14,6 +14,7 @@ package com.bigtictactoeonlinegame.gamefield;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.*;
 import android.text.TextPaint;
 import android.util.AttributeSet;
@@ -49,6 +50,9 @@ public class GameFieldView extends View {
 
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
+            if (!isScaleEnable) {
+                return true;
+            }
             float scaleFactor = Math.min(Math.max(MIN_SCALE_FACTORY, detector.getScaleFactor()), MAX_SCALE_FACTORY);
             float lastScale = mScaleFactor;
             mScaleFactor *= scaleFactor;
@@ -68,7 +72,7 @@ public class GameFieldView extends View {
     };
     private static final int GAME_FIELD_SIZE = 15;
     private final FieldItem mFieldItems[][] = new FieldItem[GAME_FIELD_SIZE][GAME_FIELD_SIZE];
-    private static final int BORDER_PADDING = 10;
+    private static final int BORDER_PADDING = 0;
     RectF rectF;
     private boolean isDrawingLineWithAnimation;
     private Paint mLinePaint = new Paint();
@@ -103,6 +107,7 @@ public class GameFieldView extends View {
     private FieldItem mToItem;
     private WinLineDrawer mDrawerWinLine;
     private DrawWinLineCompletedListener drawWinLineCompletedListener;
+    private boolean isScaleEnable = true;
 
     public GameFieldView(Context context) {
         super(context);
@@ -171,6 +176,12 @@ public class GameFieldView extends View {
 
         }
 
+    }
+
+    public boolean isTablet(Context context) {
+        boolean xlarge = ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE);
+        boolean large = ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE);
+        return (xlarge || large);
     }
 
     public void showWinLine(int fromI, int fromJ, int toI, int toJ, DrawWinLineCompletedListener listener) {
@@ -289,9 +300,11 @@ public class GameFieldView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         mStartHeight = getMeasuredHeight();
         mStartWidth = getMeasuredWidth();
         mFieldSizeInDimen = Math.min(mStartHeight, mStartWidth);
+        isScaleEnable = !isTablet(getContext());
         oneItemSize = (mFieldSizeInDimen) / GAME_FIELD_SIZE;
         int bitmapScaleDelta = PADDING_IN_FIELD_ITEM * 2;
         initItems(oneItemSize, false);
@@ -317,7 +330,7 @@ public class GameFieldView extends View {
                 fieldItem.size = fieldItemSize;
                 fieldItem.rect = new RectF(leftUpX, leftUpY, rightDownX, rightDownY);
                 mFieldItems[i][j] = fieldItem;
-                if (isResetData){
+                if (isResetData) {
                     fieldItem.isEnable = true;
                     fieldItem.isUsed = false;
                     fieldItem.fieldType = FieldType.EMPTY;
@@ -464,19 +477,19 @@ public class GameFieldView extends View {
         }
 
         void drawingWinLineWithAnim(Canvas canvas) {
-            if (endWinLineX < mToItem.rect.centerX() || endWinLineY > mToItem.rect.centerY()) {
+            if (isDrawingLineWithAnimation/*endWinLineX < mToItem.rect.centerX() || endWinLineY > mToItem.rect.centerY(*/) {
 
                 endWinLineX += deltaX;
                 endWinLineY += deltaY;
-            } else {
+            /*} else*//* {*/
                 if (drawWinLineCompletedListener != null) {
                     drawWinLineCompletedListener.onLineDraw();
                 }
                 isDrawingLineWithAnimation = false;
             }
-            canvas.drawLine(startWinLineX, startWinLineY, endWinLineX, endWinLineY, mWinLinePaint);
-            postInvalidateDelayed(DRAW_WIN_LINE_ANIMATION_TIME / CADR_NUMBERS);
-
+            //  canvas.drawLine(startWinLineX, startWinLineY, endWinLineX, endWinLineY, mWinLinePaint);
+            // postInvalidateDelayed(DRAW_WIN_LINE_ANIMATION_TIME / CADR_NUMBERS);
+            drawWinLine(canvas);
         }
 
         void init() {

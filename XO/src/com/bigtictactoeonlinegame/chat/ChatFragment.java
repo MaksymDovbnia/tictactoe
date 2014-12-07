@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 
+import android.widget.TextView;
 import com.bigtictactoeonlinegame.activity.R;
 
 import java.util.ArrayList;
@@ -58,7 +59,7 @@ public class ChatFragment extends Fragment implements ChatAction {
     }
 
     private void initViews(View chatView) {
-        Button btnSentMessage = (Button) chatView.findViewById(R.id.btn_chat_sent_message);
+        TextView btnSentMessage = (TextView) chatView.findViewById(R.id.btn_chat_sent_message);
         btnSentMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

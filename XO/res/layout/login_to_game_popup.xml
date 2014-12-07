@@ -24,7 +24,7 @@
             android:gravity="center"
             android:textSize="@dimen/default_text_size"
             android:textColor="@color/blue"
-            android:background="@drawable/selector_for_text_view"
+
             android:clickable="true"
             />
     <TextView
@@ -36,7 +36,7 @@
             android:gravity="center"
             android:textSize="@dimen/default_text_size"
             android:textColor="@color/blue"
-            android:background="@drawable/selector_for_text_view"
+
             android:clickable="true"
             />
 

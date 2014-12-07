@@ -18,6 +18,8 @@ public class OnlineGameModel extends GeneralGameModel {
 
     private Handler handler;
     private OnlineConnectionManager onlineGameWorker;
+    private boolean opponentWantContinue;
+    private boolean playerWantContinue;
 
 
     public OnlineGameModel(final OnlineConnectionManager onlineGameWorker,
@@ -41,12 +43,12 @@ public class OnlineGameModel extends GeneralGameModel {
                         OneMove oneMove = new OneMove(cDidMove.getI(),
                                 cDidMove.getJ(), typeFieldElement);
                         List<OneMove> list = gameFieldModel.oneMove(oneMove);
+
+                        opponentActionListener.onOpponentPerformMove(oneMove, false);
                         if (list != null) {
-                            opponentActionListener.onOpponentPerformMove(oneMove, true);
                             wonGameListener.onGameWin(list);
-                        } else {
-                            opponentActionListener.onOpponentPerformMove(oneMove, false);
                         }
+
                         break;
                     case CEXITFROMGAME:
                         OnlineGameModel.this.mActivityAction.opponentExitFromGame();
@@ -54,13 +56,8 @@ public class OnlineGameModel extends GeneralGameModel {
                     case CCONTINUEGAME:
                         Protocol.CContinueGame cContinueGame = (Protocol.CContinueGame) msg.obj;
                         Protocol.TypeMove typeOfMove = cContinueGame.getType();
-                        if (typeOfMove == Protocol.TypeMove.X) {
-                            OnlineGameModel.super.player.setMoveType(TypeOfMove.X);
-                            OnlineGameModel.super.opponent.setMoveType(TypeOfMove.O);
-                        } else {
-                            OnlineGameModel.super.player.setMoveType(TypeOfMove.O);
-                            OnlineGameModel.super.opponent.setMoveType(TypeOfMove.X);
-                        }
+                        opponentWantContinue = true;
+                        checkForBothWantContinue();
 
                         break;
                     case CCHATMESSAGE:
@@ -84,6 +81,11 @@ public class OnlineGameModel extends GeneralGameModel {
         onlineGameWorker.registerHandler(handler);
     }
 
+    private void checkForBothWantContinue() {
+        if (opponentWantContinue && playerWantContinue) {
+            wonGameListener.onBothPlayerWantContinue();
+        }
+    }
 
     @Override
     public GameType getGameType() {
@@ -104,13 +106,16 @@ public class OnlineGameModel extends GeneralGameModel {
                                 : Protocol.TypeMove.O
                 ).build();
 
-        onlineGameWorker.sendPacket(sDidMove);
         List<OneMove> list = gameFieldModel.oneMove(oneMove);
         if (list != null) {
             wonGameListener.onGameWin(list);
+        }
+        onlineGameWorker.sendPacket(sDidMove);
+        if (list != null) {
             onlineGameWorker.sendPacket(Protocol.SWonGame.newBuilder().setIdWonPlayer(player.getId()).
                     setIdLostPlayer(opponent.getId()).build());
         }
+
 
     }
 
@@ -122,14 +127,19 @@ public class OnlineGameModel extends GeneralGameModel {
 
     @Override
     public void startNewGame(boolean isOpponentMoveFirst) {
+        playerWantContinue = true;
+        checkForBothWantContinue();
         gameFieldModel.newGame();
-        onlineGameWorker.sendPacket(Protocol.SContinueGame.newBuilder()
-                .setPlayerId(player.getId()).setOpponentId(opponent.getId()).build());
-        showWaitingPopup();
+        onlineGameWorker.sendPacket(Protocol.SContinueGame
+                .newBuilder()
+                .setPlayerId(player.getId())
+                .setOpponentId(opponent.getId())
+                .build());
     }
 
-    public void showWaitingPopup() {
-
+    @Override
+    public void userTimeForMoveEnd() {
+        onlineGameWorker.sendPacket(Protocol.TimeForMoveFullUp.newBuilder().setTimeFullUp(true).build());
     }
 
     @Override

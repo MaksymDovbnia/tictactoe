@@ -6,7 +6,7 @@
               android:paddingLeft="@dimen/chat_fragment_layout_padding_left"
               android:paddingRight="@dimen/chat_fragment_layout_padding_right"
               android:paddingTop="@dimen/chat_fragment_layout_padding_top"
-              android:paddingBottom="@dimen/chat_fragment_layout_padding_bottom"        >
+              android:paddingBottom="@dimen/chat_fragment_layout_padding_bottom">
 
     <LinearLayout
             android:orientation="vertical"
@@ -16,7 +16,7 @@
             android:paddingLeft="@dimen/chat_fragment_layout_chat_container_padding_left"
             android:paddingRight="@dimen/chat_fragment_layout_chat_container_padding_right"
             android:paddingTop="@dimen/chat_fragment_layout_chat_container_padding_top"
-            android:paddingBottom="@dimen/chat_fragment_layout_chat_container_padding_bottom"           >
+            android:paddingBottom="@dimen/chat_fragment_layout_chat_container_padding_bottom">
 
         <ListView
                 android:id="@+id/chat_list_view"
@@ -27,31 +27,41 @@
                 />
     </LinearLayout>
 
-    <com.componentwithfont.TextViewWithComicsFont
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/input_your_message"
-            android:layout_marginTop="@dimen/chat_fragment_layout_text_view_padding_top"
-            android:textSize="@dimen/small_text_size"
-            android:textColor="@color/red"
-            />
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+
+
+        <com.componentwithfont.TextViewWithComicsFont
+                android:id="@+id/btn_chat_sent_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="@string/send"
+                android:textColor="@color/green_dialog"
+                android:textSize="@dimen/chat_send_button_text_size"
+                />
+
+        <com.componentwithfont.TextViewWithComicsFont
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/input_your_message"
+                android:layout_marginTop="@dimen/chat_fragment_layout_text_view_padding_top"
+                android:textSize="@dimen/small_text_size"
+                android:textColor="@color/red"
+                android:layout_gravity="left"
+                />
+
+
+    </LinearLayout>
+
     <com.componentwithfont.EditTextWithComicsFont
             android:id="@+id/chat_input_edit_text"
             android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
             android:layout_height="@dimen/chat_fragment_layout_edit_text_height"
             android:background="@drawable/chat_edit_text_background"
-            android:padding="10dp"
-
-            />
-
-    <com.componentwithfont.ButtonWithComicsFont
-            android:id="@+id/btn_chat_sent_message"
-            android:layout_width="@dimen/chat_fragment_layout_sent_button_width"
-            android:layout_height="@dimen/chat_fragment_layout_sent_button_height"
-            android:layout_gravity="right"
             android:lines="2"
-            android:text="@string/send"
-            style="@style/default_yelow_button"
-            />
+            android:padding="10dp"/>
 
 </LinearLayout>

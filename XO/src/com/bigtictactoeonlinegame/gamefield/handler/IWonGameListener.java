@@ -12,4 +12,5 @@ import java.util.List;
  */
 public interface IWonGameListener {
     public void onGameWin(List<OneMove> line);
+    public void onBothPlayerWantContinue();
 }

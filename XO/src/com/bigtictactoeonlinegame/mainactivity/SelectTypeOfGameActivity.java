@@ -6,6 +6,7 @@ import android.content.*;
 import android.content.pm.*;
 import android.net.*;
 import android.os.*;
+import android.text.TextUtils;
 import android.util.*;
 import android.view.*;
 import android.view.View.*;
@@ -56,8 +57,8 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
 
     private OnlineConnectionManager mOnlineGameWorker;
     private GeneralDialog mLoginPopup;
-    private boolean mWasPrevClickLeaderBoardButton = false;
-    private boolean mWasPrevClickAchievemntsButton = false;
+    private boolean mWasPrevClickOnlineGame = false;
+
     private long mGooglePlayScore;
 
     @Override
@@ -74,8 +75,7 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
     private void initViews() {
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         // findViewById(R.id.sign_out_button).setOnClickListener(this);
-        findViewById(R.id.btn_leaderboards).setOnClickListener(this);
-        findViewById(R.id.btn_achievments).setOnClickListener(this);
+
         View friend = findViewById(R.id.btn_two_players);
         friend.setOnClickListener(this);
         View online = findViewById(R.id.btn_online);
@@ -151,7 +151,6 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
 
 
     private long getGoogleLeaderBoardScore() {
-
         return mGooglePlayScore;
     }
 
@@ -216,7 +215,7 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
                 view.findViewById(R.id.tv_anonymous).setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        showAnonymousPopup();
+                        showLoginToOnlineGamePopup();
                         xoAlertDialog.dismiss();
                     }
                 });
@@ -287,7 +286,7 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
 
     private EditText playerNameEditText;
 
-    private void showAnonymousPopup() {
+    private void showLoginToOnlineGamePopup() {
         mLoginPopup = new GeneralDialog.Builder(this)
                 .setContentId(R.layout.input_player_name_popup_layout)
                 .setAutoDissmisDialog(false)
@@ -308,9 +307,12 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
                             sharedPreferences.edit().putString(PLAYER_UUID_FOR_ONLINE_GAME, playerUUID).commit();
                             mPlayer.setUuid(playerUUID);
                         }
-                        if (playerNameFromSharedPrefencesForLoginToGame != null)
+                        if (playerNameFromSharedPrefencesForLoginToGame != null) {
                             playerNameEditText.setText(playerNameFromSharedPrefencesForLoginToGame);
-                        else playerNameEditText.setText(getString(R.string.anonym_player));
+                        } else {
+                            String name = XOSharedPreferenceHelper.getInstance().getUserName();
+                            playerNameEditText.setText(TextUtils.isEmpty(name) ? getString(R.string.anonym_player) : name);
+                        }
                     }
                 })
                 .setPositiveButtonListener(new OnClickListener() {
@@ -367,10 +369,12 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
                         if (playerNameFromSharedPrefencesForBluetoohToGame != null) {
                             playerNameEditText.setText(playerNameFromSharedPrefencesForBluetoohToGame);
                         } else {
+
+                            String name = XOSharedPreferenceHelper.getInstance().getUserName();
                             if (BluetoothAdapter.getDefaultAdapter().getName() == null) {
-                                playerNameEditText.setText(R.string.player);
+                                playerNameEditText.setText(TextUtils.isEmpty(name) ? getString(R.string.player) : name);
                             } else {
-                                playerNameEditText.setText(BluetoothAdapter.getDefaultAdapter().getName());
+                                playerNameEditText.setText(TextUtils.isEmpty(name) ? BluetoothAdapter.getDefaultAdapter().getName() : name);
 
                             }
                         }
@@ -434,7 +438,12 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
                 showPopupForInputNameOfPlayers();
                 break;
             case R.id.btn_online:
-                showAnonymousPopup();
+                if (!isSignedIn()) {
+                    mWasPrevClickOnlineGame = true;
+                    beginUserInitiatedSignIn();
+                } else {
+                    showLoginToOnlineGamePopup();
+                }
                 break;
             case R.id.btn_bluetooth:
                 if (BluetoothAdapter.getDefaultAdapter() == null) {
@@ -447,43 +456,13 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
             case R.id.sign_in_button:
                 beginUserInitiatedSignIn();
                 break;
-//            case R.id.sign_out_button:
-//                signOut();
-//                findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
-//                findViewById(R.id.sign_out_button).setVisibility(View.GONE);
-//                break;
-            case R.id.btn_leaderboards:
-                if (!isSignedIn()) {
-                    mWasPrevClickLeaderBoardButton = true;
-                    beginUserInitiatedSignIn();
-                } else {
-                    startLeaderBoardActivity();
-                }
-                break;
-            case R.id.btn_achievments:
-                if (!isSignedIn()) {
-                    beginUserInitiatedSignIn();
-                    mWasPrevClickAchievemntsButton = true;
-                } else {
-                    startAchievementsActivity();
-                }
-                break;
             case R.id.btn_back_from_select_type_game:
                 finish();
                 break;
             default:
-                break;
+                super.onClick(v);
         }
         if (intent != null) startActivity(intent);
-    }
-
-    private void startLeaderBoardActivity() {
-        startActivityForResult(Games.Leaderboards.getLeaderboardIntent(getApiClient(),
-                getString(R.string.leaderboard_the_best_online_players)), REQUEST_LEADERBOARD);
-    }
-
-    private void startAchievementsActivity() {
-        startActivityForResult(Games.Achievements.getAchievementsIntent(getApiClient()), REQUEST_ACHIEVEMENTS);
     }
 
 
@@ -493,25 +472,13 @@ public class SelectTypeOfGameActivity extends XOGameActivityWithAds implements O
     }
 
     @Override
-    public void onSignInFailed() {
-        super.onSignInFailed();
-        mWasPrevClickLeaderBoardButton = false;
-        mWasPrevClickAchievemntsButton = false;
-    }
-
-    @Override
     public void onSignInSucceeded() {
         super.onSignInSucceeded();
-        loadPlayServiceScore();
-
-        if (mWasPrevClickAchievemntsButton) {
-            startAchievementsActivity();
-            mWasPrevClickAchievemntsButton = false;
-        }
-        if (mWasPrevClickLeaderBoardButton) {
-            startLeaderBoardActivity();
-            mWasPrevClickLeaderBoardButton = false;
+        if (mWasPrevClickOnlineGame) {
+            mWasPrevClickOnlineGame = false;
+            showLoginToOnlineGamePopup();
         }
     }
+
 
 }

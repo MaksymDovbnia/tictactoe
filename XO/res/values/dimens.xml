@@ -85,7 +85,8 @@
     <dimen name="chat_fragment_layout_padding_left">15dp</dimen>
     <dimen name="chat_fragment_layout_padding_right">15dp</dimen>
     <dimen name="chat_fragment_layout_padding_top">10dp</dimen>
-    <dimen name="chat_fragment_layout_padding_bottom">35dp</dimen>
+    <dimen name="opened_room_layout_padding_top">10dp</dimen>
+    <dimen name="chat_fragment_layout_padding_bottom">45dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_left">30dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_right">25dp</dimen>
     <dimen name="chat_fragment_layout_chat_container_padding_top">30dp</dimen>
@@ -172,6 +173,9 @@
     <dimen name="general_dialog_button_margin_top">-30dp</dimen>
     <dimen name="general_dialog_title_margin_top">25dp</dimen>
     <dimen name="general_dialog_title_margin_left_right">20dp</dimen>
+    <dimen name="online_rooms_layout_padding">20dp</dimen>
+    <dimen name="opened_room_layout_padding_left">5dp</dimen>
+    <dimen name="chat_send_button_text_size">30sp</dimen>
 
 
 </resources>

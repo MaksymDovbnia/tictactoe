@@ -17,8 +17,6 @@ import com.bigtictactoeonlinegame.gamefield.handler.*;
  */
 public class GameFieldFragment extends Fragment implements IGameFieldFragmentAction {
 
-    private static final String FIRST_PLAYER_NAME = "first_player_name";
-    private final static String SECOND_PLAYER_NAME = "second_player_name";
     private final static String IS_PLAYER_MOVE_FIRST_KEY = "IS_PLAYER_MOVE_FIRST_KEY";
     private IGameModel gameModel;
     private GameFieldActivityAction gameFieldActivityAction;
@@ -109,6 +107,7 @@ public class GameFieldFragment extends Fragment implements IGameFieldFragmentAct
     public void onDestroy() {
         super.onDestroy();
         gameModel.unregisterHandler();
+        gameFieldController.onDestroy();
     }
 
 

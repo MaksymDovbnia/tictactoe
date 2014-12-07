@@ -13,8 +13,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
-* Created by Maksym on 07.12.2014.
-*/
+ * Created by Maksym on 07.12.2014.
+ */
 public class LoadImageTask extends AsyncTask<String, byte[], Bitmap> {
 
     private ImageView imageView;
@@ -28,9 +28,10 @@ public class LoadImageTask extends AsyncTask<String, byte[], Bitmap> {
     @Override
     protected Bitmap doInBackground(String... params) {
         String urlString = params[0];
-        if (FileUtil.isFileExist(IMAGE_NAME)) {
-            ImageUtils.loadBitmapFromLocalStorage(IMAGE_NAME, imageSize, imageSize);
-        }
+//        if (FileUtil.isFileExist(IMAGE_NAME)) {
+//            return ImageUtils.loadBitmapFromLocalStorage(IMAGE_NAME, imageSize, imageSize);
+//        }
+        XOSharedPreferenceHelper.getInstance().saveUserImageName(urlString);
         URL url = null;
         try {
             url = new URL(urlString);
@@ -39,23 +40,28 @@ public class LoadImageTask extends AsyncTask<String, byte[], Bitmap> {
         }
         Bitmap bmp = null;
         try {
-            bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            if (url != null) {
+                bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        final Bitmap outputBitmap = ImageUtils.decodeCircleBitmap(bmp, 3, imageSize, R.color.white);
+        if (bmp != null) {
+            return ImageUtils.decodeCircleBitmap(bmp, 0, imageSize, R.color.white);
+        }
 
-
-        return outputBitmap;
+        return null;
     }
 
     @Override
     protected void onPostExecute(Bitmap bitmap) {
         super.onPostExecute(bitmap);
-        imageView.setImageBitmap(bitmap);
-
-        ImageUtils.saveImageToFile(bitmap, IMAGE_NAME);
-        XOSharedPreferenceHelper.getInstance().saveUserImageName(IMAGE_NAME);
+        if (bitmap != null) {
+            imageView.setImageBitmap(bitmap);
+            if (!FileUtil.isFileExist(IMAGE_NAME)) {
+                ImageUtils.saveImageToFile(bitmap, IMAGE_NAME);
+            }
+        }
 
 
     }

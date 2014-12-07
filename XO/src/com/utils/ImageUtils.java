@@ -19,7 +19,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.Base64;
 
-import net.mtechlab.mfamily.MFamilyApplication;
+import com.bigtictactoeonlinegame.XOApplication;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
@@ -283,7 +283,7 @@ public class ImageUtils {
     }
 
     public static byte[] bitmapToByteArray(int resId) {
-        Bitmap bitmap = BitmapFactory.decodeResource(MFamilyApplication.getInstance().getResources(), resId);
+        Bitmap bitmap = BitmapFactory.decodeResource(XOApplication.getInstance().getResources(), resId);
         return bitmapToByteArray(bitmap);
     }
 
@@ -308,7 +308,7 @@ public class ImageUtils {
     public static String saveFile(byte[] data, String fileName) {
         FileOutputStream fos = null;
         try {
-            fos = MFamilyApplication.getInstance().openFileOutput(fileName, Context.MODE_PRIVATE);
+            fos = XOApplication.getInstance().openFileOutput(fileName, Context.MODE_PRIVATE);
             fos.write(data);
             fos.flush();
             fos.getFD().sync();
@@ -330,7 +330,7 @@ public class ImageUtils {
     public static boolean saveImageToFile(Bitmap bitmap, String fileName) {
         FileOutputStream fos = null;
         try {
-            fos = MFamilyApplication.getInstance().openFileOutput(fileName, Context.MODE_PRIVATE);
+            fos = XOApplication.getInstance().openFileOutput(fileName, Context.MODE_PRIVATE);
             bitmap.compress(Bitmap.CompressFormat.PNG, 60, fos);
             fos.flush();
             fos.getFD().sync();
@@ -467,7 +467,7 @@ public class ImageUtils {
                     tmp = resBitmapRef.get();
                 if (tmp != null)
                     return tmp;
-                tmp = decodeSampledBitmapFromResource(MFamilyApplication.getInstance().getResources(), params.noImageRes, imageWidth, imageHeight);
+                tmp = decodeSampledBitmapFromResource(XOApplication.getInstance().getResources(), params.noImageRes, imageWidth, imageHeight);
             }
 
             if (params.isGrayscaled)

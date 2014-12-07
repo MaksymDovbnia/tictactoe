@@ -26,7 +26,7 @@ import java.util.*;
  * @author Maksym Dovbnia (maksym.dovbnia@gmail.com)
  */
 
-public class OnlineRoomsActivity extends GeneralAdActivity implements IOnlineRoomsAction {
+public class OnlineRoomsActivity extends XOGameActivityWithAds implements IOnlineRoomsAction {
     public static final String NUMBER_OF_GROUP = "NUMBER_OF_GROUP";
     private static final String LOG_TAG = OnlineRoomsActivity.class.getCanonicalName();
     private Handler mHandler;
